@@ -1,54 +1,13 @@
 {
   "name": "workflow-state-manager",
-  "version": "1.0.0",
   "description": "Persistent workflow state management for phase-based projects. Enables progress tracking across sessions.",
-  "author": "mogadishu",
-  "repository": "https://github.com/bbangjooo/awesome-agent-workflow-templates",
+  "version": "1.0.0",
   "commands": [
-    {
-      "name": "workflow-status",
-      "description": "Display current workflow progress and state",
-      "path": "commands/workflow-status.md"
-    },
-    {
-      "name": "workflow-resume",
-      "description": "Resume a workflow from where it was left off",
-      "path": "commands/workflow-resume.md"
-    },
-    {
-      "name": "workflow-reset",
-      "description": "Reset the workflow to start fresh",
-      "path": "commands/workflow-reset.md"
-    }
+    "./commands/workflow-status.md",
+    "./commands/workflow-resume.md",
+    "./commands/workflow-reset.md"
   ],
   "skills": [
-    {
-      "name": "workflow-state-manager",
-      "description": "Persistent workflow state management for phase-based projects",
-      "path": "SKILL.md",
-      "triggers": [
-        "check workflow status",
-        "show progress",
-        "resume workflow",
-        "continue where I left off",
-        "reset workflow",
-        "start over",
-        "mark phase complete",
-        "finish step",
-        "next step"
-      ]
-    }
-  ],
-  "resources": {
-    "skills": [
-      "skills/state-loader.md",
-      "skills/state-updater.md",
-      "skills/progress-reporter.md"
-    ],
-    "typescript": [
-      "src/index.ts",
-      "src/types.ts",
-      "src/state-manager.ts"
-    ]
-  }
+    "./"
+  ]
 }
