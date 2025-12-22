@@ -1,17 +1,22 @@
 {
-  "owner": "bbangjooo",
-  "contact": "bbangjooo@github.com",
-  "version": "1.0.0",
-  "description": "Awesome Agent Workflow Templates - Reusable workflow plugins for Claude Code",
+  "name": "awesome-agent-workflow-templates",
+  "owner": {
+    "name": "bbangjooo",
+    "email": "bbangjooo@github.com"
+  },
+  "metadata": {
+    "description": "Awesome Agent Workflow Templates - Reusable workflow plugins for Claude Code",
+    "version": "1.0.0"
+  },
   "plugins": [
     {
       "name": "workflow-state-manager",
       "description": "Persistent workflow state management for phase-based projects",
-      "source": "github",
-      "repo": "bbangjooo/awesome-agent-workflow-templates",
-      "path": "plugins/workflow-state-manager",
+      "source": "./plugins/workflow-state-manager",
       "strict": false,
-      "skills": ["workflow-state-manager"]
+      "skills": [
+        "./plugins/workflow-state-manager"
+      ]
     }
   ]
 }
