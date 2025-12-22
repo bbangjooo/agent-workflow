@@ -1,0 +1,67 @@
+{
+  "name": "@mogadishu/workflow-state-manager",
+  "version": "1.0.0",
+  "description": "Persistent workflow state management plugin for Claude Code. Enables phase-based progress tracking across sessions.",
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "workflow",
+    "state-management",
+    "persistence"
+  ],
+  "author": "mogadishu",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "files": [
+    "src",
+    "commands",
+    "skills"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "peerDependencies": {},
+  "claude-code": {
+    "type": "plugin",
+    "commands": [
+      {
+        "name": "workflow-status",
+        "description": "Display current workflow progress and state",
+        "file": "commands/workflow-status.md"
+      },
+      {
+        "name": "workflow-resume",
+        "description": "Resume a workflow from where it was left off",
+        "file": "commands/workflow-resume.md"
+      },
+      {
+        "name": "workflow-reset",
+        "description": "Reset the workflow to start fresh",
+        "file": "commands/workflow-reset.md"
+      }
+    ],
+    "skills": [
+      {
+        "name": "state-loader",
+        "description": "Load and parse workflow state from the file system",
+        "file": "skills/state-loader.md"
+      },
+      {
+        "name": "state-updater",
+        "description": "Update workflow state (phases, steps, artifacts)",
+        "file": "skills/state-updater.md"
+      },
+      {
+        "name": "progress-reporter",
+        "description": "Generate formatted progress reports for workflows",
+        "file": "skills/progress-reporter.md"
+      }
+    ]
+  }
+}
