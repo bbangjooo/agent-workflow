@@ -1,0 +1,14 @@
+{
+  "name": "deployment",
+  "description": "1인 창업자를 위한 배포 워크플로우. 디자인 명세를 바탕으로 구현된 MVP를 무료 호스팅에 자동 배포합니다.",
+  "version": "1.0.0",
+  "commands": [
+    "./commands/deploy.md"
+  ],
+  "skills": [
+    "./"
+  ],
+  "agents": [
+    "./agents/deploy-coach.md"
+  ]
+}
