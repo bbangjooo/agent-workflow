@@ -933,6 +933,29 @@ describe('CreatePostUseCase', () => {
 
 ---
 
+## UI 콘텐츠 가이드라인
+
+### 이모티콘 사용
+
+- **이모티콘 사용 최소화**: UI에서 이모티콘 사용을 최소화합니다
+- 이모티콘이 많으면 페이지가 어색해지고 전문성이 떨어져 보입니다
+- 꼭 필요한 경우에만 제한적으로 사용하세요
+- 텍스트 레이블, 버튼, 메시지 등에서 이모티콘 대신 명확한 텍스트나 아이콘(lucide-react 등)을 사용합니다
+
+```typescript
+// 좋은 예 - 아이콘 사용
+import { Check, X, AlertTriangle } from 'lucide-react'
+
+<Button><Check className="h-4 w-4 mr-2" />저장</Button>
+<Alert><AlertTriangle />주의가 필요합니다</Alert>
+
+// 피해야 할 예 - 이모티콘 과다 사용
+<Button>✨ 저장하기 🚀</Button>
+<Alert>⚠️ 주의! ❗</Alert>
+```
+
+---
+
 ## 참고 자료
 
 - [Clean Architecture by Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
