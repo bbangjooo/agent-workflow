@@ -119,7 +119,7 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 ```
 디자인 명세를 분석한 결과, 다음 UI 라이브러리를 추천합니다:
 
-🏆 추천: {추천 라이브러리}
+[추천] {추천 라이브러리}
 
 이유:
 - {이유 1}
@@ -153,17 +153,17 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 ```
 디자인 시스템을 코드에 적용하는 방식을 선택해주세요:
 
-1️⃣ Tailwind Config 확장
+[1] Tailwind Config 확장
    - tailwind.config.js에 디자인 토큰 추가
    - 유틸리티 클래스로 사용
    - 권장: Tailwind 기반 프로젝트
 
-2️⃣ CSS 변수 사용
+[2] CSS 변수 사용
    - globals.css에 CSS 변수 정의
    - var(--color-primary) 형태로 사용
    - 권장: CSS-in-JS 또는 일반 CSS 프로젝트
 
-3️⃣ Theme Provider
+[3] Theme Provider
    - 컨텍스트로 테마 값 제공
    - 다크 모드 전환 용이
    - 권장: Chakra UI, MUI 등 사용 시
@@ -182,15 +182,15 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 
 반응형 구현 전략을 선택해주세요:
 
-1️⃣ Mobile First (권장)
+[1] Mobile First (권장)
    - 모바일부터 시작하여 확장
    - min-width 미디어 쿼리 사용
 
-2️⃣ Desktop First
+[2] Desktop First
    - 데스크톱부터 시작하여 축소
    - max-width 미디어 쿼리 사용
 
-3️⃣ 주요 화면만 반응형
+[3] 주요 화면만 반응형
    - MVP에서는 핵심 화면만 반응형
    - 나머지는 데스크톱 기준
 ```
