@@ -166,6 +166,25 @@ Step 2.2: 디자인 시스템 정의
 - 간격 시스템 정의됨
 - `design-system.md` 파일이 생성됨
 
+## 참조 문서
+
+디자인 시스템 선택 시 다음 레퍼런스를 참고할 수 있습니다:
+
+| 디자인 시스템 | 특징 | 적합한 프로젝트 |
+|--------------|------|----------------|
+| `references/design-systems/shadcn-ui.md` | Copy & Paste, Tailwind + Radix | Next.js, 커스텀 디자인 필요 시 |
+| `references/design-systems/material-ui.md` | 완성도 높은 컴포넌트 | 대시보드, 엔터프라이즈 |
+| `references/design-systems/tailwind-daisyui.md` | 29+ 테마, Zero JS | 빠른 프로토타이핑, 다양한 테마 |
+| `references/design-systems/chakra-ui.md` | 접근성 우선 | 접근성 중요, 스타트업 |
+| `references/design-systems/ant-design.md` | 엔터프라이즈급 | 어드민, B2B 애플리케이션 |
+
+### 추천 조합
+
+- **빠른 MVP + 커스텀 디자인**: shadcn/ui + Tailwind CSS
+- **빠른 MVP + 다양한 테마**: DaisyUI + Tailwind CSS
+- **대시보드/어드민**: Ant Design 또는 Material UI
+- **접근성 중시**: Chakra UI
+
 ## 다음 Step
 
 -> Step 2.3: Component Spec (컴포넌트 명세)

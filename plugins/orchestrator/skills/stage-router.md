@@ -13,11 +13,12 @@ Stage 간 전환을 관리하고 상태를 업데이트합니다.
 
 ## Stage 정보
 
-| Stage | Phase ID | 커맨드 | 완료 산출물 |
-|-------|----------|--------|-------------|
+| Stage | Phase ID | 커맨드/스킬 | 완료 산출물 |
+|-------|----------|-------------|-------------|
 | 0 | ideation | `/ideate` | `outputs/stage-0/idea-brief.md` |
 | 1 | planning | `/plan` | `outputs/stage-1/prd.md` |
 | 2 | design | `/design` | `outputs/stage-2/design-spec.md` |
+| 2.5 | design-to-dev-bridge | `design-to-dev-bridge` 스킬 | `outputs/stage-2.5/design-dev-bridge.md` |
 | 3 | development | `/develop` | `outputs/stage-3/build-config.md` |
 | 4 | deployment | `/deploy` | `outputs/stage-4/deployment-complete.md` |
 
@@ -159,6 +160,7 @@ Stage별 설명:
 | 0 | 아이디어를 구체화하고 검증합니다 |
 | 1 | 기능을 정의하고 PRD를 작성합니다 |
 | 2 | 디자인 시스템과 UI 명세를 만듭니다 |
+| 2.5 | 디자인을 개발에 적용할 전략을 수립합니다 |
 | 3 | 실제 코드를 작성하고 빌드합니다 |
 | 4 | 무료 호스팅에 배포합니다 |
 
@@ -187,6 +189,7 @@ Stage별 설명:
 • 아이디어 브리프: outputs/stage-0/idea-brief.md
 • PRD: outputs/stage-1/prd.md
 • 디자인 명세: outputs/stage-2/design-spec.md
+• 디자인→개발 브릿지: outputs/stage-2.5/design-dev-bridge.md
 • 빌드 설정: outputs/stage-3/build-config.md
 • 배포 완료: outputs/stage-4/deployment-complete.md
 
@@ -230,3 +233,4 @@ Stage를 다시 실행합니다...
 ## 관련 스킬
 
 - progress-check: 시작 지점 결정 후 stage-router 호출
+- design-to-dev-bridge: Stage 2 완료 후 Stage 3 시작 전에 호출

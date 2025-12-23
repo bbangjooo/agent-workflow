@@ -117,9 +117,12 @@ Dev Coach 에이전트가 개발 주도
 | templates | env-templates.md | 환경변수 템플릿 |
 | templates | config-templates.md | 설정 파일 템플릿 |
 | patterns | auth-patterns.md | 인증 구현 패턴 |
+| patterns | google-auth-patterns.md | 구글 OAuth 인증 상세 가이드 |
 | patterns | api-patterns.md | API 설계 패턴 |
 | patterns | state-patterns.md | 상태 관리 패턴 |
 | patterns | error-handling.md | 에러 처리 패턴 |
+| patterns | frontend-clean-architecture.md | 프론트엔드 클린 아키텍처 가이드 |
+| patterns | backend-clean-architecture.md | 백엔드 클린 아키텍처 가이드 |
 | checklists | security-checklist.md | 보안 체크리스트 |
 | checklists | performance-checklist.md | 성능 체크리스트 |
 | checklists | launch-checklist.md | 런칭 전 체크리스트 |

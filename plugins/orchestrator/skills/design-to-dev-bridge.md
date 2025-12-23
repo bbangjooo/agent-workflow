@@ -1,0 +1,425 @@
+# Design-to-Dev Bridge
+
+디자인 단계(Stage 2) 결과물을 개발 단계(Stage 3)에 어떻게 적용할지 결정하는 브릿지 스킬입니다.
+
+## 설명
+
+이 스킬은 Stage 2(Design)와 Stage 3(Development) 사이에서 실행되며, 디자인 명세를 분석하여 개발에 필요한 구체적인 구현 전략을 결정합니다. 기술 스택 선택, UI 라이브러리 결정, 컴포넌트 매핑 등을 수행합니다.
+
+## 트리거
+
+- Stage 2 (Design) 완료 직후
+- Stage 3 (Development) 시작 직전
+- `outputs/stage-2/design-spec.md` 파일이 존재할 때
+
+## 입력
+
+- `outputs/stage-2/design-spec.md` (필수)
+- `outputs/stage-2/design-system.md` (필수)
+- `outputs/stage-2/component-spec.md` (필수)
+- `outputs/stage-2/wireframes.md` (필수)
+- `outputs/stage-1/prd.md` (참고)
+
+---
+
+## 실행 내용
+
+### 1. 디자인 산출물 분석
+
+디자인 단계의 모든 산출물을 분석하여 개발에 필요한 정보를 추출합니다:
+
+```
+분석 항목:
+□ 디자인 시스템 (색상, 타이포, 간격, 그림자 등)
+□ 컴포넌트 목록 및 상태
+□ 화면 구조 및 레이아웃
+□ 반응형 브레이크포인트
+□ 인터랙션 및 애니메이션
+□ 아이콘 및 이미지 리소스
+```
+
+### 2. UI 라이브러리 추천
+
+디자인 시스템 특성을 기반으로 적합한 UI 라이브러리를 추천합니다:
+
+```
+분석 기준:
+- 커스터마이징 필요 정도
+- 컴포넌트 복잡도
+- 접근성 요구사항
+- 테마/다크모드 요구사항
+- 개발 속도 vs 커스텀 UI
+
+추천 매트릭스:
+┌─────────────────────┬───────────────────────────────────┐
+│ 디자인 특성          │ 추천 UI 라이브러리                  │
+├─────────────────────┼───────────────────────────────────┤
+│ 커스텀 디자인 많음    │ shadcn/ui + Tailwind              │
+│ Material 스타일      │ Material UI (MUI)                 │
+│ 다양한 테마 필요      │ DaisyUI + Tailwind                │
+│ 접근성 중시          │ Chakra UI 또는 Radix UI            │
+│ 엔터프라이즈/어드민   │ Ant Design                        │
+│ 최소한의 커스텀      │ 선택한 라이브러리 기본 스타일        │
+└─────────────────────┴───────────────────────────────────┘
+```
+
+### 3. 컴포넌트 매핑
+
+디자인 컴포넌트를 UI 라이브러리 컴포넌트에 매핑합니다:
+
+```
+예시 매핑:
+┌──────────────────┬──────────────────┬───────────────────────┐
+│ 디자인 컴포넌트    │ UI 라이브러리     │ 커스텀 필요 여부        │
+├──────────────────┼──────────────────┼───────────────────────┤
+│ Primary Button   │ Button           │ 색상/크기 조정          │
+│ Text Input       │ Input            │ 스타일 조정            │
+│ Modal            │ Dialog/Modal     │ 그대로 사용            │
+│ Card             │ Card             │ 레이아웃 조정          │
+│ Navigation       │ -                │ 커스텀 구현 필요        │
+│ Data Table       │ Table            │ 그대로 사용            │
+└──────────────────┴──────────────────┴───────────────────────┘
+```
+
+### 4. 스타일 토큰 변환
+
+디자인 토큰을 코드 토큰으로 변환합니다:
+
+```
+변환 예시:
+
+디자인 시스템 → CSS 변수 / Tailwind Config
+
+색상:
+- Primary #3B82F6 → --color-primary / primary: '#3B82F6'
+- Gray 900 #111827 → --color-gray-900 / gray-900: '#111827'
+
+타이포그래피:
+- H1 32px Bold → text-3xl font-bold
+- Body 16px Regular → text-base font-normal
+
+간격:
+- space-4 16px → p-4, m-4
+- space-8 32px → p-8, m-8
+```
+
+### 5. 구현 전략 결정
+
+사용자와 대화를 통해 구현 전략을 결정합니다:
+
+---
+
+## 질문 가이드
+
+### 1. UI 라이브러리 선택
+
+```
+디자인 명세를 분석한 결과, 다음 UI 라이브러리를 추천합니다:
+
+🏆 추천: {추천 라이브러리}
+
+이유:
+- {이유 1}
+- {이유 2}
+
+다른 옵션:
+- {대안 1}: {장단점}
+- {대안 2}: {장단점}
+
+어떤 라이브러리를 사용할까요?
+```
+
+### 2. 커스텀 컴포넌트 범위
+
+```
+디자인에서 다음 컴포넌트들은 커스텀 구현이 필요합니다:
+
+필수 커스텀:
+- {컴포넌트 1}: {이유}
+- {컴포넌트 2}: {이유}
+
+선택적 커스텀 (기본 스타일 사용 가능):
+- {컴포넌트 3}
+- {컴포넌트 4}
+
+모든 컴포넌트를 커스텀으로 구현할까요, 아니면 필수만 구현할까요?
+```
+
+### 3. 디자인 시스템 적용 방식
+
+```
+디자인 시스템을 코드에 적용하는 방식을 선택해주세요:
+
+1️⃣ Tailwind Config 확장
+   - tailwind.config.js에 디자인 토큰 추가
+   - 유틸리티 클래스로 사용
+   - 권장: Tailwind 기반 프로젝트
+
+2️⃣ CSS 변수 사용
+   - globals.css에 CSS 변수 정의
+   - var(--color-primary) 형태로 사용
+   - 권장: CSS-in-JS 또는 일반 CSS 프로젝트
+
+3️⃣ Theme Provider
+   - 컨텍스트로 테마 값 제공
+   - 다크 모드 전환 용이
+   - 권장: Chakra UI, MUI 등 사용 시
+
+어떤 방식을 선호하시나요?
+```
+
+### 4. 반응형 전략
+
+```
+디자인의 반응형 브레이크포인트:
+
+- Mobile: {값}
+- Tablet: {값}
+- Desktop: {값}
+
+반응형 구현 전략을 선택해주세요:
+
+1️⃣ Mobile First (권장)
+   - 모바일부터 시작하여 확장
+   - min-width 미디어 쿼리 사용
+
+2️⃣ Desktop First
+   - 데스크톱부터 시작하여 축소
+   - max-width 미디어 쿼리 사용
+
+3️⃣ 주요 화면만 반응형
+   - MVP에서는 핵심 화면만 반응형
+   - 나머지는 데스크톱 기준
+```
+
+### 5. 아이콘 및 이미지
+
+```
+디자인에서 사용된 아이콘/이미지:
+
+아이콘:
+- {아이콘 스타일}: {개수}개
+
+추천 아이콘 라이브러리:
+- lucide-react (권장): 깔끔, 일관성
+- heroicons: Tailwind 공식
+- react-icons: 다양한 스타일
+
+이미지 최적화:
+- next/image 사용 권장
+- placeholder blur 처리
+- lazy loading 적용
+
+어떤 아이콘 라이브러리를 사용할까요?
+```
+
+---
+
+## 산출물
+
+`outputs/stage-2.5/design-dev-bridge.md`
+
+```markdown
+# Design-to-Dev Bridge
+
+## 메타데이터
+- Stage: 2.5
+- Step: Design-to-Dev Bridge
+- 생성일시: {현재 시간}
+- 상태: final
+
+## 디자인 분석 요약
+
+### 디자인 시스템
+| 항목 | 값 | 코드 변환 |
+|------|-----|----------|
+| Primary Color | {색상} | {변환값} |
+| Font Family | {폰트} | {변환값} |
+| Base Spacing | {간격} | {변환값} |
+| Border Radius | {반경} | {변환값} |
+
+### 컴포넌트 현황
+- 총 컴포넌트 수: {N}개
+- UI 라이브러리 사용: {N}개
+- 커스텀 구현 필요: {N}개
+
+## 구현 결정 사항
+
+### UI 라이브러리
+- **선택**: {라이브러리명}
+- **이유**: {선택 이유}
+
+### 컴포넌트 매핑
+
+| 디자인 컴포넌트 | 구현 방식 | 라이브러리 컴포넌트 | 커스텀 범위 |
+|---------------|----------|-------------------|------------|
+| {컴포넌트1} | 라이브러리 | {컴포넌트} | 스타일만 |
+| {컴포넌트2} | 커스텀 | - | 전체 |
+| ... | ... | ... | ... |
+
+### 디자인 토큰 변환
+
+```typescript
+// tailwind.config.ts 또는 theme 설정
+{
+  colors: {
+    primary: '{값}',
+    secondary: '{값}',
+    // ...
+  },
+  fontFamily: {
+    sans: ['{폰트}', 'sans-serif'],
+  },
+  // ...
+}
+```
+
+### 반응형 전략
+- **방식**: {Mobile First / Desktop First}
+- **브레이크포인트**:
+  - sm: {값}
+  - md: {값}
+  - lg: {값}
+
+### 아이콘
+- **라이브러리**: {라이브러리명}
+- **사용 아이콘 목록**: {아이콘 리스트 또는 참조}
+
+## 개발 우선순위
+
+### Phase 1: 기반 구축
+1. 프로젝트 셋업 + UI 라이브러리 설치
+2. 디자인 토큰 설정 (tailwind.config / theme)
+3. 글로벌 스타일 적용
+
+### Phase 2: 기본 컴포넌트
+1. {컴포넌트 1}
+2. {컴포넌트 2}
+3. ...
+
+### Phase 3: 커스텀 컴포넌트
+1. {커스텀 컴포넌트 1}
+2. {커스텀 컴포넌트 2}
+3. ...
+
+## 참고 레퍼런스
+
+개발 시 참고할 문서:
+- `references/design-systems/{라이브러리}.md`
+- `references/patterns/frontend-clean-architecture.md`
+
+## 다음 단계
+
+이 문서를 기반으로 Stage 3: Development를 시작합니다.
+→ Step 3.1: Tech Stack Selection에서 여기서 결정한 UI 라이브러리를 반영합니다.
+```
+
+---
+
+## 상태 업데이트
+
+### 실행 시
+
+```json
+{
+  "phases[2]": {
+    "status": "completed"
+  },
+  "phases[2.5]": {
+    "id": "design-to-dev-bridge",
+    "name": "Design-to-Dev Bridge",
+    "status": "in_progress",
+    "order": 2.5,
+    "steps": [
+      {"id": "design-analysis", "name": "Design Analysis", "status": "pending"},
+      {"id": "library-selection", "name": "Library Selection", "status": "pending"},
+      {"id": "component-mapping", "name": "Component Mapping", "status": "pending"},
+      {"id": "token-conversion", "name": "Token Conversion", "status": "pending"},
+      {"id": "strategy-decision", "name": "Strategy Decision", "status": "pending"}
+    ],
+    "artifacts": []
+  }
+}
+```
+
+### 완료 시
+
+```json
+{
+  "phases[2.5]": {
+    "status": "completed",
+    "completedAt": "{현재시간}",
+    "artifacts": ["outputs/stage-2.5/design-dev-bridge.md"]
+  },
+  "currentPhaseId": "development"
+}
+```
+
+---
+
+## 출력 메시지
+
+### 시작
+
+```
+🌉 Design-to-Dev Bridge
+
+디자인 명세를 분석하여 개발 전략을 수립합니다.
+
+분석 중인 파일:
+- outputs/stage-2/design-spec.md
+- outputs/stage-2/design-system.md
+- outputs/stage-2/component-spec.md
+- outputs/stage-2/wireframes.md
+
+잠시만 기다려주세요...
+```
+
+### 분석 완료
+
+```
+📊 디자인 분석 완료
+
+발견된 내용:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• 색상: {N}개 팔레트
+• 컴포넌트: {N}개 정의됨
+• 화면: {N}개 와이어프레임
+• 반응형: {브레이크포인트 개수}개 브레이크포인트
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+이제 개발에 필요한 결정을 함께 내려볼게요.
+```
+
+### 완료
+
+```
+✅ Design-to-Dev Bridge 완료!
+
+📄 산출물: outputs/stage-2.5/design-dev-bridge.md
+
+결정 사항 요약:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• UI 라이브러리: {선택된 라이브러리}
+• 커스텀 컴포넌트: {N}개
+• 반응형 전략: {선택된 전략}
+• 아이콘: {선택된 라이브러리}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+이제 Stage 3: Development를 시작합니다!
+```
+
+---
+
+## 완료 조건
+
+- [ ] 모든 디자인 산출물 분석 완료
+- [ ] UI 라이브러리 선택 완료
+- [ ] 컴포넌트 매핑 완료
+- [ ] 디자인 토큰 변환 정의 완료
+- [ ] 구현 전략 결정 완료
+- [ ] `design-dev-bridge.md` 파일 생성됨
+
+## 다음 Step
+
+→ Stage 3: Development (Step 3.1: Tech Stack Selection)
