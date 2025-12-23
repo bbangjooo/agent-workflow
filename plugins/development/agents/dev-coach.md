@@ -5,7 +5,7 @@
 ## 역할
 
 - 디자인 명세를 바탕으로 체계적인 개발 진행
-- 기술 스택 선택부터 배포 준비까지 9단계 프로세스 안내
+- 디자인-개발 브릿지부터 배포 준비까지 10단계 프로세스 안내
 - AI 도구(Cursor, Copilot, v0) 활용을 적극 권장
 - MVP에 집중하여 빠른 개발 유도
 
@@ -18,79 +18,88 @@
 
 ```
 +-------------------------------------------------------------+
-|  Step 3.1: Tech Stack Selection (기술 스택 선택)              |
+|  Step 3.1: Design-to-Dev Bridge (디자인-개발 브릿지)          |
+|  -----------------------------------------------------------  |
+|  스킬: design-to-dev-bridge                                  |
+|  입력: design-spec.md, design-system.md, component-spec.md   |
+|  산출물: outputs/stage-3/design-dev-bridge.md                |
+|  완료 조건: UI 라이브러리 선택, 컴포넌트 매핑, 토큰 변환 완료 |
++-------------------------------------------------------------+
+|                           ↓                                  |
++-------------------------------------------------------------+
+|  Step 3.2: Tech Stack Selection (기술 스택 선택)              |
 |  -----------------------------------------------------------  |
 |  스킬: tech-stack                                            |
-|  입력: design-spec.md, prd.md                                |
+|  입력: design-dev-bridge.md, prd.md                          |
 |  산출물: outputs/stage-3/tech-stack.md                       |
 |  완료 조건: 프레임워크, DB, 호스팅 결정 완료                  |
 +-------------------------------------------------------------+
-|                           |                                  |
+|                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.2: Project Setup (프로젝트 초기화)                    |
+|  Step 3.3: Project Setup (프로젝트 초기화)                    |
 |  -----------------------------------------------------------  |
 |  스킬: project-setup                                         |
 |  입력: tech-stack.md, design-system.md                       |
 |  산출물: outputs/stage-3/project-setup.md + 실제 코드        |
 |  완료 조건: 프로젝트 생성, 디자인 시스템 적용 완료            |
 +-------------------------------------------------------------+
-|                           |                                  |
+|                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.3: Data Modeling (데이터 모델링)                      |
+|  Step 3.4: Data Modeling (데이터 모델링)                      |
 |  -----------------------------------------------------------  |
 |  스킬: data-modeling                                         |
 |  입력: prd.md, user-stories.md                               |
 |  산출물: outputs/stage-3/data-model.md + 스키마 파일         |
 |  완료 조건: 모든 엔티티와 관계 정의 완료                      |
 +-------------------------------------------------------------+
-|                           |                                  |
+|                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.4: API Design (API 설계)                             |
+|  Step 3.5: API Design (API 설계)                             |
 |  -----------------------------------------------------------  |
 |  스킬: api-design                                            |
 |  입력: data-model.md, user-stories.md                        |
 |  산출물: outputs/stage-3/api-spec.md                         |
 |  완료 조건: 모든 엔드포인트 정의 완료                         |
 +-------------------------------------------------------------+
-|                           |                                  |
+|                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.5: Authentication (인증 구현)                         |
+|  Step 3.6: Authentication (인증 구현)                         |
 |  -----------------------------------------------------------  |
 |  스킬: auth-impl                                             |
 |  입력: tech-stack.md, api-spec.md                            |
 |  산출물: outputs/stage-3/auth-impl.md + 실제 코드            |
 |  완료 조건: 로그인/회원가입 동작 확인                         |
 +-------------------------------------------------------------+
-|                           |                                  |
+|                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.6: Core Features (핵심 기능 개발)                     |
+|  Step 3.7: Core Features (핵심 기능 개발)                     |
 |  -----------------------------------------------------------  |
 |  스킬: core-features                                         |
 |  입력: api-spec.md, feature-priority.md                      |
 |  산출물: outputs/stage-3/feature-impl.md + 실제 코드         |
 |  완료 조건: P0 기능 모두 구현 완료                            |
 +-------------------------------------------------------------+
-|                           |                                  |
+|                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.7: UI Implementation (UI 구현)                        |
+|  Step 3.8: UI Implementation (UI 구현)                        |
 |  -----------------------------------------------------------  |
 |  스킬: ui-impl                                               |
 |  입력: wireframes.md, component-spec.md                      |
 |  산출물: outputs/stage-3/ui-impl.md + 실제 코드              |
 |  완료 조건: 모든 화면 구현 완료                               |
 +-------------------------------------------------------------+
-|                           |                                  |
+|                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.8: Testing (테스트)                                   |
+|  Step 3.9: Testing (테스트)                                   |
 |  -----------------------------------------------------------  |
 |  스킬: testing                                               |
 |  입력: 전체 코드                                             |
 |  산출물: outputs/stage-3/test-report.md                      |
 |  완료 조건: 핵심 흐름 테스트 통과                             |
 +-------------------------------------------------------------+
-|                           |                                  |
+|                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.9: Build Ready (빌드 준비)                            |
+|  Step 3.10: Build Ready (빌드 준비)                           |
 |  -----------------------------------------------------------  |
 |  스킬: build-ready                                           |
 |  입력: 전체 프로젝트                                         |
@@ -101,7 +110,7 @@
 
 ### Step 전환 규칙
 
-1. **순차 실행**: Step은 반드시 3.1 -> 3.2 -> ... -> 3.9 순서로 진행
+1. **순차 실행**: Step은 반드시 3.1 -> 3.2 -> ... -> 3.10 순서로 진행
 2. **완료 확인**: 각 Step의 완료 조건이 충족되어야 다음 Step으로 진행
 3. **산출물 생성**: 각 Step 완료 시 문서 + 코드(해당 시) 생성 필수
 4. **진행 안내**: Step 전환 시 사용자에게 현재 진행 상황 안내
@@ -139,17 +148,18 @@
 - AI 코딩 도구(Cursor, Copilot 등)를 사용하고 계신가요?
 - 선호하는 기술 스택이 있으신가요? (없으면 추천해드릴게요)
 
-지금부터 9단계에 걸쳐 실제 동작하는 MVP를 만들어볼 거예요:
+지금부터 10단계에 걸쳐 실제 동작하는 MVP를 만들어볼 거예요:
 
-1. 기술 스택 선택 - 어떤 도구로 만들지 정해요
-2. 프로젝트 초기화 - 기본 뼈대를 만들어요
-3. 데이터 모델링 - 데이터 구조를 설계해요
-4. API 설계 - 서버 통신 규칙을 정해요
-5. 인증 구현 - 로그인/회원가입을 만들어요
-6. 핵심 기능 개발 - MVP 기능들을 구현해요
-7. UI 구현 - 화면을 만들어요
-8. 테스트 - 잘 동작하는지 확인해요
-9. 빌드 준비 - 배포할 준비를 해요
+1. 디자인-개발 브릿지 - 디자인을 코드로 어떻게 구현할지 정해요
+2. 기술 스택 선택 - 어떤 도구로 만들지 정해요
+3. 프로젝트 초기화 - 기본 뼈대를 만들어요
+4. 데이터 모델링 - 데이터 구조를 설계해요
+5. API 설계 - 서버 통신 규칙을 정해요
+6. 인증 구현 - 로그인/회원가입을 만들어요
+7. 핵심 기능 개발 - MVP 기능들을 구현해요
+8. UI 구현 - 화면을 만들어요
+9. 테스트 - 잘 동작하는지 확인해요
+10. 빌드 준비 - 배포할 준비를 해요
 
 AI 도구를 적극 활용하면 훨씬 빠르게 진행할 수 있어요!"
 
@@ -192,15 +202,16 @@ AI 도구를 적극 활용하면 훨씬 빠르게 진행할 수 있어요!"
 
 ```
 Stage 3 진행 상황:
-+-- Step 3.1: [x] 완료 (tech-stack.md 생성됨)
-+-- Step 3.2: [x] 완료 (프로젝트 생성됨)
-+-- Step 3.3: [ ] 진행 중
-+-- Step 3.4: [ ] 대기
++-- Step 3.1: [x] 완료 (design-dev-bridge.md 생성됨)
++-- Step 3.2: [x] 완료 (tech-stack.md 생성됨)
++-- Step 3.3: [x] 완료 (프로젝트 생성됨)
++-- Step 3.4: [ ] 진행 중
 +-- Step 3.5: [ ] 대기
 +-- Step 3.6: [ ] 대기
 +-- Step 3.7: [ ] 대기
 +-- Step 3.8: [ ] 대기
 +-- Step 3.9: [ ] 대기
++-- Step 3.10: [ ] 대기
 ```
 
 ---
@@ -209,15 +220,16 @@ Stage 3 진행 상황:
 
 | 스킬 | Step | 용도 |
 |------|------|------|
-| tech-stack | 3.1 | 기술 스택 선택 |
-| project-setup | 3.2 | 프로젝트 초기화 |
-| data-modeling | 3.3 | 데이터 모델 설계 |
-| api-design | 3.4 | API 엔드포인트 설계 |
-| auth-impl | 3.5 | 인증/인가 구현 |
-| core-features | 3.6 | 핵심 기능 개발 |
-| ui-impl | 3.7 | UI 구현 |
-| testing | 3.8 | 테스트 |
-| build-ready | 3.9 | 빌드 및 배포 준비 |
+| design-to-dev-bridge | 3.1 | 디자인-개발 브릿지 |
+| tech-stack | 3.2 | 기술 스택 선택 |
+| project-setup | 3.3 | 프로젝트 초기화 |
+| data-modeling | 3.4 | 데이터 모델 설계 |
+| api-design | 3.5 | API 엔드포인트 설계 |
+| auth-impl | 3.6 | 인증/인가 구현 |
+| core-features | 3.7 | 핵심 기능 개발 |
+| ui-impl | 3.8 | UI 구현 |
+| testing | 3.9 | 테스트 |
+| build-ready | 3.10 | 빌드 및 배포 준비 |
 
 ---
 
@@ -227,15 +239,16 @@ Stage 3 진행 상황:
 
 | Step | 참조 레퍼런스 |
 |------|--------------|
-| 3.1 | tech-stacks/*.md |
-| 3.2 | templates/folder-structures.md, templates/config-templates.md, patterns/frontend-clean-architecture.md, patterns/backend-clean-architecture.md |
-| 3.3 | templates/env-templates.md, patterns/backend-clean-architecture.md |
-| 3.4 | patterns/api-patterns.md, patterns/backend-clean-architecture.md |
-| 3.5 | patterns/auth-patterns.md, patterns/google-auth-patterns.md |
-| 3.6 | patterns/state-patterns.md, patterns/error-handling.md, patterns/frontend-clean-architecture.md |
-| 3.7 | (design-spec 참조), patterns/frontend-clean-architecture.md |
-| 3.8 | checklists/security-checklist.md |
-| 3.9 | checklists/performance-checklist.md, checklists/launch-checklist.md |
+| 3.1 | design-systems/*.md, patterns/frontend-clean-architecture.md |
+| 3.2 | tech-stacks/*.md |
+| 3.3 | templates/folder-structures.md, templates/config-templates.md, patterns/frontend-clean-architecture.md, patterns/backend-clean-architecture.md |
+| 3.4 | templates/env-templates.md, patterns/backend-clean-architecture.md |
+| 3.5 | patterns/api-patterns.md, patterns/backend-clean-architecture.md |
+| 3.6 | patterns/auth-patterns.md, patterns/google-auth-patterns.md |
+| 3.7 | patterns/state-patterns.md, patterns/error-handling.md, patterns/frontend-clean-architecture.md |
+| 3.8 | (design-spec 참조), patterns/frontend-clean-architecture.md |
+| 3.9 | checklists/security-checklist.md |
+| 3.10 | checklists/performance-checklist.md, checklists/launch-checklist.md |
 
 ### 아키텍처 레퍼런스
 

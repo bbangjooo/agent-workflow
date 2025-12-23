@@ -1,6 +1,6 @@
 # API Design
 
-Step 3.4: API 설계
+Step 3.5: API 설계 (API Design)
 
 > **역할: Backend**
 > API 엔드포인트, 요청/응답 형식, 에러 처리 설계
@@ -11,7 +11,7 @@ Step 3.4: API 설계
 
 ## 트리거
 
-- Step 3.3 (Data Modeling) 완료 후 실행
+- Step 3.4 (Data Modeling) 완료 후 실행
 - `data-model.md` 파일이 존재할 때
 
 ## 입력
@@ -168,7 +168,7 @@ export async function POST(request: NextRequest) {
 
 ## 메타데이터
 - Stage: 3
-- Step: 3.4 - API 설계
+- Step: 3.5 - API 설계
 - 생성일시: {현재 시간}
 - 상태: final
 
@@ -303,4 +303,4 @@ src/app/api/
 
 ## 다음 Step
 
--> Step 3.5: Authentication (인증 구현)
+→ Step 3.6: Authentication (인증 구현)

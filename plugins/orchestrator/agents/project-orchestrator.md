@@ -44,21 +44,13 @@
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Stage 2.5: Design-to-Dev Bridge (디자인→개발 브릿지)         |
-|  ---------------------------------------------------------  |
-|  스킬: design-to-dev-bridge                                  |
-|  입력: design-spec.md, design-system.md, component-spec.md  |
-|  산출물: outputs/stage-2.5/design-dev-bridge.md             |
-|  완료 조건: design-dev-bridge.md 파일 존재                  |
-+-------------------------------------------------------------+
-|                           |                                  |
-+-------------------------------------------------------------+
 |  Stage 3: Development (개발)                                 |
 |  ---------------------------------------------------------  |
 |  커맨드: /develop                                           |
-|  입력: design-dev-bridge.md, design-spec.md, prd.md         |
+|  입력: design-spec.md, design-system.md, prd.md             |
 |  산출물: outputs/stage-3/build-config.md + 코드             |
 |  완료 조건: build-config.md 파일 존재                       |
+|  Note: Step 3.1에서 Design-to-Dev Bridge 자동 처리          |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
@@ -143,25 +135,12 @@
       "artifacts": []
     },
     {
-      "id": "design-to-dev-bridge",
-      "name": "Stage 2.5: Design-to-Dev Bridge",
-      "status": "pending",
-      "order": 2.5,
-      "steps": [
-        {"id": "design-analysis", "name": "Design Analysis", "status": "pending"},
-        {"id": "library-selection", "name": "Library Selection", "status": "pending"},
-        {"id": "component-mapping", "name": "Component Mapping", "status": "pending"},
-        {"id": "token-conversion", "name": "Token Conversion", "status": "pending"},
-        {"id": "strategy-decision", "name": "Strategy Decision", "status": "pending"}
-      ],
-      "artifacts": []
-    },
-    {
       "id": "development",
       "name": "Stage 3: Development",
       "status": "pending",
       "order": 3,
       "steps": [
+        {"id": "design-to-dev-bridge", "name": "Design-to-Dev Bridge", "status": "pending"},
         {"id": "tech-stack", "name": "Tech Stack", "status": "pending"},
         {"id": "project-setup", "name": "Project Setup", "status": "pending"},
         {"id": "data-modeling", "name": "Data Modeling", "status": "pending"},
@@ -312,17 +291,19 @@ Stage 2 (Design)을 진행합니다.
 |------|------|
 | progress-check | 진행 상황 확인 및 시작 지점 결정 |
 | stage-router | Stage 전환 및 상태 업데이트 |
-| design-to-dev-bridge | Stage 2 완료 후, 디자인→개발 전략 수립 |
+
+> **Note**: Design-to-Dev Bridge는 Stage 3 (Development)의 Step 3.1로 통합되어 `/develop` 실행 시 자동으로 처리됩니다.
 
 ---
 
 ## Stage별 호출 커맨드
 
-| Stage | Phase ID | 호출 커맨드/스킬 | 완료 산출물 |
-|-------|----------|-----------------|-------------|
+| Stage | Phase ID | 호출 커맨드 | 완료 산출물 |
+|-------|----------|-------------|-------------|
 | 0 | ideation | `/ideate` | idea-brief.md |
 | 1 | planning | `/plan` | prd.md |
 | 2 | design | `/design` | design-spec.md |
-| 2.5 | design-to-dev-bridge | `design-to-dev-bridge` 스킬 | design-dev-bridge.md |
 | 3 | development | `/develop` | build-config.md |
 | 4 | deployment | `/deploy` | deployment-complete.md |
+
+> **Note**: Design-to-Dev Bridge는 `/develop` (Stage 3) 실행 시 Step 3.1로 자동 처리됩니다.

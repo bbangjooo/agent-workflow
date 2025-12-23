@@ -1,6 +1,6 @@
 # Tech Stack Selection
 
-Step 3.1: 기술 스택 선택
+Step 3.2: 기술 스택 선택 (Tech Stack Selection)
 
 > **역할: Full-stack**
 > Frontend 프레임워크, Backend/DB, 인프라 전체 기술 선택
@@ -98,7 +98,7 @@ UI 라이브러리: shadcn/ui
 
 ## 메타데이터
 - Stage: 3
-- Step: 3.1 - 기술 스택 선택
+- Step: 3.2 - 기술 스택 선택
 - 생성일시: {현재 시간}
 - 상태: final
 
@@ -176,4 +176,4 @@ UI 라이브러리: shadcn/ui
 
 ## 다음 Step
 
--> Step 3.2: Project Setup (프로젝트 초기화)
+→ Step 3.3: Project Setup (프로젝트 초기화)
