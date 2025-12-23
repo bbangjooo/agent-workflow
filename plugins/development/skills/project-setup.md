@@ -1,6 +1,6 @@
 # Project Setup
 
-Step 3.2: 프로젝트 초기화
+Step 3.3: 프로젝트 초기화 (Project Setup)
 
 > **역할: Full-stack**
 > 프로젝트 scaffolding, 설정 파일, 폴더 구조 전체
@@ -11,7 +11,7 @@ Step 3.2: 프로젝트 초기화
 
 ## 트리거
 
-- Step 3.1 (Tech Stack Selection) 완료 후 실행
+- Step 3.2 (Tech Stack Selection) 완료 후 실행
 - `tech-stack.md` 파일이 존재할 때
 
 ## 입력
@@ -161,7 +161,7 @@ export function createClient() {
 
 ## 메타데이터
 - Stage: 3
-- Step: 3.2 - 프로젝트 초기화
+- Step: 3.3 - 프로젝트 초기화
 - 생성일시: {현재 시간}
 - 상태: final
 
@@ -229,4 +229,4 @@ npx shadcn-ui@latest add button input card
 
 ## 다음 Step
 
--> Step 3.3: Data Modeling (데이터 모델링)
+→ Step 3.4: Data Modeling (데이터 모델링)

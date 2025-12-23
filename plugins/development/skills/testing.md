@@ -1,6 +1,6 @@
 # Testing
 
-Step 3.8: 테스트
+Step 3.9: 테스트 (Testing)
 
 > **역할: Full-stack (Backend + Frontend)**
 > - Backend: API 테스트, 보안 테스트, RLS 정책 확인
@@ -12,7 +12,7 @@ Step 3.8: 테스트
 
 ## 트리거
 
-- Step 3.7 (UI Implementation) 완료 후 실행
+- Step 3.8 (UI Implementation) 완료 후 실행
 - 모든 화면 구현이 완료되었을 때
 
 ## 입력
@@ -155,7 +155,7 @@ describe('Posts API', () => {
 
 ## 메타데이터
 - Stage: 3
-- Step: 3.8 - 테스트
+- Step: 3.9 - 테스트
 - 생성일시: {현재 시간}
 - 상태: final
 
@@ -243,4 +243,4 @@ describe('Posts API', () => {
 
 ## 다음 Step
 
--> Step 3.9: Build Ready (빌드 준비)
+→ Step 3.10: Build Ready (빌드 준비)

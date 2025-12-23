@@ -1,6 +1,6 @@
 # Authentication Implementation
 
-Step 3.5: 인증 구현
+Step 3.6: 인증 구현 (Authentication)
 
 > **역할: Full-stack (Backend + Frontend)**
 > - Backend: Supabase 설정, 미들웨어, Server Actions, 보호된 라우트
@@ -12,7 +12,7 @@ Step 3.5: 인증 구현
 
 ## 트리거
 
-- Step 3.4 (API Design) 완료 후 실행
+- Step 3.5 (API Design) 완료 후 실행
 - `api-spec.md` 파일이 존재할 때
 
 ## 입력
@@ -414,7 +414,7 @@ export default function SignupPage() {
 
 ## 메타데이터
 - Stage: 3
-- Step: 3.5 - 인증 구현
+- Step: 3.6 - 인증 구현
 - 생성일시: {현재 시간}
 - 상태: final
 
@@ -460,4 +460,4 @@ export default function SignupPage() {
 
 ## 다음 Step
 
--> Step 3.6: Core Features (핵심 기능 개발)
+→ Step 3.7: Core Features (핵심 기능 개발)
