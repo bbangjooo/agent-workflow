@@ -25,8 +25,18 @@ Step 4.1: 배포 준비
 ```
 1. package.json의 dependencies 확인
 2. 프레임워크 감지 (Next.js, React, Express 등)
-3. 데이터베이스 연결 확인 (Supabase, Firebase, PostgreSQL 등)
+3. 데이터베이스/백엔드 서비스 감지 (Supabase, Firebase, PostgreSQL 등)
 ```
+
+### 1.1 백엔드 서비스 감지 (자동)
+
+| 감지 조건 | 서비스 | 참조 문서 |
+|-----------|--------|-----------|
+| `@supabase/supabase-js` in dependencies | Supabase | references/services/supabase.md |
+| `firebase` in dependencies | Firebase | references/services/firebase.md |
+| `@prisma/client` in dependencies | PostgreSQL | references/services/postgresql.md |
+
+서비스 감지 시 해당 서비스의 환경변수 설정 가이드를 산출물에 포함합니다.
 
 ### 2. 호스팅 자동 선택
 
@@ -70,8 +80,15 @@ Step 4.1: 배포 준비
 
 ### 기술 스택
 - 프레임워크: {Next.js / React / Express}
-- 데이터베이스: {Supabase / Firebase / 없음}
+- 백엔드 서비스: {Supabase / Firebase / 없음}
 - 기타: {Tailwind CSS, TypeScript 등}
+
+### 감지된 백엔드 서비스
+{서비스가 감지된 경우에만 표시}
+
+| 서비스 | 상태 | 참조 문서 |
+|--------|------|-----------|
+| Supabase | 감지됨 | [supabase.md](../references/services/supabase.md) |
 
 ### 빌드 설정
 - 빌드 명령어: `{npm run build}`
@@ -101,6 +118,15 @@ Step 4.1: 배포 준비
 | `DATABASE_URL` | DB 연결 문자열 | Supabase 대시보드에서 복사 |
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase URL | Supabase 대시보드 > Settings > API |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase 공개 키 | Supabase 대시보드 > Settings > API |
+
+### 백엔드 서비스별 환경변수 가이드
+{감지된 서비스에 따라 해당 섹션 포함}
+
+**Supabase 사용 시:** → [상세 가이드](../references/services/supabase.md#환경변수-설정)
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJxxx...
+```
 
 ### 호스팅에서 환경변수 설정
 
