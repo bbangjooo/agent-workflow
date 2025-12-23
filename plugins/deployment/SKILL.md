@@ -69,11 +69,21 @@ Deploy Coach 에이전트가 배포 주도
 
 ### References
 
+#### 호스팅 플랫폼 (앱이 실행되는 곳)
+
 | 문서 | 설명 |
 |------|------|
-| vercel.md | Vercel 배포 가이드 (Next.js 기본) |
-| netlify.md | Netlify 배포 가이드 (React SPA) |
-| railway.md | Railway 배포 가이드 (백엔드/풀스택) |
+| platforms/vercel.md | Vercel 배포 가이드 (Next.js 기본) |
+| platforms/netlify.md | Netlify 배포 가이드 (React SPA) |
+| platforms/railway.md | Railway 배포 가이드 (백엔드/풀스택) |
+
+#### 백엔드 서비스 (앱이 연결하는 외부 서비스)
+
+| 문서 | 설명 |
+|------|------|
+| services/supabase.md | Supabase 연동 가이드 (Auth, DB, Storage) |
+| services/firebase.md | Firebase 연동 가이드 (예정) |
+| services/postgresql.md | PostgreSQL 직접 연결 가이드 (예정) |
 
 ## 산출물
 
@@ -97,12 +107,22 @@ Deploy Coach 에이전트가 배포 주도
 
 ## 무료 티어 매핑
 
+### 호스팅 플랫폼
+
 | 기술 스택 | 권장 호스팅 | 무료 티어 |
 |-----------|-------------|-----------|
 | Next.js + Supabase | Vercel | 무제한 배포, 100GB 대역폭 |
 | Next.js + Firebase | Vercel | 동일 |
 | React SPA | Netlify | 무제한 배포, 100GB 대역폭 |
 | Express 백엔드 | Railway | $5 크레딧/월 |
+
+### 백엔드 서비스
+
+| 서비스 | 무료 티어 | 비고 |
+|--------|-----------|------|
+| Supabase | DB 500MB, Storage 1GB, 2 프로젝트 | 7일 비활성 시 일시 중지 |
+| Firebase | Spark 플랜 (제한적) | Firestore 1GB, Storage 5GB |
+| PlanetScale | 5GB storage, 1B reads/월 | MySQL 호환 |
 
 ## 다음 단계
 

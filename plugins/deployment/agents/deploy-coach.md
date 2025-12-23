@@ -86,6 +86,21 @@
 | Express/Node.js 백엔드 | Railway |
 | 풀스택 (프론트 + 백엔드 분리) | Vercel + Railway |
 
+### 백엔드 서비스 감지 로직
+
+호스팅 플랫폼과 별도로, 프로젝트에서 사용하는 백엔드 서비스도 감지합니다:
+
+| 감지 조건 | 서비스 | 추가 참조 문서 |
+|-----------|--------|----------------|
+| `@supabase/supabase-js` in dependencies | Supabase | references/services/supabase.md |
+| `firebase` in dependencies | Firebase | references/services/firebase.md (예정) |
+| `@prisma/client` + DATABASE_URL | PostgreSQL | references/services/postgresql.md (예정) |
+
+**서비스 감지 시 추가 작업:**
+1. 해당 서비스 문서 참조
+2. 서비스별 환경변수 추출 및 설정 안내
+3. 배포 후 서비스 연결 검증 포함
+
 ### Step 전환 멘트
 
 **4.1 → 4.2:**
@@ -155,10 +170,18 @@
 
 ## 참조 문서
 
-배포 플랫폼별 상세 가이드:
+### 호스팅 플랫폼 (앱이 실행되는 곳)
 
 | 플랫폼 | 문서 | 용도 |
 |--------|------|------|
 | Vercel | references/platforms/vercel.md | Next.js 배포 |
 | Netlify | references/platforms/netlify.md | React SPA 배포 |
 | Railway | references/platforms/railway.md | 백엔드 배포 |
+
+### 백엔드 서비스 (앱이 연결하는 외부 서비스)
+
+| 서비스 | 문서 | 용도 |
+|--------|------|------|
+| Supabase | references/services/supabase.md | Auth, Database, Storage |
+| Firebase | references/services/firebase.md (예정) | Auth, Firestore, Storage |
+| PostgreSQL | references/services/postgresql.md (예정) | 직접 DB 연결 |
