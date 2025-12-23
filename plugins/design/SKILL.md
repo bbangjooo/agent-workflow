@@ -103,6 +103,18 @@ Stage 2 완료 후 `design-spec.md`를 기반으로 **Stage 3: 개발** 단계�
 - `planning` 플러그인
 - `workflow-state-manager` 플러그인 (상태 추적용, 선택사항)
 
+## References
+
+레퍼런스 문서는 `references/` 디렉토리에 있습니다:
+
+| 카테고리 | 문서 | 설명 |
+|----------|------|------|
+| design-systems | shadcn-ui.md | shadcn/ui + Radix UI + Tailwind CSS 가이드 |
+| design-systems | material-ui.md | Google Material Design 기반 MUI 가이드 |
+| design-systems | tailwind-daisyui.md | Tailwind CSS + DaisyUI 테마 시스템 가이드 |
+| design-systems | chakra-ui.md | 접근성 중심 Chakra UI 가이드 |
+| design-systems | ant-design.md | 엔터프라이즈급 Ant Design 가이드 |
+
 ## 1인 창업자를 위한 핵심 포인트
 
 1. **텍스트 기반 명세**: Figma/Sketch 없이도 진행 가능

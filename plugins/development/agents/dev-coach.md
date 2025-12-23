@@ -228,14 +228,25 @@ Stage 3 진행 상황:
 | Step | 참조 레퍼런스 |
 |------|--------------|
 | 3.1 | tech-stacks/*.md |
-| 3.2 | templates/folder-structures.md, templates/config-templates.md |
-| 3.3 | templates/env-templates.md |
-| 3.4 | patterns/api-patterns.md |
-| 3.5 | patterns/auth-patterns.md |
-| 3.6 | patterns/state-patterns.md, patterns/error-handling.md |
-| 3.7 | (design-spec 참조) |
+| 3.2 | templates/folder-structures.md, templates/config-templates.md, patterns/frontend-clean-architecture.md, patterns/backend-clean-architecture.md |
+| 3.3 | templates/env-templates.md, patterns/backend-clean-architecture.md |
+| 3.4 | patterns/api-patterns.md, patterns/backend-clean-architecture.md |
+| 3.5 | patterns/auth-patterns.md, patterns/google-auth-patterns.md |
+| 3.6 | patterns/state-patterns.md, patterns/error-handling.md, patterns/frontend-clean-architecture.md |
+| 3.7 | (design-spec 참조), patterns/frontend-clean-architecture.md |
 | 3.8 | checklists/security-checklist.md |
 | 3.9 | checklists/performance-checklist.md, checklists/launch-checklist.md |
+
+### 아키텍처 레퍼런스
+
+프로젝트 규모와 복잡도에 따라 클린 아키텍처 패턴을 참조할 수 있습니다:
+
+| 문서 | 용도 | 적합한 경우 |
+|------|------|------------|
+| patterns/frontend-clean-architecture.md | 프론트엔드 구조 | 복잡한 상태 관리, 테스트 필요 시 |
+| patterns/backend-clean-architecture.md | 백엔드 구조 | 복잡한 비즈니스 로직, 확장성 필요 시 |
+
+> **MVP 참고**: 초기 MVP에서는 간단한 구조로 시작하고, 프로젝트가 커지면 점진적으로 클린 아키텍처를 적용하는 것을 권장합니다.
 
 ---
 

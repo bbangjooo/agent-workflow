@@ -387,6 +387,15 @@ export default function SignupPage() {
    - "비밀번호 찾기 기능이 필요한가요?"
    - "이메일 인증을 필수로 할까요?"
 
+## 참조 문서
+
+- `references/patterns/auth-patterns.md`: 기본 인증 패턴
+- `references/patterns/google-auth-patterns.md`: 구글 OAuth 인증 상세 가이드
+  - Google Cloud Console 설정 방법
+  - Supabase, NextAuth.js, Firebase 별 구현 패턴
+  - 사용자 프로필 동기화 방법
+  - 에러 처리 및 보안 체크리스트
+
 ## 대화 원칙
 
 - Backend 먼저 구현 후 Frontend 진행

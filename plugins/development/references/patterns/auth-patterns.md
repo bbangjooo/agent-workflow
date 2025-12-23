@@ -278,6 +278,14 @@ export function useUser() {
 
 ## 소셜 로그인 (Google)
 
+> **상세 가이드**: 구글 OAuth 인증의 상세 구현 방법은 `google-auth-patterns.md`를 참조하세요.
+> - Google Cloud Console 설정
+> - Supabase, NextAuth.js, Firebase 각각의 구현 패턴
+> - 사용자 프로필 동기화
+> - 에러 처리 및 보안 체크리스트
+
+### 기본 구현 (Supabase)
+
 ```typescript
 // src/lib/actions/auth.ts
 'use server'
@@ -292,6 +300,10 @@ export async function signInWithGoogle() {
     provider: 'google',
     options: {
       redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback`,
+      queryParams: {
+        access_type: 'offline',
+        prompt: 'consent',
+      },
     },
   })
 

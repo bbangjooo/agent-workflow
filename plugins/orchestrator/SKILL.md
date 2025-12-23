@@ -45,6 +45,12 @@
 +-------------------------------------------------------------+
     |
 +-------------------------------------------------------------+
+|  Stage 2.5: Design-to-Dev Bridge (디자인→개발 브릿지)         |
+|  스킬: design-to-dev-bridge                                  |
+|  산출물: design-dev-bridge.md                               |
++-------------------------------------------------------------+
+    |
++-------------------------------------------------------------+
 |  Stage 3: Development (개발)                                 |
 |  커맨드: /develop                                           |
 |  산출물: build-config.md + 코드                             |
@@ -76,6 +82,7 @@
 |------|------|
 | progress-check | 현재 진행 상황 확인 및 시작 지점 결정 |
 | stage-router | Stage 간 전환 및 상태 업데이트 |
+| design-to-dev-bridge | 디자인 결과물을 개발에 적용하는 전략 수립 |
 
 ## 상태 관리
 
@@ -126,7 +133,8 @@
 | 처음 시작 | Stage 0부터 순차 진행 |
 | idea-brief.md 존재 | Stage 1부터 시작 |
 | prd.md 존재 | Stage 2부터 시작 |
-| design-spec.md 존재 | Stage 3부터 시작 |
+| design-spec.md 존재 | Stage 2.5 (Design-to-Dev Bridge) 시작 |
+| design-dev-bridge.md 존재 | Stage 3부터 시작 |
 | build-config.md 존재 | Stage 4부터 시작 |
 | 모두 완료 | "이미 배포 완료됨" 안내 |
 
