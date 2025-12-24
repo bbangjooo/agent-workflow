@@ -105,6 +105,88 @@ const config: Config = {
 export default config
 ```
 
+### 스타일 매핑 테이블 생성 (핵심!)
+
+> **⚠️ 이 단계가 디자인 시스템 준수를 보장하는 핵심입니다.**
+> Bridge에서 정의한 시맨틱 토큰을 실제 구현 클래스/변수로 매핑합니다.
+
+#### 매핑 테이블 작성
+
+`design-dev-bridge.md`의 시맨틱 토큰을 선택한 Tech Stack에 맞게 실제 클래스/변수로 매핑합니다:
+
+```
+┌─────────────────────────┬─────────────────────────┬──────────────────────────────┐
+│ 시맨틱 토큰              │ 구현 클래스/변수         │ 정의 위치                     │
+├─────────────────────────┼─────────────────────────┼──────────────────────────────┤
+│ button-primary-bg       │ bg-gradient-primary     │ tailwind.config.ts:25        │
+│ button-primary-text     │ text-white              │ Tailwind 기본 클래스         │
+│ button-primary-shadow   │ shadow-button           │ tailwind.config.ts:42        │
+│ button-primary-hover-bg │ hover:bg-primary-dark   │ tailwind.config.ts:28        │
+├─────────────────────────┼─────────────────────────┼──────────────────────────────┤
+│ text-heading-1          │ text-3xl font-bold      │ Tailwind 기본 클래스         │
+│ text-heading-2          │ text-2xl font-semibold  │ Tailwind 기본 클래스         │
+│ text-body               │ text-base               │ Tailwind 기본 클래스         │
+├─────────────────────────┼─────────────────────────┼──────────────────────────────┤
+│ color-primary           │ text-primary / bg-primary│ tailwind.config.ts:20       │
+│ color-primary-gradient  │ bg-gradient-primary     │ tailwind.config.ts:25        │
+│ color-gray-900          │ text-gray-900           │ Tailwind 기본 클래스         │
+├─────────────────────────┼─────────────────────────┼──────────────────────────────┤
+│ spacing-4               │ p-4 / m-4 / gap-4       │ Tailwind 기본 클래스         │
+│ spacing-8               │ p-8 / m-8 / gap-8       │ Tailwind 기본 클래스         │
+├─────────────────────────┼─────────────────────────┼──────────────────────────────┤
+│ radius-button           │ rounded-lg              │ Tailwind 기본 클래스         │
+│ radius-card             │ rounded-xl              │ Tailwind 기본 클래스         │
+└─────────────────────────┴─────────────────────────┴──────────────────────────────┘
+```
+
+#### CSS Variables 방식 (Tailwind 외)
+
+```css
+/* globals.css */
+:root {
+  /* 시맨틱 토큰 → CSS 변수 매핑 */
+  --button-primary-bg: linear-gradient(135deg, #3B82F6, #2563EB);
+  --button-primary-text: #FFFFFF;
+  --button-primary-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  --text-heading-1-size: 2rem;
+  --text-heading-1-weight: 700;
+
+  --color-primary: #3B82F6;
+  --spacing-4: 1rem;
+  --radius-button: 0.5rem;
+}
+```
+
+#### 매핑 검증 체크리스트
+
+```
+필수 검증 항목:
+□ Bridge의 모든 시맨틱 토큰이 매핑 테이블에 있는가?
+□ 모든 매핑된 클래스/변수가 실제로 정의되어 있는가?
+  □ tailwind.config.ts에 커스텀 클래스가 정의됨
+  □ globals.css에 CSS 변수가 정의됨
+  □ 또는 Tailwind/프레임워크 기본 클래스 사용
+□ 정의 위치(파일:라인)가 정확한가?
+□ 누락된 토큰이 없는가?
+```
+
+#### 미정의 클래스 방지
+
+> **⚠️ 중요: 매핑 테이블에 없는 클래스는 사용하면 안 됩니다!**
+
+잘못된 예시 (btn-primary는 정의되지 않음):
+```typescript
+// ❌ 잘못됨
+className="btn-primary text-white"
+```
+
+올바른 예시 (매핑 테이블 참조):
+```typescript
+// ✅ 올바름 - 매핑 테이블: button-primary-bg → bg-gradient-primary
+className="bg-gradient-primary text-white shadow-button"
+```
+
 ### 환경변수 설정
 
 ```bash
@@ -205,12 +287,38 @@ npx shadcn-ui@latest add button input card
 - [ ] NEXT_PUBLIC_SUPABASE_URL
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY
 
+## 스타일 매핑 테이블 (필수!)
+
+> ⚠️ UI 구현 시 반드시 이 테이블을 참조해야 합니다.
+> 이 테이블에 없는 클래스는 사용할 수 없습니다.
+
+| 시맨틱 토큰 | 구현 클래스/변수 | 정의 위치 |
+|-------------|------------------|-----------|
+| button-primary-bg | {클래스} | {파일:라인} |
+| button-primary-text | {클래스} | {파일:라인} |
+| button-primary-hover-bg | {클래스} | {파일:라인} |
+| text-heading-1 | {클래스} | {파일:라인} |
+| text-heading-2 | {클래스} | {파일:라인} |
+| text-body | {클래스} | {파일:라인} |
+| color-primary | {클래스} | {파일:라인} |
+| spacing-4 | {클래스} | {파일:라인} |
+| radius-button | {클래스} | {파일:라인} |
+| ... | ... | ... |
+
+### 매핑 완전성 검증
+
+- [ ] Bridge의 모든 시맨틱 토큰이 매핑됨
+- [ ] 모든 매핑된 클래스가 실제로 정의되어 있음
+- [ ] 정의 위치(파일:라인)가 정확함
+
 ## 확인 사항
 
 - [x] 프로젝트 생성 완료
 - [x] 패키지 설치 완료
 - [x] 폴더 구조 설정
 - [x] Tailwind 설정
+- [x] **스타일 매핑 테이블 작성 완료**
+- [x] **매핑 완전성 검증 완료**
 - [ ] 환경변수 설정 (Supabase 프로젝트 생성 후)
 
 ## 다음 단계
@@ -224,6 +332,8 @@ npx shadcn-ui@latest add button input card
 - 필수 패키지 설치 완료
 - 폴더 구조 설정 완료
 - 디자인 시스템 (색상, 폰트) 적용 완료
+- **스타일 매핑 테이블 작성 완료** (필수!)
+- **매핑 완전성 검증 완료** - Bridge의 모든 시맨틱 토큰이 구현됨
 - 개발 서버 정상 실행 확인 (`npm run dev`)
 - `project-setup.md` 파일이 생성됨
 
