@@ -153,7 +153,64 @@ const updated = await prisma.user.update({
 await prisma.post.delete({ where: { id: postId } })
 ```
 
-## 8. 트러블슈팅
+## 8. Seed 데이터
+
+### seed 파일 생성
+
+```typescript
+// prisma/seed.ts
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
+async function main() {
+  // 테스트 사용자
+  const user = await prisma.user.upsert({
+    where: { email: 'test@example.com' },
+    update: {},
+    create: {
+      email: 'test@example.com',
+      name: 'Test User',
+    },
+  })
+
+  // 샘플 게시글
+  await prisma.post.createMany({
+    data: [
+      { title: '첫 번째 글', content: '내용입니다', authorId: user.id },
+      { title: '두 번째 글', content: '테스트', authorId: user.id },
+    ],
+    skipDuplicates: true,
+  })
+
+  console.log('✅ Seed 완료')
+}
+
+main()
+  .catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+  .finally(() => prisma.$disconnect())
+```
+
+### package.json 설정
+
+```json
+{
+  "prisma": {
+    "seed": "npx tsx prisma/seed.ts"
+  }
+}
+```
+
+### 실행
+
+```bash
+npx prisma db seed
+```
+
+## 9. 트러블슈팅
 
 | 에러 | 원인 | 해결 |
 |------|------|------|

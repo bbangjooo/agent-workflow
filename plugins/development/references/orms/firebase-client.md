@@ -191,7 +191,66 @@ await updateDoc(doc(db, 'posts', postId), { title: 'Updated' })
 await deleteDoc(doc(db, 'posts', postId))
 ```
 
-## 7. 트러블슈팅
+## 7. Seed 데이터
+
+### Firebase Admin SDK 설치
+
+```bash
+npm install firebase-admin
+```
+
+### seed 파일 생성
+
+```typescript
+// scripts/seed.ts
+import { initializeApp, cert } from 'firebase-admin/app'
+import { getFirestore } from 'firebase-admin/firestore'
+
+// 서비스 계정 키 다운로드 필요
+initializeApp({
+  credential: cert('./service-account-key.json')
+})
+
+const db = getFirestore()
+
+async function seed() {
+  console.log('🌱 Seeding...')
+
+  const batch = db.batch()
+
+  // 테스트 사용자
+  const userRef = db.collection('users').doc('test-user-1')
+  batch.set(userRef, {
+    email: 'test@example.com',
+    name: 'Test User',
+    createdAt: new Date(),
+  })
+
+  // 샘플 게시글
+  const post1Ref = db.collection('posts').doc()
+  batch.set(post1Ref, {
+    title: '첫 번째 글',
+    content: '내용입니다',
+    authorId: 'test-user-1',
+    createdAt: new Date(),
+  })
+
+  await batch.commit()
+  console.log('✅ Seed 완료')
+}
+
+seed().catch(console.error)
+```
+
+### 실행
+
+```bash
+npx tsx scripts/seed.ts
+```
+
+> ⚠️ `service-account-key.json`은 Firebase Console > 프로젝트 설정 > 서비스 계정에서 다운로드합니다. 절대 Git에 커밋하지 마세요!
+
+## 8. 트러블슈팅
 
 | 에러 | 원인 | 해결 |
 |------|------|------|

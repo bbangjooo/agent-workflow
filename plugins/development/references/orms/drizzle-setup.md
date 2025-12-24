@@ -179,7 +179,46 @@ await db.update(users).set({ name: 'Updated' }).where(eq(users.id, userId))
 await db.delete(posts).where(eq(posts.id, postId))
 ```
 
-## 9. 트러블슈팅
+## 9. Seed 데이터
+
+### seed 파일 생성
+
+```typescript
+// scripts/seed.ts
+import { db } from '@/lib/db/drizzle'
+import { users, posts } from '@/lib/db/schema'
+import { nanoid } from 'nanoid'
+
+async function seed() {
+  console.log('🌱 Seeding...')
+
+  // 테스트 사용자
+  const userId = nanoid()
+  await db.insert(users).values({
+    id: userId,
+    email: 'test@example.com',
+    name: 'Test User',
+  }).onConflictDoNothing()
+
+  // 샘플 게시글
+  await db.insert(posts).values([
+    { id: nanoid(), title: '첫 번째 글', content: '내용', authorId: userId },
+    { id: nanoid(), title: '두 번째 글', content: '테스트', authorId: userId },
+  ]).onConflictDoNothing()
+
+  console.log('✅ Seed 완료')
+}
+
+seed().catch(console.error)
+```
+
+### 실행
+
+```bash
+npx tsx scripts/seed.ts
+```
+
+## 10. 트러블슈팅
 
 | 에러 | 원인 | 해결 |
 |------|------|------|
