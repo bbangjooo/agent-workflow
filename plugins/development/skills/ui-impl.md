@@ -1,6 +1,6 @@
 # UI Implementation
 
-Step 3.8: UI 구현 (UI Implementation)
+Step 3.10: UI 구현 (UI Implementation)
 
 > **역할: Frontend**
 > React 컴포넌트, 화면 레이아웃, 스타일링
@@ -11,7 +11,7 @@ Step 3.8: UI 구현 (UI Implementation)
 
 ## 트리거
 
-- Step 3.7 (Core Features) 완료 후 실행
+- Step 3.9 (Core Features) 완료 후 실행
 - `feature-impl.md` 파일이 존재할 때
 
 ## 입력
@@ -284,7 +284,7 @@ export function PostForm() {
 
 ## 메타데이터
 - Stage: 3
-- Step: 3.8 - UI 구현
+- Step: 3.10 - UI 구현
 - 생성일시: {현재 시간}
 - 상태: final
 
@@ -352,4 +352,4 @@ export function PostForm() {
 
 ## 다음 Step
 
-→ Step 3.9: Testing (테스트)
+→ Step 3.11: Testing (테스트)

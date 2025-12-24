@@ -5,7 +5,7 @@
 ## 역할
 
 - 디자인 명세를 바탕으로 체계적인 개발 진행
-- 디자인-개발 브릿지부터 배포 준비까지 10단계 프로세스 안내
+- 디자인-개발 브릿지부터 배포 준비까지 12단계 프로세스 안내
 - AI 도구(Cursor, Copilot, v0) 활용을 적극 권장
 - MVP에 집중하여 빠른 개발 유도
 
@@ -45,16 +45,34 @@
 +-------------------------------------------------------------+
 |                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.4: Data Modeling (데이터 모델링)                      |
+|  Step 3.4: Database Setup (데이터베이스 설정)                  |
+|  -----------------------------------------------------------  |
+|  스킬: database-setup                                        |
+|  입력: tech-stack.md, project-setup.md                       |
+|  산출물: outputs/stage-3/database-setup.md                   |
+|  완료 조건: DB 프로젝트 생성, 환경변수 설정 완료              |
++-------------------------------------------------------------+
+|                           ↓                                  |
++-------------------------------------------------------------+
+|  Step 3.5: ORM Setup (ORM 설정)                               |
+|  -----------------------------------------------------------  |
+|  스킬: orm-setup                                             |
+|  입력: tech-stack.md, database-setup.md                      |
+|  산출물: outputs/stage-3/orm-setup.md + 클라이언트 코드      |
+|  완료 조건: ORM 설치, 클라이언트 설정, 연결 테스트 통과       |
++-------------------------------------------------------------+
+|                           ↓                                  |
++-------------------------------------------------------------+
+|  Step 3.6: Data Modeling (데이터 모델링)                      |
 |  -----------------------------------------------------------  |
 |  스킬: data-modeling                                         |
-|  입력: prd.md, user-stories.md                               |
+|  입력: prd.md, user-stories.md, orm-setup.md                 |
 |  산출물: outputs/stage-3/data-model.md + 스키마 파일         |
 |  완료 조건: 모든 엔티티와 관계 정의 완료                      |
 +-------------------------------------------------------------+
 |                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.5: API Design (API 설계)                             |
+|  Step 3.7: API Design (API 설계)                             |
 |  -----------------------------------------------------------  |
 |  스킬: api-design                                            |
 |  입력: data-model.md, user-stories.md                        |
@@ -63,7 +81,7 @@
 +-------------------------------------------------------------+
 |                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.6: Authentication (인증 구현)                         |
+|  Step 3.8: Authentication (인증 구현)                         |
 |  -----------------------------------------------------------  |
 |  스킬: auth-impl                                             |
 |  입력: tech-stack.md, api-spec.md                            |
@@ -72,7 +90,7 @@
 +-------------------------------------------------------------+
 |                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.7: Core Features (핵심 기능 개발)                     |
+|  Step 3.9: Core Features (핵심 기능 개발)                     |
 |  -----------------------------------------------------------  |
 |  스킬: core-features                                         |
 |  입력: api-spec.md, feature-priority.md                      |
@@ -81,7 +99,7 @@
 +-------------------------------------------------------------+
 |                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.8: UI Implementation (UI 구현)                        |
+|  Step 3.10: UI Implementation (UI 구현)                       |
 |  -----------------------------------------------------------  |
 |  스킬: ui-impl                                               |
 |  입력: wireframes.md, component-spec.md                      |
@@ -90,7 +108,7 @@
 +-------------------------------------------------------------+
 |                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.9: Testing (테스트)                                   |
+|  Step 3.11: Testing (테스트)                                  |
 |  -----------------------------------------------------------  |
 |  스킬: testing                                               |
 |  입력: 전체 코드                                             |
@@ -99,7 +117,7 @@
 +-------------------------------------------------------------+
 |                           ↓                                  |
 +-------------------------------------------------------------+
-|  Step 3.10: Build Ready (빌드 준비)                           |
+|  Step 3.12: Build Ready (빌드 준비)                           |
 |  -----------------------------------------------------------  |
 |  스킬: build-ready                                           |
 |  입력: 전체 프로젝트                                         |
@@ -110,7 +128,7 @@
 
 ### Step 전환 규칙
 
-1. **순차 실행**: Step은 반드시 3.1 -> 3.2 -> ... -> 3.10 순서로 진행
+1. **순차 실행**: Step은 반드시 3.1 -> 3.2 -> ... -> 3.12 순서로 진행
 2. **완료 확인**: 각 Step의 완료 조건이 충족되어야 다음 Step으로 진행
 3. **산출물 생성**: 각 Step 완료 시 문서 + 코드(해당 시) 생성 필수
 4. **진행 안내**: Step 전환 시 사용자에게 현재 진행 상황 안내
@@ -148,18 +166,20 @@
 - AI 코딩 도구(Cursor, Copilot 등)를 사용하고 계신가요?
 - 선호하는 기술 스택이 있으신가요? (없으면 추천해드릴게요)
 
-지금부터 10단계에 걸쳐 실제 동작하는 MVP를 만들어볼 거예요:
+지금부터 12단계에 걸쳐 실제 동작하는 MVP를 만들어볼 거예요:
 
 1. 디자인-개발 브릿지 - 디자인을 코드로 어떻게 구현할지 정해요
 2. 기술 스택 선택 - 어떤 도구로 만들지 정해요
 3. 프로젝트 초기화 - 기본 뼈대를 만들어요
-4. 데이터 모델링 - 데이터 구조를 설계해요
-5. API 설계 - 서버 통신 규칙을 정해요
-6. 인증 구현 - 로그인/회원가입을 만들어요
-7. 핵심 기능 개발 - MVP 기능들을 구현해요
-8. UI 구현 - 화면을 만들어요
-9. 테스트 - 잘 동작하는지 확인해요
-10. 빌드 준비 - 배포할 준비를 해요
+4. 데이터베이스 설정 - DB 서비스 프로젝트를 만들어요
+5. ORM 설정 - DB 클라이언트를 설정하고 연결 테스트해요
+6. 데이터 모델링 - 데이터 구조를 설계해요
+7. API 설계 - 서버 통신 규칙을 정해요
+8. 인증 구현 - 로그인/회원가입을 만들어요
+9. 핵심 기능 개발 - MVP 기능들을 구현해요
+10. UI 구현 - 화면을 만들어요
+11. 테스트 - 잘 동작하는지 확인해요
+12. 빌드 준비 - 배포할 준비를 해요
 
 AI 도구를 적극 활용하면 훨씬 빠르게 진행할 수 있어요!"
 
@@ -205,13 +225,15 @@ Stage 3 진행 상황:
 +-- Step 3.1: [x] 완료 (design-dev-bridge.md 생성됨)
 +-- Step 3.2: [x] 완료 (tech-stack.md 생성됨)
 +-- Step 3.3: [x] 완료 (프로젝트 생성됨)
-+-- Step 3.4: [ ] 진행 중
-+-- Step 3.5: [ ] 대기
-+-- Step 3.6: [ ] 대기
++-- Step 3.4: [x] 완료 (DB 프로젝트 생성, 환경변수 설정)
++-- Step 3.5: [x] 완료 (ORM 설정, 연결 테스트 통과)
++-- Step 3.6: [ ] 진행 중
 +-- Step 3.7: [ ] 대기
 +-- Step 3.8: [ ] 대기
 +-- Step 3.9: [ ] 대기
 +-- Step 3.10: [ ] 대기
++-- Step 3.11: [ ] 대기
++-- Step 3.12: [ ] 대기
 ```
 
 ---
@@ -223,13 +245,15 @@ Stage 3 진행 상황:
 | design-to-dev-bridge | 3.1 | 디자인-개발 브릿지 |
 | tech-stack | 3.2 | 기술 스택 선택 |
 | project-setup | 3.3 | 프로젝트 초기화 |
-| data-modeling | 3.4 | 데이터 모델 설계 |
-| api-design | 3.5 | API 엔드포인트 설계 |
-| auth-impl | 3.6 | 인증/인가 구현 |
-| core-features | 3.7 | 핵심 기능 개발 |
-| ui-impl | 3.8 | UI 구현 |
-| testing | 3.9 | 테스트 |
-| build-ready | 3.10 | 빌드 및 배포 준비 |
+| database-setup | 3.4 | 데이터베이스 설정 (인프라) |
+| orm-setup | 3.5 | ORM/클라이언트 설정 (코드) |
+| data-modeling | 3.6 | 데이터 모델 설계 |
+| api-design | 3.7 | API 엔드포인트 설계 |
+| auth-impl | 3.8 | 인증/인가 구현 |
+| core-features | 3.9 | 핵심 기능 개발 |
+| ui-impl | 3.10 | UI 구현 |
+| testing | 3.11 | 테스트 |
+| build-ready | 3.12 | 빌드 및 배포 준비 |
 
 ---
 
@@ -241,14 +265,16 @@ Stage 3 진행 상황:
 |------|--------------|
 | 3.1 | design-systems/*.md, patterns/frontend-clean-architecture.md |
 | 3.2 | tech-stacks/*.md |
-| 3.3 | templates/folder-structures.md, templates/config-templates.md, patterns/frontend-clean-architecture.md, patterns/backend-clean-architecture.md |
-| 3.4 | templates/env-templates.md, patterns/backend-clean-architecture.md |
-| 3.5 | patterns/api-patterns.md, patterns/backend-clean-architecture.md |
-| 3.6 | patterns/auth-patterns.md, patterns/google-auth-patterns.md |
-| 3.7 | patterns/state-patterns.md, patterns/error-handling.md, patterns/frontend-clean-architecture.md |
-| 3.8 | (design-spec 참조), patterns/frontend-clean-architecture.md |
-| 3.9 | checklists/security-checklist.md |
-| 3.10 | checklists/performance-checklist.md, checklists/launch-checklist.md |
+| 3.3 | templates/folder-structures.md, templates/config-templates.md |
+| 3.4 | databases/*.md (supabase-setup, firebase-setup, planetscale-setup, neon-setup) |
+| 3.5 | orms/*.md (supabase-client, prisma-setup, drizzle-setup, firebase-client) |
+| 3.6 | templates/env-templates.md, patterns/backend-clean-architecture.md |
+| 3.7 | patterns/api-patterns.md, patterns/backend-clean-architecture.md |
+| 3.8 | patterns/auth-patterns.md, patterns/google-auth-patterns.md |
+| 3.9 | patterns/state-patterns.md, patterns/error-handling.md, patterns/frontend-clean-architecture.md |
+| 3.10 | (design-spec 참조), patterns/frontend-clean-architecture.md |
+| 3.11 | checklists/security-checklist.md |
+| 3.12 | checklists/performance-checklist.md, checklists/launch-checklist.md |
 
 ### 아키텍처 레퍼런스
 

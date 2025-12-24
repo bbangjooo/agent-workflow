@@ -1,6 +1,6 @@
 # Core Features Implementation
 
-Step 3.7: 핵심 기능 개발 (Core Features)
+Step 3.9: 핵심 기능 개발 (Core Features)
 
 > **역할: Full-stack (Backend + Frontend)**
 > - Backend: API Routes, Server Actions, 비즈니스 로직
@@ -12,7 +12,7 @@ MVP의 핵심 기능(P0)을 구현하는 스킬입니다. 기능 우선순위에
 
 ## 트리거
 
-- Step 3.6 (Authentication) 완료 후 실행
+- Step 3.8 (Authentication) 완료 후 실행
 - `auth-impl.md` 파일이 존재할 때
 
 ## 입력
@@ -276,7 +276,7 @@ export function usePosts() {
 
 ## 메타데이터
 - Stage: 3
-- Step: 3.7 - 핵심 기능 개발
+- Step: 3.9 - 핵심 기능 개발
 - 생성일시: {현재 시간}
 - 상태: final
 
@@ -336,4 +336,4 @@ UI 컴포넌트와 화면을 구현합니다.
 
 ## 다음 Step
 
-→ Step 3.8: UI Implementation (UI 구현)
+→ Step 3.10: UI Implementation (UI 구현)

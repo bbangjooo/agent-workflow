@@ -16,26 +16,32 @@ Stage 3 개발 워크플로우를 시작합니다. 디자인 명세를 바탕으
 
 ## 실행 흐름
 
-이 커맨드를 실행하면 **Dev Coach** 에이전트가 활성화되어 9개의 Step을 순차적으로 진행합니다.
+이 커맨드를 실행하면 **Dev Coach** 에이전트가 활성화되어 12개의 Step을 순차적으로 진행합니다.
 
 ```
-Step 3.1: Tech Stack Selection (기술 스택 선택)
+Step 3.1: Design-to-Dev Bridge (디자인-개발 브릿지)
     |
-Step 3.2: Project Setup (프로젝트 초기화)
+Step 3.2: Tech Stack Selection (기술 스택 선택)
     |
-Step 3.3: Data Modeling (데이터 모델링)
+Step 3.3: Project Setup (프로젝트 초기화)
     |
-Step 3.4: API Design (API 설계)
+Step 3.4: Database Setup (데이터베이스 설정)
     |
-Step 3.5: Authentication (인증 구현)
+Step 3.5: ORM Setup (ORM 설정)
     |
-Step 3.6: Core Features (핵심 기능 개발)
+Step 3.6: Data Modeling (데이터 모델링)
     |
-Step 3.7: UI Implementation (UI 구현)
+Step 3.7: API Design (API 설계)
     |
-Step 3.8: Testing (테스트)
+Step 3.8: Authentication (인증 구현)
     |
-Step 3.9: Build Ready (빌드 준비)
+Step 3.9: Core Features (핵심 기능 개발)
+    |
+Step 3.10: UI Implementation (UI 구현)
+    |
+Step 3.11: Testing (테스트)
+    |
+Step 3.12: Build Ready (빌드 준비)
 ```
 
 ## 산출물
@@ -46,15 +52,18 @@ Stage 3 완료 시 다음 문서들이 `outputs/stage-3/` 디렉토리에 생성
 
 | Step | 파일명 | 설명 |
 |------|--------|------|
-| 3.1 | tech-stack.md | 기술 스택 결정 |
-| 3.2 | project-setup.md | 프로젝트 초기화 기록 |
-| 3.3 | data-model.md | 데이터 모델 명세 |
-| 3.4 | api-spec.md | API 명세서 |
-| 3.5 | auth-impl.md | 인증 구현 기록 |
-| 3.6 | feature-impl.md | 기능 구현 기록 |
-| 3.7 | ui-impl.md | UI 구현 기록 |
-| 3.8 | test-report.md | 테스트 결과 |
-| 3.9 | **build-config.md** | **빌드 설정 (최종)** |
+| 3.1 | design-dev-bridge.md | 디자인-개발 브릿지 |
+| 3.2 | tech-stack.md | 기술 스택 결정 |
+| 3.3 | project-setup.md | 프로젝트 초기화 기록 |
+| 3.4 | database-setup.md | 데이터베이스 설정 기록 |
+| 3.5 | orm-setup.md | ORM 설정 기록 |
+| 3.6 | data-model.md | 데이터 모델 명세 |
+| 3.7 | api-spec.md | API 명세서 |
+| 3.8 | auth-impl.md | 인증 구현 기록 |
+| 3.9 | feature-impl.md | 기능 구현 기록 |
+| 3.10 | ui-impl.md | UI 구현 기록 |
+| 3.11 | test-report.md | 테스트 결과 |
+| 3.12 | **build-config.md** | **빌드 설정 (최종)** |
 
 ### 코드 산출물
 
@@ -75,7 +84,7 @@ Stage 3 완료 시 다음 문서들이 `outputs/stage-3/` 디렉토리에 생성
 
 ### 핵심 규칙
 
-1. **Step 순서 준수**: 반드시 3.1 -> 3.2 -> ... -> 3.9 순서로 진행
+1. **Step 순서 준수**: 반드시 3.1 -> 3.2 -> ... -> 3.12 순서로 진행
 2. **스킬 활용**: 각 Step에서 해당 스킬을 사용하여 진행
 3. **완료 조건 확인**: 각 Step의 완료 조건이 충족되어야 다음 Step으로 진행
 4. **산출물 생성**: 각 Step 완료 시 문서 + 코드(해당 시) 생성
@@ -83,15 +92,18 @@ Stage 3 완료 시 다음 문서들이 `outputs/stage-3/` 디렉토리에 생성
 
 ### 사용할 스킬 (순서대로)
 
-1. `tech-stack` - Step 3.1
-2. `project-setup` - Step 3.2
-3. `data-modeling` - Step 3.3
-4. `api-design` - Step 3.4
-5. `auth-impl` - Step 3.5
-6. `core-features` - Step 3.6
-7. `ui-impl` - Step 3.7
-8. `testing` - Step 3.8
-9. `build-ready` - Step 3.9
+1. `design-to-dev-bridge` - Step 3.1
+2. `tech-stack` - Step 3.2
+3. `project-setup` - Step 3.3
+4. `database-setup` - Step 3.4
+5. `orm-setup` - Step 3.5
+6. `data-modeling` - Step 3.6
+7. `api-design` - Step 3.7
+8. `auth-impl` - Step 3.8
+9. `core-features` - Step 3.9
+10. `ui-impl` - Step 3.10
+11. `testing` - Step 3.11
+12. `build-ready` - Step 3.12
 
 ### 시작 멘트
 
@@ -104,24 +116,26 @@ Stage 3 완료 시 다음 문서들이 `outputs/stage-3/` 디렉토리에 생성
 - AI 코딩 도구(Cursor, Copilot 등)를 사용하고 계신가요?
 - 선호하는 기술 스택이 있으신가요?
 
-지금부터 9단계에 걸쳐 실제 동작하는 MVP를 만들어볼 거예요:
+지금부터 11단계에 걸쳐 실제 동작하는 MVP를 만들어볼 거예요:
 
-1. 기술 스택 선택
-2. 프로젝트 초기화
-3. 데이터 모델링
-4. API 설계
-5. 인증 구현
-6. 핵심 기능 개발
-7. UI 구현
-8. 테스트
-9. 빌드 준비
+1. 디자인-개발 브릿지 - 디자인을 코드로 어떻게 구현할지 정해요
+2. 기술 스택 선택 - 어떤 도구로 만들지 정해요
+3. 프로젝트 초기화 - 기본 뼈대를 만들어요
+4. 데이터베이스 설정 - DB 연결을 설정하고 테스트해요
+5. 데이터 모델링 - 데이터 구조를 설계해요
+6. API 설계 - 서버 통신 규칙을 정해요
+7. 인증 구현 - 로그인/회원가입을 만들어요
+8. 핵심 기능 개발 - MVP 기능들을 구현해요
+9. UI 구현 - 화면을 만들어요
+10. 테스트 - 잘 동작하는지 확인해요
+11. 빌드 준비 - 배포할 준비를 해요
 
 AI 도구를 적극 활용하면 훨씬 빠르게 진행할 수 있어요!
 
 디자인 명세에서 정의한 화면 수: {N}개
 구현할 핵심 기능: {기능 목록}
 
-먼저 기술 스택을 정해볼까요?"
+먼저 디자인-개발 브릿지부터 시작해볼까요?"
 
 ### 주의사항
 

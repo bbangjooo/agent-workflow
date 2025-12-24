@@ -28,55 +28,73 @@
 Dev Coach 에이전트가 개발 주도
     |
 +-------------------------------------------------------------+
-|  Step 3.1: Tech Stack Selection (기술 스택 선택)              |
+|  Step 3.1: Design-to-Dev Bridge (디자인-개발 브릿지)          |
+|  스킬: design-to-dev-bridge                                  |
+|  산출물: design-dev-bridge.md                                |
++-------------------------------------------------------------+
+|                           |                                  |
++-------------------------------------------------------------+
+|  Step 3.2: Tech Stack Selection (기술 스택 선택)              |
 |  스킬: tech-stack                                            |
 |  산출물: tech-stack.md                                       |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 3.2: Project Setup (프로젝트 초기화)                    |
+|  Step 3.3: Project Setup (프로젝트 초기화)                    |
 |  스킬: project-setup                                         |
 |  산출물: project-setup.md + 실제 코드                        |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 3.3: Data Modeling (데이터 모델링)                      |
+|  Step 3.4: Database Setup (데이터베이스 설정)                 |
+|  스킬: database-setup                                        |
+|  산출물: database-setup.md                                   |
++-------------------------------------------------------------+
+|                           |                                  |
++-------------------------------------------------------------+
+|  Step 3.5: ORM Setup (ORM 설정)                              |
+|  스킬: orm-setup                                             |
+|  산출물: orm-setup.md                                        |
++-------------------------------------------------------------+
+|                           |                                  |
++-------------------------------------------------------------+
+|  Step 3.6: Data Modeling (데이터 모델링)                      |
 |  스킬: data-modeling                                         |
 |  산출물: data-model.md + 스키마 파일                         |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 3.4: API Design (API 설계)                             |
+|  Step 3.7: API Design (API 설계)                             |
 |  스킬: api-design                                            |
 |  산출물: api-spec.md                                         |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 3.5: Authentication (인증 구현)                         |
+|  Step 3.8: Authentication (인증 구현)                         |
 |  스킬: auth-impl                                             |
 |  산출물: auth-impl.md + 실제 코드                            |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 3.6: Core Features (핵심 기능 개발)                     |
+|  Step 3.9: Core Features (핵심 기능 개발)                     |
 |  스킬: core-features                                         |
 |  산출물: feature-impl.md + 실제 코드                         |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 3.7: UI Implementation (UI 구현)                        |
+|  Step 3.10: UI Implementation (UI 구현)                       |
 |  스킬: ui-impl                                               |
 |  산출물: ui-impl.md + 실제 코드                              |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 3.8: Testing (테스트)                                   |
+|  Step 3.11: Testing (테스트)                                  |
 |  스킬: testing                                               |
 |  산출물: test-report.md                                      |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 3.9: Build Ready (빌드 준비)                            |
+|  Step 3.12: Build Ready (빌드 준비)                           |
 |  스킬: build-ready                                           |
 |  산출물: build-config.md (최종)                              |
 +-------------------------------------------------------------+
@@ -96,15 +114,18 @@ Dev Coach 에이전트가 개발 주도
 
 | 스킬 | Step | 역할 | 설명 |
 |------|------|------|------|
-| tech-stack | 3.1 | Full-stack | 기술 스택 선택 및 결정 |
-| project-setup | 3.2 | Full-stack | 프로젝트 초기화 및 boilerplate |
-| data-modeling | 3.3 | Backend | 데이터 모델 및 스키마 설계 |
-| api-design | 3.4 | Backend | API 엔드포인트 설계 |
-| auth-impl | 3.5 | Full-stack | 인증/인가 구현 (BE: 서버, FE: UI) |
-| core-features | 3.6 | Full-stack | MVP 핵심 기능 구현 (BE: API, FE: 훅) |
-| ui-impl | 3.7 | Frontend | UI 컴포넌트 및 화면 구현 |
-| testing | 3.8 | Full-stack | 테스트 및 버그 수정 (BE: API, FE: UI) |
-| build-ready | 3.9 | Full-stack | 빌드 설정 및 배포 준비 |
+| design-to-dev-bridge | 3.1 | Full-stack | 디자인-개발 브릿지, UI 라이브러리 선택 |
+| tech-stack | 3.2 | Full-stack | 기술 스택 선택 및 결정 |
+| project-setup | 3.3 | Full-stack | 프로젝트 초기화 및 boilerplate |
+| database-setup | 3.4 | Backend | DB 서비스 프로젝트 생성, 환경변수 설정 (인프라) |
+| orm-setup | 3.5 | Backend | ORM/클라이언트 설치, 설정, 연결 테스트 (코드) |
+| data-modeling | 3.6 | Backend | 데이터 모델 및 스키마 설계 |
+| api-design | 3.7 | Backend | API 엔드포인트 설계 |
+| auth-impl | 3.8 | Full-stack | 인증/인가 구현 (BE: 서버, FE: UI) |
+| core-features | 3.9 | Full-stack | MVP 핵심 기능 구현 (BE: API, FE: 훅) |
+| ui-impl | 3.10 | Frontend | UI 컴포넌트 및 화면 구현 |
+| testing | 3.11 | Full-stack | 테스트 및 버그 수정 (BE: API, FE: UI) |
+| build-ready | 3.12 | Full-stack | 빌드 설정 및 배포 준비 |
 
 ### References
 
@@ -113,6 +134,14 @@ Dev Coach 에이전트가 개발 주도
 | tech-stacks | nextjs-supabase.md | Next.js + Supabase 조합 가이드 |
 | tech-stacks | nextjs-firebase.md | Next.js + Firebase 조합 가이드 |
 | tech-stacks | react-express.md | React + Express 조합 가이드 |
+| databases | supabase-setup.md | Supabase 설정 및 연결 가이드 |
+| databases | firebase-setup.md | Firebase/Firestore 설정 가이드 |
+| databases | planetscale-setup.md | PlanetScale MySQL 설정 가이드 |
+| databases | neon-setup.md | Neon PostgreSQL 설정 가이드 |
+| orms | supabase-client.md | Supabase JS 클라이언트 설정 가이드 |
+| orms | firebase-client.md | Firebase SDK 설정 가이드 |
+| orms | prisma-setup.md | Prisma ORM 설정 가이드 |
+| orms | drizzle-setup.md | Drizzle ORM 설정 가이드 |
 | templates | folder-structures.md | 폴더 구조 템플릿 |
 | templates | env-templates.md | 환경변수 템플릿 |
 | templates | config-templates.md | 설정 파일 템플릿 |
@@ -133,15 +162,18 @@ Dev Coach 에이전트가 개발 주도
 
 | 파일명 | Step | 설명 |
 |--------|------|------|
-| tech-stack.md | 3.1 | 선택된 기술 스택 |
-| project-setup.md | 3.2 | 프로젝트 초기화 기록 |
-| data-model.md | 3.3 | 데이터 모델 명세 |
-| api-spec.md | 3.4 | API 명세서 |
-| auth-impl.md | 3.5 | 인증 구현 기록 |
-| feature-impl.md | 3.6 | 기능 구현 기록 |
-| ui-impl.md | 3.7 | UI 구현 기록 |
-| test-report.md | 3.8 | 테스트 결과 |
-| **build-config.md** | 3.9 | **빌드 설정 (최종)** |
+| design-dev-bridge.md | 3.1 | 디자인-개발 브릿지 |
+| tech-stack.md | 3.2 | 선택된 기술 스택 |
+| project-setup.md | 3.3 | 프로젝트 초기화 기록 |
+| database-setup.md | 3.4 | 데이터베이스 설정 기록 (인프라) |
+| orm-setup.md | 3.5 | ORM/클라이언트 설정 기록 (코드) |
+| data-model.md | 3.6 | 데이터 모델 명세 |
+| api-spec.md | 3.7 | API 명세서 |
+| auth-impl.md | 3.8 | 인증 구현 기록 |
+| feature-impl.md | 3.9 | 기능 구현 기록 |
+| ui-impl.md | 3.10 | UI 구현 기록 |
+| test-report.md | 3.11 | 테스트 결과 |
+| **build-config.md** | 3.12 | **빌드 설정 (최종)** |
 
 ### 코드 산출물
 
