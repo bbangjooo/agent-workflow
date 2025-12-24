@@ -1,6 +1,6 @@
 # Build Ready
 
-Step 3.10: 빌드 준비 (Build Ready)
+Step 3.12: 빌드 준비 (Build Ready)
 
 > **역할: Full-stack**
 > 프로덕션 빌드, 환경변수, 배포 설정 전체
@@ -11,7 +11,7 @@ Step 3.10: 빌드 준비 (Build Ready)
 
 ## 트리거
 
-- Step 3.9 (Testing) 완료 후 실행
+- Step 3.11 (Testing) 완료 후 실행
 - 모든 테스트가 통과했을 때
 
 ## 입력
@@ -152,7 +152,7 @@ vercel env add NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 ## 메타데이터
 - Stage: 3
-- Step: 3.10 - 빌드 준비
+- Step: 3.12 - 빌드 준비
 - 생성일시: {현재 시간}
 - 상태: final
 

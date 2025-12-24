@@ -1,6 +1,6 @@
 # Data Modeling
 
-Step 3.4: 데이터 모델링 (Data Modeling)
+Step 3.6: 데이터 모델링 (Data Modeling)
 
 > **역할: Backend**
 > 데이터베이스 스키마, 테이블, 관계 설계
@@ -11,8 +11,8 @@ PRD와 기능 명세를 바탕으로 데이터 모델을 설계하고 데이터�
 
 ## 트리거
 
-- Step 3.3 (Project Setup) 완료 후 실행
-- 프로젝트가 생성되어 있을 때
+- Step 3.5 (ORM Setup) 완료 후 실행
+- ORM 연결 테스트가 성공했을 때
 
 ## 입력
 
@@ -20,6 +20,8 @@ PRD와 기능 명세를 바탕으로 데이터 모델을 설계하고 데이터�
 - `outputs/stage-1/user-stories.md`
 - `outputs/stage-1/feature-priority.md`
 - `outputs/stage-3/tech-stack.md`
+- `outputs/stage-3/database-setup.md`
+- `outputs/stage-3/orm-setup.md`
 
 ## 실행 내용
 
@@ -157,7 +159,7 @@ export interface Post {
 
 ## 메타데이터
 - Stage: 3
-- Step: 3.4 - 데이터 모델링
+- Step: 3.6 - 데이터 모델링
 - 생성일시: {현재 시간}
 - 상태: final
 
@@ -248,4 +250,4 @@ API 엔드포인트를 설계합니다.
 
 ## 다음 Step
 
-→ Step 3.5: API Design (API 설계)
+→ Step 3.7: API Design (API 설계)

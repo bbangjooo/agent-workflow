@@ -229,4 +229,4 @@ npx shadcn-ui@latest add button input card
 
 ## 다음 Step
 
-→ Step 3.4: Data Modeling (데이터 모델링)
+→ Step 3.4: Database Setup (데이터베이스 설정)
