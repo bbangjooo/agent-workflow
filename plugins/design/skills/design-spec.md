@@ -1,6 +1,6 @@
 # Design Spec
 
-Step 2.5: 디자인 명세서 생성
+Step 2.6: 디자인 명세서 생성
 
 ## 설명
 
@@ -10,12 +10,13 @@ Step 2.5: 디자인 명세서 생성
 
 ## 트리거
 
-- Step 2.4 (Wireframes) 완료 후 자동 실행
+- Step 2.5 (Wireframes) 완료 후 자동 실행
 - 모든 이전 산출물이 존재할 때
 
 ## 입력
 
 - `outputs/stage-2/platform-selection.md` (플랫폼 확인)
+- `outputs/stage-2/color-palette.md`
 - `outputs/stage-2/visual-direction.md`
 - `outputs/stage-2/design-system.md`
 - `outputs/stage-2/component-spec-{platform}.md`
@@ -78,7 +79,7 @@ Step 2.5: 디자인 명세서 생성
 
 ## 메타데이터
 - Stage: 2
-- Step: 2.5 - 디자인 명세서 (최종)
+- Step: 2.6 - 디자인 명세서 (최종)
 - 생성일시: {현재 시간}
 - 상태: final
 - 버전: 1.0
@@ -321,7 +322,7 @@ Use Tailwind CSS for styling.
 
 ## 메타데이터
 - Stage: 2
-- Step: 2.5 - 디자인 명세서 (최종)
+- Step: 2.6 - 디자인 명세서 (최종)
 - 생성일시: {현재 시간}
 - 상태: final
 - 버전: 1.0

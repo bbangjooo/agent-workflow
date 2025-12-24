@@ -16,18 +16,22 @@ Stage 2 디자인 워크플로우를 시작합니다. PRD와 화면 구조를 �
 
 ## 실행 흐름
 
-이 커맨드를 실행하면 **Design Coach** 에이전트가 활성화되어 5개의 Step을 순차적으로 진행합니다.
+이 커맨드를 실행하면 **Design Coach** 에이전트가 활성화되어 7개의 Step을 순차적으로 진행합니다.
 
 ```
-Step 2.1: Visual Direction (비주얼 방향성)
+Step 2.0: Platform Selection (플랫폼 선택)
     |
-Step 2.2: Design System (디자인 시스템)
+Step 2.1: Color Palette (색상 체계)
     |
-Step 2.3: Component Spec (컴포넌트 명세)
+Step 2.2: Visual Direction (비주얼 방향성)
     |
-Step 2.4: Wireframes (와이어프레임)
+Step 2.3: Design System (디자인 시스템)
     |
-Step 2.5: Design Spec (디자인 명세서)
+Step 2.4: Component Spec (컴포넌트 명세)
+    |
+Step 2.5: Wireframes (와이어프레임)
+    |
+Step 2.6: Design Spec (디자인 명세서)
 ```
 
 ## 산출물
@@ -36,11 +40,13 @@ Stage 2 완료 시 다음 문서들이 `outputs/stage-2/` 디렉토리에 생성
 
 | Step | 파일명 | 설명 |
 |------|--------|------|
-| 2.1 | visual-direction.md | 비주얼 방향성 |
-| 2.2 | design-system.md | 디자인 시스템 |
-| 2.3 | component-spec.md | 컴포넌트 명세 |
-| 2.4 | wireframes.md | 와이어프레임 |
-| 2.5 | **design-spec.md** | **최종 디자인 명세서** |
+| 2.0 | platform-selection.md | 플랫폼 선택 |
+| 2.1 | color-palette.md | 색상 체계 |
+| 2.2 | visual-direction.md | 비주얼 방향성 |
+| 2.3 | design-system.md | 디자인 시스템 |
+| 2.4 | component-spec-{platform}.md | 컴포넌트 명세 |
+| 2.5 | wireframes-{platform}.md | 와이어프레임 |
+| 2.6 | **design-spec-{platform}.md** | **최종 디자인 명세서** |
 
 ---
 
@@ -57,18 +63,20 @@ Stage 2 완료 시 다음 문서들이 `outputs/stage-2/` 디렉토리에 생성
 
 ### 핵심 규칙
 
-1. **Step 순서 준수**: 반드시 2.1 -> 2.2 -> 2.3 -> 2.4 -> 2.5 순서로 진행
+1. **Step 순서 준수**: 반드시 2.0 -> 2.1 -> 2.2 -> 2.3 -> 2.4 -> 2.5 -> 2.6 순서로 진행
 2. **스킬 활용**: 각 Step에서 해당 스킬을 사용하여 대화 진행
 3. **완료 조건 확인**: 각 Step의 완료 조건이 충족되어야 다음 Step으로 진행
 4. **산출물 생성**: 각 Step 완료 시 해당 산출물 파일 생성
 
 ### 사용할 스킬 (순서대로)
 
-1. `visual-direction` - Step 2.1
-2. `design-system` - Step 2.2
-3. `component-spec` - Step 2.3
-4. `wireframes` - Step 2.4
-5. `design-spec` - Step 2.5
+1. `platform-selection` - Step 2.0
+2. `color-palette` - Step 2.1
+3. `visual-direction` - Step 2.2
+4. `design-system` - Step 2.3
+5. `component-spec` - Step 2.4
+6. `wireframes` - Step 2.5
+7. `design-spec` - Step 2.6
 
 ### 시작 멘트
 
@@ -76,18 +84,13 @@ Stage 2 완료 시 다음 문서들이 `outputs/stage-2/` 디렉토리에 생성
 
 **[프로젝트명]**의 디자인을 시작해볼까요?
 
-지금부터 5단계에 걸쳐 개발자가 바로 사용할 수 있는 디자인 명세를 만들어볼 거예요:
+먼저, 어떤 플랫폼을 위한 디자인을 만들지 정해야 해요:
 
-1. 비주얼 방향성 - 어떤 느낌의 서비스로 만들지 정해요
-2. 디자인 시스템 - 색상, 글꼴, 간격 등 기본 규칙을 만들어요
-3. 컴포넌트 명세 - 버튼, 입력창 같은 UI 부품을 정의해요
-4. 와이어프레임 - 각 화면의 레이아웃을 그려요
-5. 디자인 명세서 - 모든 걸 개발자용 문서로 정리해요
+- **Web**: 반응형 웹사이트 또는 웹 앱
+- **Mobile**: iOS/Android 네이티브 앱
+- **Both**: 웹과 모바일 모두
 
-PRD에서 정의한 화면들을 다시 살펴볼게요:
-{화면 목록}
-
-먼저 어떤 느낌의 서비스를 만들고 싶으신지 이야기해볼까요?"
+어떤 플랫폼을 선택하시겠어요?"
 
 ### 주의사항
 
