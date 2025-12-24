@@ -151,7 +151,63 @@ const { data, error } = await supabase.from('posts').update({ title: 'Updated' }
 const { error } = await supabase.from('posts').delete().eq('id', id)
 ```
 
-## 7. 트러블슈팅
+## 7. Seed 데이터
+
+### 방법 1: SQL Editor (권장)
+
+Supabase Dashboard > SQL Editor에서 실행:
+
+```sql
+-- 테스트 사용자 (auth.users와 연동 시)
+INSERT INTO public.profiles (id, name, avatar_url)
+VALUES
+  ('uuid-1', 'Test User 1', null),
+  ('uuid-2', 'Test User 2', null)
+ON CONFLICT (id) DO NOTHING;
+
+-- 샘플 데이터
+INSERT INTO public.posts (user_id, title, content, status)
+VALUES
+  ('uuid-1', '첫 번째 글', '내용입니다', 'published'),
+  ('uuid-1', '두 번째 글', '테스트', 'draft')
+ON CONFLICT DO NOTHING;
+```
+
+### 방법 2: 스크립트
+
+```typescript
+// scripts/seed.ts
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!  // service role 필요
+)
+
+async function seed() {
+  console.log('🌱 Seeding...')
+
+  const { error } = await supabase.from('posts').insert([
+    { title: '첫 번째 글', content: '내용' },
+    { title: '두 번째 글', content: '테스트' },
+  ])
+
+  if (error) throw error
+  console.log('✅ Seed 완료')
+}
+
+seed()
+```
+
+### 실행
+
+```bash
+npx tsx scripts/seed.ts
+```
+
+> ⚠️ RLS가 활성화된 경우 `service_role` 키를 사용하거나 RLS 정책을 임시 비활성화해야 합니다.
+
+## 8. 트러블슈팅
 
 | 에러 | 원인 | 해결 |
 |------|------|------|
