@@ -255,7 +255,6 @@ Stage 4: 배포를 진행합니다.
 - 런칭 전 체크리스트 확인
 - `build-config.md` 파일이 생성됨
 
-## Stage 3 완료
+## 다음 Step
 
-Build Ready가 완료되면 Stage 3가 종료됩니다.
-다음 Stage는 **Stage 4: Deployment (배포)**입니다.
+→ Step 3.13: 컨테이너화 (Docker Compose)
