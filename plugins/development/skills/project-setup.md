@@ -74,6 +74,101 @@ npx shadcn-ui@latest add button input card
 
 ### 디자인 시스템 적용
 
+#### Tailwind v4 방식 (권장)
+
+> **⚠️ Tailwind v4는 CSS-first 설정을 사용합니다.**
+> `tailwind.config.ts`의 `theme.extend` 대신 CSS의 `@theme` 블록을 사용해야 합니다.
+
+```css
+/* src/app/globals.css */
+@import "tailwindcss";
+
+/* 디자인 시스템 토큰 정의 - @theme 블록 사용 */
+@theme {
+  /* Colors - design-system.md에서 가져온 색상 */
+  --color-primary: #3B82F6;
+  --color-primary-light: #60A5FA;
+  --color-primary-dark: #2563EB;
+
+  --color-secondary: #6366F1;
+  --color-secondary-light: #818CF8;
+  --color-secondary-dark: #4F46E5;
+
+  --color-success: #10B981;
+  --color-success-light: #D1FAE5;
+  --color-success-dark: #059669;
+
+  --color-warning: #F59E0B;
+  --color-warning-light: #FEF3C7;
+  --color-warning-dark: #D97706;
+
+  --color-error: #EF4444;
+  --color-error-light: #FEE2E2;
+  --color-error-dark: #DC2626;
+
+  /* Gray scale */
+  --color-gray-50: #F9FAFB;
+  --color-gray-100: #F3F4F6;
+  --color-gray-200: #E5E7EB;
+  --color-gray-300: #D1D5DB;
+  --color-gray-400: #9CA3AF;
+  --color-gray-500: #6B7280;
+  --color-gray-600: #4B5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1F2937;
+  --color-gray-900: #111827;
+
+  /* Typography - Font Family */
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Spacing (커스텀 값이 필요한 경우) */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+
+  /* Border Radius */
+  --radius-button: 0.5rem;
+  --radius-card: 0.75rem;
+  --radius-modal: 1rem;
+
+  /* Shadows */
+  --shadow-button: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-card: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #3B82F6, #2563EB);
+}
+
+/* 다크 모드 오버라이드 (필요시) */
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-gray-50: #111827;
+    --color-gray-900: #F9FAFB;
+    /* ... 기타 다크모드 색상 */
+  }
+}
+```
+
+**Tailwind v4에서 생성되는 유틸리티 클래스:**
+- `--color-*` → `bg-*`, `text-*`, `border-*` 등
+- `--font-*` → `font-*`
+- `--radius-*` → `rounded-*`
+- `--shadow-*` → `shadow-*`
+
+예시:
+```html
+<!-- @theme에서 --color-primary를 정의하면 자동 생성 -->
+<button class="bg-primary text-white hover:bg-primary-dark">
+  Click me
+</button>
+
+<!-- @theme에서 --color-success를 정의하면 자동 생성 -->
+<div class="bg-success-light text-success-dark">
+  Success message
+</div>
+```
+
+#### Tailwind v3 방식 (레거시)
+
 ```javascript
 // tailwind.config.ts
 import type { Config } from "tailwindcss"
@@ -105,6 +200,16 @@ const config: Config = {
 export default config
 ```
 
+#### Tailwind 버전 확인 방법
+
+```bash
+# package.json에서 tailwindcss 버전 확인
+npm list tailwindcss
+
+# v4.x.x → @theme 블록 사용
+# v3.x.x → tailwind.config.ts 사용
+```
+
 ### 스타일 매핑 테이블 생성 (핵심!)
 
 > **⚠️ 이 단계가 디자인 시스템 준수를 보장하는 핵심입니다.**
@@ -113,6 +218,36 @@ export default config
 #### 매핑 테이블 작성
 
 `design-dev-bridge.md`의 시맨틱 토큰을 선택한 Tech Stack에 맞게 실제 클래스/변수로 매핑합니다:
+
+##### Tailwind v4 매핑 테이블 (권장)
+
+> **⚠️ Tailwind v4 주의사항:**
+> - `@theme` 블록에서 `--color-{name}` 형식으로 정의하면 `bg-{name}`, `text-{name}` 클래스가 **자동 생성**됩니다.
+> - `:root`에 CSS 변수만 정의하면 유틸리티 클래스가 생성되지 않습니다!
+
+```
+┌─────────────────────────┬─────────────────────────┬──────────────────────────────┐
+│ 시맨틱 토큰              │ 구현 클래스/변수         │ 정의 위치                     │
+├─────────────────────────┼─────────────────────────┼──────────────────────────────┤
+│ button-primary-bg       │ bg-primary              │ @theme: --color-primary      │
+│ button-primary-text     │ text-white              │ Tailwind 기본 클래스         │
+│ button-primary-shadow   │ shadow-button           │ @theme: --shadow-button      │
+│ button-primary-hover-bg │ hover:bg-primary-dark   │ @theme: --color-primary-dark │
+├─────────────────────────┼─────────────────────────┼──────────────────────────────┤
+│ color-success           │ bg-success / text-success│ @theme: --color-success     │
+│ color-success-light     │ bg-success-light        │ @theme: --color-success-light│
+│ color-success-dark      │ text-success-dark       │ @theme: --color-success-dark │
+├─────────────────────────┼─────────────────────────┼──────────────────────────────┤
+│ text-heading-1          │ text-3xl font-bold      │ Tailwind 기본 클래스         │
+│ text-heading-2          │ text-2xl font-semibold  │ Tailwind 기본 클래스         │
+│ text-body               │ text-base               │ Tailwind 기본 클래스         │
+├─────────────────────────┼─────────────────────────┼──────────────────────────────┤
+│ radius-button           │ rounded-button          │ @theme: --radius-button      │
+│ radius-card             │ rounded-card            │ @theme: --radius-card        │
+└─────────────────────────┴─────────────────────────┴──────────────────────────────┘
+```
+
+##### Tailwind v3 매핑 테이블 (레거시)
 
 ```
 ┌─────────────────────────┬─────────────────────────┬──────────────────────────────┐
@@ -139,7 +274,23 @@ export default config
 └─────────────────────────┴─────────────────────────┴──────────────────────────────┘
 ```
 
-#### CSS Variables 방식 (Tailwind 외)
+#### Tailwind v4: @theme vs :root 차이점
+
+> **핵심: `:root`에 CSS 변수를 정의해도 Tailwind 유틸리티 클래스는 생성되지 않습니다!**
+
+```css
+/* ❌ 잘못된 방식 - 클래스 미생성 */
+:root {
+  --success-base: #10b981;  /* bg-success-base 클래스 생성 안 됨! */
+}
+
+/* ✅ 올바른 방식 - @theme 사용 */
+@theme {
+  --color-success-base: #10b981;  /* bg-success-base 클래스 자동 생성! */
+}
+```
+
+#### CSS Variables 방식 (순수 CSS 프로젝트용)
 
 ```css
 /* globals.css */
@@ -164,11 +315,12 @@ export default config
 필수 검증 항목:
 □ Bridge의 모든 시맨틱 토큰이 매핑 테이블에 있는가?
 □ 모든 매핑된 클래스/변수가 실제로 정의되어 있는가?
-  □ tailwind.config.ts에 커스텀 클래스가 정의됨
-  □ globals.css에 CSS 변수가 정의됨
+  □ [v4] globals.css의 @theme 블록에 정의됨
+  □ [v3] tailwind.config.ts에 커스텀 클래스가 정의됨
   □ 또는 Tailwind/프레임워크 기본 클래스 사용
 □ 정의 위치(파일:라인)가 정확한가?
 □ 누락된 토큰이 없는가?
+□ [v4] @theme에서 올바른 네이밍 사용? (--color-*, --radius-*, --shadow-*)
 ```
 
 #### 미정의 클래스 방지
