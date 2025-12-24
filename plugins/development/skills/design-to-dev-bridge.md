@@ -84,26 +84,71 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 └──────────────────┴──────────────────┴───────────────────────┘
 ```
 
-### 4. 스타일 토큰 변환
+### 4. 시맨틱 디자인 토큰 정의 (핵심!)
 
-디자인 토큰을 코드 토큰으로 변환합니다:
+> **⚠️ 이 단계가 디자인 시스템 준수의 핵심입니다.**
+
+디자인 명세의 CSS 값들을 **기술 중립적인 시맨틱 토큰 이름**으로 정의합니다.
+이 토큰들은 이후 Project Setup에서 실제 클래스/변수로 매핑됩니다.
+
+#### 시맨틱 토큰 네이밍 규칙
 
 ```
-변환 예시:
+{컴포넌트}-{요소}-{상태}-{속성}
 
-디자인 시스템 → CSS 변수 / Tailwind Config
+예시:
+- button-primary-default-bg      (버튼 primary 기본 배경)
+- button-primary-hover-bg        (버튼 primary 호버 배경)
+- text-heading-1-size            (제목1 크기)
+- text-heading-1-weight          (제목1 굵기)
+- color-primary                  (주요 색상)
+- color-primary-light            (주요 색상 밝은 변형)
+- spacing-base                   (기본 간격)
+- radius-button                  (버튼 모서리 반경)
+```
 
-색상:
-- Primary #3B82F6 → --color-primary / primary: '#3B82F6'
-- Gray 900 #111827 → --color-gray-900 / gray-900: '#111827'
+#### 시맨틱 토큰 테이블 작성
 
-타이포그래피:
-- H1 32px Bold → text-3xl font-bold
-- Body 16px Regular → text-base font-normal
+디자인 명세의 모든 스타일 값을 시맨틱 토큰으로 변환합니다:
 
-간격:
-- space-4 16px → p-4, m-4
-- space-8 32px → p-8, m-8
+```
+┌─────────────────────────┬──────────────────────────────┬─────────────────────────┐
+│ 시맨틱 토큰 이름          │ 디자인 명세 값                 │ 용도                     │
+├─────────────────────────┼──────────────────────────────┼─────────────────────────┤
+│ button-primary-bg       │ var(--gradient-primary)      │ Primary 버튼 배경        │
+│ button-primary-text     │ #FFFFFF                      │ Primary 버튼 텍스트      │
+│ button-primary-shadow   │ 0 4px 6px rgba(0,0,0,0.1)   │ Primary 버튼 그림자      │
+├─────────────────────────┼──────────────────────────────┼─────────────────────────┤
+│ text-heading-1-size     │ 32px                         │ H1 크기                  │
+│ text-heading-1-weight   │ 700 (Bold)                   │ H1 굵기                  │
+│ text-body-size          │ 16px                         │ 본문 크기                │
+├─────────────────────────┼──────────────────────────────┼─────────────────────────┤
+│ color-primary           │ #3B82F6                      │ 주요 색상                │
+│ color-primary-gradient  │ linear-gradient(...)         │ 주요 그라데이션          │
+│ color-gray-900          │ #111827                      │ 텍스트 색상              │
+├─────────────────────────┼──────────────────────────────┼─────────────────────────┤
+│ spacing-4               │ 16px                         │ 기본 간격                │
+│ spacing-8               │ 32px                         │ 큰 간격                  │
+├─────────────────────────┼──────────────────────────────┼─────────────────────────┤
+│ radius-sm               │ 4px                          │ 작은 모서리              │
+│ radius-md               │ 8px                          │ 중간 모서리              │
+│ radius-button           │ 8px                          │ 버튼 모서리              │
+└─────────────────────────┴──────────────────────────────┴─────────────────────────┘
+```
+
+#### 토큰 완전성 검증
+
+디자인 명세서의 **모든 스타일 값**이 시맨틱 토큰으로 정의되었는지 확인합니다:
+
+```
+검증 체크리스트:
+□ 모든 색상 (Primary, Secondary, Gray scale, 상태 색상)
+□ 모든 타이포그래피 (Heading 1-6, Body, Caption 등)
+□ 모든 간격 (spacing scale)
+□ 모든 그림자 (shadow scale)
+□ 모든 모서리 반경 (radius scale)
+□ 모든 컴포넌트별 스타일 (버튼, 입력, 카드 등)
+□ 모든 상태별 스타일 (hover, active, disabled, focus)
 ```
 
 ### 5. 구현 전략 결정
@@ -269,7 +314,35 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 | {컴포넌트2} | 커스텀 | - | 전체 |
 | ... | ... | ... | ... |
 
-### 디자인 토큰 변환
+### 시맨틱 디자인 토큰 (필수!)
+
+> ⚠️ 이 테이블은 Project Setup에서 실제 클래스/변수로 매핑되며,
+> UI 구현 시 반드시 참조해야 합니다.
+
+| 시맨틱 토큰 | 디자인 값 | 용도 |
+|-------------|-----------|------|
+| button-primary-bg | {값} | Primary 버튼 배경 |
+| button-primary-text | {값} | Primary 버튼 텍스트 |
+| button-primary-hover-bg | {값} | Primary 버튼 호버 |
+| button-secondary-bg | {값} | Secondary 버튼 배경 |
+| text-heading-1 | {크기/굵기} | H1 스타일 |
+| text-heading-2 | {크기/굵기} | H2 스타일 |
+| text-body | {크기/굵기} | 본문 스타일 |
+| color-primary | {값} | 주요 색상 |
+| color-primary-gradient | {값} | 주요 그라데이션 |
+| spacing-4 | {값} | 기본 간격 |
+| radius-button | {값} | 버튼 모서리 |
+| shadow-button | {값} | 버튼 그림자 |
+| ... | ... | ... |
+
+### 토큰 완전성 체크
+
+- [ ] 디자인 명세의 모든 색상이 토큰화됨
+- [ ] 디자인 명세의 모든 타이포그래피가 토큰화됨
+- [ ] 디자인 명세의 모든 컴포넌트 스타일이 토큰화됨
+- [ ] 디자인 명세의 모든 상태(hover, active, disabled)가 토큰화됨
+
+### 디자인 토큰 변환 예시
 
 ```typescript
 // tailwind.config.ts 또는 theme 설정
@@ -332,7 +405,8 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 - [ ] 모든 디자인 산출물 분석 완료
 - [ ] UI 라이브러리 선택 완료
 - [ ] 컴포넌트 매핑 완료
-- [ ] 디자인 토큰 변환 정의 완료
+- [ ] **시맨틱 디자인 토큰 테이블 작성 완료** (필수!)
+- [ ] **토큰 완전성 검증 완료** - 디자인 명세의 모든 스타일이 토큰화됨
 - [ ] 구현 전략 결정 완료
 - [ ] `design-dev-bridge.md` 파일이 생성됨
 
