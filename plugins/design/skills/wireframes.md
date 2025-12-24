@@ -1,6 +1,6 @@
 # Wireframes
 
-Step 2.4: 와이어프레임 정의
+Step 2.5: 와이어프레임 정의
 
 ## 설명
 
@@ -10,7 +10,7 @@ Step 2.4: 와이어프레임 정의
 
 ## 트리거
 
-- Step 2.3 (Component Spec) 완료 후 자동 실행
+- Step 2.4 (Component Spec) 완료 후 자동 실행
 - 플랫폼에 맞는 `component-spec-{platform}.md` 파일이 존재할 때
 
 ## 입력
@@ -117,7 +117,7 @@ Step 2.4: 와이어프레임 정의
 
 ## 메타데이터
 - Stage: 2
-- Step: 2.4 - 와이어프레임 (Web)
+- Step: 2.5 - 와이어프레임 (Web)
 - 생성일시: {현재 시간}
 - 상태: draft
 - 플랫폼: Web (반응형)
@@ -235,7 +235,7 @@ Mobile:
 
 ## 메타데이터
 - Stage: 2
-- Step: 2.4 - 와이어프레임 (Mobile)
+- Step: 2.5 - 와이어프레임 (Mobile)
 - 생성일시: {현재 시간}
 - 상태: draft
 - 플랫폼: Mobile (iOS/Android)
@@ -418,4 +418,4 @@ Mobile:
 
 ## 다음 Step
 
--> Step 2.5: Design Spec (디자인 명세서)
+-> Step 2.6: Design Spec (디자인 명세서)

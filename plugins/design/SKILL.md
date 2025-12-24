@@ -33,23 +33,30 @@ Design Coach 에이전트가 대화 주도
 |  Step 2.0: Platform Selection (플랫폼 선택)                   |
 |  스킬: platform-selection                                    |
 |  산출물: platform-selection.md                               |
-|  ⚠️ Web / Mobile / Both 중 선택 → 이후 산출물 구조 결정        |
+|  중요: Web / Mobile / Both 중 선택 → 이후 산출물 구조 결정      |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.1: Visual Direction (비주얼 방향성)                   |
+|  Step 2.1: Color Palette (색상 체계)                          |
+|  스킬: color-palette                                         |
+|  산출물: color-palette.md (공통)                              |
+|  중요: 제품 성격에 맞는 색상 체계 결정                          |
++-------------------------------------------------------------+
+|                           |                                  |
++-------------------------------------------------------------+
+|  Step 2.2: Visual Direction (비주얼 방향성)                   |
 |  스킬: visual-direction                                      |
 |  산출물: visual-direction.md (공통)                          |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.2: Design System (디자인 시스템)                      |
+|  Step 2.3: Design System (디자인 시스템)                      |
 |  스킬: design-system                                         |
 |  산출물: design-system.md (공통)                             |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.3: Component Spec (컴포넌트 명세)                     |
+|  Step 2.4: Component Spec (컴포넌트 명세)                     |
 |  스킬: component-spec                                        |
 |  산출물: 플랫폼별 분리                                        |
 |    - Web: component-spec-web.md                              |
@@ -57,7 +64,7 @@ Design Coach 에이전트가 대화 주도
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.4: Wireframes (와이어프레임)                          |
+|  Step 2.5: Wireframes (와이어프레임)                          |
 |  스킬: wireframes                                            |
 |  산출물: 플랫폼별 분리                                        |
 |    - Web: wireframes-web.md                                  |
@@ -65,7 +72,7 @@ Design Coach 에이전트가 대화 주도
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.5: Design Spec (디자인 명세서)                        |
+|  Step 2.6: Design Spec (디자인 명세서)                        |
 |  스킬: design-spec                                           |
 |  산출물: 플랫폼별 분리 (최종)                                  |
 |    - Web: design-spec-web.md                                 |
@@ -88,11 +95,12 @@ Design Coach 에이전트가 대화 주도
 | 스킬 | Step | 설명 |
 |------|------|------|
 | platform-selection | 2.0 | 타겟 플랫폼 선택 (Web/Mobile/Both) |
-| visual-direction | 2.1 | 브랜드 톤, 분위기, 참고 서비스 결정 |
-| design-system | 2.2 | 색상, 타이포, 간격 등 디자인 시스템 정의 |
-| component-spec | 2.3 | UI 컴포넌트 라이브러리 명세 (플랫폼별 분리) |
-| wireframes | 2.4 | 화면별 레이아웃 및 와이어프레임 (플랫폼별 분리) |
-| design-spec | 2.5 | 최종 디자인 핸드오프 문서 (플랫폼별 분리) |
+| color-palette | 2.1 | 제품 성격에 맞는 색상 체계 결정 |
+| visual-direction | 2.2 | 브랜드 톤, 분위기, 참고 서비스 결정 |
+| design-system | 2.3 | 타이포, 간격 등 디자인 시스템 정의 |
+| component-spec | 2.4 | UI 컴포넌트 라이브러리 명세 (플랫폼별 분리) |
+| wireframes | 2.5 | 화면별 레이아웃 및 와이어프레임 (플랫폼별 분리) |
+| design-spec | 2.6 | 최종 디자인 핸드오프 문서 (플랫폼별 분리) |
 
 ## 산출물
 
@@ -104,36 +112,39 @@ Design Coach 에이전트가 대화 주도
 ```
 outputs/stage-2/
 ├── platform-selection.md
+├── color-palette.md
 ├── visual-direction.md
 ├── design-system.md
 ├── component-spec-web.md
 ├── wireframes-web.md
-└── design-spec-web.md       ← 최종
+└── design-spec-web.md       <- 최종
 ```
 
 #### Mobile 선택 시
 ```
 outputs/stage-2/
 ├── platform-selection.md
+├── color-palette.md
 ├── visual-direction.md
 ├── design-system.md
 ├── component-spec-mobile.md
 ├── wireframes-mobile.md
-└── design-spec-mobile.md    ← 최종
+└── design-spec-mobile.md    <- 최종
 ```
 
 #### Both 선택 시
 ```
 outputs/stage-2/
 ├── platform-selection.md
+├── color-palette.md         # 공통
 ├── visual-direction.md      # 공통
 ├── design-system.md         # 공통
 ├── component-spec-web.md
 ├── component-spec-mobile.md
 ├── wireframes-web.md
 ├── wireframes-mobile.md
-├── design-spec-web.md       ← 최종 (Web)
-└── design-spec-mobile.md    ← 최종 (Mobile)
+├── design-spec-web.md       <- 최종 (Web)
+└── design-spec-mobile.md    <- 최종 (Mobile)
 ```
 
 ### 산출물 상세
@@ -141,11 +152,12 @@ outputs/stage-2/
 | 파일명 | Step | 설명 |
 |--------|------|------|
 | platform-selection.md | 2.0 | 플랫폼 선택 결과 |
-| visual-direction.md | 2.1 | 비주얼 방향성 |
-| design-system.md | 2.2 | 디자인 시스템 |
-| component-spec-{platform}.md | 2.3 | 플랫폼별 컴포넌트 명세 |
-| wireframes-{platform}.md | 2.4 | 플랫폼별 와이어프레임 |
-| **design-spec-{platform}.md** | 2.5 | **플랫폼별 최종 디자인 명세서** |
+| color-palette.md | 2.1 | 색상 체계 |
+| visual-direction.md | 2.2 | 비주얼 방향성 |
+| design-system.md | 2.3 | 디자인 시스템 |
+| component-spec-{platform}.md | 2.4 | 플랫폼별 컴포넌트 명세 |
+| wireframes-{platform}.md | 2.5 | 플랫폼별 와이어프레임 |
+| **design-spec-{platform}.md** | 2.6 | **플랫폼별 최종 디자인 명세서** |
 
 ## 다음 단계
 

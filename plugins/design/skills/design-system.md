@@ -1,18 +1,19 @@
 # Design System
 
-Step 2.2: 디자인 시스템 정의
+Step 2.3: 디자인 시스템 정의
 
 ## 설명
 
-일관된 디자인을 위한 기초 시스템을 정의하는 스킬입니다. 색상 팔레트, 타이포그래피, 간격 시스템 등을 정의합니다.
+일관된 디자인을 위한 기초 시스템을 정의하는 스킬입니다. 색상은 Step 2.1에서 이미 결정되었으므로, 타이포그래피, 간격 시스템 등을 정의합니다.
 
 ## 트리거
 
-- Step 2.1 (Visual Direction) 완료 후 자동 실행
-- `visual-direction.md` 파일이 존재할 때
+- Step 2.2 (Visual Direction) 완료 후 자동 실행
+- `outputs/stage-2/visual-direction.md` 파일이 존재할 때
 
 ## 입력
 
+- `outputs/stage-2/color-palette.md`
 - `outputs/stage-2/visual-direction.md`
 - `outputs/stage-1/prd.md`
 
@@ -20,35 +21,21 @@ Step 2.2: 디자인 시스템 정의
 
 ### 사전 작업
 
-1. visual-direction.md에서 분위기/키워드 추출
-2. 참고 서비스의 디자인 시스템 특성 분석
-3. 기본 디자인 시스템 초안 생성
+1. color-palette.md에서 이미 결정된 색상 체계 확인
+2. visual-direction.md에서 분위기/키워드 추출
+3. 참고 서비스의 디자인 시스템 특성 분석
+4. 기본 디자인 시스템 초안 생성
 
 ### 질문 가이드
 
-1. **색상 선호도**
-   - "메인 색상으로 어떤 색을 생각하고 계세요?"
-   - "특별히 사용하고 싶은 색이 있나요? (브랜드 색상 등)"
-   - (없으면) "참고 서비스 기반으로 제안해드릴게요"
-
-2. **라이트/다크 모드**
+1. **라이트/다크 모드**
    - "라이트 모드, 다크 모드 중 기본으로 할까요?"
    - "MVP에서는 하나만 지원해도 충분해요"
 
-3. **타이포그래피**
+2. **타이포그래피**
    - "한글 서비스인가요? 영문 서비스인가요?"
    - "특별히 사용하고 싶은 폰트가 있나요?"
    - (없으면) "무료로 사용 가능한 폰트를 추천해드릴게요"
-
-### 색상 팔레트 가이드
-
-| 분위기 | Primary 추천 | 특징 |
-|--------|-------------|------|
-| 모던/미니멀 | Blue (#3B82F6), Gray | 차분하고 신뢰감 |
-| 친근/캐주얼 | Purple (#8B5CF6), Teal | 친근하고 따뜻함 |
-| 전문적/신뢰 | Navy (#1E3A8A), Green | 안정적이고 믿음직 |
-| 활기찬/볼드 | Orange (#F97316), Pink | 에너지 넘치고 젊음 |
-| 프리미엄 | Black, Gold | 고급스럽고 세련됨 |
 
 ### 폰트 추천
 
@@ -62,9 +49,9 @@ Step 2.2: 디자인 시스템 정의
 ### 대화 원칙
 
 - 디자인 시스템 초안을 먼저 보여주고 수정 요청 받기
-- 색상은 실제 HEX 코드와 함께 보여주기
+- color-palette.md에서 결정된 색상을 그대로 사용
 - "이 정도면 MVP로 충분해요" 안내
-- 너무 많은 색상/폰트 추가 지양
+- 너무 많은 폰트 추가 지양
 
 ## 산출물
 
@@ -75,36 +62,14 @@ Step 2.2: 디자인 시스템 정의
 
 ## 메타데이터
 - Stage: 2
-- Step: 2.2 - 디자인 시스템
+- Step: 2.3 - 디자인 시스템
 - 생성일시: {현재 시간}
 - 상태: draft
 
 ## Color Palette
 
-### Primary Colors
-| Name | HEX | Usage |
-|------|-----|-------|
-| Primary | #{code} | 주요 버튼, 링크, 강조 |
-| Primary Light | #{code} | 호버 상태, 배경 |
-| Primary Dark | #{code} | 액티브 상태 |
-
-### Neutral Colors
-| Name | HEX | Usage |
-|------|-----|-------|
-| Gray 900 | #111827 | 제목, 본문 텍스트 |
-| Gray 700 | #374151 | 부제목 |
-| Gray 500 | #6B7280 | 보조 텍스트 |
-| Gray 300 | #D1D5DB | 테두리, 구분선 |
-| Gray 100 | #F3F4F6 | 배경 |
-| White | #FFFFFF | 카드 배경 |
-
-### Semantic Colors
-| Name | HEX | Usage |
-|------|-----|-------|
-| Success | #10B981 | 성공, 완료 |
-| Warning | #F59E0B | 주의, 경고 |
-| Error | #EF4444 | 에러, 삭제 |
-| Info | #3B82F6 | 정보, 안내 |
+> 색상은 Step 2.1 (color-palette.md)에서 결정된 값을 그대로 사용합니다.
+> color-palette.md를 참조하세요.
 
 ## Typography
 
@@ -160,8 +125,7 @@ Step 2.2: 디자인 시스템 정의
 
 ## 완료 조건
 
-- Primary 색상 팔레트 정의됨
-- Neutral/Semantic 색상 정의됨
+- color-palette.md의 색상이 포함됨
 - 타이포그래피 스케일 정의됨
 - 간격 시스템 정의됨
 - `design-system.md` 파일이 생성됨
@@ -206,4 +170,4 @@ SVG 기반 아이콘 라이브러리 선택 시 다음 레퍼런스를 참고하
 
 ## 다음 Step
 
--> Step 2.3: Component Spec (컴포넌트 명세)
+-> Step 2.4: Component Spec (컴포넌트 명세)

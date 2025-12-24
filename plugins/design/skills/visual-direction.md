@@ -1,6 +1,6 @@
 # Visual Direction
 
-Step 2.1: 비주얼 방향성 정의
+Step 2.2: 비주얼 방향성 정의
 
 ## 설명
 
@@ -8,11 +8,12 @@ Step 2.1: 비주얼 방향성 정의
 
 ## 트리거
 
-- `/design` 커맨드 실행 시 첫 번째로 실행
-- `outputs/stage-1/prd.md` 파일이 존재할 때
+- Step 2.1 (Color Palette) 완료 후 실행
+- `outputs/stage-2/color-palette.md` 파일이 존재할 때
 
 ## 입력
 
+- `outputs/stage-2/color-palette.md`
 - `outputs/stage-0/idea-brief.md`
 - `outputs/stage-1/prd.md`
 - `outputs/stage-1/screen-structure.md`
@@ -69,7 +70,7 @@ Step 2.1: 비주얼 방향성 정의
 
 ## 메타데이터
 - Stage: 2
-- Step: 2.1 - 비주얼 방향성
+- Step: 2.2 - 비주얼 방향성
 - 생성일시: {현재 시간}
 - 상태: draft
 
@@ -139,4 +140,4 @@ Step 2.1: 비주얼 방향성 정의
 
 ## 다음 Step
 
--> Step 2.2: Design System (디자인 시스템)
+-> Step 2.3: Design System (디자인 시스템)
