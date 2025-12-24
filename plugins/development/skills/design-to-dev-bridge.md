@@ -198,22 +198,32 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 ```
 디자인 시스템을 코드에 적용하는 방식을 선택해주세요:
 
-[1] Tailwind Config 확장
+[1] Tailwind v4 @theme 블록 (권장)
+   - globals.css에 @theme 블록으로 디자인 토큰 정의
+   - 유틸리티 클래스 자동 생성 (bg-*, text-*, rounded-* 등)
+   - 권장: Tailwind v4 프로젝트
+
+[2] Tailwind v3 Config 확장
    - tailwind.config.js에 디자인 토큰 추가
    - 유틸리티 클래스로 사용
-   - 권장: Tailwind 기반 프로젝트
+   - 권장: Tailwind v3 프로젝트
 
-[2] CSS 변수 사용
+[3] CSS 변수 사용
    - globals.css에 CSS 변수 정의
    - var(--color-primary) 형태로 사용
    - 권장: CSS-in-JS 또는 일반 CSS 프로젝트
+   - ⚠️ Tailwind v4에서는 @theme 없이 :root만 사용하면 유틸리티 클래스 미생성!
 
-[3] Theme Provider
+[4] Theme Provider
    - 컨텍스트로 테마 값 제공
    - 다크 모드 전환 용이
    - 권장: Chakra UI, MUI 등 사용 시
 
 어떤 방식을 선호하시나요?
+
+※ Tailwind 버전 확인: npm list tailwindcss
+   - v4.x.x → [1] @theme 블록 사용
+   - v3.x.x → [2] Config 확장 사용
 ```
 
 ### 4. 반응형 전략
@@ -344,8 +354,49 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 
 ### 디자인 토큰 변환 예시
 
+#### Tailwind v4 방식 (@theme 블록)
+
+> ⚠️ Tailwind v4에서는 `tailwind.config.ts` 대신 CSS의 `@theme` 블록을 사용합니다.
+
+```css
+/* globals.css */
+@import "tailwindcss";
+
+@theme {
+  /* Colors - --color-{name} 형식으로 정의 */
+  --color-primary: {값};
+  --color-primary-light: {값};
+  --color-primary-dark: {값};
+  --color-secondary: {값};
+
+  /* 상태 색상 */
+  --color-success: {값};
+  --color-success-light: {값};
+  --color-warning: {값};
+  --color-error: {값};
+
+  /* Typography */
+  --font-sans: '{폰트}', system-ui, sans-serif;
+
+  /* Custom radius */
+  --radius-button: {값};
+  --radius-card: {값};
+
+  /* Custom shadows */
+  --shadow-button: {값};
+}
+```
+
+**Tailwind v4 유틸리티 클래스 자동 생성:**
+- `--color-primary` → `bg-primary`, `text-primary`, `border-primary`
+- `--color-success-light` → `bg-success-light`, `text-success-light`
+- `--radius-button` → `rounded-button`
+- `--shadow-button` → `shadow-button`
+
+#### Tailwind v3 방식 (레거시)
+
 ```typescript
-// tailwind.config.ts 또는 theme 설정
+// tailwind.config.ts
 {
   colors: {
     primary: '{값}',
@@ -374,7 +425,9 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 
 ### Phase 1: 기반 구축
 1. 프로젝트 셋업 + UI 라이브러리 설치
-2. 디자인 토큰 설정 (tailwind.config / theme)
+2. 디자인 토큰 설정
+   - Tailwind v4: globals.css의 `@theme` 블록에 토큰 정의
+   - Tailwind v3: tailwind.config.ts에 토큰 정의
 3. 글로벌 스타일 적용
 
 ### Phase 2: 기본 컴포넌트
