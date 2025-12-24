@@ -389,6 +389,10 @@ export default function SignupPage() {
 
 ## 참조 문서
 
+- `skills/password-policy.md`: 비밀번호 정책 및 검증 구현
+  - 비밀번호 최소 요구사항 정의
+  - 강도 검증 유틸리티
+  - 비밀번호 강도 표시 UI 컴포넌트
 - `references/patterns/auth-patterns.md`: 기본 인증 패턴
 - `references/patterns/google-auth-patterns.md`: 구글 OAuth 인증 상세 가이드
   - Google Cloud Console 설정 방법
