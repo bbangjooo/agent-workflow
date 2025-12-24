@@ -185,6 +185,25 @@ Step 2.2: 디자인 시스템 정의
 - **대시보드/어드민**: Ant Design 또는 Material UI
 - **접근성 중시**: Chakra UI
 
+### 아이콘 라이브러리
+
+SVG 기반 아이콘 라이브러리 선택 시 다음 레퍼런스를 참고하세요:
+
+| 라이브러리 | 특징 | 적합한 프로젝트 |
+|-----------|------|----------------|
+| `references/icon-libraries/lucide.md` | shadcn/ui 기본, Feather 스타일 | Next.js, shadcn/ui 사용 시 |
+| `references/icon-libraries/heroicons.md` | Tailwind 팀 제작, Outline/Solid | Tailwind CSS 프로젝트 |
+| `references/icon-libraries/phosphor.md` | 6가지 weight, Duotone 지원 | 다양한 weight 필요 시 |
+| `references/icon-libraries/react-native-vector-icons.md` | 10,000+ 아이콘 | React Native 앱 |
+
+**플랫폼별 추천:**
+- **Web (shadcn/ui)**: Lucide
+- **Web (Tailwind CSS)**: Heroicons
+- **React Native**: react-native-vector-icons 또는 phosphor-react-native
+- **Flutter**: flutter_svg + phosphor_flutter
+
+자세한 가이드: `references/icon-libraries/overview.md`
+
 ## 다음 Step
 
 -> Step 2.3: Component Spec (컴포넌트 명세)
