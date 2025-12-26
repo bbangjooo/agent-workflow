@@ -283,7 +283,7 @@ Stage 3 진행 상황:
 | 3.6 | templates/env-templates.md, patterns/backend-clean-architecture.md |
 | 3.7 | patterns/api-patterns.md, patterns/backend-clean-architecture.md |
 | 3.8 | patterns/auth-patterns.md, patterns/google-auth-patterns.md |
-| 3.9 | patterns/state-patterns.md, patterns/error-handling.md, patterns/frontend-clean-architecture.md |
+| 3.9 | patterns/state-patterns.md, patterns/error-handling.md, patterns/frontend-clean-architecture.md, patterns/external-api-patterns.md |
 | 3.10 | (design-spec 참조), patterns/frontend-clean-architecture.md |
 | 3.11 | checklists/security-checklist.md |
 | 3.12 | checklists/performance-checklist.md, checklists/launch-checklist.md |
