@@ -77,8 +77,16 @@
       "description": "에러 해결 전문 워크플로우. 체계적인 원인 분석과 기존 코드 스타일을 유지하면서 문제를 해결합니다.",
       "source": "./plugins/debugging",
       "strict": false,
+      "commands": [
+        "./plugins/debugging/commands/debug.md",
+        "./plugins/debugging/commands/check-ui-spec.md"
+      ],
       "skills": [
         "./plugins/debugging"
+      ],
+      "agents": [
+        "./plugins/debugging/agents/debug-coach.md",
+        "./plugins/debugging/agents/ui-spec-checker.md"
       ]
     }
   ]
