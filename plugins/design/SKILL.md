@@ -74,9 +74,18 @@ Design Coach 에이전트가 대화 주도
 +-------------------------------------------------------------+
 |  Step 2.6: Design Spec (디자인 명세서)                        |
 |  스킬: design-spec                                           |
-|  산출물: 플랫폼별 분리 (최종)                                  |
+|  산출물: 플랫폼별 분리                                        |
 |    - Web: design-spec-web.md                                 |
 |    - Mobile: design-spec-mobile.md                           |
++-------------------------------------------------------------+
+|                           |                                  |
++-------------------------------------------------------------+
+|  Step 2.7: Pen Prototype (.pen 파일 프로토타입)              |
+|  스킬: pen-prototype                                         |
+|  도구: Pencil MCP                                            |
+|  산출물: 플랫폼별 분리 (최종)                                  |
+|    - Web: prototype-web.pen                                  |
+|    - Mobile: prototype-mobile.pen                            |
 +-------------------------------------------------------------+
 ```
 
@@ -100,7 +109,8 @@ Design Coach 에이전트가 대화 주도
 | design-system | 2.3 | 타이포, 간격 등 디자인 시스템 정의 |
 | component-spec | 2.4 | UI 컴포넌트 라이브러리 명세 (플랫폼별 분리) |
 | wireframes | 2.5 | 화면별 레이아웃 및 와이어프레임 (플랫폼별 분리) |
-| design-spec | 2.6 | 최종 디자인 핸드오프 문서 (플랫폼별 분리) |
+| design-spec | 2.6 | 디자인 핸드오프 문서 (플랫폼별 분리) |
+| pen-prototype | 2.7 | Pencil MCP로 .pen 파일 프로토타입 생성 (플랫폼별 분리) |
 
 ## 산출물
 
@@ -117,7 +127,8 @@ outputs/stage-2/
 ├── design-system.md
 ├── component-spec-web.md
 ├── wireframes-web.md
-└── design-spec-web.md       <- 최종
+├── design-spec-web.md
+└── prototype-web.pen        <- 최종 (Pencil MCP)
 ```
 
 #### Mobile 선택 시
@@ -129,7 +140,8 @@ outputs/stage-2/
 ├── design-system.md
 ├── component-spec-mobile.md
 ├── wireframes-mobile.md
-└── design-spec-mobile.md    <- 최종
+├── design-spec-mobile.md
+└── prototype-mobile.pen     <- 최종 (Pencil MCP)
 ```
 
 #### Both 선택 시
@@ -143,8 +155,10 @@ outputs/stage-2/
 ├── component-spec-mobile.md
 ├── wireframes-web.md
 ├── wireframes-mobile.md
-├── design-spec-web.md       <- 최종 (Web)
-└── design-spec-mobile.md    <- 최종 (Mobile)
+├── design-spec-web.md
+├── design-spec-mobile.md
+├── prototype-web.pen        <- 최종 (Pencil MCP)
+└── prototype-mobile.pen     <- 최종 (Pencil MCP)
 ```
 
 ### 산출물 상세
@@ -157,7 +171,8 @@ outputs/stage-2/
 | design-system.md | 2.3 | 디자인 시스템 |
 | component-spec-{platform}.md | 2.4 | 플랫폼별 컴포넌트 명세 |
 | wireframes-{platform}.md | 2.5 | 플랫폼별 와이어프레임 |
-| **design-spec-{platform}.md** | 2.6 | **플랫폼별 최종 디자인 명세서** |
+| design-spec-{platform}.md | 2.6 | 플랫폼별 디자인 명세서 |
+| **prototype-{platform}.pen** | 2.7 | **Pencil MCP 시각적 프로토타입** |
 
 ## 다음 단계
 
@@ -196,6 +211,7 @@ Stage 2 완료 후 `design-spec-{platform}.md`를 기반으로 **Stage 3: 개발
 
 1. **플랫폼별 명세 분리**: Web과 Mobile의 디자인 패턴 차이를 명확히 구분
 2. **텍스트 기반 명세**: Figma/Sketch 없이도 진행 가능
-3. **AI 도구 연계**: v0, Claude Artifacts로 즉시 프로토타입 가능한 형태로 산출
-4. **MVP 집중**: 최소한의 디자인으로 빠른 실행
-5. **템플릿 제공**: 각 산출물에 복사해서 쓸 수 있는 구체적인 값 포함
+3. **Pencil MCP 연계**: 디자인 명세 완료 후 자동으로 .pen 파일 프로토타입 생성
+4. **AI 도구 연계**: v0, Claude Artifacts로 즉시 프로토타입 가능한 형태로 산출
+5. **MVP 집중**: 최소한의 디자인으로 빠른 실행
+6. **템플릿 제공**: 각 산출물에 복사해서 쓸 수 있는 구체적인 값 포함
