@@ -88,6 +88,19 @@
 |    - Web: outputs/stage-2/design-spec-web.md                 |
 |    - Mobile: outputs/stage-2/design-spec-mobile.md           |
 |    - Both: 두 파일 모두 생성                                  |
+|  완료 조건: 사용자 승인                                      |
++-------------------------------------------------------------+
+|                           |                                  |
++-------------------------------------------------------------+
+|  Step 2.7: Pen Prototype (.pen 파일 프로토타입)              |
+|  -----------------------------------------------------------  |
+|  스킬: pen-prototype                                         |
+|  입력: 모든 이전 산출물 (design-spec 포함)                   |
+|  산출물: 플랫폼에 따라 분기                                   |
+|    - Web: outputs/stage-2/prototype-web.pen                  |
+|    - Mobile: outputs/stage-2/prototype-mobile.pen            |
+|    - Both: 두 파일 모두 생성                                  |
+|  도구: Pencil MCP (batch_design, set_variables 등)           |
 |  완료 조건: 사용자 승인, Stage 2 완료                        |
 +-------------------------------------------------------------+
 ```
@@ -103,7 +116,8 @@ outputs/stage-2/
 ├── design-system.md
 ├── component-spec-web.md
 ├── wireframes-web.md
-└── design-spec-web.md
+├── design-spec-web.md
+└── prototype-web.pen        # Pencil MCP로 생성
 ```
 
 #### Mobile 선택 시
@@ -115,7 +129,8 @@ outputs/stage-2/
 ├── design-system.md
 ├── component-spec-mobile.md
 ├── wireframes-mobile.md
-└── design-spec-mobile.md
+├── design-spec-mobile.md
+└── prototype-mobile.pen     # Pencil MCP로 생성
 ```
 
 #### Both 선택 시
@@ -130,12 +145,14 @@ outputs/stage-2/
 ├── wireframes-web.md
 ├── wireframes-mobile.md
 ├── design-spec-web.md
-└── design-spec-mobile.md
+├── design-spec-mobile.md
+├── prototype-web.pen        # Pencil MCP로 생성
+└── prototype-mobile.pen     # Pencil MCP로 생성
 ```
 
 ### Step 전환 규칙
 
-1. **순차 실행**: Step은 반드시 2.0 -> 2.1 -> 2.2 -> 2.3 -> 2.4 -> 2.5 -> 2.6 순서로 진행
+1. **순차 실행**: Step은 반드시 2.0 -> 2.1 -> 2.2 -> 2.3 -> 2.4 -> 2.5 -> 2.6 -> 2.7 순서로 진행
 2. **완료 확인**: 각 Step의 완료 조건이 충족되어야 다음 Step으로 진행
 3. **산출물 생성**: 각 Step 완료 시 해당 산출물 파일 생성 필수
 4. **플랫폼 인식**: Step 2.4부터는 platform-selection.md를 참조하여 해당 플랫폼에 맞는 산출물 생성
@@ -238,6 +255,7 @@ Stage 2 진행 상황 (플랫폼: Web):
 +-- Step 2.4: [ ] 대기 (component-spec-web.md 생성 예정)
 +-- Step 2.5: [ ] 대기 (wireframes-web.md 생성 예정)
 +-- Step 2.6: [ ] 대기 (design-spec-web.md 생성 예정)
++-- Step 2.7: [ ] 대기 (prototype-web.pen 생성 예정 - Pencil MCP)
 ```
 
 ```
@@ -251,6 +269,9 @@ Stage 2 진행 상황 (플랫폼: Both):
     +-- Mobile: [ ] component-spec-mobile.md 대기
 +-- Step 2.5: [ ] 대기
 +-- Step 2.6: [ ] 대기
++-- Step 2.7: [ ] 대기 (Pencil MCP)
+    +-- Web: [ ] prototype-web.pen 생성 예정
+    +-- Mobile: [ ] prototype-mobile.pen 생성 예정
 ```
 
 ---
@@ -266,6 +287,7 @@ Stage 2 진행 상황 (플랫폼: Both):
 | component-spec | 2.4 | UI 컴포넌트 라이브러리 명세 (플랫폼별 분리) |
 | wireframes | 2.5 | 화면별 레이아웃 및 와이어프레임 (플랫폼별 분리) |
 | design-spec | 2.6 | 최종 디자인 핸드오프 문서 (플랫폼별 분리) |
+| pen-prototype | 2.7 | Pencil MCP로 .pen 파일 프로토타입 생성 (플랫폼별 분리) |
 
 ---
 
@@ -273,8 +295,20 @@ Stage 2 진행 상황 (플랫폼: Both):
 
 각 Step 완료 후 필요시 다음 도구 활용을 안내합니다:
 
+- **Pencil MCP**: Step 2.7에서 .pen 파일로 실제 시각적 프로토타입 생성 (자동 실행)
 - **v0.dev**: 컴포넌트와 와이어프레임을 React 코드로 즉시 변환
 - **Claude Artifacts**: HTML/CSS 프로토타입 생성
 - **Midjourney/DALL-E**: 로고, 아이콘, 일러스트레이션 생성
+
+### Pencil MCP 도구 사용 (Step 2.7)
+
+Step 2.7에서는 다음 Pencil MCP 도구들을 사용하여 .pen 파일 프로토타입을 생성합니다:
+
+1. **get_style_guide_tags / get_style_guide**: 디자인 영감 및 스타일 가이드 획득
+2. **get_guidelines**: 디자인 규칙 및 패턴 확인
+3. **open_document**: 새 .pen 파일 생성
+4. **set_variables**: 색상, 타이포그래피 등 디자인 토큰 설정
+5. **batch_design**: 컴포넌트 및 화면 레이아웃 생성
+6. **get_screenshot**: 생성된 디자인 시각적 검증
 
 사용자가 원하면 각 산출물을 이 도구들에 복사해서 쓸 수 있는 프롬프트 형태로도 제공합니다.

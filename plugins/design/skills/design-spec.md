@@ -587,7 +587,8 @@ Create a {화면명} screen for React Native with:
 - **Mobile**: `design-spec-mobile.md` 파일 생성
 - **Both**: 두 파일 모두 생성
 
-## Stage 2 완료
+## 다음 Step
 
-Design Spec이 완료되면 Stage 2가 종료됩니다.
-다음 Stage는 **Stage 3: Development (개발)**입니다.
+-> Step 2.7: Pen Prototype (.pen 파일 프로토타입 생성)
+
+Design Spec이 완료되면 Pencil MCP를 사용하여 실제 시각적 프로토타입을 .pen 파일로 생성합니다.
