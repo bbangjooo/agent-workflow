@@ -1,10 +1,15 @@
 # AI 기반 제품 개발 워크플로우
 
-1인 창업자를 위한 End-to-End AI 지원 제품 개발 플랫폼입니다. 아이디어 구체화부터 배포까지 전 과정을 Claude Code 플러그인을 통해 단계별로 안내합니다.
+1인 창업자를 위한 End-to-End AI 지원 제품 개발 플랫폼입니다. 아이디어 구체화부터 배포까지 전 과정을 Claude Code 플러그인을 통해 단계별로 안내하며, 무한 이터레이션을 통해 제품을 지속적으로 발전시킬 수 있습니다.
 
 ```
-아이디어 → 기획 → 디자인 → 개발 → 배포
-(Stage 0)  (Stage 1)  (Stage 2)  (Stage 3)  (Stage 4)
+    ┌─────────────────────────────────────────────────────────┐
+    │                                                         │
+    ▼                                                         │
+아이디어 → 기획 → 디자인 → 개발 → 배포 → 피드백/회고 ─────────┘
+(Stage 0)  (Stage 1)  (Stage 2)  (Stage 3)  (Stage 4)    ↓
+                                                    이터레이션
+                                                  (이전 단계로)
 ```
 
 ## 설치 방법
@@ -27,6 +32,17 @@ claude plugin marketplace add https://github.com/bbangjooo/agent-workflow.git
 | `/develop` | development | 디자인 스펙 기반 MVP 코드 구현 |
 | `/deploy` | deployment | 무료 호스팅에 자동 배포 |
 
+### 피드백 & 이터레이션
+
+| 명령어 | 플러그인 | 설명 |
+|--------|----------|------|
+| `/reflect` | feedback | 각 Stage 완료 후 회고 - 학습점과 개선점 수집 |
+| `/decide` | feedback | 중요 의사결정 기록 및 추적 |
+| `/review` | feedback | Stage 간 산출물 정합성 검토 |
+| `/iterate {stage}` | iteration | 이전 Stage로 돌아가 개선 |
+| `/next-version` | iteration | 현재 버전 완료 후 새 버전(v2) 시작 |
+| `/new-product` | iteration | 완전히 새로운 제품 시작 |
+
 ### 보조 도구
 
 | 명령어 | 플러그인 | 설명 |
@@ -48,6 +64,13 @@ claude plugin marketplace add https://github.com/bbangjooo/agent-workflow.git
 **단계별 실행**:
 ```
 /ideate → /plan → /design → /develop → /deploy
+```
+
+**피드백 루프 활용**:
+```
+/reflect          # 완료된 Stage 회고
+/iterate planning # 기획 단계로 돌아가 개선
+/next-version     # v2 시작
 ```
 
 ## 라이선스

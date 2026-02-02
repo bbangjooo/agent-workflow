@@ -1,0 +1,16 @@
+{
+  "name": "iteration",
+  "description": "무한 이터레이션을 위한 버전 관리 플러그인. 이전 Stage로 돌아가 개선하거나, 새 버전을 시작하거나, 완전히 새로운 제품을 시작할 수 있습니다.",
+  "version": "1.0.0",
+  "commands": [
+    "./commands/iterate.md",
+    "./commands/next-version.md",
+    "./commands/new-product.md"
+  ],
+  "skills": [
+    "./"
+  ],
+  "agents": [
+    "./agents/iteration-coach.md"
+  ]
+}

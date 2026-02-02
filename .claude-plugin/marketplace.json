@@ -88,6 +88,40 @@
         "./plugins/debugging/agents/debug-coach.md",
         "./plugins/debugging/agents/ui-spec-checker.md"
       ]
+    },
+    {
+      "name": "feedback",
+      "description": "무한 이터레이션을 위한 피드백 수집 플러그인. 각 Stage 완료 후 회고를 통해 학습점과 개선점을 도출하고, 의사결정을 기록합니다.",
+      "source": "./plugins/feedback",
+      "strict": false,
+      "commands": [
+        "./plugins/feedback/commands/reflect.md",
+        "./plugins/feedback/commands/decide.md",
+        "./plugins/feedback/commands/review.md"
+      ],
+      "skills": [
+        "./plugins/feedback"
+      ],
+      "agents": [
+        "./plugins/feedback/agents/feedback-coach.md"
+      ]
+    },
+    {
+      "name": "iteration",
+      "description": "무한 이터레이션을 위한 버전 관리 플러그인. 이전 Stage로 돌아가 개선하거나, 새 버전을 시작하거나, 완전히 새로운 제품을 시작할 수 있습니다.",
+      "source": "./plugins/iteration",
+      "strict": false,
+      "commands": [
+        "./plugins/iteration/commands/iterate.md",
+        "./plugins/iteration/commands/next-version.md",
+        "./plugins/iteration/commands/new-product.md"
+      ],
+      "skills": [
+        "./plugins/iteration"
+      ],
+      "agents": [
+        "./plugins/iteration/agents/iteration-coach.md"
+      ]
     }
   ]
 }
