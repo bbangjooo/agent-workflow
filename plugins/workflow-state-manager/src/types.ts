@@ -7,6 +7,32 @@
 
 export type PhaseStatus = 'pending' | 'in_progress' | 'completed' | 'skipped';
 export type StepStatus = 'pending' | 'in_progress' | 'completed' | 'skipped';
+export type GoalStatus = 'active' | 'achieved' | 'abandoned' | 'revised';
+
+/**
+ * Represents a goal to track progress against
+ */
+export interface Goal {
+  id: string;                          // Unique goal ID (e.g., "goal-1")
+  description: string;                 // Goal description
+  successIndicators: string[];         // Measurable success criteria
+  currentProgress: number;             // 0-100 percentage
+  progressHistory: ProgressEntry[];    // History of progress updates
+  status: GoalStatus;
+  createdAt: string;                   // ISO 8601 timestamp
+  achievedAt?: string;                 // ISO 8601 timestamp (when achieved)
+}
+
+/**
+ * Records a progress update for a goal
+ */
+export interface ProgressEntry {
+  timestamp: string;                   // ISO 8601 timestamp
+  progress: number;                    // Progress value at this point (0-100)
+  reason: string;                      // Why progress changed
+  iterationId?: string;                // Related iteration (if any)
+  phase?: string;                      // Phase where progress was made
+}
 
 export interface Step {
   id: string;
@@ -49,6 +75,10 @@ export interface WorkflowState {
   decisions: Decision[];               // Decision log
   archivedVersions: string[];          // List of archived version paths
   feedbackSummary?: FeedbackSummary;   // Aggregated feedback from all stages
+
+  // Goal-Aligned Iteration (added for divergence prevention)
+  goals: Goal[];                       // Goals to track progress against
+  consecutiveNoProgress: number;       // Counter for divergence detection
 }
 
 /**
