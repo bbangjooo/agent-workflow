@@ -27,7 +27,8 @@ Stage 회고 커맨드 - 학습과 개선점을 수집합니다
 
 1. `gather-learnings.md` - 학습점 수집
 2. `identify-improvements.md` - 개선점 도출
-3. `suggest-next-action.md` - 다음 액션 제안
+3. `validate-goal-alignment.md` - 목표 정렬 검증 (NEW)
+4. `suggest-next-action.md` - 다음 액션 제안
 
 ## Agent
 
@@ -100,7 +101,31 @@ Stage 회고 커맨드 - 학습과 개선점을 수집합니다
 
 ---
 
-## 연결된 의사결정
+## 6. 목표 진척도 (NEW)
+
+| 목표 | 이전 | 현재 | 변화 | 상태 |
+|------|------|------|------|------|
+| {goal_1_description} | {prev}% | {curr}% | {delta} | {status} |
+| {goal_2_description} | {prev}% | {curr}% | {delta} | {status} |
+
+### 이번 Stage에서의 목표 기여
+
+- ✅ **목표 정렬된 개선**: {count}개
+  - {improvement_1} → 목표 '{goal}'에 +{delta}% 기여
+- ⚠️ **목표와 무관한 개선**: {count}개
+  - {improvement_2} → 보류/v2 이관 권장
+
+### 발산 상태
+
+- 연속 진척 없음 횟수: {consecutive_no_progress}회
+- 발산 경고: {있음/없음}
+
+{발산 경고가 있으면}
+> 🚨 **주의**: 최근 이터레이션에서 목표 진척이 없습니다. 목표 재검토를 권장합니다.
+
+---
+
+## 7. 연결된 의사결정
 
 - {관련 decision-log 항목 참조}
 ```
