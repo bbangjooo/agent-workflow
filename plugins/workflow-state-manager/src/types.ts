@@ -42,6 +42,71 @@ export interface WorkflowState {
   currentPhaseId?: string; // Currently active phase
   phases: Phase[];
   metadata?: Record<string, unknown>;  // Workflow-specific metadata
+
+  // Iteration & Version Management (added for feedback loop)
+  productVersion: number;              // Current product version (1, 2, 3...)
+  iterations: Iteration[];             // History of iterations within this version
+  decisions: Decision[];               // Decision log
+  archivedVersions: string[];          // List of archived version paths
+  feedbackSummary?: FeedbackSummary;   // Aggregated feedback from all stages
+}
+
+/**
+ * Represents an iteration within a version - going back to a previous stage
+ */
+export interface Iteration {
+  id: string;                          // Unique iteration ID
+  fromPhase: string;                   // Phase where iteration was triggered
+  toPhase: string;                     // Phase to return to
+  reason: string;                      // Why this iteration happened
+  timestamp: string;                   // ISO 8601 timestamp
+  restorePoint?: string;               // Path to restore point (if created)
+  changes: string[];                   // What was changed in this iteration
+  completedAt?: string;                // When this iteration cycle completed
+}
+
+/**
+ * Records an important decision made during the workflow
+ */
+export interface Decision {
+  id: string;                          // Unique decision ID
+  phase: string;                       // Phase where decision was made
+  title: string;                       // Brief decision title
+  context: string;                     // Situation that led to this decision
+  options: DecisionOption[];           // Options that were considered
+  chosenOptionId: string;              // ID of the chosen option
+  rationale: string;                   // Why this option was chosen
+  expectedOutcome: string;             // What outcome is expected
+  timestamp: string;                   // ISO 8601 timestamp
+  actualOutcome?: string;              // What actually happened (filled later)
+  tags?: string[];                     // Categorization tags
+}
+
+export interface DecisionOption {
+  id: string;
+  description: string;
+  pros?: string[];
+  cons?: string[];
+}
+
+/**
+ * Aggregated feedback summary across all stages
+ */
+export interface FeedbackSummary {
+  lastUpdated: string;                 // ISO 8601 timestamp
+  totalReflections: number;            // Number of reflections recorded
+  keyLearnings: string[];              // Top learnings across all stages
+  recurringIssues: string[];           // Issues that appeared multiple times
+  suggestedImprovements: SuggestedImprovement[];
+}
+
+export interface SuggestedImprovement {
+  id: string;
+  description: string;
+  affectedStages: string[];
+  priority: 'high' | 'medium' | 'low';
+  status: 'pending' | 'in_progress' | 'completed' | 'deferred';
+  targetVersion?: number;              // Which version to implement this
 }
 
 export interface WorkflowConfig {

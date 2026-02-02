@@ -1,0 +1,16 @@
+{
+  "name": "feedback",
+  "description": "제품 개발 과정에서 피드백을 수집하고 의사결정을 기록하는 플러그인. 각 Stage 완료 후 회고를 통해 학습점과 개선점을 도출하고, 다음 이터레이션을 위한 인사이트를 축적합니다.",
+  "version": "1.0.0",
+  "commands": [
+    "./commands/reflect.md",
+    "./commands/decide.md",
+    "./commands/review.md"
+  ],
+  "skills": [
+    "./"
+  ],
+  "agents": [
+    "./agents/feedback-coach.md"
+  ]
+}
