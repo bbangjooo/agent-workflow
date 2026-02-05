@@ -97,10 +97,19 @@
       "commands": [
         "./plugins/feedback/commands/reflect.md",
         "./plugins/feedback/commands/decide.md",
-        "./plugins/feedback/commands/review.md"
+        "./plugins/feedback/commands/review.md",
+        "./plugins/feedback/commands/goal.md"
       ],
       "skills": [
-        "./plugins/feedback"
+        "./plugins/feedback",
+        "./plugins/feedback/skills/cross-stage-review.md",
+        "./plugins/feedback/skills/current-action-alignment.md",
+        "./plugins/feedback/skills/gather-learnings.md",
+        "./plugins/feedback/skills/goal-status-display.md",
+        "./plugins/feedback/skills/identify-improvements.md",
+        "./plugins/feedback/skills/record-decision.md",
+        "./plugins/feedback/skills/suggest-next-action.md",
+        "./plugins/feedback/skills/validate-goal-alignment.md"
       ],
       "agents": [
         "./plugins/feedback/agents/feedback-coach.md"
