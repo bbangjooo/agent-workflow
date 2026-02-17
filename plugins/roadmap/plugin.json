@@ -1,0 +1,17 @@
+{
+  "name": "roadmap",
+  "description": "프로젝트 목표를 정의하고, ROADMAP을 생성하며, 현재 진행 상황을 추적하고, 목표 정렬을 지속적으로 검증하는 플러그인",
+  "version": "1.0.0",
+  "commands": [
+    "./commands/roadmap.md",
+    "./commands/where.md",
+    "./commands/align.md",
+    "./commands/next.md"
+  ],
+  "skills": [
+    "./"
+  ],
+  "agents": [
+    "./agents/roadmap-coach.md"
+  ]
+}
