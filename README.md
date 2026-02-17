@@ -45,6 +45,15 @@ claude plugin marketplace add https://github.com/bbangjooo/agent-workflow.git
 | `/next-version` | iteration | 현재 버전 완료 후 새 버전(v2) 시작 |
 | `/new-product` | iteration | 완전히 새로운 제품 시작 |
 
+### 목표 & 로드맵
+
+| 명령어 | 플러그인 | 설명 |
+|--------|----------|------|
+| `/roadmap` | roadmap | 프로젝트 목표 정의 및 ROADMAP 생성 |
+| `/where` | roadmap | 현재 진행 상황 추적 (코드/커밋/산출물 기반) |
+| `/align` | roadmap | 목표 정렬 양방향 검증 |
+| `/next` | roadmap | 목표 + 진행도 + 다음 액션 통합 확인 |
+
 ### 보조 도구
 
 | 명령어 | 플러그인 | 설명 |

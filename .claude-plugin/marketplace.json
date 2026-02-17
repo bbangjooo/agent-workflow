@@ -131,6 +131,24 @@
       "agents": [
         "./plugins/iteration/agents/iteration-coach.md"
       ]
+    },
+    {
+      "name": "roadmap",
+      "description": "프로젝트 목표를 정의하고, ROADMAP을 생성하며, 현재 진행 상황을 추적하고, 목표 정렬을 지속적으로 검증하는 플러그인",
+      "source": "./plugins/roadmap",
+      "strict": false,
+      "commands": [
+        "./plugins/roadmap/commands/roadmap.md",
+        "./plugins/roadmap/commands/where.md",
+        "./plugins/roadmap/commands/align.md",
+        "./plugins/roadmap/commands/next.md"
+      ],
+      "skills": [
+        "./plugins/roadmap"
+      ],
+      "agents": [
+        "./plugins/roadmap/agents/roadmap-coach.md"
+      ]
     }
   ]
 }
