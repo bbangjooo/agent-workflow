@@ -40,7 +40,11 @@ Stage를 시작할 때 수행하는 작업:
 2. 시작 메시지 출력:
    "🎯 Stage {N}: {이름}을 시작합니다."
 
-3. 해당 Stage 커맨드 호출:
+3. [Stage 0 전용] 사용자에게 어떤 제품을 만들고 싶은지 질문
+   - 사용자의 답변을 받은 후에만 /ideate 호출
+   - 사용자 응답 없이 /ideate를 자동 호출하는 것은 금지
+
+4. 해당 Stage 커맨드 호출:
    /ideate, /plan, /design, /develop, /deploy
 ```
 
