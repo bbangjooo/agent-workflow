@@ -135,12 +135,12 @@
 
 ## Prefix Trigger
 
-사용자 메시지가 `orch::` 로 시작하면, 접두사를 제거한 나머지 텍스트를 프롬프트로 하여 `orchestrator:project-orchestrator` subagent_type의 Agent를 즉시 호출합니다. 다른 작업 없이 바로 오케스트레이터를 실행합니다.
+사용자 메시지가 `orch::` 로 시작하면, 접두사를 제거한 나머지 텍스트를 프롬프트로 하여 `orchestrator:build-project` 스킬을 즉시 호출합니다. 다른 작업 없이 바로 스킬을 실행합니다.
 
 ```
 예시:
   orch:: 할일 관리 앱 만들어줘
-  → "할일 관리 앱 만들어줘" 를 프롬프트로 project-orchestrator 에이전트 호출
+  → "할일 관리 앱 만들어줘" 를 프롬프트로 orchestrator:build-project 스킬 호출
 ```
 
 ## 의존성
