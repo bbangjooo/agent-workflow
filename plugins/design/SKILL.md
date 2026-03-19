@@ -39,59 +39,54 @@ Design Coach 에이전트가 대화 주도
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.1: Reference Collection (레퍼런스 수집)    ★ NEW     |
+|  Step 2.1: Screen Analysis (기획 분석)             ★ NEW     |
+|  스킬: screen-analysis                                       |
+|  산출물: screen-analysis.md                                  |
+|  핵심: 화면별 목적/유저상황/정보위계/핵심액션 분석              |
++-------------------------------------------------------------+
+|                           |                                  |
++-------------------------------------------------------------+
+|  Step 2.2: Reference Analysis (레퍼런스 분석)                 |
 |  스킬: reference-collection                                  |
 |  산출물: references.md                                       |
-|  핵심: 실제 운영 서비스에서 디자인 요소 분석                    |
+|  핵심: 패턴/UX라이팅/컴포넌트 분석 + 비주얼 방향성 도출        |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.2: Theme Analysis (테마 분석)              ★ NEW     |
-|  스킬: theme-analysis                                        |
-|  산출물: theme-tokens.md (globals.css 포함)                  |
-|  핵심: 시각 스타일 → 구체적 CSS 값 (ShadCN 토큰 호환)         |
+|  Step 2.3: Wireframes (와이어프레임)               ★ 순서 UP |
+|  스킬: wireframes                                            |
+|  산출물: 플랫폼별 분리                                        |
+|  핵심: 레퍼런스 바탕으로 구조 먼저 확정                        |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.3: Visual Direction (비주얼 방향성)                   |
-|  스킬: visual-direction                                      |
-|  산출물: visual-direction.md (공통)                          |
-+-------------------------------------------------------------+
-|                           |                                  |
-+-------------------------------------------------------------+
-|  Step 2.4: Design System (디자인 시스템)                      |
-|  스킬: design-system                                         |
-|  산출물: design-system.md (globals.css 확정)                 |
+|  Step 2.4: Design Tokens (디자인 토큰)             ★ 통합    |
+|  스킬: design-tokens                                         |
+|  산출물: design-tokens.md (globals.css 포함)                 |
+|  핵심: 3단계 토큰 + 시맨틱 네이밍 + WCAG 접근성 검증          |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
 |  Step 2.5: Component Spec (공통 컴포넌트 명세)                |
 |  스킬: component-spec                                        |
 |  산출물: 플랫폼별 분리                                        |
-|  핵심: 공통 컴포넌트 먼저, 페이지는 이것으로 조립               |
+|  핵심: 확정된 구조 + 토큰으로 컴포넌트화                       |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.6: Wireframes (와이어프레임)                          |
-|  스킬: wireframes                                            |
-|  산출물: 플랫폼별 분리                                        |
-+-------------------------------------------------------------+
-|                           |                                  |
-+-------------------------------------------------------------+
-|  Step 2.7: Design Spec (디자인 명세서)                        |
+|  Step 2.6: Design Spec (디자인 명세서)                        |
 |  스킬: design-spec                                           |
 |  산출물: 플랫폼별 분리                                        |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.8: Animation Spec (애니메이션 명세)        ★ NEW     |
+|  Step 2.7: Animation Spec (애니메이션 명세)                   |
 |  스킬: animation-spec                                        |
 |  산출물: animation-spec.md                                   |
-|  핵심: 정적 디자인에 생동감을 더하는 마지막 터치               |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Step 2.9: Pen Prototype (.pen 파일 프로토타입)              |
+|  Step 2.8: Pen Prototype (.pen 파일 프로토타입)              |
 |  스킬: pen-prototype                                         |
 |  도구: Pencil MCP                                            |
 |  산출물: 플랫폼별 분리 (최종)                                  |
@@ -113,15 +108,14 @@ Design Coach 에이전트가 대화 주도
 | 스킬 | Step | 설명 |
 |------|------|------|
 | platform-selection | 2.0 | 타겟 플랫폼 선택 (Web/Mobile/Both) |
-| reference-collection | 2.1 | 실제 서비스 레퍼런스 수집 + 4축 분석 ★ |
-| theme-analysis | 2.2 | 레퍼런스 → CSS 토큰 추출 (ShadCN 호환 globals.css) ★ |
-| visual-direction | 2.3 | 브랜드 톤, 분위기, 참고 서비스 확정 |
-| design-system | 2.4 | globals.css 확정, 타이포/간격/보더/그림자 통합 |
+| screen-analysis | 2.1 | 화면별 목적/유저상황/정보위계 분석 ★ |
+| reference-collection | 2.2 | 레퍼런스 수집 + 패턴/UX/비주얼 방향성 분석 |
+| wireframes | 2.3 | 레퍼런스 기반 화면 구조 확정 (순서 UP) |
+| design-tokens | 2.4 | 3단계 토큰 + WCAG 검증 + globals.css ★ |
 | component-spec | 2.5 | 공통 UI 컴포넌트 라이브러리 명세 (플랫폼별 분리) |
-| wireframes | 2.6 | 화면별 레이아웃 및 와이어프레임 (플랫폼별 분리) |
-| design-spec | 2.7 | 디자인 핸드오프 문서 (플랫폼별 분리) |
-| animation-spec | 2.8 | 애니메이션/마이크로인터랙션 명세 ★ |
-| pen-prototype | 2.9 | Pencil MCP로 .pen 파일 프로토타입 생성 (플랫폼별 분리) |
+| design-spec | 2.6 | 디자인 핸드오프 문서 (플랫폼별 분리) |
+| animation-spec | 2.7 | 애니메이션/마이크로인터랙션 명세 |
+| pen-prototype | 2.8 | Pencil MCP로 .pen 파일 프로토타입 생성 (플랫폼별 분리) |
 
 ## 산출물
 
@@ -132,31 +126,29 @@ Design Coach 에이전트가 대화 주도
 #### Web 선택 시
 ```
 outputs/stage-2/
-├── platform-selection.md
-├── references.md              ★ NEW
-├── theme-tokens.md            ★ NEW (globals.css 포함)
-├── visual-direction.md
-├── design-system.md
-├── component-spec-web.md
-├── wireframes-web.md
-├── design-spec-web.md
-├── animation-spec.md          ★ NEW
-└── prototype-web.pen
+├── platform-selection.md       (2.0)
+├── screen-analysis.md          (2.1) ★ NEW
+├── references.md               (2.2)
+├── wireframes-web.md           (2.3) ← 순서 올라옴
+├── design-tokens.md            (2.4) ★ globals.css + WCAG 검증
+├── component-spec-web.md       (2.5)
+├── design-spec-web.md          (2.6)
+├── animation-spec.md           (2.7)
+└── prototype-web.pen           (2.8)
 ```
 
 #### Mobile 선택 시
 ```
 outputs/stage-2/
-├── platform-selection.md
-├── references.md              ★ NEW
-├── theme-tokens.md            ★ NEW
-├── visual-direction.md
-├── design-system.md
-├── component-spec-mobile.md
-├── wireframes-mobile.md
-├── design-spec-mobile.md
-├── animation-spec.md          ★ NEW
-└── prototype-mobile.pen
+├── platform-selection.md       (2.0)
+├── screen-analysis.md          (2.1) ★ NEW
+├── references.md               (2.2)
+├── wireframes-mobile.md        (2.3)
+├── design-tokens.md            (2.4) ★ globals.css + WCAG 검증
+├── component-spec-mobile.md    (2.5)
+├── design-spec-mobile.md       (2.6)
+├── animation-spec.md           (2.7)
+└── prototype-mobile.pen        (2.8)
 ```
 
 ### 산출물 상세
@@ -164,15 +156,14 @@ outputs/stage-2/
 | 파일명 | Step | 설명 |
 |--------|------|------|
 | platform-selection.md | 2.0 | 플랫폼 선택 결과 |
-| references.md | 2.1 | 레퍼런스 수집 + 4축 분석 ★ |
-| theme-tokens.md | 2.2 | CSS 토큰 + globals.css ★ |
-| visual-direction.md | 2.3 | 비주얼 방향성 |
-| design-system.md | 2.4 | 디자인 시스템 (globals.css 확정) |
+| screen-analysis.md | 2.1 | 화면별 목적/유저상황/정보위계 ★ |
+| references.md | 2.2 | 레퍼런스 + 패턴 + 비주얼 방향성 |
+| wireframes-{platform}.md | 2.3 | 플랫폼별 와이어프레임 (구조 확정) |
+| design-tokens.md | 2.4 | 3단계 토큰 + WCAG 검증 + globals.css ★ |
 | component-spec-{platform}.md | 2.5 | 플랫폼별 공통 컴포넌트 명세 |
-| wireframes-{platform}.md | 2.6 | 플랫폼별 와이어프레임 |
-| design-spec-{platform}.md | 2.7 | 플랫폼별 디자인 명세서 |
-| animation-spec.md | 2.8 | 애니메이션/인터랙션 명세 ★ |
-| **prototype-{platform}.pen** | 2.9 | **Pencil MCP 시각적 프로토타입** |
+| design-spec-{platform}.md | 2.6 | 플랫폼별 디자인 명세서 |
+| animation-spec.md | 2.7 | 애니메이션/인터랙션 명세 |
+| **prototype-{platform}.pen** | 2.8 | **Pencil MCP 시각적 프로토타입** |
 
 ## 다음 단계
 
@@ -214,11 +205,11 @@ Stage 2 완료 후 `design-spec-{platform}.md`를 기반으로 **Stage 3: 개발
 
 ## 1인 창업자를 위한 핵심 포인트
 
-1. **레퍼런스 기반**: 막연한 지시 대신 실제 서비스를 분석하여 방향 설정
-2. **CSS 토큰 출력**: 시각 스타일을 구체적 숫자(ShadCN 호환 globals.css)로 변환
-3. **공통 컴포넌트 우선**: 테마 → 컴포넌트 → 페이지 순서 엄격 준수
-4. **애니메이션 포함**: Framer Motion/GSAP 기반 인터랙션 명세
-5. **플랫폼별 분리**: Web과 Mobile의 디자인 패턴 차이를 명확히 구분
-6. **Pencil MCP 연계**: 디자인 명세 완료 후 .pen 파일 프로토타입 생성
-7. **AI 도구 연계**: v0, Claude Artifacts, TweakCN으로 즉시 프로토타입 가능
-8. **MVP 집중**: 최소한의 디자인으로 빠른 실행
+1. **기획 분석 먼저**: 화면 목적/유저 상황/정보 위계를 먼저 정리
+2. **레퍼런스 기반**: 실제 서비스의 패턴/UX/컴포넌트 분석
+3. **구조 먼저, 톤 나중에**: 와이어프레임 확정 후 디자인 토큰 (벽지보다 설계도 먼저)
+4. **3단계 토큰 + 접근성**: Base→Semantic→Component 토큰, WCAG AA 명암비 필수 검증
+5. **시맨틱 네이밍**: Gray-900 대신 `text-default` 같은 용도 기반 이름
+6. **공통 컴포넌트 우선**: 테마 → 컴포넌트 → 페이지 순서 엄격 준수
+7. **애니메이션 포함**: Framer Motion/GSAP 기반 인터랙션 명세
+8. **플랫폼별 분리**: Web과 Mobile 각각의 디자인 패턴 구분

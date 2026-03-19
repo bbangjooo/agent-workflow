@@ -1,6 +1,6 @@
-# Reference Collection
+# Reference Analysis
 
-Step 2.1: 레퍼런스 수집 및 분석
+Step 2.2: 레퍼런스 수집 및 분석
 
 ## 설명
 
@@ -11,10 +11,11 @@ Step 2.1: 레퍼런스 수집 및 분석
 
 ## 트리거
 
-- Step 2.0 (Platform Selection) 완료 후
+- Step 2.1 (Screen Analysis) 완료 후
 
 ## 입력
 
+- `outputs/stage-2/screen-analysis.md` — 화면별 목적/위계 분석
 - `outputs/stage-2/platform-selection.md`
 - `outputs/stage-0/idea-brief.md`
 - `outputs/stage-1/prd.md`
@@ -64,16 +65,30 @@ Step 2.1: 레퍼런스 수집 및 분석
 - 애니메이션/트랜지션 유무
 ```
 
-### 3. 공통 패턴 도출
+### 3. UX 패턴 분석 (screen-analysis 기반)
+
+```
+screen-analysis.md의 각 화면별로:
+- 같은 목적의 화면을 레퍼런스에서 어떻게 처리하는지
+- 정보 위계를 어떻게 시각적으로 표현하는지
+- UX 라이팅 패턴 (CTA 문구, 안내 문구 스타일)
+- 핵심 액션을 어떻게 유도하는지
+
+→ 와이어프레임(다음 단계)의 직접적 입력이 됨
+```
+
+### 4. 비주얼 방향성 도출
 
 ```
 3-5개 레퍼런스에서 공통으로 나타나는 패턴 정리:
 - 공통 레이아웃 패턴
 - 공통 색상 톤
 - 공통 타이포 스타일
-- 차별화할 수 있는 포인트
+- 브랜드 키워드 3-5개 (예: 심플한, 신뢰감, 친근한)
+- 분위기 한줄 정의
+- 차별화 포인트
 
-→ 이것이 다음 단계(Theme Analysis)의 입력이 됨
+→ 와이어프레임 + 디자인 토큰 단계의 입력이 됨
 ```
 
 ### 레퍼런스 탐색 플랫폼
@@ -138,4 +153,4 @@ Step 2.1: 레퍼런스 수집 및 분석
 
 ## 다음 Step
 
-→ Step 2.2: Theme Analysis (레퍼런스 기반 CSS 토큰 추출)
+→ Step 2.3: Wireframes (레퍼런스 패턴 바탕으로 구조 확정)
