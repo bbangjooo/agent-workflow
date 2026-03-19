@@ -157,6 +157,7 @@
 - `design` 플러그인
 - `development` 플러그인
 - `deployment` 플러그인
+- `growth` 플러그인
 - `workflow-state-manager` 플러그인
 
 ## 1인 창업자를 위한 핵심 포인트
