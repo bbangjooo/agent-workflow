@@ -1,10 +1,13 @@
 # Design System
 
-Step 2.3: 디자인 시스템 정의
+Step 2.4: 디자인 시스템 정의
 
 ## 설명
 
-일관된 디자인을 위한 기초 시스템을 정의하는 스킬입니다. 색상은 Step 2.1에서 이미 결정되었으므로, 타이포그래피, 간격 시스템 등을 정의합니다.
+일관된 디자인을 위한 기초 시스템을 정의하는 스킬입니다. Theme Analysis(Step 2.2)에서 추출한 CSS 토큰을 기반으로, 타이포그래피/간격/보더/그림자를 통합하여 **바로 프로젝트에 적용 가능한 globals.css**를 확정합니다.
+
+> 핵심 원칙: "ShadCN/Tailwind의 CSS 키 이름은 유지하고 값만 변경한다."
+> 이렇게 하면 프레임워크 컴포넌트가 테마를 자동 반영하고, 구현 단계에서 혼선이 사라진다.
 
 ## 트리거
 
@@ -13,7 +16,7 @@ Step 2.3: 디자인 시스템 정의
 
 ## 입력
 
-- `outputs/stage-2/color-palette.md`
+- `outputs/stage-2/theme-tokens.md` (Step 2.2의 CSS 토큰)
 - `outputs/stage-2/visual-direction.md`
 - `outputs/stage-1/prd.md`
 
