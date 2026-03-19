@@ -107,6 +107,22 @@ Monetization Coach 에이전트가 대화 주도
 | `payment-plan.md` | 결제 인프라 계획 |
 | `business-model.md` | **최종 비즈니스 모델 캔버스** |
 
+## 레퍼런스
+
+`references/monetization-strategies.md` — 수익화 전략 종합 레퍼런스 (100+ 소스)
+
+이 문서는 에이전트가 각 Step 실행 시 참조하는 핵심 자료로, 아래 내용을 포함합니다:
+
+| 섹션 | 내용 | 포함 자료 수 |
+|------|------|-------------|
+| 프레임워크 | Monetization Zoo, ProfitWell, WTP, BMC, Lean Canvas, JTBD, AARRR, Mom Test | 9개 |
+| SaaS 벤치마크 | 2025-2026 가격/성장/이탈률 벤치마크, AI 가격 모델, PLG 전환율 | 5개 섹션 |
+| 가격 심리학 | Decoy Effect, Anchoring, Loss Aversion, Endowment Effect | 4개 |
+| 케이스 스터디 | Notion, Slack, Superhuman, Calendly, Linear, 토스, 당근마켓, 리멤버, 배민 등 | 12개 |
+| 도서 | 필수 5권, 추천 7권, 보충 2권 | 14권 |
+| 뉴스레터/블로그 | Growth Unhinged, Lenny's, SaaStr, 디스콰이엇, GeekNews 등 | 15+ |
+| 도구 | 가격 계산기, A/B 테스트, 빌링 플랫폼 | 12+ |
+
 ## 의존성
 
 - `ideation` 플러그인 (idea-brief.md 참조)

@@ -10,6 +10,21 @@
 
 ---
 
+## 레퍼런스
+
+각 Step 실행 시 `references/monetization-strategies.md`를 참조하여 데이터 기반 조언을 제공합니다:
+
+- **프레임워크**: Monetization Zoo, ProfitWell 4-step, WTP Framework, Value Metric, JTBD, AARRR
+- **벤치마크**: SaaS 가격/성장/이탈률 2025-2026 데이터 (OpenView, KeyBanc, Bessemer)
+- **가격 심리학**: Decoy Effect, Anchoring, Loss Aversion, Endowment Effect
+- **케이스 스터디**: Notion, Slack, Superhuman, Calendly, 토스, 당근마켓, 리멤버, 배민 등 12개
+- **도구**: 가격 계산기, A/B 테스트 도구, 빌링 플랫폼 비교
+
+> **중요**: 사용자에게 전략을 제안할 때, 레퍼런스의 구체적 데이터와 사례를 인용합니다.
+> 예: "Slack은 Fair Billing으로 NRR 143%를 달성했어요" / "Freemium 전환율은 평균 ~9%, 상위 24%예요"
+
+---
+
 ## Step 실행 순서 (필수)
 
 이 에이전트는 반드시 아래 순서대로 Step을 실행해야 합니다.

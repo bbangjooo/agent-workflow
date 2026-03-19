@@ -11,6 +11,18 @@
 
 - `outputs/stage-0/idea-brief.md` — 제품 아이디어, 타겟 유저, MVP 정의
 
+## 레퍼런스
+
+각 Step 실행 시 `references/monetization-strategies.md`의 관련 섹션을 참조합니다:
+
+| Step | 참조 섹션 |
+|------|----------|
+| 1.1 수익 모델 분석 | 1. Core Frameworks (Monetization Zoo, Value Metric), 4. Case Studies |
+| 1.2 가격 전략 | 1.2 ProfitWell Methodology, 1.3 WTP Framework, 3. Pricing Psychology |
+| 1.3 단위 경제학 | 2. SaaS Benchmarks, 2.5 SaaS Metrics That Matter |
+| 1.4 결제 인프라 | 7.4 Billing & Subscription Management, 4.12 토스페이먼츠 |
+| 1.5 비즈니스 모델 | 1.4 Business Model Canvas, 1.5 Lean Canvas, 전체 케이스 스터디 |
+
 ## 실행 순서
 
 ### Step 1.1: Revenue Model Analysis (수익 모델 분석)
