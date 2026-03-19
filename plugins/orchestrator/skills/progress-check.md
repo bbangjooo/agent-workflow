@@ -31,6 +31,7 @@
 | 2 | `outputs/stage-2/design-spec.md` |
 | 3 | `outputs/stage-3/build-config.md` |
 | 4 | `outputs/stage-4/deployment-complete.md` |
+| 5 | `outputs/stage-5/acquisition-plan.md` |
 
 ### 3. 상태 동기화
 
@@ -44,7 +45,7 @@
 
 ```python
 # 로직
-for stage in [0, 1, 2, 3, 4]:
+for stage in [0, 1, 2, 3, 4, 5]:
     if stage.status != "completed":
         return stage  # 이 Stage부터 시작
 
@@ -61,6 +62,7 @@ return "all_completed"
 - Stage 2 (Design): ⬜ 대기
 - Stage 3 (Development): ⬜ 대기
 - Stage 4 (Deployment): ⬜ 대기
+- Stage 5 (User Acquisition): ⬜ 대기
 
 Stage 2 (Design)부터 시작합니다.
 ```
@@ -113,6 +115,7 @@ Stage 2 (Design)부터 이어서 진행합니다.
 - Stage 2 (Design): ✅ 완료
 - Stage 3 (Development): ✅ 완료
 - Stage 4 (Deployment): ✅ 완료
+- Stage 5 (User Acquisition): ✅ 완료
 
 🎉 이미 모든 Stage가 완료되었습니다!
 
@@ -172,6 +175,14 @@ Stage 2 (Design)부터 이어서 진행합니다.
       "name": "Stage 4: Deployment",
       "status": "pending",
       "order": 4,
+      "steps": [],
+      "artifacts": []
+    },
+    {
+      "id": "growth",
+      "name": "Stage 5: User Acquisition",
+      "status": "pending",
+      "order": 5,
       "steps": [],
       "artifacts": []
     }

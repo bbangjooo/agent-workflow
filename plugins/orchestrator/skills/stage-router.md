@@ -20,6 +20,7 @@ Stage 간 전환을 관리하고 상태를 업데이트합니다.
 | 2 | design | `/design` | `outputs/stage-2/design-spec.md` |
 | 3 | development | `/develop` | `outputs/stage-3/build-config.md` |
 | 4 | deployment | `/deploy` | `outputs/stage-4/deployment-complete.md` |
+| 5 | growth | `/grow` | `outputs/stage-5/acquisition-plan.md` |
 
 > **Note**: Design-to-Dev Bridge는 Stage 3 (Development)의 첫 번째 Step(3.1)으로 통합되었습니다. `/develop` 커맨드 실행 시 자동으로 처리됩니다.
 
@@ -45,7 +46,7 @@ Stage를 시작할 때 수행하는 작업:
    - 사용자 응답 없이 /ideate를 자동 호출하는 것은 금지
 
 4. 해당 Stage 커맨드 호출:
-   /ideate, /plan, /design, /develop, /deploy
+   /ideate, /plan, /design, /develop, /deploy, /grow
 ```
 
 ### 2. Stage 완료 확인
@@ -76,7 +77,7 @@ Stage가 완료되었을 때 수행하는 작업:
 
 3. 다음 Stage 확인:
    - 다음 Stage가 있으면 → 다음 Stage 시작
-   - 없으면 (Stage 4 완료) → 전체 완료 처리
+   - 없으면 (Stage 5 완료) → 전체 완료 처리
 ```
 
 ### 4. 전체 완료 처리
@@ -167,6 +168,7 @@ Stage별 설명:
 | 2 | 디자인 시스템과 UI 명세를 만듭니다 |
 | 3 | 디자인-개발 브릿지 및 실제 코드를 작성하고 빌드합니다 |
 | 4 | 무료 호스팅에 배포합니다 |
+| 5 | 초기 유저 획득 전략을 수립합니다 |
 
 ### Stage 완료
 
@@ -195,6 +197,7 @@ Stage별 설명:
 • 디자인 명세: outputs/stage-2/design-spec.md
 • 빌드 설정: outputs/stage-3/build-config.md
 • 배포 완료: outputs/stage-4/deployment-complete.md
+• 유저 획득 전략: outputs/stage-5/acquisition-plan.md
 
 🌐 라이브 URL: https://{app-name}.vercel.app
 

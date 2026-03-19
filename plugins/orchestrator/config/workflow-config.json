@@ -224,6 +224,48 @@
         "outputs/stage-4/deploy-log.md",
         "outputs/stage-4/deployment-complete.md"
       ]
+    },
+    {
+      "id": "growth",
+      "name": "Stage 5: User Acquisition",
+      "description": "초기 유저 획득 전략을 수립하고 실행 로드맵을 만듭니다",
+      "order": 5,
+      "command": "/grow",
+      "completionArtifact": "outputs/stage-5/acquisition-plan.md",
+      "steps": [
+        {
+          "id": "market-targeting",
+          "name": "Market Targeting",
+          "description": "타겟 시장 분석 (국내/글로벌/양쪽) 및 핵심 타겟 유저 페르소나 정의"
+        },
+        {
+          "id": "pre-launch-strategy",
+          "name": "Pre-launch Strategy",
+          "description": "프리런칭 전략 수립 (웨이트리스트, 커뮤니티 빌딩, 빌드 인 퍼블릭, 콘텐츠/SEO)"
+        },
+        {
+          "id": "launch-plan",
+          "name": "Launch Plan",
+          "description": "런칭 플랜 작성 (Product Hunt/디스콰이엇/Show HN, PR/언론, 커뮤니티 포스팅, 인플루언서 시딩)"
+        },
+        {
+          "id": "growth-channels",
+          "name": "Growth Channels",
+          "description": "그로스 채널 설계 (레퍼럴 프로그램, PLG/바이럴 루프, 유료 광고 계획, 파트너십)"
+        },
+        {
+          "id": "execution-roadmap",
+          "name": "Execution Roadmap",
+          "description": "실행 로드맵 및 KPI/측정 지표 정의"
+        }
+      ],
+      "artifacts": [
+        "outputs/stage-5/market-analysis.md",
+        "outputs/stage-5/pre-launch-strategy.md",
+        "outputs/stage-5/launch-plan.md",
+        "outputs/stage-5/growth-channels.md",
+        "outputs/stage-5/acquisition-plan.md"
+      ]
     }
   ]
 }

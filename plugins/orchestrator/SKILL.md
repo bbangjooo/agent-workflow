@@ -1,10 +1,10 @@
 # Orchestrator (프로젝트 오케스트레이터)
 
-1인 창업자를 위한 End-to-End 프로젝트 빌더. **하나의 커맨드로 아이디어부터 배포까지** 전체 워크플로우를 연결합니다.
+1인 창업자를 위한 End-to-End 프로젝트 빌더. **하나의 커맨드로 아이디어부터 유저 획득까지** 전체 워크플로우를 연결합니다.
 
 ## 개요
 
-이 플러그인은 5개의 Stage 플러그인(ideation, planning, design, development, deployment)을 연결하여 전체 프로젝트 빌드 과정을 자동으로 진행합니다. workflow-state-manager와 연동하여 진행 상황을 추적하고, 중간에 끊겨도 이어서 진행할 수 있습니다.
+이 플러그인은 6개의 Stage 플러그인(ideation, planning, design, development, deployment, growth)을 연결하여 전체 프로젝트 빌드 과정을 자동으로 진행합니다. workflow-state-manager와 연동하여 진행 상황을 추적하고, 중간에 끊겨도 이어서 진행할 수 있습니다.
 
 ## 사용 방법
 
@@ -55,6 +55,12 @@
 |  Stage 4: Deployment (배포)                                  |
 |  커맨드: /deploy                                            |
 |  산출물: deployment-complete.md + 라이브 URL                |
++-------------------------------------------------------------+
+    |
++-------------------------------------------------------------+
+|  Stage 5: User Acquisition (유저 획득)                       |
+|  커맨드: /grow                                              |
+|  산출물: acquisition-plan.md                                |
 +-------------------------------------------------------------+
     |
     v
@@ -131,7 +137,8 @@
 | prd.md 존재 | Stage 2부터 시작 |
 | design-spec.md 존재 | Stage 3부터 시작 (Step 3.1: Design-to-Dev Bridge) |
 | build-config.md 존재 | Stage 4부터 시작 |
-| 모두 완료 | "이미 배포 완료됨" 안내 |
+| deployment-complete.md 존재 | Stage 5부터 시작 |
+| 모두 완료 | "이미 모든 Stage 완료됨" 안내 |
 
 ## Prefix Trigger
 
