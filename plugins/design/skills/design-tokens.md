@@ -190,6 +190,27 @@ Primary-50 ~ Primary-900 (브랜드 색상 팔레트)
 }
 ```
 
+### 6. 레퍼런스: 토큰 구조 사례
+
+```
+[Toss Design System (TDS)]
+- 50→900 톤 체계 (50 밝음, 900 어두움)
+- 네이밍: colors.[색상명][톤값] (예: colors.grey700, colors.blue500)
+- Opacity 변형: greyOpacity50~900 (오버레이/스크림용)
+- 시맨틱 배경: background, greyBackground, layeredBackground, floatedBackground
+- 참고: tossmini-docs.toss.im/tds-react-native/foundation/colors/
+
+[Adobe Spectrum]
+- 텍스트 색상 4종만 사용: Gray-900(Heading), 800(Text), 700(Subdued), 500(Disabled)
+- Gray-500 이하는 비활성 전용 (WCAG AA 미충족 허용)
+- 참고: spectrum.adobe.com
+
+[ShadCN/Tailwind]
+- CSS 변수 기반: --background, --foreground, --primary 등
+- oklch 색상 형식 권장
+- globals.css에서 :root와 .dark로 테마 분리
+```
+
 ## 산출물
 
 `outputs/stage-2/design-tokens.md`
