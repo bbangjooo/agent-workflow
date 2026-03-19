@@ -27,11 +27,12 @@
 | Stage | 확인할 파일 |
 |-------|-------------|
 | 0 | `outputs/stage-0/idea-brief.md` |
-| 1 | `outputs/stage-1/prd.md` |
-| 2 | `outputs/stage-2/design-spec.md` |
-| 3 | `outputs/stage-3/build-config.md` |
-| 4 | `outputs/stage-4/deployment-complete.md` |
-| 5 | `outputs/stage-5/acquisition-plan.md` |
+| 1 | `outputs/monetization/business-model.md` |
+| 2 | `outputs/stage-1/prd.md` |
+| 3 | `outputs/stage-2/design-spec.md` |
+| 4 | `outputs/stage-3/build-config.md` |
+| 5 | `outputs/stage-4/deployment-complete.md` |
+| 6 | `outputs/stage-5/acquisition-plan.md` |
 
 ### 3. 상태 동기화
 
@@ -45,7 +46,7 @@
 
 ```python
 # 로직
-for stage in [0, 1, 2, 3, 4, 5]:
+for stage in [0, 1, 2, 3, 4, 5, 6]:
     if stage.status != "completed":
         return stage  # 이 Stage부터 시작
 
@@ -58,13 +59,14 @@ return "all_completed"
 ```
 📊 진행 상황:
 - Stage 0 (Ideation): ✅ 완료
-- Stage 1 (Planning): ✅ 완료
-- Stage 2 (Design): ⬜ 대기
-- Stage 3 (Development): ⬜ 대기
-- Stage 4 (Deployment): ⬜ 대기
-- Stage 5 (User Acquisition): ⬜ 대기
+- Stage 1 (Monetization): ✅ 완료
+- Stage 2 (Planning): ⬜ 대기
+- Stage 3 (Design): ⬜ 대기
+- Stage 4 (Development): ⬜ 대기
+- Stage 5 (Deployment): ⬜ 대기
+- Stage 6 (User Acquisition): ⬜ 대기
 
-Stage 2 (Design)부터 시작합니다.
+Stage 2 (Planning)부터 시작합니다.
 ```
 
 ## 상태 아이콘
@@ -83,10 +85,12 @@ Stage 2 (Design)부터 시작합니다.
 ```markdown
 📊 진행 상황:
 - Stage 0 (Ideation): ⬜ 대기
-- Stage 1 (Planning): ⬜ 대기
-- Stage 2 (Design): ⬜ 대기
-- Stage 3 (Development): ⬜ 대기
-- Stage 4 (Deployment): ⬜ 대기
+- Stage 1 (Monetization): ⬜ 대기
+- Stage 2 (Planning): ⬜ 대기
+- Stage 3 (Design): ⬜ 대기
+- Stage 4 (Development): ⬜ 대기
+- Stage 5 (Deployment): ⬜ 대기
+- Stage 6 (User Acquisition): ⬜ 대기
 
 새 프로젝트를 시작합니다. Stage 0 (Ideation)부터 진행합니다.
 어떤 아이디어를 구현하고 싶으세요?
@@ -97,13 +101,15 @@ Stage 2 (Design)부터 시작합니다.
 ```markdown
 📊 진행 상황:
 - Stage 0 (Ideation): ✅ 완료
-- Stage 1 (Planning): ✅ 완료
-- Stage 2 (Design): ⬜ 대기
-- Stage 3 (Development): ⬜ 대기
-- Stage 4 (Deployment): ⬜ 대기
+- Stage 1 (Monetization): ✅ 완료
+- Stage 2 (Planning): ⬜ 대기
+- Stage 3 (Design): ⬜ 대기
+- Stage 4 (Development): ⬜ 대기
+- Stage 5 (Deployment): ⬜ 대기
+- Stage 6 (User Acquisition): ⬜ 대기
 
 기존 진행 상황을 발견했습니다!
-Stage 2 (Design)부터 이어서 진행합니다.
+Stage 2 (Planning)부터 이어서 진행합니다.
 ```
 
 ### 모두 완료된 경우
@@ -111,11 +117,12 @@ Stage 2 (Design)부터 이어서 진행합니다.
 ```markdown
 📊 진행 상황:
 - Stage 0 (Ideation): ✅ 완료
-- Stage 1 (Planning): ✅ 완료
-- Stage 2 (Design): ✅ 완료
-- Stage 3 (Development): ✅ 완료
-- Stage 4 (Deployment): ✅ 완료
-- Stage 5 (User Acquisition): ✅ 완료
+- Stage 1 (Monetization): ✅ 완료
+- Stage 2 (Planning): ✅ 완료
+- Stage 3 (Design): ✅ 완료
+- Stage 4 (Development): ✅ 완료
+- Stage 5 (Deployment): ✅ 완료
+- Stage 6 (User Acquisition): ✅ 완료
 
 🎉 이미 모든 Stage가 완료되었습니다!
 
@@ -147,42 +154,50 @@ Stage 2 (Design)부터 이어서 진행합니다.
       "artifacts": []
     },
     {
-      "id": "planning",
-      "name": "Stage 1: Planning",
+      "id": "monetization",
+      "name": "Stage 1: Monetization",
       "status": "pending",
       "order": 1,
       "steps": [],
       "artifacts": []
     },
     {
-      "id": "design",
-      "name": "Stage 2: Design",
+      "id": "planning",
+      "name": "Stage 2: Planning",
       "status": "pending",
       "order": 2,
       "steps": [],
       "artifacts": []
     },
     {
-      "id": "development",
-      "name": "Stage 3: Development",
+      "id": "design",
+      "name": "Stage 3: Design",
       "status": "pending",
       "order": 3,
       "steps": [],
       "artifacts": []
     },
     {
-      "id": "deployment",
-      "name": "Stage 4: Deployment",
+      "id": "development",
+      "name": "Stage 4: Development",
       "status": "pending",
       "order": 4,
       "steps": [],
       "artifacts": []
     },
     {
-      "id": "growth",
-      "name": "Stage 5: User Acquisition",
+      "id": "deployment",
+      "name": "Stage 5: Deployment",
       "status": "pending",
       "order": 5,
+      "steps": [],
+      "artifacts": []
+    },
+    {
+      "id": "growth",
+      "name": "Stage 6: User Acquisition",
+      "status": "pending",
+      "order": 6,
       "steps": [],
       "artifacts": []
     }

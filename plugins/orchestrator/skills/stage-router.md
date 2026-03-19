@@ -16,13 +16,15 @@ Stage 간 전환을 관리하고 상태를 업데이트합니다.
 | Stage | Phase ID | 커맨드/스킬 | 완료 산출물 |
 |-------|----------|-------------|-------------|
 | 0 | ideation | `/ideate` | `outputs/stage-0/idea-brief.md` |
-| 1 | planning | `/plan` | `outputs/stage-1/prd.md` |
-| 2 | design | `/design` | `outputs/stage-2/design-spec.md` |
-| 3 | development | `/develop` | `outputs/stage-3/build-config.md` |
-| 4 | deployment | `/deploy` | `outputs/stage-4/deployment-complete.md` |
-| 5 | growth | `/grow` | `outputs/stage-5/acquisition-plan.md` |
+| 1 | monetization | `/monetize` | `outputs/monetization/business-model.md` |
+| 2 | planning | `/plan` | `outputs/stage-1/prd.md` |
+| 3 | design | `/design` | `outputs/stage-2/design-spec.md` |
+| 4 | development | `/develop` | `outputs/stage-3/build-config.md` |
+| 5 | deployment | `/deploy` | `outputs/stage-4/deployment-complete.md` |
+| 6 | growth | `/grow` | `outputs/stage-5/acquisition-plan.md` |
 
-> **Note**: Design-to-Dev Bridge는 Stage 3 (Development)의 첫 번째 Step(3.1)으로 통합되었습니다. `/develop` 커맨드 실행 시 자동으로 처리됩니다.
+> **Note**: Stage 1 (Monetization)의 산출물 `business-model.md`는 Stage 2 (Planning)의 입력으로 사용됩니다. PRD에 수익 모델 기반 기능이 반영됩니다.
+> **Note**: Design-to-Dev Bridge는 Stage 4 (Development)의 첫 번째 Step으로 통합되었습니다.
 
 ## 실행 내용
 
@@ -46,7 +48,7 @@ Stage를 시작할 때 수행하는 작업:
    - 사용자 응답 없이 /ideate를 자동 호출하는 것은 금지
 
 4. 해당 Stage 커맨드 호출:
-   /ideate, /plan, /design, /develop, /deploy, /grow
+   /ideate, /monetize, /plan, /design, /develop, /deploy, /grow
 ```
 
 ### 2. Stage 완료 확인
@@ -77,7 +79,7 @@ Stage가 완료되었을 때 수행하는 작업:
 
 3. 다음 Stage 확인:
    - 다음 Stage가 있으면 → 다음 Stage 시작
-   - 없으면 (Stage 5 완료) → 전체 완료 처리
+   - 없으면 (Stage 6 완료) → 전체 완료 처리
 ```
 
 ### 4. 전체 완료 처리
@@ -164,11 +166,12 @@ Stage별 설명:
 | Stage | 설명 |
 |-------|------|
 | 0 | 아이디어를 구체화하고 검증합니다 |
-| 1 | 기능을 정의하고 PRD를 작성합니다 |
-| 2 | 디자인 시스템과 UI 명세를 만듭니다 |
-| 3 | 디자인-개발 브릿지 및 실제 코드를 작성하고 빌드합니다 |
-| 4 | 무료 호스팅에 배포합니다 |
-| 5 | 초기 유저 획득 전략을 수립합니다 |
+| 1 | 수익 모델과 비즈니스 전략을 수립합니다 |
+| 2 | 기능을 정의하고 PRD를 작성합니다 (수익 모델 반영) |
+| 3 | 디자인 시스템과 UI 명세를 만듭니다 |
+| 4 | 디자인-개발 브릿지 및 실제 코드를 작성하고 빌드합니다 |
+| 5 | 무료 호스팅에 배포합니다 |
+| 6 | 초기 유저 획득 전략을 수립합니다 |
 
 ### Stage 완료
 
@@ -193,6 +196,7 @@ Stage별 설명:
 
 📝 산출물:
 • 아이디어 브리프: outputs/stage-0/idea-brief.md
+• 비즈니스 모델: outputs/monetization/business-model.md
 • PRD: outputs/stage-1/prd.md
 • 디자인 명세: outputs/stage-2/design-spec.md
 • 빌드 설정: outputs/stage-3/build-config.md
@@ -240,4 +244,4 @@ Stage를 다시 실행합니다...
 
 - progress-check: 시작 지점 결정 후 stage-router 호출
 
-> **Note**: Design-to-Dev Bridge는 Stage 3 (Development)의 Step 3.1로 통합되어 `/develop` 실행 시 자동으로 처리됩니다.
+> **Note**: Design-to-Dev Bridge는 Stage 4 (Development)의 Step으로 통합되어 `/develop` 실행 시 자동으로 처리됩니다.

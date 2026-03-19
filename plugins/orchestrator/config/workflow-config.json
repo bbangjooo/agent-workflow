@@ -46,10 +46,52 @@
       ]
     },
     {
-      "id": "planning",
-      "name": "Stage 1: Planning",
-      "description": "기능을 정의하고 PRD를 작성합니다",
+      "id": "monetization",
+      "name": "Stage 1: Monetization",
+      "description": "수익 모델과 비즈니스 전략을 수립합니다",
       "order": 1,
+      "command": "/monetize",
+      "completionArtifact": "outputs/monetization/business-model.md",
+      "steps": [
+        {
+          "id": "revenue-model-analysis",
+          "name": "Revenue Model Analysis",
+          "description": "제품에 적합한 수익 모델 분석 및 선택"
+        },
+        {
+          "id": "pricing-strategy",
+          "name": "Pricing Strategy",
+          "description": "가격 전략 및 티어 설계"
+        },
+        {
+          "id": "unit-economics",
+          "name": "Unit Economics",
+          "description": "단위 경제학 설계 (LTV, CAC, 마진 목표)"
+        },
+        {
+          "id": "payment-infrastructure",
+          "name": "Payment Infrastructure",
+          "description": "결제 시스템 및 인프라 계획"
+        },
+        {
+          "id": "business-model-canvas",
+          "name": "Business Model Canvas",
+          "description": "최종 비즈니스 모델 캔버스 및 Planning 연계 항목"
+        }
+      ],
+      "artifacts": [
+        "outputs/monetization/revenue-model.md",
+        "outputs/monetization/pricing-strategy.md",
+        "outputs/monetization/unit-economics.md",
+        "outputs/monetization/payment-plan.md",
+        "outputs/monetization/business-model.md"
+      ]
+    },
+    {
+      "id": "planning",
+      "name": "Stage 2: Planning",
+      "description": "기능을 정의하고 PRD를 작성합니다 (수익 모델 반영)",
+      "order": 2,
       "command": "/plan",
       "completionArtifact": "outputs/stage-1/prd.md",
       "steps": [
@@ -89,9 +131,9 @@
     },
     {
       "id": "design",
-      "name": "Stage 2: Design",
+      "name": "Stage 3: Design",
       "description": "디자인 시스템과 UI 명세를 만듭니다",
-      "order": 2,
+      "order": 3,
       "command": "/design",
       "completionArtifact": "outputs/stage-2/design-spec.md",
       "steps": [
@@ -131,9 +173,9 @@
     },
     {
       "id": "development",
-      "name": "Stage 3: Development",
+      "name": "Stage 4: Development",
       "description": "실제 코드를 작성하고 빌드합니다",
-      "order": 3,
+      "order": 4,
       "command": "/develop",
       "completionArtifact": "outputs/stage-3/build-config.md",
       "steps": [
@@ -197,9 +239,9 @@
     },
     {
       "id": "deployment",
-      "name": "Stage 4: Deployment",
+      "name": "Stage 5: Deployment",
       "description": "무료 호스팅에 배포합니다",
-      "order": 4,
+      "order": 5,
       "command": "/deploy",
       "completionArtifact": "outputs/stage-4/deployment-complete.md",
       "steps": [
@@ -227,9 +269,9 @@
     },
     {
       "id": "growth",
-      "name": "Stage 5: User Acquisition",
+      "name": "Stage 6: User Acquisition",
       "description": "초기 유저 획득 전략을 수립하고 실행 로드맵을 만듭니다",
-      "order": 5,
+      "order": 6,
       "command": "/grow",
       "completionArtifact": "outputs/stage-5/acquisition-plan.md",
       "steps": [

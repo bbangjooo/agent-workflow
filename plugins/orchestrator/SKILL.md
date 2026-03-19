@@ -4,7 +4,7 @@
 
 ## 개요
 
-이 플러그인은 6개의 Stage 플러그인(ideation, planning, design, development, deployment, growth)을 연결하여 전체 프로젝트 빌드 과정을 자동으로 진행합니다. workflow-state-manager와 연동하여 진행 상황을 추적하고, 중간에 끊겨도 이어서 진행할 수 있습니다.
+이 플러그인은 7개의 Stage 플러그인(ideation, monetization, planning, design, development, deployment, growth)을 연결하여 전체 프로젝트 빌드 과정을 자동으로 진행합니다. workflow-state-manager와 연동하여 진행 상황을 추적하고, 중간에 끊겨도 이어서 진행할 수 있습니다.
 
 ## 사용 방법
 
@@ -33,32 +33,37 @@
 +-------------------------------------------------------------+
     |
 +-------------------------------------------------------------+
-|  Stage 1: Planning (기획)                                    |
-|  커맨드: /plan                                              |
-|  산출물: prd.md                                             |
+|  Stage 1: Monetization (사업 전략)                            |
+|  커맨드: /monetize                                          |
+|  산출물: business-model.md                                  |
 +-------------------------------------------------------------+
     |
 +-------------------------------------------------------------+
-|  Stage 2: Design (디자인)                                    |
+|  Stage 2: Planning (기획)                                    |
+|  커맨드: /plan                                              |
+|  산출물: prd.md (수익 모델 반영)                             |
++-------------------------------------------------------------+
+    |
++-------------------------------------------------------------+
+|  Stage 3: Design (디자인)                                    |
 |  커맨드: /design                                            |
 |  산출물: design-spec.md                                     |
 +-------------------------------------------------------------+
     |
 +-------------------------------------------------------------+
-|  Stage 3: Development (개발)                                 |
+|  Stage 4: Development (개발)                                 |
 |  커맨드: /develop                                           |
 |  산출물: build-config.md + 코드                             |
-|  Note: Step 3.1에서 Design-to-Dev Bridge 자동 처리          |
 +-------------------------------------------------------------+
     |
 +-------------------------------------------------------------+
-|  Stage 4: Deployment (배포)                                  |
+|  Stage 5: Deployment (배포)                                  |
 |  커맨드: /deploy                                            |
 |  산출물: deployment-complete.md + 라이브 URL                |
 +-------------------------------------------------------------+
     |
 +-------------------------------------------------------------+
-|  Stage 5: User Acquisition (유저 획득)                       |
+|  Stage 6: User Acquisition (유저 획득)                       |
 |  커맨드: /grow                                              |
 |  산출물: acquisition-plan.md                                |
 +-------------------------------------------------------------+
@@ -133,11 +138,12 @@
 | 상황 | 동작 |
 |------|------|
 | 처음 시작 | Stage 0부터 순차 진행 |
-| idea-brief.md 존재 | Stage 1부터 시작 |
-| prd.md 존재 | Stage 2부터 시작 |
-| design-spec.md 존재 | Stage 3부터 시작 (Step 3.1: Design-to-Dev Bridge) |
-| build-config.md 존재 | Stage 4부터 시작 |
-| deployment-complete.md 존재 | Stage 5부터 시작 |
+| idea-brief.md 존재 | Stage 1 (Monetization)부터 시작 |
+| business-model.md 존재 | Stage 2 (Planning)부터 시작 |
+| prd.md 존재 | Stage 3 (Design)부터 시작 |
+| design-spec.md 존재 | Stage 4 (Development)부터 시작 |
+| build-config.md 존재 | Stage 5 (Deployment)부터 시작 |
+| deployment-complete.md 존재 | Stage 6 (Growth)부터 시작 |
 | 모두 완료 | "이미 모든 Stage 완료됨" 안내 |
 
 ## Prefix Trigger
@@ -153,6 +159,7 @@
 ## 의존성
 
 - `ideation` 플러그인
+- `monetization` 플러그인
 - `planning` 플러그인
 - `design` 플러그인
 - `development` 플러그인
