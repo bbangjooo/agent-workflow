@@ -84,7 +84,8 @@
       "source": "./plugins/growth",
       "strict": false,
       "commands": [
-        "./plugins/growth/commands/grow.md"
+        "./plugins/growth/commands/grow.md",
+        "./plugins/growth/commands/promote.md"
       ],
       "skills": [
         "./plugins/growth"

@@ -98,6 +98,39 @@ Growth Coach 에이전트가 대화 주도
 | `growth-channels.md` | 그로스 채널 설계 |
 | `acquisition-plan.md` | **최종 종합 유저 획득 전략** |
 
+## 채널별 실행 스킬 (`/promote`)
+
+전략 수립 후 실제 포스팅/홍보 콘텐츠를 생성하는 실행 스킬입니다.
+
+```
+/promote                — 전체 채널 콘텐츠 일괄 생성
+/promote product-hunt   — Product Hunt 런칭 콘텐츠
+/promote show-hn        — Hacker News Show HN 포스트
+/promote reddit         — Reddit 서브레딧별 포스트
+/promote twitter        — Twitter/X 런칭 스레드
+/promote disquiet       — 디스콰이엇 런칭 콘텐츠
+/promote naver-blog     — 네이버 블로그 SEO 포스트
+/promote press-release  — 보도자료 (국내/글로벌)
+/promote email-sequence — 이메일 시퀀스
+/promote landing-copy   — 랜딩 페이지 카피
+/promote community      — 커뮤니티 포스트
+```
+
+| 스킬 | 채널 | 산출물 |
+|------|------|--------|
+| write-product-hunt | Product Hunt | 타이틀, 설명, 메이커 코멘트, 런칭 체크리스트 |
+| write-show-hn | Hacker News | Show HN 포스트, FAQ 대응 |
+| write-reddit | Reddit | 서브레딧별 맞춤 포스트 3개+ |
+| write-twitter | Twitter/X | 런칭 스레드 (7-10트윗), 개별 트윗 5개 |
+| write-disquiet | 디스콰이엇 | 제품 페이지, 런칭 포스트 |
+| write-naver-blog | 네이버 블로그 | SEO 포스트 + 시리즈 4편 계획 |
+| write-press-release | 언론 | 보도자료 (KR/EN), 기자 피칭 이메일 |
+| write-email-sequence | 이메일 | 웨이트리스트 3통 + 온보딩 5통 |
+| write-landing-copy | 랜딩 페이지 | 전체 섹션 카피 + SEO 메타 |
+| write-community | 커뮤니티 | IndieHackers, Dev.to, GeekNews, OKKY, Velog |
+
+모든 산출물은 `outputs/promotion/{channel}/`에 저장되며, 바로 복붙해서 올릴 수 있는 형태로 생성됩니다.
+
 ## 의존성
 
 - `ideation` 플러그인 (idea-brief.md 참조)
