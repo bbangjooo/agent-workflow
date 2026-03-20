@@ -36,16 +36,28 @@
    - 라이브 URL, 스크린샷 경로
    - 가격 모델 (있으면)
 
-2. 채널 지정 확인:
+2. 경쟁사/성공 사례 카피 조사 (copy-research 스킬):
+   - outputs/promotion/copy-research.md 존재 확인
+   - 없으면 → copy-research 스킬 실행 (웹 서치로 실제 카피 수집)
+     - 경쟁사 랜딩 페이지 헤드라인/CTA
+     - Product Hunt 상위 제품 타이틀/설명
+     - Reddit/Twitter/IndieHackers 인기 포스트 문구
+     - 앱스토어 설명 (모바일 시)
+   - 있으면 → 기존 조사 결과 참조
+   → 이 조사 결과가 이후 모든 채널 콘텐츠의 톤/패턴 기준이 됨
+
+3. 채널 지정 확인:
    - 지정됨 → 해당 write-{channel} 스킬 실행
    - 미지정 → market-analysis.md의 타겟 시장 기반 채널 자동 선택
      - 국내 → disquiet, naver-blog, press-release(KR), community(KR)
      - 글로벌 → product-hunt, show-hn, reddit, twitter, community(EN)
      - 양쪽 → 전체
 
-3. 각 채널별 스킬 호출하여 콘텐츠 생성
+4. 각 채널별 스킬 호출하여 콘텐츠 생성
+   - copy-research.md의 패턴을 참고하여 검증된 카피 구조 활용
+   - 경쟁사 문구를 그대로 복사하지 않고, 패턴을 우리 제품에 맞게 변형
 
-4. 산출물을 outputs/promotion/{channel}/ 에 저장
+5. 산출물을 outputs/promotion/{channel}/ 에 저장
 ```
 
 ## 채널별 스킬 매핑

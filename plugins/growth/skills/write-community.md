@@ -8,6 +8,8 @@ IndieHackers, Dev.to, GeekNews, OKKY, Velog 등 커뮤니티 포스트를 생성
 
 ## 입력
 
+> **참고**: `outputs/promotion/copy-research.md`가 존재하면 경쟁사/성공 사례의 실제 카피 패턴을 참조하여 콘텐츠를 생성합니다. 검증된 패턴을 우리 제품에 맞게 변형합니다.
+
 - 제품명, 한줄 설명, 핵심 기능, 빌딩 스토리, 기술 스택, 라이브 URL
 
 ## 실행 내용
