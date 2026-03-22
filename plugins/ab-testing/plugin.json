@@ -1,0 +1,14 @@
+{
+  "name": "ab-testing",
+  "description": "AB 테스트 매니저. 실험 주제를 말하면 가설 설계부터 결과 분석 프레임워크까지 전체 실험을 구상합니다.",
+  "version": "1.0.0",
+  "commands": [
+    "./commands/ab-test.md"
+  ],
+  "skills": [
+    "./"
+  ],
+  "agents": [
+    "./agents/ab-test-coach.md"
+  ]
+}
