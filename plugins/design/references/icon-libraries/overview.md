@@ -2,16 +2,23 @@
 
 앱 개발 시 자주 사용되는 SVG 기반 아이콘 라이브러리를 정리한 가이드입니다.
 
+## 핵심 원칙
+
+> **이모지 사용 금지.** UI에서 시각적 요소가 필요할 때는 반드시 아이콘 라이브러리의 SVG 아이콘을 사용한다.
+> 이모지는 플랫폼별 렌더링이 다르고, 디자인 시스템과 일관성을 유지할 수 없다.
+
 ## 라이브러리 비교 요약
 
 | 라이브러리 | 아이콘 수 | 스타일 | 프레임워크 지원 | 라이선스 | 특징 |
 |-----------|---------|--------|---------------|---------|------|
-| Lucide | 1,400+ | Outline | React, Vue, Svelte, etc. | ISC | Feather 후속, 활발한 개발 |
-| Heroicons | 300+ | Outline/Solid | React, Vue | MIT | Tailwind CSS 팀 제작 |
-| Phosphor | 7,000+ | 6가지 weight | React, Vue, etc. | MIT | 다양한 weight 제공 |
-| Tabler Icons | 4,900+ | Outline | React, Vue, etc. | MIT | 대규모 아이콘셋 |
-| Radix Icons | 300+ | Outline | React | MIT | Radix UI와 통합 |
+| Lucide | 1,500+ | Outline | React, Vue, Svelte, Flutter, etc. | ISC | shadcn/ui 기본, Feather 후속 |
+| Heroicons | 888 (변형 포함) | Outline/Solid/Mini/Micro | React, Vue | MIT | Tailwind CSS 팀 제작 |
+| Phosphor | 6,000+ | 6가지 weight | React, Vue, Flutter, etc. | MIT | 다양한 weight 제공 |
+| Tabler Icons | 6,000+ | Outline/Filled | React, Vue, etc. | MIT | 대규모, 활발한 업데이트 |
+| Iconoir | 1,600+ | Outline | React, React Native, Vue, Flutter | MIT | 모던, Framer 통합 |
+| Hugeicons | 4,600+ (free) / 51,000+ (pro) | 10가지 스타일 | React, Vue, Svelte, Flutter | Free+Pro | 최대 규모, Figma 연동 |
 | React Icons | 40,000+ | 다양함 | React | MIT | 여러 아이콘셋 통합 |
+| Radix Icons | 300+ | Outline | React | MIT | Radix UI와 통합 (유지보수 불확실) |
 
 ---
 
@@ -23,9 +30,10 @@
 |----------|---------------|------|
 | shadcn/ui 사용 | Lucide React | 공식 통합 |
 | Tailwind CSS 사용 | Heroicons | Tailwind 팀 제작, 스타일 일관성 |
-| Radix UI 사용 | Radix Icons | 네이티브 통합 |
+| 대규모 아이콘 필요 | Tabler Icons, Hugeicons | 6,000+ 아이콘, 다양한 카테고리 |
 | 다양한 아이콘 필요 | React Icons | 여러 아이콘셋 통합 |
 | 일관된 디자인 | Phosphor | 6가지 weight로 통일성 |
+| 모던/미니멀 | Iconoir | 깔끔한 스타일, Framer 통합 |
 
 ### Mobile (React Native)
 
@@ -53,6 +61,9 @@
 - [Lucide Icons](./lucide.md) - shadcn/ui, Feather 스타일
 - [Heroicons](./heroicons.md) - Tailwind CSS 팀 제작
 - [Phosphor Icons](./phosphor.md) - 6가지 weight, 다양한 프레임워크
+- [Iconoir](./iconoir.md) - 모던 오픈소스, Framer 통합
+- [Hugeicons](./hugeicons.md) - 최대 규모, 10가지 스타일
+- [Tabler Icons](./tabler.md) - 6,000+ 아이콘, Outline/Filled
 - [React Native Vector Icons](./react-native-vector-icons.md) - RN 모바일 아이콘
 
 ---
@@ -63,8 +74,9 @@
 
 - **shadcn/ui**: Lucide (기본 통합)
 - **Tailwind CSS**: Heroicons (공식 연동)
-- **Radix UI**: Radix Icons
+- **Radix UI**: Lucide 또는 Radix Icons
 - **Material UI**: Material Icons
+- **Framer**: Iconoir (네이티브 통합)
 
 ### 2. 아이콘 스타일
 

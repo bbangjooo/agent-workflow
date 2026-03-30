@@ -11,6 +11,8 @@
 
 **Web과 Mobile 플랫폼을 분리하여 각각에 맞는 디자인 명세를 생성합니다.**
 
+> **이모지 사용 금지.** 모든 디자인 산출물에서 이모지 대신 아이콘 라이브러리(Lucide, Heroicons 등)의 SVG 아이콘을 사용한다. 상세 가이드는 `references/icon-libraries/overview.md` 참조.
+
 ## 사전 조건
 
 - Stage 1 완료 (`/plan`)

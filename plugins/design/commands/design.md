@@ -105,6 +105,7 @@ Stage 2 완료 시 다음 문서들이 `outputs/stage-2/` 디렉토리에 생성
 
 ### 주의사항
 
+- 이모지 사용 금지 — 아이콘이 필요하면 `references/icon-libraries/overview.md`의 아이콘 라이브러리를 참조하여 아이콘명을 명시
 - 디자인 전문 용어 최소화
 - Figma/Sketch 없이도 진행 가능함을 강조
 - MVP에 필요한 디자인에 집중
