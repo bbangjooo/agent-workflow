@@ -16,6 +16,7 @@ Step 2.6: 디자인 명세서 생성
 ## 입력
 
 - `outputs/stage-2/platform-selection.md` (플랫폼 확인)
+- `outputs/stage-2/references.md` **(필수 — 레퍼런스 분석 결과)**
 - `outputs/stage-2/color-palette.md`
 - `outputs/stage-2/visual-direction.md`
 - `outputs/stage-2/design-system.md`
@@ -23,6 +24,8 @@ Step 2.6: 디자인 명세서 생성
 - `outputs/stage-2/wireframes-{platform}.md`
 - `outputs/stage-1/prd.md`
 - `outputs/stage-1/screen-structure.md`
+
+> **주의**: `references.md`가 없으면 디자인 명세서를 생성하지 않는다. Step 2.2가 완료되지 않은 경우 먼저 레퍼런스 분석을 수행할 것.
 
 ## 실행 내용
 
@@ -98,13 +101,39 @@ Step 2.6: 디자인 명세서 생성
 ### 1.2 디자인 방향
 - **키워드**: {브랜드 키워드}
 - **분위기**: {분위기 설명}
-- **참고 서비스**: {참고 서비스 목록}
 
 ---
 
-## 2. Design System
+## 2. 레퍼런스 분석 (Reference Analysis)
 
-### 2.1 Colors
+> Step 2.2에서 수행한 레퍼런스 분석 결과를 포함한다. references.md의 핵심 내용을 요약하여 디자인 결정의 근거를 명시한다.
+
+### 2.1 참고 서비스 목록
+
+| # | 서비스명 | URL | 선택 이유 | 핵심 참고 포인트 |
+|---|---------|-----|-----------|----------------|
+| 1 | {서비스명} | {URL} | {이유} | {포인트} |
+| 2 | {서비스명} | {URL} | {이유} | {포인트} |
+| 3 | {서비스명} | {URL} | {이유} | {포인트} |
+
+### 2.2 레퍼런스 패턴 분석 요약
+
+| 요소 | 공통 패턴 | 본 프로젝트 적용 |
+|------|----------|-----------------|
+| 레이아웃 | {패턴} | {적용 방향} |
+| 색상 | {패턴} | {적용 방향} |
+| 타이포그래피 | {패턴} | {적용 방향} |
+| 그래픽/장식 | {패턴} | {적용 방향} |
+
+### 2.3 차별화 포인트
+- {레퍼런스 대비 차별점 1}
+- {레퍼런스 대비 차별점 2}
+
+---
+
+## 3. Design System
+
+### 3.1 Colors
 
 #### Primary
 | Name | HEX | RGB | Usage |
@@ -129,7 +158,7 @@ Step 2.6: 디자인 명세서 생성
 | Warning | #F59E0B | 경고 |
 | Error | #EF4444 | 에러 |
 
-### 2.2 Typography
+### 3.2 Typography
 
 ```css
 /* Font Family */
@@ -144,7 +173,7 @@ font-family: '{폰트명}', system-ui, sans-serif;
 --text-caption: 12px/16px, font-weight: 400;
 ```
 
-### 2.3 Spacing & Layout
+### 3.3 Spacing & Layout
 
 ```css
 --space-1: 4px;
@@ -156,7 +185,7 @@ font-family: '{폰트명}', system-ui, sans-serif;
 --space-12: 48px;
 ```
 
-### 2.4 Border & Shadow
+### 3.4 Border & Shadow
 
 ```css
 /* Border Radius */

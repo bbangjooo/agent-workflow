@@ -91,6 +91,16 @@ screen-analysis.md의 각 화면별로:
 → 와이어프레임 + 디자인 토큰 단계의 입력이 됨
 ```
 
+### 내부 레퍼런스 라이브러리
+
+아래 파일들은 이미 분석 완료된 랜딩 페이지 레퍼런스입니다. 새 프로젝트 시작 시 유사한 맥락의 레퍼런스가 있는지 먼저 확인하세요.
+
+| 레퍼런스 | 스타일 | 파일 |
+|----------|--------|------|
+| 라포랩스 | 흑백 기조, 풀스크린 Hero, 넉넉한 여백 | `references/landing-pages/rapportlabs-style.md` |
+| Hermes Agent | 다크 해커 미학, ASCII 아트, 코드 블록 중심 | `references/landing-pages/hermes-agent-style.md` |
+| Conductor | B2B 다크 테마, 사회적 증거, 듀얼 CTA, 자기증명 | `references/landing-pages/conductor-style.md` |
+
 ### 레퍼런스 탐색 플랫폼
 
 | 플랫폼 | 용도 | URL |

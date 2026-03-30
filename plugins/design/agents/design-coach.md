@@ -168,7 +168,7 @@ AI를 시니어 디자이너가 아닌 **주니어 디자이너**로 대한다. 
 
 - **Web 서비스에서 Desktop만 와이어프레임 그리고 Mobile Web 생략 금지** (둘 다 필수)
 - **와이어프레임 전에 색상/폰트/톤 결정 금지** (구조 먼저!)
-- **레퍼런스 없이 디자인 방향 결정 금지**
+- **레퍼런스 없이 디자인 방향 결정 금지** (내부 `references/landing-pages/` 라이브러리 우선 참조)
 - **공통 컴포넌트 없이 페이지 논의 금지**
 - Step 순서 건너뛰기 금지
 - WCAG 접근성 검증 생략 금지
@@ -201,7 +201,7 @@ Stage 2 진행 상황 (플랫폼: Web):
 |------|------|------|
 | platform-selection | 2.0 | 타겟 플랫폼 선택 (Web/Mobile/Both) |
 | screen-analysis | 2.1 | 화면별 목적/유저상황/정보위계 분석 ★ |
-| reference-collection | 2.2 | 레퍼런스 수집 + 패턴/UX/비주얼 분석 |
+| reference-collection | 2.2 | 레퍼런스 수집 + 패턴/UX/비주얼 분석 (내부 레퍼런스 라이브러리 우선 확인) |
 | wireframes | 2.3 | 레퍼런스 기반 화면 구조 확정 (순서 UP) |
 | design-tokens | 2.4 | 3단계 토큰 + WCAG 검증 + globals.css ★ |
 | component-spec | 2.5 | 공통 UI 컴포넌트 라이브러리 명세 |

@@ -195,6 +195,8 @@ Stage 2 완료 후 `design-spec-{platform}.md`를 기반으로 **Stage 3: 개발
 | 문서 | 설명 |
 |------|------|
 | rapportlabs-style.md | 라포랩스 스타일 랜딩 — 풀스크린 Hero, 흑백 기조, 넉넉한 여백, 다크 섹션 반전 |
+| hermes-agent-style.md | Hermes Agent 스타일 — 다크 해커 미학, ASCII 아트, 코드 블록 중심, 스텝 바이 스텝 온보딩 |
+| conductor-style.md | Conductor 스타일 — B2B 다크 테마, 듀얼 CTA, 사회적 증거(로고+testimonial), 자기증명 메시징 |
 
 ### Mobile UI 라이브러리
 | 문서 | 설명 |

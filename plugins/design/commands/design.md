@@ -71,7 +71,7 @@ Stage 2 완료 시 다음 문서들이 `outputs/stage-2/` 디렉토리에 생성
 
 1. **Step 순서 준수**: 반드시 2.0 -> 2.1 -> 2.2 -> 2.3 -> 2.4 -> 2.5 -> 2.6 -> 2.7 -> 2.8 순서로 진행
 2. **구조 먼저, 톤 나중에**: 와이어프레임(2.3) 전에 디자인 토큰(2.4) 진행 금지
-3. **레퍼런스 필수**: 레퍼런스 분석(2.2) 없이 디자인 방향 결정 금지
+3. **레퍼런스 필수**: 레퍼런스 분석(2.2) 없이 디자인 방향 결정 금지. 내부 `references/landing-pages/` 라이브러리에 유사한 레퍼런스가 있으면 우선 활용
 4. **스킬 활용**: 각 Step에서 해당 스킬을 사용하여 대화 진행
 5. **완료 조건 확인**: 각 Step의 완료 조건이 충족되어야 다음 Step으로 진행
 6. **산출물 생성**: 각 Step 완료 시 해당 산출물 파일 생성
@@ -81,7 +81,7 @@ Stage 2 완료 시 다음 문서들이 `outputs/stage-2/` 디렉토리에 생성
 
 1. `platform-selection` - Step 2.0: 타겟 플랫폼 선택 (Web/Mobile/Both)
 2. `screen-analysis` - Step 2.1: 화면별 목적/유저상황/정보위계/핵심액션 분석
-3. `reference-collection` - Step 2.2: 레퍼런스 수집 + 패턴/UX/비주얼 방향성 분석
+3. `reference-collection` - Step 2.2: 레퍼런스 수집 + 패턴/UX/비주얼 방향성 분석 (내부 `references/landing-pages/` 라이브러리 우선 확인)
 4. `wireframes` - Step 2.3: 레퍼런스 기반 화면 구조 확정
 5. `design-tokens` - Step 2.4: 3단계 토큰 + WCAG 검증 + globals.css
 6. `component-spec` - Step 2.5: 공통 UI 컴포넌트 라이브러리 명세

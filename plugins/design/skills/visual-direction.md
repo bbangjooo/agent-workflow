@@ -53,6 +53,8 @@ Step 2.2: 비주얼 방향성 정의
 | 전문적/신뢰 | 직선적, 차분한 색상, 정돈된 레이아웃 | Stripe, Intercom, HubSpot |
 | 활기찬/볼드 | 강렬한 색상, 큰 타이포, 대비 | Spotify, Discord, Canva |
 | 프리미엄/럭셔리 | 어두운 배경, 골드/화이트, 세리프 폰트 | Amex, Porsche, Rolex |
+| 테크/해커 | 다크 베이스, 모노스페이스, ASCII 아트, 코드 블록 중심 | Hermes Agent, Warp, Raycast |
+| 엔지니어링/B2B | 다크 테마, 절제된 인터랙션, 사회적 증거(로고+testimonial), 자기증명 카피 | Conductor, Vercel, Railway |
 
 ### 대화 원칙
 
