@@ -100,6 +100,33 @@ Growth Coach 에이전트가 대화 주도
 | `growth-channels.md` | 그로스 채널 설계 |
 | `acquisition-plan.md` | **최종 종합 유저 획득 전략** |
 
+## `/promote` 리서치 체인
+
+글을 작성하기 전, 4단계 리서치를 순차 실행하여 데이터 기반으로 콘텐츠를 생성합니다.
+
+```
+/promote 실행
+    ↓
+[R-1] copy-research      → 경쟁사 카피 패턴 수집
+    ↓
+[R-2] channel-research   → 채널별 규칙/인기글/셀프프로모 정책
+    ↓
+[R-3] audience-language   → 유저 실제 표현/검색어/금지 용어
+    ↓
+[R-4] timing-research    → 최적 타이밍/업계 일정/경쟁사 충돌
+    ↓
+[콘텐츠 생성] write-* 스킬들 (리서치 4개 참조)
+    ↓
+[아웃리치] write-outreach (타겟 인물 DM/이메일)
+```
+
+| 리서치 | 스킬 | 산출물 |
+|--------|------|--------|
+| 경쟁사 카피 | copy-research | `outputs/promotion/copy-research.md` |
+| 채널 트렌드 & 규칙 | channel-research | `outputs/promotion/channel-research.md` |
+| 유저 언어 | audience-language-research | `outputs/promotion/audience-language.md` |
+| 타이밍 | timing-research | `outputs/promotion/timing-research.md` |
+
 ## 채널별 실행 스킬 (`/promote`)
 
 전략 수립 후 실제 포스팅/홍보 콘텐츠를 생성하는 실행 스킬입니다.
@@ -110,6 +137,7 @@ Growth Coach 에이전트가 대화 주도
 /promote show-hn        — Hacker News Show HN 포스트
 /promote reddit         — Reddit 서브레딧별 포스트
 /promote twitter        — Twitter/X 런칭 스레드
+/promote meta           — Meta (Facebook/Instagram) 콘텐츠
 /promote disquiet       — 디스콰이엇 런칭 콘텐츠
 /promote naver-blog     — 네이버 블로그 SEO 포스트
 /promote press-release  — 보도자료 (국내/글로벌)
@@ -124,12 +152,14 @@ Growth Coach 에이전트가 대화 주도
 | write-show-hn | Hacker News | Show HN 포스트, FAQ 대응 |
 | write-reddit | Reddit | 서브레딧별 맞춤 포스트 3개+ |
 | write-twitter | Twitter/X | 런칭 스레드 (7-10트윗), 개별 트윗 5개 |
+| write-meta | Meta (Facebook/Instagram) | FB 포스트 3종, IG 캐러셀/릴스/스토리, 광고 카피 |
 | write-disquiet | 디스콰이엇 | 제품 페이지, 런칭 포스트 |
 | write-naver-blog | 네이버 블로그 | SEO 포스트 + 시리즈 4편 계획 |
 | write-press-release | 언론 | 보도자료 (KR/EN), 기자 피칭 이메일 |
 | write-email-sequence | 이메일 | 웨이트리스트 3통 + 온보딩 5통 |
 | write-landing-copy | 랜딩 페이지 | 전체 섹션 카피 + SEO 메타 |
 | write-community | 커뮤니티 | IndieHackers, Dev.to, GeekNews, OKKY, Velog |
+| write-outreach | 아웃리치 | 타겟 인물 이메일, LinkedIn DM, Twitter DM |
 
 모든 산출물은 `outputs/promotion/{channel}/`에 저장되며, 바로 복붙해서 올릴 수 있는 형태로 생성됩니다.
 

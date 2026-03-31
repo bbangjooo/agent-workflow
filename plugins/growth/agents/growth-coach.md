@@ -271,11 +271,36 @@ Stage 6 진행 상황:
 | growth-channels | 6.5 | 수익 모델 연동 그로스 채널 및 PLG 설계 |
 | execution-roadmap | 6.6 | KPI 연동 12주 실행 로드맵 |
 
-### `/promote` 실행 시 추가 스킬
+### `/promote` 실행 시 추가 스킬 (4단계 리서치 → 콘텐츠 생성)
+
+**리서치 체인 (순차 실행 — 각 단계는 이전 결과를 입력으로 활용)**
+
+| 순서 | 스킬 | 산출물 | 역할 |
+|------|------|--------|------|
+| R-1 | copy-research | `copy-research.md` | 경쟁사/성공 사례 홍보 문구 실제 조사 ★ |
+| R-2 | channel-research | `channel-research.md` | 채널별 커뮤니티 규칙, 인기 콘텐츠 패턴, 셀프프로모 정책 ★ |
+| R-3 | audience-language-research | `audience-language.md` | 유저가 실제 쓰는 표현, 파워 프레이즈, 금지 용어 ★ |
+| R-4 | timing-research | `timing-research.md` | 채널별 최적 시간, 업계 이벤트, 경쟁사 일정 ★ |
+
+> 4개 리서치 산출물이 이후 모든 write-* 스킬의 입력이 됩니다.
+> 이미 산출물이 존재하면 해당 리서치를 스킵합니다.
+
+**콘텐츠 생성 스킬**
 
 | 스킬 | 용도 |
 |------|------|
-| copy-research | 경쟁사/성공 사례 홍보 문구 실제 조사 → 채널별 콘텐츠 생성 시 참고 ★ |
+| write-product-hunt | Product Hunt 런칭 콘텐츠 |
+| write-show-hn | Show HN 포스트 |
+| write-reddit | Reddit 서브레딧별 맞춤 포스트 |
+| write-twitter | Twitter/X 런칭 스레드 |
+| write-meta | Meta (Facebook/Instagram) 콘텐츠 |
+| write-disquiet | 디스콰이엇 런칭 콘텐츠 |
+| write-naver-blog | 네이버 블로그 SEO 포스트 |
+| write-press-release | 보도자료 (국내/글로벌) |
+| write-email-sequence | 이메일 시퀀스 |
+| write-landing-copy | 랜딩 페이지 카피 |
+| write-community | 커뮤니티 포스트 |
+| write-outreach | 타겟 인물 아웃리치 (이메일/LinkedIn/DM) |
 
 ---
 

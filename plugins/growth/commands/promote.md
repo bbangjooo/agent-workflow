@@ -15,7 +15,9 @@
 /promote press-release       — 보도자료 (국내/글로벌)
 /promote email-sequence      — 이메일 시퀀스 (웨이트리스트/온보딩)
 /promote landing-copy        — 랜딩 페이지 카피
+/promote meta                — Meta (Facebook/Instagram) 콘텐츠
 /promote community           — 커뮤니티 포스트 (IndieHackers, Dev.to, GeekNews 등)
+/promote outreach            — 타겟 인물 아웃리치 (이메일, LinkedIn, DM)
 ```
 
 ## 입력
@@ -36,28 +38,60 @@
    - 라이브 URL, 스크린샷 경로
    - 가격 모델 (있으면)
 
-2. 경쟁사/성공 사례 카피 조사 (copy-research 스킬):
+2. 4단계 리서치 체인 (순차 실행):
+   각 리서치는 이전 리서치 결과를 입력으로 활용합니다.
+   이미 산출물이 존재하면 해당 단계를 스킵합니다.
+
+   [Step R-1] copy-research (경쟁사 카피 조사)
    - outputs/promotion/copy-research.md 존재 확인
-   - 없으면 → copy-research 스킬 실행 (웹 서치로 실제 카피 수집)
+   - 없으면 → copy-research 스킬 실행
      - 경쟁사 랜딩 페이지 헤드라인/CTA
      - Product Hunt 상위 제품 타이틀/설명
      - Reddit/Twitter/IndieHackers 인기 포스트 문구
      - 앱스토어 설명 (모바일 시)
-   - 있으면 → 기존 조사 결과 참조
-   → 이 조사 결과가 이후 모든 채널 콘텐츠의 톤/패턴 기준이 됨
+
+   [Step R-2] channel-research (채널 트렌드 & 커뮤니티 규칙)
+   - outputs/promotion/channel-research.md 존재 확인
+   - 없으면 → channel-research 스킬 실행
+     - 각 타겟 채널의 커뮤니티 규칙/셀프프로모 정책 실제 조사
+     - 채널별 최신 인기 콘텐츠 TOP 분석
+     - 채널 우선순위 매트릭스
+
+   [Step R-3] audience-language-research (유저 실제 언어)
+   - outputs/promotion/audience-language.md 존재 확인
+   - 없으면 → audience-language-research 스킬 실행
+     - 유저가 문제를 설명하는 실제 표현 수집
+     - 리뷰/커뮤니티에서 반복되는 단어/은어
+     - 파워 프레이즈 & 금지 용어 정리
+
+   [Step R-4] timing-research (최적 타이밍)
+   - outputs/promotion/timing-research.md 존재 확인
+   - 없으면 → timing-research 스킬 실행
+     - 채널별 최적 포스팅 시간 (최신 데이터)
+     - 업계 이벤트/트렌드 타이밍
+     - 경쟁사 런칭 일정 충돌 확인
 
 3. 채널 지정 확인:
    - 지정됨 → 해당 write-{channel} 스킬 실행
-   - 미지정 → market-analysis.md의 타겟 시장 기반 채널 자동 선택
+   - 미지정 → channel-research.md의 채널 우선순위 매트릭스 기반 채널 자동 선택
      - 국내 → disquiet, naver-blog, press-release(KR), community(KR)
      - 글로벌 → product-hunt, show-hn, reddit, twitter, community(EN)
      - 양쪽 → 전체
+   - 채널 우선순위에서 "스킵 권장"인 채널은 제외
 
 4. 각 채널별 스킬 호출하여 콘텐츠 생성
-   - copy-research.md의 패턴을 참고하여 검증된 카피 구조 활용
-   - 경쟁사 문구를 그대로 복사하지 않고, 패턴을 우리 제품에 맞게 변형
+   - 4개 리서치 산출물을 모두 참조:
+     - copy-research.md → 검증된 카피 패턴 활용
+     - channel-research.md → 커뮤니티 규칙 준수, 인기 콘텐츠 패턴 반영
+     - audience-language.md → 유저 언어로 작성, 금지 용어 회피
+     - timing-research.md → 추천 포스팅 시간 명시
 
-5. 산출물을 outputs/promotion/{channel}/ 에 저장
+5. 아웃리치 메시지 생성 (write-outreach 스킬)
+   - 타겟 인물 리서치 (인플루언서, 기자, 커뮤니티 리더)
+   - 채널별 개인화 메시지 작성 (이메일, LinkedIn, Twitter DM)
+
+6. 산출물을 outputs/promotion/{channel}/ 에 저장
+   - timing-research.md의 타임라인에 맞춰 포스팅 순서 안내
 ```
 
 ## 채널별 스킬 매핑
@@ -73,7 +107,18 @@
 | 보도자료 | write-press-release | `outputs/promotion/press-release/` |
 | 이메일 | write-email-sequence | `outputs/promotion/email/` |
 | 랜딩 카피 | write-landing-copy | `outputs/promotion/landing/` |
+| Meta (FB/IG) | write-meta | `outputs/promotion/meta/` |
 | 커뮤니티 | write-community | `outputs/promotion/community/` |
+| 아웃리치 | write-outreach | `outputs/promotion/outreach/` |
+
+## 리서치 산출물
+
+| 리서치 | 스킬 | 산출물 | 역할 |
+|--------|------|--------|------|
+| 경쟁사 카피 | copy-research | `outputs/promotion/copy-research.md` | 검증된 카피 패턴 |
+| 채널 트렌드 & 규칙 | channel-research | `outputs/promotion/channel-research.md` | 커뮤니티 규칙, 인기 콘텐츠 패턴 |
+| 유저 언어 | audience-language-research | `outputs/promotion/audience-language.md` | 유저 실제 표현, 금지 용어 |
+| 타이밍 | timing-research | `outputs/promotion/timing-research.md` | 최적 시간, 런칭 타임라인 |
 
 ## 완료 조건
 
