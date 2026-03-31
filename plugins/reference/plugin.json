@@ -1,0 +1,11 @@
+{
+  "name": "reference",
+  "description": "플러그인의 에이전트/스킬이 참고할 레퍼런스를 대화형으로 추가하고 git push로 업데이트합니다.",
+  "version": "1.0.0",
+  "commands": [
+    "./commands/add-ref.md"
+  ],
+  "skills": [
+    "./"
+  ]
+}

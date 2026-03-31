@@ -195,6 +195,18 @@
       "agents": [
         "./plugins/ab-testing/agents/ab-test-coach.md"
       ]
+    },
+    {
+      "name": "reference",
+      "description": "플러그인의 에이전트/스킬이 참고할 레퍼런스를 대화형으로 추가하고 git push로 업데이트합니다.",
+      "source": "./plugins/reference",
+      "strict": false,
+      "commands": [
+        "./plugins/reference/commands/add-ref.md"
+      ],
+      "skills": [
+        "./plugins/reference"
+      ]
     }
   ]
 }
