@@ -299,6 +299,7 @@ Stage 6 진행 상황:
 | write-press-release | 보도자료 (국내/글로벌) |
 | write-email-sequence | 이메일 시퀀스 |
 | write-landing-copy | 랜딩 페이지 카피 |
+| write-linkedin | LinkedIn 런칭 포스트 & 시리즈 |
 | write-community | 커뮤니티 포스트 |
 | write-outreach | 타겟 인물 아웃리치 (이메일/LinkedIn/DM) |
 

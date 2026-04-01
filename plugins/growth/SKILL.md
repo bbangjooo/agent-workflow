@@ -143,6 +143,7 @@ Growth Coach 에이전트가 대화 주도
 /promote press-release  — 보도자료 (국내/글로벌)
 /promote email-sequence — 이메일 시퀀스
 /promote landing-copy   — 랜딩 페이지 카피
+/promote linkedin       — LinkedIn 런칭 포스트 & 시리즈
 /promote community      — 커뮤니티 포스트
 ```
 
@@ -158,6 +159,7 @@ Growth Coach 에이전트가 대화 주도
 | write-press-release | 언론 | 보도자료 (KR/EN), 기자 피칭 이메일 |
 | write-email-sequence | 이메일 | 웨이트리스트 3통 + 온보딩 5통 |
 | write-landing-copy | 랜딩 페이지 | 전체 섹션 카피 + SEO 메타 |
+| write-linkedin | LinkedIn | 런칭 포스트 3종, Thought Leadership 시리즈, 카루셀 |
 | write-community | 커뮤니티 | IndieHackers, Dev.to, GeekNews, OKKY, Velog |
 | write-outreach | 아웃리치 | 타겟 인물 이메일, LinkedIn DM, Twitter DM |
 

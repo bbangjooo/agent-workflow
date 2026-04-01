@@ -16,6 +16,7 @@
 /promote email-sequence      — 이메일 시퀀스 (웨이트리스트/온보딩)
 /promote landing-copy        — 랜딩 페이지 카피
 /promote meta                — Meta (Facebook/Instagram) 콘텐츠
+/promote linkedin             — LinkedIn 런칭 포스트 & 시리즈
 /promote community           — 커뮤니티 포스트 (IndieHackers, Dev.to, GeekNews 등)
 /promote outreach            — 타겟 인물 아웃리치 (이메일, LinkedIn, DM)
 ```
@@ -75,7 +76,7 @@
    - 지정됨 → 해당 write-{channel} 스킬 실행
    - 미지정 → channel-research.md의 채널 우선순위 매트릭스 기반 채널 자동 선택
      - 국내 → disquiet, naver-blog, press-release(KR), community(KR)
-     - 글로벌 → product-hunt, show-hn, reddit, twitter, community(EN)
+     - 글로벌 → product-hunt, show-hn, reddit, twitter, linkedin, community(EN)
      - 양쪽 → 전체
    - 채널 우선순위에서 "스킵 권장"인 채널은 제외
 
@@ -108,6 +109,7 @@
 | 이메일 | write-email-sequence | `outputs/promotion/email/` |
 | 랜딩 카피 | write-landing-copy | `outputs/promotion/landing/` |
 | Meta (FB/IG) | write-meta | `outputs/promotion/meta/` |
+| LinkedIn | write-linkedin | `outputs/promotion/linkedin/` |
 | 커뮤니티 | write-community | `outputs/promotion/community/` |
 | 아웃리치 | write-outreach | `outputs/promotion/outreach/` |
 
