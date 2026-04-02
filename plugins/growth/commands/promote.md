@@ -19,6 +19,7 @@
 /promote linkedin             — LinkedIn 런칭 포스트 & 시리즈
 /promote community           — 커뮤니티 포스트 (IndieHackers, Dev.to, GeekNews 등)
 /promote outreach            — 타겟 인물 아웃리치 (이메일, LinkedIn, DM)
+/promote community-engage    — 커뮤니티 리드 헌팅 & 답글 생성 (Reddit/Twitter)
 ```
 
 ## 입력
@@ -91,7 +92,14 @@
    - 타겟 인물 리서치 (인플루언서, 기자, 커뮤니티 리더)
    - 채널별 개인화 메시지 작성 (이메일, LinkedIn, Twitter DM)
 
-6. 산출물을 outputs/promotion/{channel}/ 에 저장
+6. 커뮤니티 잠입 & 리드 헌팅 (community-engage 스킬)
+   - Reddit/Twitter에서 제품이 필요한 사람의 기존 글 탐색
+   - 검색 키워드 설계 (문제 호소형, 불만 표출형, 비교/탐색형)
+   - 발견된 리드 우선순위 지정 & 바로 복붙 가능한 답글 생성
+   - 답글 비율: 순수 도움 70% + 자연스러운 제품 언급 30%
+   - 주간 루틴 & 키워드 알림 설정 가이드 제공
+
+7. 산출물을 outputs/promotion/{channel}/ 에 저장
    - timing-research.md의 타임라인에 맞춰 포스팅 순서 안내
 ```
 
@@ -112,6 +120,7 @@
 | LinkedIn | write-linkedin | `outputs/promotion/linkedin/` |
 | 커뮤니티 | write-community | `outputs/promotion/community/` |
 | 아웃리치 | write-outreach | `outputs/promotion/outreach/` |
+| 커뮤니티 잠입 | community-engage | `outputs/promotion/community-engage/` |
 
 ## 리서치 산출물
 
