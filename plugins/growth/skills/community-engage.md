@@ -127,8 +127,12 @@ audience-language.md가 있으면 유저 실제 표현을 키워드에 반영합
 - 예: "What worked for me was..."
 
 [Step 3] 자연스러운 제품 언급 (선택적 — 10개 중 3개만)
-- "I ended up building/using {제품명} for this"
-- "If you want to try it: {URL}"
+- "I ended up hacking together a little script/tool for this"
+- "제품"이 아닌 "내가 살려고 만든 것" 톤으로 (personal survival tool 프레이밍)
+  → "I built a product" ❌ → "I hacked together a ruthless little macOS thing" ✅
+- **링크를 먼저 주지 않는다** — 상대가 "어디서 받아?" 하고 물어올 때만 공유
+  → 먼저 링크를 던지면 그 순간 광고가 됨
+  → 상대가 요청하면 그때 "here you go: {URL}" — 이러면 전환율도 높음
 - 절대 "Check out my product!" 식의 직접 홍보 금지
 - 맥락상 자연스러울 때만 언급
 
@@ -156,11 +160,13 @@ audience-language.md가 있으면 유저 실제 표현을 키워드에 반영합
 
 {문제 해결 과정 2-3문장}
 
-I actually ended up {building/using} {제품명} to handle this — {구체적으로 어떻게 해결하는지 1문장}. {URL if relevant}
+I ended up hacking together a {제품을 비공식적으로 묘사} that {구체적으로 어떻게 해결하는지 1문장}.
 
 {상대방 상황에 맞는 추가 팁 1문장}"
 
-→ 목적: 문제 해결 맥락에서 자연스럽게 제품 노출
+→ 링크 없음. 관심 있으면 상대가 물어봄. 그때 공유.
+→ "제품을 런칭했다"가 아니라 "내가 살려고 만든 것" 톤 유지
+→ 예시: "I ended up hacking together a ruthless little macOS thing that literally locks my keyboard when my screen time goes past a threshold."
 
 [Type C: 질문 응답형]
 "Great question. {짧은 답변}
@@ -189,10 +195,20 @@ Depends on your needs — happy to share more if you have specific requirements.
 - 성과 체크: 어떤 답글이 upvote/좋아요를 받았는지
 - Type A vs B vs C 비율 조정
 
-[키워드 알림 설정 가이드]
-- Reddit: 키워드 모니터링 도구 추천 (F5Bot 등 무료 서비스)
-- Twitter: TweetDeck 또는 Twitter 검색 저장
-- Google Alerts: site:reddit.com "{키워드}"
+[키워드 알림 & 모니터링 도구]
+
+무료:
+- F5Bot (f5bot.com): Reddit 키워드 알림. 무료. 키워드 등록하면 이메일로 알림
+- Google Alerts: site:reddit.com "{키워드}" 설정
+- Twitter 검색 저장: TweetDeck 또는 Twitter Advanced Search 북마크
+
+유료 (효과 검증된 도구):
+- Pulse for Reddit: Reddit 스레드를 키워드로 서핑. 작은 스레드까지 발굴 가능
+  → 댓글에서 devs가 불만 토로하는 tiny threads를 자동으로 서피싱해줌
+- GummySearch: Reddit 오디언스 리서치. 서브레딧별 pain point, 요청, 추천 분류
+- ParseStream: 여러 플랫폼(Reddit, X, 포럼) 크로스 모니터링. 키워드 알림
+
+→ 초기에는 F5Bot(무료)로 시작, 효과 확인 후 Pulse/GummySearch로 확장 권장
 ```
 
 ## 산출물
