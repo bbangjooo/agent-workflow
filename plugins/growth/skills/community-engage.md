@@ -197,18 +197,26 @@ Depends on your needs — happy to share more if you have specific requirements.
 
 [키워드 알림 & 모니터링 도구]
 
-무료:
+자체 도구 (추천):
+- Lead Hunter (~/scrapper): Reddit + X 키워드 자동 모니터링
+  → `python main.py daemon` — 15분마다 자동 스캔
+  → 리드 점수 자동 채점 (키워드 매칭, 최신성, 참여도, 질문 감지)
+  → 우선순위 높은 리드 발견 시 Telegram 즉시 알림
+  → SQLite에 리드 저장 & 중복 제거
+  → config.yaml에서 키워드/서브레딧 설정
+
+무료 외부 도구:
 - F5Bot (f5bot.com): Reddit 키워드 알림. 무료. 키워드 등록하면 이메일로 알림
 - Google Alerts: site:reddit.com "{키워드}" 설정
 - Twitter 검색 저장: TweetDeck 또는 Twitter Advanced Search 북마크
 
-유료 (효과 검증된 도구):
+유료 외부 도구 (효과 검증된 도구):
 - Pulse for Reddit: Reddit 스레드를 키워드로 서핑. 작은 스레드까지 발굴 가능
   → 댓글에서 devs가 불만 토로하는 tiny threads를 자동으로 서피싱해줌
 - GummySearch: Reddit 오디언스 리서치. 서브레딧별 pain point, 요청, 추천 분류
 - ParseStream: 여러 플랫폼(Reddit, X, 포럼) 크로스 모니터링. 키워드 알림
 
-→ 초기에는 F5Bot(무료)로 시작, 효과 확인 후 Pulse/GummySearch로 확장 권장
+→ Lead Hunter(자체)로 시작, 필요하면 Pulse/GummySearch 보완
 ```
 
 ## 산출물
