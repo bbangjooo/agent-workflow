@@ -36,12 +36,16 @@ A. 문제 호소형
    - "is there a tool for {문제}?"
    - "looking for {솔루션 카테고리}"
    - "any recommendations for {카테고리}?"
+   - "context switching between AI and my own code"
+   - "mentally exhausted from switching between AI tools"
 
 B. 불만 표출형
    - "{경쟁사} alternative"
    - "{경쟁사} sucks"
    - "tired of {기존 방식}"
    - "{문제} is so frustrating"
+   - "context switching is killing me"
+   - "brain can't keep up with AI speed"
 
 C. 비교/탐색형
    - "{카테고리} vs {카테고리}"
@@ -167,6 +171,7 @@ I ended up hacking together a {제품을 비공식적으로 묘사} that {구체
 → 링크 없음. 관심 있으면 상대가 물어봄. 그때 공유.
 → "제품을 런칭했다"가 아니라 "내가 살려고 만든 것" 톤 유지
 → 예시: "I ended up hacking together a ruthless little macOS thing that literally locks my keyboard when my screen time goes past a threshold."
+→ 예시 (context switch 각도): "The worst part isn't the hours — it's the constant context switching between reviewing AI output and your own thinking. Your brain never gets a clean break. I hacked together something that detects when I'm in that loop and forces a cooldown."
 
 [Type C: 질문 응답형]
 "Great question. {짧은 답변}

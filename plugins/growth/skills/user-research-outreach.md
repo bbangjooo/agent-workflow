@@ -40,10 +40,11 @@ market-analysis.md의 페르소나를 더 좁힙니다.
 일반 페르소나: "개발자" ← 너무 넓음
 좁은 페르소나: "AI 코딩 도구를 매일 3시간+ 쓰는 개발자" ← 아직 넓음
 초좁은 페르소나: "Claude Code/Cursor를 쓰다가 번아웃을 경험한 개발자" ← 이 수준
+더 좁은 예: "AI 출력 리뷰 ↔ 자기 코드 사이의 context switch로 인지 피로를 느끼는 개발자"
 
 [초좁은 페르소나 설계 기준]
 - 구체적 도구/플랫폼을 사용하는 사람
-- 구체적 문제를 이미 인식하고 있는 사람
+- 구체적 문제를 이미 인식하고 있는 사람 (번아웃, context switch 피로, AI brain fry 등)
 - 어딘가에서 그 불만을 표현하고 있는 사람
 - 10명만 찾으면 되므로 넓힐 필요 없음
 
@@ -131,6 +132,12 @@ F. Slack 커뮤니티
 I'm experimenting with something to {문제 해결 방법 한줄}. 
 Can I watch you {작업} for 20 minutes and see where it'd fit? 
 No pitch, just trying to learn."
+
+context switch 각도 변형:
+"Hey {이름} — I saw your post about {문제}. I've been tracking my own workflow 
+and realized the constant context switching between AI output and my own thinking 
+is what actually fries my brain, not the hours. I'm experimenting with something 
+that detects that loop. Mind if I watch you code for 20 min to see if it's the same for you?"
 
 [DM 템플릿 — 한국어]
 
