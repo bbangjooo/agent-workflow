@@ -20,6 +20,7 @@
 /promote community           — 커뮤니티 포스트 (IndieHackers, Dev.to, GeekNews 등)
 /promote outreach            — 타겟 인물 아웃리치 (이메일, LinkedIn, DM)
 /promote community-engage    — 커뮤니티 리드 헌팅 & 답글 생성 (Reddit/Twitter)
+/promote user-research       — 1:1 유저 리서치 아웃리치 (첫 10명 확보)
 ```
 
 ## 입력
@@ -121,6 +122,7 @@
 | 커뮤니티 | write-community | `outputs/promotion/community/` |
 | 아웃리치 | write-outreach | `outputs/promotion/outreach/` |
 | 커뮤니티 잠입 | community-engage | `outputs/promotion/community-engage/` |
+| 유저 리서치 | user-research-outreach | `outputs/promotion/user-research-outreach/` |
 
 ## 리서치 산출물
 
