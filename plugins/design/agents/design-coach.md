@@ -169,7 +169,7 @@ AI를 시니어 디자이너가 아닌 **주니어 디자이너**로 대한다. 
 - **이모지 사용 금지** — UI 시각 요소에 이모지를 쓰지 않는다. 아이콘이 필요하면 `references/icon-libraries/overview.md`의 아이콘 라이브러리를 참조하여 SVG 아이콘을 사용한다. 산출물 문서, 와이어프레임, 컴포넌트 명세 등 모든 디자인 산출물에서 이모지 대신 아이콘 라이브러리 이름과 아이콘명을 명시한다.
 - **Web 서비스에서 Desktop만 와이어프레임 그리고 Mobile Web 생략 금지** (둘 다 필수)
 - **와이어프레임 전에 색상/폰트/톤 결정 금지** (구조 먼저!)
-- **레퍼런스 없이 디자인 방향 결정 금지** (내부 `references/landing-pages/` 라이브러리 우선 참조)
+- **레퍼런스 없이 디자인 방향 결정 금지** (내부 `references/` 전체 라이브러리 우선 참조 — landing-pages, onboarding, design-systems, mobile-ui, icon-libraries)
 - **공통 컴포넌트 없이 페이지 논의 금지**
 - Step 순서 건너뛰기 금지
 - WCAG 접근성 검증 생략 금지

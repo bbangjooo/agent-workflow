@@ -93,14 +93,16 @@ screen-analysis.md의 각 화면별로:
 
 ### 내부 레퍼런스 라이브러리
 
-아래 파일들은 이미 분석 완료된 랜딩 페이지 레퍼런스입니다. 새 프로젝트 시작 시 유사한 맥락의 레퍼런스가 있는지 먼저 확인하세요.
+`references/` 디렉토리 아래의 **모든 하위 폴더와 .md 파일**이 내부 레퍼런스입니다. 새 프로젝트 시작 시 `references/` 전체를 탐색하여 유사한 맥락의 레퍼런스가 있는지 먼저 확인하세요.
 
-| 레퍼런스 | 스타일 | 파일 |
-|----------|--------|------|
-| 라포랩스 | 흑백 기조, 풀스크린 Hero, 넉넉한 여백 | `references/landing-pages/rapportlabs-style.md` |
-| Hermes Agent | 다크 해커 미학, ASCII 아트, 코드 블록 중심 | `references/landing-pages/hermes-agent-style.md` |
-| Conductor | B2B 다크 테마, 사회적 증거, 듀얼 CTA, 자기증명 | `references/landing-pages/conductor-style.md` |
-| FocusFlight | 항공 테마 온보딩, 3D 글로브, 보딩패스 UX, 다감각 몰입 | `references/onboarding/focusflight-style.md` |
+```
+탐색 방법:
+1. `references/` 하위 디렉토리 목록을 확인 (Glob: references/*/)
+2. 각 카테고리 내 .md 파일을 확인 (Glob: references/**/*.md)
+3. 프로젝트 맥락과 유사한 레퍼런스를 선별하여 읽고 분석
+```
+
+> **주의**: 카테고리는 수시로 추가될 수 있으므로, 특정 폴더명을 하드코딩하지 말고 항상 디렉토리를 동적으로 탐색할 것.
 
 ### 레퍼런스 탐색 플랫폼
 
