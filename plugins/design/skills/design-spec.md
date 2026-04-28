@@ -11,9 +11,9 @@ Step 2.6: 디자인 명세서 생성
 ## 트리거
 
 - Step 2.5 (Component Spec) 완료 후 자동 실행
-- 모든 이전 산출물이 Shortify 트리에 존재할 때
+- 모든 이전 산출물이 카테고리 트리에 존재할 때
 
-## 입력 (Shortify 트리)
+## 입력 (카테고리 트리)
 
 - `outputs/stage-2/platform-selection.md` (플랫폼 확인)
 - `outputs/stage-2/brand/01-identity.md` (브랜드 정체성)

@@ -36,7 +36,7 @@ Stage 4: Deployment (/deploy)
 |-------|-------------|
 | Stage 0 | `outputs/stage-0/idea-brief.md` |
 | Stage 1 | `outputs/stage-1/prd.md` |
-| Stage 2 | `outputs/stage-2/README.md` (Shortify 트리 — 표준 진입점) + `design-spec-{platform}.md` |
+| Stage 2 | `outputs/stage-2/README.md` (카테고리 트리 — 표준 진입점) + `design-spec-{platform}.md` |
 | Stage 3 | `outputs/stage-3/build-config.md` + 코드 |
 | Stage 4 | `outputs/stage-4/deployment-complete.md` + 라이브 URL |
 
@@ -71,7 +71,7 @@ Stage 4: Deployment (/deploy)
 |-------|------|-----------|
 | 0 | `/ideate` 실행 | `idea-brief.md` 존재 |
 | 1 | `/plan` 실행 | `prd.md` 존재 |
-| 2 | `/design` 실행 | **`outputs/stage-2/README.md` 존재** (Shortify 트리 인덱스 — design Step 2.9의 산출물) |
+| 2 | `/design` 실행 | **`outputs/stage-2/README.md` 존재** (카테고리 트리 인덱스 — design Step 2.9의 산출물) |
 | 3 | `/develop` 실행 | `build-config.md` 존재 |
 | 4 | `/deploy` 실행 | `deployment-complete.md` 존재 |
 
@@ -100,7 +100,7 @@ Stage 완료 시:
 📊 결과 요약:
 - 아이디어: {프로젝트명}
 - PRD: outputs/stage-1/prd.md
-- 디자인 인덱스: outputs/stage-2/README.md (Shortify 트리)
+- 디자인 인덱스: outputs/stage-2/README.md (카테고리 트리)
 - 디자인 핸드오프: outputs/stage-2/design-spec-{platform}.md
 - 코드: {프로젝트 폴더}
 - 라이브 URL: https://your-app.vercel.app

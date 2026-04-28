@@ -10,7 +10,7 @@ PRD와 화면 구조를 분석하여 **각 화면이 왜 존재하는지, 유저
 
 ## 산출물 경로
 
-`outputs/stage-2/ui/01-screen-analysis.md` (Shortify 트리)
+`outputs/stage-2/ui/01-screen-analysis.md`
 
 산출물 상단에 메타 헤더 + 하단에 변경 이력 표를 필수 포함한다 (`agents/design-coach.md` §메타 헤더 규약 참조).
 

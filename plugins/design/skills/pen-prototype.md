@@ -13,7 +13,7 @@ design-spec이 완료된 후, pencil MCP를 사용하여 실제 시각적 UI 프
 - Step 2.6 (Design Spec) 완료 후 자동 실행
 - `design-spec-{platform}.md` 파일이 존재할 때
 
-## 입력 (Shortify 트리)
+## 입력
 
 - `outputs/stage-2/platform-selection.md` (플랫폼 확인)
 - `outputs/stage-2/brand/01-identity.md`

@@ -8,7 +8,7 @@ Stage 2의 모든 디자인 산출물(`outputs/stage-2/{brand,ui,character}/...`
 
 > **핵심 역할**: README는 단순 인덱스가 아니라 **표준 진입점(Standard Entry Point)** 이다. 다른 Stage(특히 Stage 4 develop)와 design 사이의 인터페이스 계약을 README가 담당한다.
 
-> **Shortify 패턴 차용**: brand / ui / character 카테고리, 번호 파일, 빠른 탐색 Q&A, 메타 헤더(Owner/Status/Last Updated), 변경 이력 테이블.
+> **정리 패턴**: brand / ui / character 카테고리, 번호 파일, 빠른 탐색 Q&A, 메타 헤더(Owner/Status/Last Updated), 변경 이력 테이블.
 
 ## 트리거
 

@@ -44,7 +44,7 @@
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Stage 3: Design (디자인) — Shortify 패턴 트리                 |
+|  Stage 3: Design (디자인) — brand/ui 카테고리 트리             |
 |  ---------------------------------------------------------  |
 |  커맨드: /design                                            |
 |  입력: prd.md, screen-structure.md                          |
@@ -340,7 +340,7 @@ Stage 2 (Design)을 진행합니다.
 - 아이디어 브리프: outputs/stage-0/idea-brief.md
 - 비즈니스 모델: outputs/monetization/business-model.md
 - PRD: outputs/stage-1/prd.md
-- 디자인 인덱스: outputs/stage-2/README.md (Shortify 트리 표준 진입점)
+- 디자인 인덱스: outputs/stage-2/README.md (카테고리 트리 표준 진입점)
 - 디자인 핸드오프: outputs/stage-2/design-spec-{platform}.md
 - 코드: {프로젝트 폴더}
 - 유저 획득 전략: outputs/stage-5/acquisition-plan.md
@@ -383,7 +383,7 @@ Stage 2 (Design)을 진행합니다.
 | 0 | ideation | `/ideate` | idea-brief.md |
 | 1 | monetization | `/monetize` | business-model.md |
 | 2 | planning | `/plan` | prd.md |
-| 3 | design | `/design` | outputs/stage-2/README.md (Shortify 트리 인덱스 — 표준 진입점) |
+| 3 | design | `/design` | outputs/stage-2/README.md (카테고리 트리 인덱스 — 표준 진입점) |
 | 4 | development | `/develop` | build-config.md |
 | 5 | deployment | `/deploy` | deployment-complete.md |
 | 6 | growth | `/grow` | acquisition-plan.md |

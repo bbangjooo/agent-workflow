@@ -15,7 +15,7 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 - Stage 2 (Design) 완료 직후
 - **`outputs/stage-2/README.md`** 파일이 존재할 때 (표준 진입점)
 
-## 입력 (Shortify 트리 + README 링크 추적)
+## 입력 (카테고리 트리 + README 링크 추적)
 
 표준 진입점은 `outputs/stage-2/README.md` 하나. 이 README를 먼저 읽고, 그 안의 brand/ui 카테고리 표 + 빠른 탐색 링크를 따라 산출물을 소비한다.
 

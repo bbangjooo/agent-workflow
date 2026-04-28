@@ -10,7 +10,7 @@ Stage 3 개발 워크플로우를 시작합니다. 디자인 명세를 바탕으
 
 ## 사전 조건
 
-- `outputs/stage-2/README.md` 파일이 존재해야 합니다 (Shortify 트리 표준 진입점). 그 안의 빠른 탐색 링크에서 `design-spec-{platform}.md`, `brand/`, `ui/` 산출물 경로를 확인합니다.
+- `outputs/stage-2/README.md` 파일이 존재해야 합니다 (디자인 산출물 트리의 표준 진입점). 그 안의 빠른 탐색 링크에서 `design-spec-{platform}.md`, `brand/`, `ui/` 산출물 경로를 확인합니다.
 - `outputs/stage-1/prd.md` 파일이 존재해야 합니다
 - Stage 2 (디자인)이 완료되어 있어야 합니다
 
@@ -80,7 +80,7 @@ Stage 3 완료 시 다음 문서들이 `outputs/stage-3/` 디렉토리에 생성
 
 ### 시작 전 확인
 
-1. `outputs/stage-2/README.md` 파일 존재 확인 (Shortify 트리 표준 진입점)
+1. `outputs/stage-2/README.md` 파일 존재 확인 (디자인 산출물 트리의 표준 진입점)
 2. `outputs/stage-1/prd.md` 파일 존재 확인
 3. 파일이 없으면: "먼저 `/design` 커맨드로 디자인을 완료해주세요. (Step 2.9 design-index가 README를 만듭니다.)"
 4. 파일이 있으면: 내용을 읽고 요약 후 개발 시작

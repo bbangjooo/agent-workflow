@@ -1,6 +1,6 @@
 # /design
 
-Stage 2 디자인 워크플로우를 시작합니다. PRD와 화면 구조를 바탕으로 개발 가능한 디자인 명세서를 생성하고, Shortify 패턴(brand/ui/character 카테고리 + 인덱스 README)으로 정리합니다.
+Stage 2 디자인 워크플로우를 시작합니다. PRD와 화면 구조를 바탕으로 개발 가능한 디자인 명세서를 생성하고, 카테고리 트리(brand/ui/character + 인덱스 README)로 정리합니다.
 
 ## 사용법
 
@@ -42,7 +42,7 @@ Step 2.9: Design Index (README 자동 생성 — 표준 진입점)  ★ NEW
 
 ## 산출물
 
-Stage 2 완료 시 다음 트리가 `outputs/stage-2/` 디렉토리에 생성됩니다 (Shortify 패턴).
+Stage 2 완료 시 다음 트리가 `outputs/stage-2/` 디렉토리에 생성됩니다.
 
 ```
 outputs/stage-2/

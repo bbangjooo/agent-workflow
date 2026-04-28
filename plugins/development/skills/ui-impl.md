@@ -16,7 +16,7 @@ Step 3.10: UI 구현 (UI Implementation)
 
 ## 입력
 
-- `outputs/stage-2/README.md` (Shortify 트리 진입점 — 아래 경로는 README의 빠른 탐색에서 확인)
+- `outputs/stage-2/README.md` (카테고리 트리 진입점 — 아래 경로는 README의 빠른 탐색에서 확인)
 - `outputs/stage-2/design-spec-{platform}.md` (핸드오프 통합)
 - `outputs/stage-2/ui/03-wireframes-{platform}.md`
 - `outputs/stage-2/ui/04-tokens.md` (globals.css 정본)

@@ -135,7 +135,7 @@ UI 요소별 인터랙션:
 
 ## 산출물
 
-`outputs/stage-2/ui/06-animation.md` (Shortify 트리)
+`outputs/stage-2/ui/06-animation.md`
 
 ```markdown
 ---

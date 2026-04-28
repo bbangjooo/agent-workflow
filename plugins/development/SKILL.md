@@ -9,7 +9,7 @@
 ## 사전 조건
 
 - Stage 2 완료 (`/design`)
-- `outputs/stage-2/README.md` 파일 존재 (Shortify 트리 표준 진입점) — README가 가리키는 `design-spec-{platform}.md`, `brand/`, `ui/` 산출물도 함께 사용
+- `outputs/stage-2/README.md` 파일 존재 (디자인 산출물 트리의 표준 진입점) — README가 가리키는 `design-spec-{platform}.md`, `brand/`, `ui/` 산출물도 함께 사용
 - `outputs/stage-1/prd.md` 파일 존재
 
 ## 사용 방법

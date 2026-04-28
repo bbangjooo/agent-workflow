@@ -12,7 +12,7 @@ Step 3.2: 기술 스택 선택 (Tech Stack Selection)
 ## 트리거
 
 - `/develop` 커맨드 실행 시 첫 번째로 실행
-- `outputs/stage-2/README.md` 파일이 존재할 때 (Shortify 트리 진입점)
+- `outputs/stage-2/README.md` 파일이 존재할 때 (카테고리 트리 진입점)
 
 ## 입력
 

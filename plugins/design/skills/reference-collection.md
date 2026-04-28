@@ -115,7 +115,7 @@ screen-analysis.md의 각 화면별로:
 | Dribbble | 디자이너 포트폴리오 (영감용) | dribbble.com |
 | Pinterest | 시각적 검색/무드보드 | pinterest.com |
 
-## 산출물 (2개 파일 — Shortify 트리)
+## 산출물 (2개 파일 — 카테고리 트리)
 
 이 스킬은 두 개의 파일을 동시에 생성한다:
 
