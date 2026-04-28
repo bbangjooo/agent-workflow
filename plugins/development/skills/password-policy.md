@@ -18,7 +18,7 @@
 ## 입력
 
 - `outputs/stage-3/tech-stack.md`
-- `outputs/stage-2/design-spec.md` (보안 요구사항)
+- `outputs/stage-2/design-spec-{platform}.md` (보안 요구사항) — `outputs/stage-2/README.md`에서 경로 확인
 
 ---
 

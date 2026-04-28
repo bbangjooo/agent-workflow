@@ -15,7 +15,7 @@ Step 2.2: 레퍼런스 수집 및 분석
 
 ## 입력
 
-- `outputs/stage-2/screen-analysis.md` — 화면별 목적/위계 분석
+- `outputs/stage-2/ui/01-screen-analysis.md` — 화면별 목적/위계 분석
 - `outputs/stage-2/platform-selection.md`
 - `outputs/stage-0/idea-brief.md`
 - `outputs/stage-1/prd.md`
@@ -115,17 +115,27 @@ screen-analysis.md의 각 화면별로:
 | Dribbble | 디자이너 포트폴리오 (영감용) | dribbble.com |
 | Pinterest | 시각적 검색/무드보드 | pinterest.com |
 
-## 산출물
+## 산출물 (2개 파일 — Shortify 트리)
 
-`outputs/stage-2/references.md`
+이 스킬은 두 개의 파일을 동시에 생성한다:
+
+1. **레퍼런스 패턴 분석** → `outputs/stage-2/ui/02-references.md`
+2. **브랜드 정체성 (키워드/분위기)** → `outputs/stage-2/brand/01-identity.md`
+
+레퍼런스 분석에서 도출된 "브랜드 키워드 3-5개 + 분위기 + 차별화"는 brand/01-identity로 별도 추출하여 brand 카테고리 트리의 시작점이 된다. 레퍼런스 그 자체(누구를/왜/4가지 축 분석)는 ui/02-references에 머문다.
+
+### 1) `outputs/stage-2/ui/02-references.md`
 
 ```markdown
-# Design References
+---
+owner: 솔로 창업자
+status: Draft
+last_updated: {YYYY-MM-DD}
+stage: 2
+step: "2.2 — 레퍼런스 분석"
+---
 
-## 메타데이터
-- Stage: 2
-- Step: 2.1 - 레퍼런스 수집
-- 생성일시: {현재 시간}
+# Design References
 
 ## 레퍼런스 목록
 
@@ -155,6 +165,59 @@ screen-analysis.md의 각 화면별로:
 ## 차별화 포인트
 - {우리 서비스만의 차별점 1}
 - {우리 서비스만의 차별점 2}
+
+## 변경 이력
+
+| 날짜 | 작성자 | 변경 |
+|------|--------|------|
+| {YYYY-MM-DD} | 솔로 창업자 | 최초 작성 |
+```
+
+### 2) `outputs/stage-2/brand/01-identity.md`
+
+```markdown
+---
+owner: 솔로 창업자
+status: Draft
+last_updated: {YYYY-MM-DD}
+stage: 2
+step: "2.2 — 브랜드 정체성"
+---
+
+# Brand Identity
+
+## 한 마디로
+
+> {제품을 한 문장으로 정의 — 예: "Bite-sized learning, on auto-play"}
+
+## 브랜드 키워드 (3-5개)
+
+| 키워드 | 의미 / 제품에서의 발현 |
+|--------|------------------------|
+| {키워드 1} | {어떤 화면/카피/디자인에서 드러나는지} |
+| {키워드 2} | {...} |
+| {키워드 3} | {...} |
+
+## 분위기 (Vibe / Tone)
+
+- **시각 분위기**: {모던/미니멀 / 친근/캐주얼 / 전문적/신뢰 / 활기찬/볼드 / 프리미엄/럭셔리 / 테크/해커 / 엔지니어링/B2B}
+- **카피 톤앤매너**: {존댓말 / 반말 / 친근함 / 직설적 / 전문적}
+- **참고 서비스**: {레퍼런스 중 분위기적으로 가장 가까운 것}
+
+## 피해야 할 스타일
+
+- {예: 어두운 배경 / 유치한 일러스트 / 너무 복잡한 정보 밀도}
+
+## 차별화 포인트 (레퍼런스 대비)
+
+- {차별점 1}
+- {차별점 2}
+
+## 변경 이력
+
+| 날짜 | 작성자 | 변경 |
+|------|--------|------|
+| {YYYY-MM-DD} | 솔로 창업자 | 최초 작성 |
 ```
 
 ## 완료 조건
@@ -162,7 +225,9 @@ screen-analysis.md의 각 화면별로:
 - 최소 3개 레퍼런스 서비스 수집
 - 각 레퍼런스 4가지 축(레이아웃/색상/타이포/그래픽) 분석 완료
 - 공통 패턴 도출
-- `references.md` 파일 생성
+- 브랜드 키워드 3-5개 + 분위기 + 차별화 정리
+- **두 파일 모두 생성**: `outputs/stage-2/ui/02-references.md` + `outputs/stage-2/brand/01-identity.md`
+- 메타 헤더 + 변경 이력 표 포함
 
 ## 다음 Step
 

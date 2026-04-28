@@ -19,7 +19,7 @@ Step 3.8: 인증 구현 (Authentication)
 
 - `outputs/stage-3/tech-stack.md`
 - `outputs/stage-3/api-spec.md`
-- `outputs/stage-2/wireframes.md` (로그인/회원가입 화면)
+- `outputs/stage-2/ui/03-wireframes-{platform}.md` (로그인/회원가입 화면) — `outputs/stage-2/README.md`에서 경로 확인
 
 ---
 

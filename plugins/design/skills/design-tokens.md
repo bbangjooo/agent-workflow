@@ -1,10 +1,10 @@
 # Design Tokens
 
-Step 2.4: 디자인 토큰 — 확정된 구조 위에 톤 정리
+Step 2.4: 디자인 토큰 — 확정된 구조 위에 톤 정리 (Shortify 패턴: brand/ui 분할)
 
 ## 설명
 
-와이어프레임으로 확정된 구조 위에 시각적 톤을 입히는 스킬입니다. 컬러, 폰트, 사이즈, 라인, R값 등 모든 디자인 토큰을 정의하고 **ShadCN 호환 globals.css**로 출력합니다.
+와이어프레임으로 확정된 구조 위에 시각적 톤을 입히는 스킬입니다. **Shortify 패턴**에 따라 토큰을 brand 카테고리(컬러/타이포)와 ui 카테고리(spacing/radius/shadow + globals.css)로 분할 출력합니다.
 
 > 핵심: "구조가 확정된 후에 톤을 입힌다. 집 설계도 없이 벽지부터 고르지 않는다."
 > ShadCN의 CSS 키 이름은 유지하고 **값만 변경**한다.
@@ -15,13 +15,26 @@ Step 2.4: 디자인 토큰 — 확정된 구조 위에 톤 정리
 
 ## 입력
 
-- `outputs/stage-2/wireframes-{platform}.md` — 확정된 구조
-- `outputs/stage-2/references.md` — 레퍼런스 분석
-- `outputs/stage-2/screen-analysis.md` — 화면별 정보 위계
+- `outputs/stage-2/ui/03-wireframes-{platform}.md` — 확정된 구조
+- `outputs/stage-2/ui/02-references.md` — 레퍼런스 분석
+- `outputs/stage-2/ui/01-screen-analysis.md` — 화면별 정보 위계
+- `outputs/stage-2/brand/01-identity.md` — 브랜드 키워드/분위기
+
+## 산출물 (3개 파일 분할)
+
+이 스킬은 **세 개의 파일**을 동시에 생성한다:
+
+1. **컬러 팔레트 + WCAG 검증** → `outputs/stage-2/brand/02-color.md`
+2. **타이포그래피 토큰** → `outputs/stage-2/brand/03-typography.md`
+3. **spacing/radius/shadow + globals.css 정본** → `outputs/stage-2/ui/04-tokens.md`
+
+분할 이유: Shortify 디자인 문서가 brand(아이덴티티 결정 — 색/폰트)와 ui(레이아웃 시스템)를 분리하는 것이 변경 단위를 명확하게 만듦. 컬러·타이포는 브랜딩 결정이라 리뷰 주기가 다르고, spacing/radius/shadow는 구현 시스템이라 함께 묶여야 합니다. globals.css는 ui/04-tokens가 정본 — 모든 카테고리의 토큰이 여기서 합쳐지므로 brand 색/폰트 값이 변경되면 ui/04-tokens도 함께 갱신해야 한다.
+
+---
 
 ## 실행 내용
 
-### 1. 색상 토큰 (3단계 토큰 구조)
+### 1. 색상 토큰 (3단계 토큰 구조) — `brand/02-color.md`로 출력
 
 ```
 [Base Token] — 기본 팔레트
@@ -34,42 +47,19 @@ Gray-500: #6B7280    (비활성 전용)
 Primary-50 ~ Primary-900 (브랜드 색상 팔레트)
 
 [Semantic Token] — 용도 기반 이름
-├── Text
-│   ├── text-default:    Gray-900  (기본 텍스트)
-│   ├── text-secondary:  Gray-700  (보조 텍스트)
-│   ├── text-tertiary:   Gray-600  (약한 텍스트)
-│   ├── text-disabled:   Gray-500  (비활성 — WCAG AA 미충족 허용)
-│   └── text-inverse:    White     (어두운 배경 위 텍스트)
-├── Background
-│   ├── bg-default:      White
-│   ├── bg-subtle:       Gray-50
-│   ├── bg-muted:        Gray-100
-│   └── bg-inverse:      Gray-900
-├── Border
-│   ├── border-default:  Gray-200
-│   ├── border-strong:   Gray-300
-│   └── border-focus:    Primary-500
-├── Icon
-│   ├── icon-default:    Gray-700
-│   ├── icon-muted:      Gray-500
-│   └── icon-inverse:    White
-└── Interactive
-    ├── interactive-default:  Primary-600
-    ├── interactive-hover:    Primary-700
-    └── interactive-active:   Primary-800
+├── Text { text-default, text-secondary, text-tertiary, text-disabled, text-inverse }
+├── Background { bg-default, bg-subtle, bg-muted, bg-inverse }
+├── Border { border-default, border-strong, border-focus }
+├── Icon { icon-default, icon-muted, icon-inverse }
+└── Interactive { interactive-default, interactive-hover, interactive-active }
 
 [Component Token] — 특정 컴포넌트용 (필요시)
-├── button-primary-bg:    → interactive-default
-├── button-primary-text:  → text-inverse
-├── card-bg:              → bg-default
-└── card-border:          → border-default
+button-primary-bg, button-primary-text, card-bg, card-border, ...
 ```
 
-### 2. WCAG 접근성 검증 (필수)
+### 2. WCAG 접근성 검증 (필수) — `brand/02-color.md` 안에 포함
 
 ```
-모든 텍스트 색상에 대해 배경색 기준 명암비 체크:
-
 [WCAG AA 기준]
 - 일반 텍스트 (16px 미만): 최소 4.5:1
 - 큰 텍스트 (18px+) 또는 굵은 텍스트 (14px+ Bold): 최소 3:1
@@ -78,24 +68,22 @@ Primary-50 ~ Primary-900 (브랜드 색상 팔레트)
 - 일반 텍스트: 최소 7:1
 - 큰 텍스트: 최소 4.5:1
 
-검증 결과 테이블:
+검증 결과 테이블 (예시):
 | Semantic Token | Base Color | 배경색 | 명암비 | AA | AAA |
 |---------------|-----------|--------|--------|-----|-----|
-| text-default | Gray-900 | White | 17.4:1 | ✅ | ✅ |
-| text-secondary | Gray-700 | White | 9.1:1 | ✅ | ✅ |
-| text-tertiary | Gray-600 | White | 5.7:1 | ✅ | ❌ |
-| text-disabled | Gray-500 | White | 4.0:1 | ❌ | ❌ |
+| text-default | Gray-900 | White | 17.4:1 | OK | OK |
+| text-secondary | Gray-700 | White | 9.1:1 | OK | OK |
+| text-tertiary | Gray-600 | White | 5.7:1 | OK | NO |
+| text-disabled | Gray-500 | White | 4.0:1 | NO | NO |
 
 → text-disabled만 AA 미충족 허용 (비활성 상태 표시 목적)
-→ 나머지 텍스트 색상은 AA 필수 충족
 
 접근성 체크 도구:
 - Coolors Contrast Checker: coolors.co/contrast-checker
 - Leonardo Color: leonardocolor.io/theme.html
-- Accessible Web: accessibleweb.com/color-contrast-checker/
 ```
 
-### 3. 타이포그래피 토큰
+### 3. 타이포그래피 토큰 — `brand/03-typography.md`로 출력
 
 ```
 [Font Family]
@@ -115,61 +103,39 @@ Primary-50 ~ Primary-900 (브랜드 색상 팔레트)
 | caption | 12px | Regular (400) | 1.5 | 캡션, 라벨 |
 ```
 
-### 4. 간격/레이아웃 토큰
+### 4. 간격/레이아웃 토큰 + globals.css — `ui/04-tokens.md`로 출력
 
 ```
 [Spacing] — 4px 기반 시스템
-| Token | Value | 용도 |
-|-------|-------|------|
-| space-1 | 4px | 최소 간격 (아이콘-텍스트) |
-| space-2 | 8px | 관련 요소 간격 |
-| space-3 | 12px | 컴포넌트 내부 패딩 |
-| space-4 | 16px | 기본 간격 |
-| space-6 | 24px | 섹션 내 그룹 간격 |
-| space-8 | 32px | 섹션 간 간격 |
-| space-12 | 48px | 큰 섹션 간격 |
-| space-16 | 64px | 페이지 레벨 간격 |
+space-1=4px, space-2=8px, space-3=12px, space-4=16px,
+space-6=24px, space-8=32px, space-12=48px, space-16=64px
 
 [Border Radius]
-| Token | Value | 용도 |
-|-------|-------|------|
-| radius-sm | 4px | 태그, 뱃지 |
-| radius-md | 6px | 버튼, 입력 필드 |
-| radius-lg | 8px | 카드 |
-| radius-xl | 12px | 모달, 시트 |
-| radius-full | 9999px | 원형 (아바타) |
+radius-sm=4px (태그), radius-md=6px (버튼), radius-lg=8px (카드),
+radius-xl=12px (모달), radius-full=9999px (원형)
 
 [Shadow]
-| Token | Value | 용도 |
-|-------|-------|------|
-| shadow-sm | 0 1px 2px rgba(0,0,0,0.05) | 미세 깊이감 |
-| shadow-md | 0 4px 6px rgba(0,0,0,0.07) | 카드 |
-| shadow-lg | 0 10px 15px rgba(0,0,0,0.1) | 모달, 드롭다운 |
+shadow-sm = 0 1px 2px rgba(0,0,0,0.05) — 미세
+shadow-md = 0 4px 6px rgba(0,0,0,0.07) — 카드
+shadow-lg = 0 10px 15px rgba(0,0,0,0.1) — 모달
 
 [Border]
-| Token | Value | 용도 |
-|-------|-------|------|
-| border-width-default | 1px | 기본 보더 |
-| border-width-strong | 2px | 강조 보더 (포커스) |
+border-width-default=1px, border-width-strong=2px (포커스)
 ```
 
-### 5. globals.css 출력
+### 5. globals.css 정본 — `ui/04-tokens.md` 안의 §globals.css 섹션
 
 ```css
 :root {
   /* Colors — ShadCN 호환 */
   --background: {bg-default};
   --foreground: {text-default};
-  --card: {bg-default};
-  --card-foreground: {text-default};
   --primary: {interactive-default};
   --primary-foreground: {text-inverse};
   --secondary: {bg-muted};
   --secondary-foreground: {text-default};
   --muted: {bg-subtle};
   --muted-foreground: {text-secondary};
-  --accent: {bg-subtle};
-  --accent-foreground: {text-default};
   --destructive: {semantic-error};
   --border: {border-default};
   --input: {border-default};
@@ -185,80 +151,148 @@ Primary-50 ~ Primary-900 (브랜드 색상 팔레트)
   --text-disabled: {value};
 }
 
-.dark {
-  /* 다크 모드 (해당 시) */
-}
+.dark { /* 다크 모드 (해당 시) */ }
 ```
 
-### 6. 레퍼런스: 토큰 구조 사례
+---
 
-```
-[Toss Design System (TDS)]
-- 50→900 톤 체계 (50 밝음, 900 어두움)
-- 네이밍: colors.[색상명][톤값] (예: colors.grey700, colors.blue500)
-- Opacity 변형: greyOpacity50~900 (오버레이/스크림용)
-- 시맨틱 배경: background, greyBackground, layeredBackground, floatedBackground
-- 참고: tossmini-docs.toss.im/tds-react-native/foundation/colors/
+## 산출물 템플릿
 
-[Adobe Spectrum]
-- 텍스트 색상 4종만 사용: Gray-900(Heading), 800(Text), 700(Subdued), 500(Disabled)
-- Gray-500 이하는 비활성 전용 (WCAG AA 미충족 허용)
-- 참고: spectrum.adobe.com
-
-[ShadCN/Tailwind]
-- CSS 변수 기반: --background, --foreground, --primary 등
-- oklch 색상 형식 권장
-- globals.css에서 :root와 .dark로 테마 분리
-```
-
-## 산출물
-
-`outputs/stage-2/design-tokens.md`
+### 1) `outputs/stage-2/brand/02-color.md`
 
 ```markdown
-# Design Tokens
+---
+owner: 솔로 창업자
+status: Draft
+last_updated: {YYYY-MM-DD}
+stage: 2
+step: "2.4 — Color Tokens"
+---
 
-## 메타데이터
-- Stage: 2
-- Step: 2.4 - 디자인 토큰
-- 생성일시: {현재 시간}
+# Color
 
-## Color Tokens
+## Base Palette
+{Gray + Primary 팔레트}
 
-### Base Palette
-{Gray 팔레트 + Primary 팔레트 + Semantic Colors}
-
-### Semantic Tokens
+## Semantic Tokens
 {용도별 색상 매핑 테이블}
 
-### WCAG 접근성 검증
+## WCAG 접근성 검증
 {명암비 체크 결과 테이블}
-✅ 모든 텍스트 색상 AA 기준 충족 (text-disabled 제외)
+모든 텍스트 색상 AA 기준 충족 (text-disabled 제외).
 
-## Typography Tokens
-{폰트, 타입 스케일 테이블}
+## Component Tokens (필요시)
+{button-primary-bg 등}
 
-## Spacing & Layout Tokens
-{간격, 보더반경, 그림자, 보더}
+## 변경 이력
 
-## globals.css (바로 복사 가능)
+| 날짜 | 작성자 | 변경 |
+|------|--------|------|
+| {YYYY-MM-DD} | 솔로 창업자 | 최초 작성 |
+```
+
+### 2) `outputs/stage-2/brand/03-typography.md`
+
+```markdown
+---
+owner: 솔로 창업자
+status: Draft
+last_updated: {YYYY-MM-DD}
+stage: 2
+step: "2.4 — Typography Tokens"
+---
+
+# Typography
+
+## Font Family
+- **한글**: {폰트}
+- **영문**: {폰트}
+- **모노**: {폰트}
+
+## Type Scale
+{타입 스케일 테이블}
+
+## 위계 가이드
+- heading-1 → 페이지 타이틀, 페이지당 1회
+- heading-2 → 섹션 구분
+- body → 본문
+- caption → 메타정보, 라벨
+
+## 변경 이력
+
+| 날짜 | 작성자 | 변경 |
+|------|--------|------|
+| {YYYY-MM-DD} | 솔로 창업자 | 최초 작성 |
+```
+
+### 3) `outputs/stage-2/ui/04-tokens.md`
+
+```markdown
+---
+owner: 솔로 창업자
+status: Draft
+last_updated: {YYYY-MM-DD}
+stage: 2
+step: "2.4 — UI Tokens (spacing/radius/shadow + globals.css)"
+---
+
+# UI Tokens
+
+> 색상은 [`../brand/02-color.md`](../brand/02-color.md), 타이포는 [`../brand/03-typography.md`](../brand/03-typography.md) 참조.
+> 이 문서는 spacing/radius/shadow/border + 정본 globals.css를 담는다.
+
+## Spacing
+{간격 테이블}
+
+## Border Radius
+{R값 테이블}
+
+## Shadow
+{그림자 테이블}
+
+## Border
+{보더 테이블}
+
+## globals.css (정본 — 바로 복사 가능)
+
 \`\`\`css
-{전체 CSS}
+{전체 CSS — 모든 카테고리의 토큰이 합쳐진 정본}
 \`\`\`
 
 ## Tailwind 확장 설정 (해당 시)
+
 \`\`\`js
 {tailwind.config.js}
 \`\`\`
+
+## 변경 이력
+
+| 날짜 | 작성자 | 변경 |
+|------|--------|------|
+| {YYYY-MM-DD} | 솔로 창업자 | 최초 작성 |
+```
+
+---
+
+## 레퍼런스: 토큰 구조 사례
+
+```
+[Toss Design System (TDS)]
+- 50→900 톤 체계, 시맨틱 배경 분리
+[Adobe Spectrum]
+- 텍스트 4종만 사용 (Heading/Text/Subdued/Disabled)
+[ShadCN/Tailwind]
+- CSS 변수 기반, oklch 색상, globals.css에서 :root + .dark
 ```
 
 ## 완료 조건
 
 - 3단계 토큰 구조 (Base → Semantic → Component) 정의
-- **WCAG 접근성 명암비 검증 완료** (AA 기준 필수)
+- **WCAG 접근성 명암비 검증 완료** (AA 기준 필수, brand/02-color.md에 포함)
 - 시맨틱 네이밍 적용 (Gray-900 대신 text-default)
-- **globals.css 형식으로 바로 복사 가능한 코드 포함**
-- `design-tokens.md` 파일 생성
+- **globals.css 정본은 ui/04-tokens.md에만 존재** (단일 진실원)
+- **세 파일 모두 생성**: `brand/02-color.md`, `brand/03-typography.md`, `ui/04-tokens.md`
+- 모든 파일에 메타 헤더 + 변경 이력 표 포함
 
 ## 다음 Step
 

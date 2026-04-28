@@ -13,15 +13,36 @@ Step 3.1: 디자인-개발 브릿지 (Design-to-Dev Bridge)
 
 - `/develop` 커맨드 실행 시 첫 번째로 실행
 - Stage 2 (Design) 완료 직후
-- `outputs/stage-2/design-spec.md` 파일이 존재할 때
+- **`outputs/stage-2/README.md`** 파일이 존재할 때 (표준 진입점)
 
-## 입력
+## 입력 (Shortify 트리 + README 링크 추적)
 
-- `outputs/stage-2/design-spec.md` (필수)
-- `outputs/stage-2/design-system.md` (필수)
-- `outputs/stage-2/component-spec.md` (필수)
-- `outputs/stage-2/wireframes.md` (필수)
+표준 진입점은 `outputs/stage-2/README.md` 하나. 이 README를 먼저 읽고, 그 안의 brand/ui 카테고리 표 + 빠른 탐색 링크를 따라 산출물을 소비한다.
+
+**필수 진입점:**
+- `outputs/stage-2/README.md` — 표준 진입점 (없으면 작업 중단, 사용자에게 `/design` 재실행 안내)
+
+**README가 가리키는 산출물 (실제 디스크):**
+- `outputs/stage-2/design-spec-{platform}.md` — 핸드오프 통합 (모든 brand/ui 링크 포함)
+- `outputs/stage-2/brand/01-identity.md` — 브랜드 키워드/분위기
+- `outputs/stage-2/brand/02-color.md` — 컬러 팔레트 + WCAG
+- `outputs/stage-2/brand/03-typography.md` — 폰트 + 타입 스케일
+- `outputs/stage-2/ui/01-screen-analysis.md` — 화면별 위계
+- `outputs/stage-2/ui/02-references.md` — 레퍼런스 패턴
+- `outputs/stage-2/ui/03-wireframes-{platform}.md` — 와이어프레임
+- `outputs/stage-2/ui/04-tokens.md` — **spacing/radius/shadow + globals.css 정본** (시맨틱 토큰 추출 시 핵심)
+- `outputs/stage-2/ui/05-components-{platform}.md` — 공통 컴포넌트
+- `outputs/stage-2/ui/06-animation.md` — 애니메이션 명세
 - `outputs/stage-1/prd.md` (참고)
+
+**처리 순서:**
+1. README.md를 먼저 읽고 frontmatter의 `last_updated`/`status` 확인
+2. README에서 플랫폼 정보 추출 (Web/Mobile/Both)
+3. README의 빠른 탐색 링크에서 각 산출물 경로 확정 (트리 구조가 갱신되어도 README가 진실원)
+4. 각 산출물의 frontmatter `status`가 `Draft`인 경우 사용자에게 경고 — `Approved`인 산출물만 완전히 신뢰
+5. 산출물을 카테고리(brand/ui)별로 분석 → 시맨틱 토큰 추출
+
+> **인터페이스 계약**: 이 스킬은 `outputs/stage-2/README.md`를 인터페이스로 본다. design 플러그인이 내부 트리(brand/ui/character)를 어떻게 재배치하든 README의 링크 표만 유효하면 이 스킬은 영향받지 않는다.
 
 ---
 

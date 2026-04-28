@@ -15,8 +15,9 @@ Step 2.8: 애니메이션 및 인터랙션 명세
 ## 입력
 
 - `outputs/stage-2/design-spec-{platform}.md`
-- `outputs/stage-2/wireframes-{platform}.md`
-- `outputs/stage-2/references.md` — 레퍼런스의 애니메이션 참고
+- `outputs/stage-2/ui/03-wireframes-{platform}.md`
+- `outputs/stage-2/ui/02-references.md` — 레퍼런스의 애니메이션 참고
+- `outputs/stage-2/ui/04-tokens.md` — 모션 토큰(있다면)
 
 ## 실행 내용
 
@@ -134,15 +135,18 @@ UI 요소별 인터랙션:
 
 ## 산출물
 
-`outputs/stage-2/animation-spec.md`
+`outputs/stage-2/ui/06-animation.md` (Shortify 트리)
 
 ```markdown
-# Animation Spec
+---
+owner: 솔로 창업자
+status: Draft
+last_updated: {YYYY-MM-DD}
+stage: 2
+step: "2.7 — Animation Spec"
+---
 
-## 메타데이터
-- Stage: 2
-- Step: 2.8 - 애니메이션 명세
-- 생성일시: {현재 시간}
+# Animation Spec
 
 ## 사용 라이브러리
 - **기본**: {라이브러리}
@@ -216,7 +220,7 @@ UI 요소별 인터랙션:
 - 스크롤 애니메이션 정의 (해당 시)
 - 로딩 상태 정의
 - 사용 라이브러리 선택
-- `animation-spec.md` 파일 생성
+- `outputs/stage-2/ui/06-animation.md` 파일 생성 (메타 헤더 + 변경 이력 표 포함)
 
 ## 다음 Step
 

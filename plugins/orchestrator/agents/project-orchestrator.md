@@ -44,22 +44,27 @@
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
-|  Stage 3: Design (디자인)                                    |
+|  Stage 3: Design (디자인) — Shortify 패턴 트리                 |
 |  ---------------------------------------------------------  |
 |  커맨드: /design                                            |
 |  입력: prd.md, screen-structure.md                          |
-|  산출물: outputs/stage-2/design-spec.md                     |
-|  완료 조건: design-spec.md 파일 존재                        |
+|  산출물 트리: outputs/stage-2/{brand,ui}/NN-*.md            |
+|              + design-spec-{platform}.md (핸드오프)          |
+|              + README.md (★ 표준 진입점)                     |
+|  완료 조건: outputs/stage-2/README.md 파일 존재 (이것 하나!) |
+|  Note: README가 인터페이스 계약 — 내부 트리 변경은 자유       |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
 |  Stage 4: Development (개발)                                 |
 |  ---------------------------------------------------------  |
 |  커맨드: /develop                                           |
-|  입력: design-spec.md, design-system.md, prd.md             |
+|  입력: outputs/stage-2/README.md (표준 진입점) → 링크 추적   |
+|        + prd.md                                             |
 |  산출물: outputs/stage-3/build-config.md + 코드             |
 |  완료 조건: build-config.md 파일 존재                       |
-|  Note: Step 4.1에서 Design-to-Dev Bridge 자동 처리          |
+|  Note: Step 4.1 Design-to-Dev Bridge가 README의 brand/ui     |
+|        링크를 따라 산출물 소비                                |
 +-------------------------------------------------------------+
 |                           |                                  |
 +-------------------------------------------------------------+
@@ -335,7 +340,8 @@ Stage 2 (Design)을 진행합니다.
 - 아이디어 브리프: outputs/stage-0/idea-brief.md
 - 비즈니스 모델: outputs/monetization/business-model.md
 - PRD: outputs/stage-1/prd.md
-- 디자인 명세: outputs/stage-2/design-spec.md
+- 디자인 인덱스: outputs/stage-2/README.md (Shortify 트리 표준 진입점)
+- 디자인 핸드오프: outputs/stage-2/design-spec-{platform}.md
 - 코드: {프로젝트 폴더}
 - 유저 획득 전략: outputs/stage-5/acquisition-plan.md
 
@@ -377,7 +383,7 @@ Stage 2 (Design)을 진행합니다.
 | 0 | ideation | `/ideate` | idea-brief.md |
 | 1 | monetization | `/monetize` | business-model.md |
 | 2 | planning | `/plan` | prd.md |
-| 3 | design | `/design` | design-spec.md |
+| 3 | design | `/design` | outputs/stage-2/README.md (Shortify 트리 인덱스 — 표준 진입점) |
 | 4 | development | `/develop` | build-config.md |
 | 5 | deployment | `/deploy` | deployment-complete.md |
 | 6 | growth | `/grow` | acquisition-plan.md |

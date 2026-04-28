@@ -17,7 +17,9 @@ Step 3.3: 프로젝트 초기화 (Project Setup)
 ## 입력
 
 - `outputs/stage-3/tech-stack.md`
-- `outputs/stage-2/design-system.md`
+- `outputs/stage-2/ui/04-tokens.md` (globals.css 정본 — Shortify 트리에서 design-system을 대체)
+- `outputs/stage-2/brand/02-color.md` (컬러 토큰)
+- `outputs/stage-2/brand/03-typography.md` (타이포 토큰)
 
 ## 실행 내용
 

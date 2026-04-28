@@ -10,22 +10,24 @@ Step 2.6: 디자인 명세서 생성
 
 ## 트리거
 
-- Step 2.5 (Wireframes) 완료 후 자동 실행
-- 모든 이전 산출물이 존재할 때
+- Step 2.5 (Component Spec) 완료 후 자동 실행
+- 모든 이전 산출물이 Shortify 트리에 존재할 때
 
-## 입력
+## 입력 (Shortify 트리)
 
 - `outputs/stage-2/platform-selection.md` (플랫폼 확인)
-- `outputs/stage-2/references.md` **(필수 — 레퍼런스 분석 결과)**
-- `outputs/stage-2/color-palette.md`
-- `outputs/stage-2/visual-direction.md`
-- `outputs/stage-2/design-system.md`
-- `outputs/stage-2/component-spec-{platform}.md`
-- `outputs/stage-2/wireframes-{platform}.md`
+- `outputs/stage-2/brand/01-identity.md` (브랜드 정체성)
+- `outputs/stage-2/brand/02-color.md` (컬러 팔레트 + WCAG)
+- `outputs/stage-2/brand/03-typography.md` (타이포)
+- `outputs/stage-2/ui/01-screen-analysis.md` (화면 위계)
+- `outputs/stage-2/ui/02-references.md` **(필수 — 레퍼런스 분석)**
+- `outputs/stage-2/ui/03-wireframes-{platform}.md` (와이어프레임)
+- `outputs/stage-2/ui/04-tokens.md` (spacing/radius/shadow + globals.css 정본)
+- `outputs/stage-2/ui/05-components-{platform}.md` (공통 컴포넌트)
 - `outputs/stage-1/prd.md`
 - `outputs/stage-1/screen-structure.md`
 
-> **주의**: `references.md`가 없으면 디자인 명세서를 생성하지 않는다. Step 2.2가 완료되지 않은 경우 먼저 레퍼런스 분석을 수행할 것.
+> **주의**: `ui/02-references.md`가 없으면 디자인 명세서를 생성하지 않는다. Step 2.2가 완료되지 않은 경우 먼저 레퍼런스 분석을 수행할 것.
 
 ## 실행 내용
 
@@ -75,18 +77,34 @@ Step 2.6: 디자인 명세서 생성
 
 ### Web 디자인 명세서 템플릿
 
-`outputs/stage-2/design-spec-web.md`
+`outputs/stage-2/design-spec-web.md` (평탄 — 핸드오프 통합 문서)
 
 ```markdown
+---
+owner: 솔로 창업자
+status: Approved
+last_updated: {YYYY-MM-DD}
+stage: 2
+step: "2.6 — Design Spec (Web 핸드오프)"
+platform: web
+version: "1.0"
+---
+
 # Design Spec (Web)
 
-## 메타데이터
-- Stage: 2
-- Step: 2.6 - 디자인 명세서 (최종)
-- 생성일시: {현재 시간}
-- 상태: final
-- 버전: 1.0
-- 플랫폼: Web (반응형)
+> brand/ + ui/ 카테고리의 모든 산출물을 통합한 핸드오프 문서.
+> 각 섹션의 단일 진실원(Single Source of Truth)은 brand/ui 트리의 해당 파일이며, 이 문서는 통합 뷰다.
+>
+> **Source of Truth 매핑:**
+> - 브랜드 정체성: [`brand/01-identity.md`](./brand/01-identity.md)
+> - 컬러: [`brand/02-color.md`](./brand/02-color.md)
+> - 타이포: [`brand/03-typography.md`](./brand/03-typography.md)
+> - 화면 분석: [`ui/01-screen-analysis.md`](./ui/01-screen-analysis.md)
+> - 레퍼런스: [`ui/02-references.md`](./ui/02-references.md)
+> - 와이어프레임: [`ui/03-wireframes-web.md`](./ui/03-wireframes-web.md)
+> - UI 토큰 (globals.css 정본): [`ui/04-tokens.md`](./ui/04-tokens.md)
+> - 컴포넌트: [`ui/05-components-web.md`](./ui/05-components-web.md)
+> - 애니메이션: [`ui/06-animation.md`](./ui/06-animation.md)
 
 ---
 
@@ -344,18 +362,33 @@ Use Tailwind CSS for styling.
 
 ### Mobile 디자인 명세서 템플릿
 
-`outputs/stage-2/design-spec-mobile.md`
+`outputs/stage-2/design-spec-mobile.md` (평탄 — 핸드오프 통합 문서)
 
 ```markdown
+---
+owner: 솔로 창업자
+status: Approved
+last_updated: {YYYY-MM-DD}
+stage: 2
+step: "2.6 — Design Spec (Mobile 핸드오프)"
+platform: mobile
+version: "1.0"
+---
+
 # Design Spec (Mobile)
 
-## 메타데이터
-- Stage: 2
-- Step: 2.6 - 디자인 명세서 (최종)
-- 생성일시: {현재 시간}
-- 상태: final
-- 버전: 1.0
-- 플랫폼: Mobile (iOS/Android)
+> brand/ + ui/ 카테고리의 모든 산출물을 통합한 핸드오프 문서.
+>
+> **Source of Truth 매핑:**
+> - 브랜드 정체성: [`brand/01-identity.md`](./brand/01-identity.md)
+> - 컬러: [`brand/02-color.md`](./brand/02-color.md)
+> - 타이포: [`brand/03-typography.md`](./brand/03-typography.md)
+> - 화면 분석: [`ui/01-screen-analysis.md`](./ui/01-screen-analysis.md)
+> - 레퍼런스: [`ui/02-references.md`](./ui/02-references.md)
+> - 와이어프레임: [`ui/03-wireframes-mobile.md`](./ui/03-wireframes-mobile.md)
+> - UI 토큰 (globals.css 정본): [`ui/04-tokens.md`](./ui/04-tokens.md)
+> - 컴포넌트: [`ui/05-components-mobile.md`](./ui/05-components-mobile.md)
+> - 애니메이션: [`ui/06-animation.md`](./ui/06-animation.md)
 
 ---
 

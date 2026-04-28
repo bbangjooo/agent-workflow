@@ -13,14 +13,15 @@ design-spec이 완료된 후, pencil MCP를 사용하여 실제 시각적 UI 프
 - Step 2.6 (Design Spec) 완료 후 자동 실행
 - `design-spec-{platform}.md` 파일이 존재할 때
 
-## 입력
+## 입력 (Shortify 트리)
 
 - `outputs/stage-2/platform-selection.md` (플랫폼 확인)
-- `outputs/stage-2/color-palette.md`
-- `outputs/stage-2/visual-direction.md`
-- `outputs/stage-2/design-system.md`
-- `outputs/stage-2/component-spec-{platform}.md`
-- `outputs/stage-2/wireframes-{platform}.md`
+- `outputs/stage-2/brand/01-identity.md`
+- `outputs/stage-2/brand/02-color.md`
+- `outputs/stage-2/brand/03-typography.md`
+- `outputs/stage-2/ui/03-wireframes-{platform}.md`
+- `outputs/stage-2/ui/04-tokens.md`
+- `outputs/stage-2/ui/05-components-{platform}.md`
 - `outputs/stage-2/design-spec-{platform}.md`
 
 ## 실행 내용

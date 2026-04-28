@@ -18,10 +18,17 @@ Step 2.3: 와이어프레임 정의 — 레퍼런스 바탕으로 구조 확정
 ## 입력
 
 - `outputs/stage-2/platform-selection.md` (플랫폼 확인)
-- `outputs/stage-2/screen-analysis.md` (화면별 목적/위계)
-- `outputs/stage-2/references.md` (레퍼런스 패턴)
+- `outputs/stage-2/ui/01-screen-analysis.md` (화면별 목적/위계)
+- `outputs/stage-2/ui/02-references.md` (레퍼런스 패턴)
+- `outputs/stage-2/brand/01-identity.md` (브랜드 정체성)
 - `outputs/stage-1/screen-structure.md`
 - `outputs/stage-1/user-flow.md`
+
+## 산출물 경로
+
+`outputs/stage-2/ui/03-wireframes-{platform}.md` (Web 시 desktop+mobile 두 뷰포트 모두 포함)
+
+산출물 상단에 메타 헤더 + 하단에 변경 이력 표를 필수 포함한다.
 
 ## 실행 내용
 
@@ -122,22 +129,27 @@ Step 2.3: 와이어프레임 정의 — 레퍼런스 바탕으로 구조 확정
 
 플랫폼 선택에 따라 다른 파일이 생성됩니다:
 
-- **Web**: `outputs/stage-2/wireframes-web.md`
-- **Mobile**: `outputs/stage-2/wireframes-mobile.md`
+- **Web**: `outputs/stage-2/ui/03-wireframes-web.md`
+- **Mobile**: `outputs/stage-2/ui/03-wireframes-mobile.md`
 - **Both**: 두 파일 모두 생성
 
 ---
 
 ### Web 와이어프레임 템플릿
 
-`outputs/stage-2/wireframes-web.md`
+`outputs/stage-2/ui/03-wireframes-web.md`
 
 ```markdown
-# Wireframes (Web)
+---
+owner: 솔로 창업자
+status: Draft
+last_updated: {YYYY-MM-DD}
+stage: 2
+step: "2.3 — 와이어프레임 (Web)"
+platform: web
+---
 
-## 메타데이터
-- Stage: 2
-- Step: 2.5 - 와이어프레임 (Web)
+# Wireframes (Web)
 - 생성일시: {현재 시간}
 - 상태: draft
 - 플랫폼: Web (반응형)
@@ -277,17 +289,19 @@ Mobile:
 
 ### Mobile 와이어프레임 템플릿
 
-`outputs/stage-2/wireframes-mobile.md`
+`outputs/stage-2/ui/03-wireframes-mobile.md`
 
 ```markdown
-# Wireframes (Mobile)
+---
+owner: 솔로 창업자
+status: Draft
+last_updated: {YYYY-MM-DD}
+stage: 2
+step: "2.3 — 와이어프레임 (Mobile)"
+platform: mobile
+---
 
-## 메타데이터
-- Stage: 2
-- Step: 2.5 - 와이어프레임 (Mobile)
-- 생성일시: {현재 시간}
-- 상태: draft
-- 플랫폼: Mobile (iOS/Android)
+# Wireframes (Mobile)
 
 ## 앱 네비게이션 구조
 
@@ -459,12 +473,13 @@ Mobile:
 ## 완료 조건
 
 - 선택된 플랫폼의 모든 화면 와이어프레임 작성됨
-- **Web**: 반응형 동작 정의 포함, `wireframes-web.md` 생성
-- **Mobile**: 네비게이션 패턴 및 제스처 정의 포함, `wireframes-mobile.md` 생성
+- **Web**: 반응형 동작 정의 포함, `outputs/stage-2/ui/03-wireframes-web.md` 생성
+- **Mobile**: 네비게이션 패턴 및 제스처 정의 포함, `outputs/stage-2/ui/03-wireframes-mobile.md` 생성
 - **Both**: 두 파일 모두 생성
 - 컴포넌트 매핑 완료
 - 인터랙션 정의됨
+- 메타 헤더 + 변경 이력 표 포함
 
 ## 다음 Step
 
--> Step 2.6: Design Spec (디자인 명세서)
+-> Step 2.4: Design Tokens (3개 파일 분할 — brand/02-color, brand/03-typography, ui/04-tokens)

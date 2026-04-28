@@ -16,9 +16,13 @@ Step 3.10: UI 구현 (UI Implementation)
 
 ## 입력
 
-- `outputs/stage-2/design-spec.md`
-- `outputs/stage-2/wireframes.md`
-- `outputs/stage-2/component-spec.md`
+- `outputs/stage-2/README.md` (Shortify 트리 진입점 — 아래 경로는 README의 빠른 탐색에서 확인)
+- `outputs/stage-2/design-spec-{platform}.md` (핸드오프 통합)
+- `outputs/stage-2/ui/03-wireframes-{platform}.md`
+- `outputs/stage-2/ui/04-tokens.md` (globals.css 정본)
+- `outputs/stage-2/ui/05-components-{platform}.md`
+- `outputs/stage-2/brand/02-color.md` (컬러 토큰)
+- `outputs/stage-2/brand/03-typography.md` (타이포)
 - `outputs/stage-1/screen-structure.md`
 - `outputs/stage-3/feature-impl.md`
 - **`outputs/stage-3/project-setup.md`** (스타일 매핑 테이블 - 필수!)
