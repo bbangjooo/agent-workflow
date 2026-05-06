@@ -126,11 +126,108 @@ A skipped bootstrap = no anchor for critical evaluation. Do not skip.
 
 1. **Open** — read status §0, then status §North-Star, then the pipeline stage(s) the work touches.
 2. **Plan** — confirm the work moves a specific §North-Star row. If you cannot identify which row, escalate.
-3. **Work** — execute. Save artifacts where pipeline §code-perspective points.
-4. **Append a new phase file** — `docs/<domain>-status/<NN>-<YYYY-MM-DD>-<slug>.md` from `templates/status-section.md`. Required sections: scope, what was built (with evidence), validation, system impact, residual issues.
-5. **Update status core inline** — §LOC summary, §0 next-session entry, §North-Star table (refreshed `현재` + `근거` + `시스템 영향`), §pessimistic re-score, §phase index row.
-6. **Sync pipeline core** — re-rate affected stage(s) in §mapping. If a new mistake/signal was learned, append to that stage's §X.3 / §X.2.
-7. **Verify** — both docs touched; §0 next-session entry alone would orient a fresh reader who has never seen this project.
+3. **Critic — generate (mandatory)** — invoke `progress-critic` in `generate` mode. Save the returned questions to `docs/<domain>-status/<NN>-<slug>.critic.md`. These are the questions this phase MUST answer to credibly claim it moved the target §북극성 row(s). See §Critic pass below.
+4. **Work** — execute. Save artifacts where pipeline §code-perspective points. Keep the critic questions visible — they shape what to measure, not just what to build.
+5. **Append a new phase file** — `docs/<domain>-status/<NN>-<YYYY-MM-DD>-<slug>.md` from `templates/status-section.md`. Required sections: scope, what was built (with evidence), validation, system impact, residual issues.
+6. **Critic — verify (mandatory)** — fill in each `**Response:**` block in the `<NN>-<slug>.critic.md` file (DIRECT / LIMITATION / OUT-OF-SCOPE per the rules). Then re-invoke `progress-critic` in `verify` mode. The cycle does not advance to step 7 until critic returns `VERDICT: PASS`. On `VERDICT: FAIL`, fix the unaddressed questions and re-invoke.
+7. **Update status core inline** — §LOC summary, §0 next-session entry, §North-Star table (refreshed `현재` + `근거` + `시스템 영향`), §pessimistic re-score, §phase index row.
+8. **Sync pipeline core** — re-rate affected stage(s) in §mapping. If a new mistake/signal was learned, append to that stage's §X.3 / §X.2.
+9. **Self-check** — both docs touched; §0 next-session entry alone would orient a fresh reader who has never seen this project.
+10. **Audit pass (mandatory)** — invoke `progress-auditor` via the Agent tool. The cycle is **not closed** until the auditor returns `VERDICT: PASS`. On `VERDICT: FAIL`, address every Severity-1 finding listed and re-invoke. See §Audit pass below.
+
+## Critic pass (substantive — at step 3 and step 6)
+
+The discipline auditor (§Audit pass) checks whether what was written is honest and well-formed. The critic checks something different: **whether the right questions were asked at all**. A phase can be impeccably documented and still measure the wrong thing or mistake a proxy for the §북극성. The critic is the outsider who has not yet been convinced.
+
+**Two invocations per cycle, same agent:**
+
+### Step 3 — generate
+
+```
+Agent(
+  subagent_type: "progress-critic",
+  description: "Critic — generate questions",
+  prompt: "MODE: generate
+    domain: <domain>
+    phase number: <NN>
+    phase slug: <slug>
+    target §북극성 rows: <comma-separated row labels>
+    planned scope: <one-paragraph description from step 2>"
+)
+```
+
+The agent returns markdown text (≤8 closed questions, each tagged by category, each with an empty `**Response:**` block). Save this to `docs/<domain>-status/<NN>-<slug>.critic.md` exactly as returned. These questions stand for the rest of the cycle — no new questions get added later.
+
+### Step 6 — verify
+
+After the phase file is drafted, fill in each `**Response:**` block in the critic file. Each response must be one of:
+
+- **DIRECT** — concrete evidence (command + output, file path + lines, commit hash, test name, numeric measurement). The critic will Bash-run / Read your evidence to confirm.
+- **LIMITATION** — acknowledged unresolved gap + a link to a §residual issues entry in the phase file describing what's missing and why.
+- **OUT-OF-SCOPE** — justification citing which §북극성 row this question belongs to instead, or explaining why the question doesn't apply to this row's claim.
+
+Then invoke:
+
+```
+Agent(
+  subagent_type: "progress-critic",
+  description: "Critic — verify responses",
+  prompt: "MODE: verify
+    domain: <domain>
+    phase number: <NN>
+    phase slug: <slug>
+    critic file: docs/<domain>-status/<NN>-<slug>.critic.md
+    phase file: docs/<domain>-status/<NN>-<date>-<slug>.md"
+)
+```
+
+**Outcomes:**
+
+- `VERDICT: PASS` — proceed to step 7.
+- `VERDICT: FAIL` — fix unaddressed questions and re-invoke. The critic will not invent new questions on re-runs (closed set), so fixes converge.
+
+### 3-cycle limitation rule (auto-FAIL)
+
+The critic checks the previous 2 cycles' `*.critic.md` files. If a question's category for the same §북극성 row was answered as `LIMITATION` in ≥2 prior cycles AND is again `LIMITATION` this cycle, the question **auto-fails** regardless of format. Required fix is one of:
+
+- Upgrade this cycle's response to `DIRECT` (do the measurement now).
+- Amend status §Decision chain to **re-anchor or downgrade the §북극성 row itself**. Three cycles of "we'll get to it" means the row as defined isn't reachable — change the goal or admit it.
+
+The rule prevents the easy escape route where every hard question becomes a permanent residual.
+
+## Audit pass (mandatory cycle closer — at step 10)
+
+The skill is *self-reporting* by design — author, evidence collector, and pessimistic re-scorer are the same context. To keep the trust gap narrow, every cycle ends with an *independent* auditor pass that the author cannot self-approve.
+
+**How to invoke** (after step 9, before any "done" message to the user):
+
+```
+Agent(
+  subagent_type: "progress-auditor",
+  description: "Audit cycle close",
+  prompt: "Audit the just-closed progress-guidance cycle.
+    Domain: <domain>
+    New phase file: docs/<domain>-status/<NN>-<date>-<slug>.md
+    Run all four passes (Schema / Reproducibility / Drift / Linguistic-weakness).
+    Return VERDICT: PASS or VERDICT: FAIL with the defect list."
+)
+```
+
+**Outcomes:**
+
+- `VERDICT: PASS` — cycle closed. Report the verdict to the user.
+- `VERDICT: FAIL` — cycle stays open. Fix every Severity-1 finding (Severity-2 may be deferred to next cycle), then re-invoke. Do not announce the cycle complete to the user until PASS is achieved. Do not argue with the auditor's verdict; if a finding is genuinely wrong, fix the artifact so the finding no longer applies.
+
+**Why no override path:** the moment "PASS unless overridden" exists, every cycle becomes a PASS-with-override. Two outcomes only — PASS or FAIL — keeps the discipline honest. If the auditor is structurally wrong (e.g. checks a rule that no longer applies), the fix is to update the auditor agent or this skill, not to override a single verdict.
+
+## Two-gate principle
+
+A cycle closes only when **both** gates pass:
+
+1. **Critic gate** (substantive) — did the phase ask and answer the right questions?
+2. **Auditor gate** (discipline) — was what's written honest, reproducible, and complete in form?
+
+Critic without auditor: well-questioned but possibly self-cheering reports. Auditor without critic: rigorously documented but possibly measuring the wrong thing. Both required, in this order.
 
 ## Critical-evaluation checklist (mandatory each cycle)
 
