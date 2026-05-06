@@ -1,6 +1,6 @@
 ---
 name: progress-guidance
-description: Guide long-running multi-session projects with a paired status-log + methodology-pipeline doc pair. Every cycle critically re-judges progress against the project's north star — every claim must carry both *evidence* and a *system-impact* analysis. Each new phase becomes its own file; core docs only carry indices.
+description: Guide long-running multi-session projects with a paired status-log + methodology-pipeline doc pair. Every cycle re-projects the system end-state and re-injects it into the next phase's plan and critic prompt. Every claim carries *evidence*, *system-impact*, and an *end-state delta*. Each new phase becomes its own file; core docs only carry indices.
 ---
 
 # progress-guidance — Paired Methodology + Critical-Progress Skill
@@ -9,12 +9,12 @@ A discipline for projects that span many sessions. Two paired docs, evidence-req
 
 ## When this skill activates
 
-- User says "이어서 작업", "다음 사이클", "phase 추가", "북극성", "갭 분석", "비관 평가", "진행상황 갱신", "근거 정리", "시스템 영향"
+- User says "이어서 작업", "다음 사이클", "phase 추가", "북극성", "갭 분석", "비관 평가", "진행상황 갱신", "근거 정리", "시스템 영향", "종착지", "비전 재투영", "end-state", "프로젝트 모양"
 - User invokes `/progress-guidance` explicitly
 - Project has `docs/<domain>-status.md` + `docs/<domain>-pipeline.md` (or is about to start one)
 - User asks to apply a "status + pipeline" doc-pair format to a new domain
 
-## Core doctrine (six rules)
+## Core doctrine (seven rules)
 
 ### 1. Two paired documents (mandatory)
 
@@ -109,6 +109,24 @@ A phase that produces *no* observable system change is suspect:
 
 **근거** answers *did this happen?* — **시스템 영향** answers *does it matter?* Both required, not one.
 
+### 7. Projected end-state — re-envision and re-inject every cycle ★
+
+§북극성이 *지표*라면, 종착지(end-state)는 *시스템 모양*. "이 프로젝트가 끝났을 때 시스템은 무엇이고, 무엇을 가능하게 하는가"의 현재 최선의 그림. 매 cycle 다시 그리고, 다음 cycle 시작 시 다시 주입한다.
+
+**위치**: `pipeline.md §종착지 시스템 모양` (도해 + 가능해진 행동 + 의도적 제외 + 비전 vs 현재 표 + 변경 이력).
+
+**왜 필요한가**: 각 phase는 자기 §북극성 행만 보고 좁게 굴러간다. 누군가 매 cycle "전체가 어떤 모양으로 수렴하는가"를 다시 그리지 않으면, phase 결과가 누적되어도 종착지가 흐려진 채 path-dependent 하게 흘러간다. §매핑 표는 단계 점수일 뿐 *시스템 모양*이 아니다.
+
+**Re-projection (사이클 닫을 때)**: 이번 phase 결과를 반영해 §종착지 §N.4 비전 vs 현재 표를 갱신하고, §N.5 변경 이력에 이번 cycle 행을 추가한다. 추가/구체화/축소/no-change 중 하나로 분류 명시.
+
+**Re-injection (다음 사이클 열 때)**: 새 phase의 step 1 (Open) 에서 §종착지를 무조건 읽고, step 3 (critic generate) 프롬프트에 §종착지 현재 상태를 컨텍스트로 주입한다. critic은 매 cycle "이 phase 결과가 종착지 비전을 어떻게 구체화/축소/변경하는가"를 묻는 `end-state-positioning` 질문을 ≥1개 강제 포함.
+
+**Vision-loosening 차단**: 종착지에서 항목이 *축소* 방향으로 변경되면 status §Decision chain에 trigger 항목이 있어야 한다. 없으면 post-hoc relaxation — auditor Pass 3에서 Severity-1.
+
+**Vision-stagnation 의심**: §N.5 변경 이력이 ≥3 cycle 연속 no-change 면 의심 신호. 정말 phase 결과가 비전을 한 번도 흔들지 않았나, 아니면 phase가 비전과 무관하게 굴러간 것인가? auditor Pass 3에서 Severity-2 (≥3 cycle 연속), Severity-1 (≥5 cycle 연속).
+
+비전 자체가 새 cheerleading 출구가 되지 않도록: §종착지도 §북극성처럼 *근거 기반·다운그레이드 가능*. 비관 재채점 대상에 포함된다.
+
 ## Bootstrap rule (run before any progress work)
 
 If either doc is missing or has fewer than 4 substantive sections, **stop and bootstrap before doing anything else**.
@@ -117,23 +135,25 @@ If either doc is missing or has fewer than 4 substantive sections, **stop and bo
 2. Copy `templates/status-core.md` → `docs/<domain>-status.md`. Fill §0–§2 (next-session entry / user goal / decision chain). The §1.4 진짜 목표 line is required and must be a single sentence.
 3. Copy `templates/pipeline-core.md` → `docs/<domain>-pipeline.md`. Identify the N standard stages — consult external references before guessing.
 4. Fill the final pipeline §"이 프로젝트가 위 틀에 얼마나 부합하는가" mapping table with ◎/○/△/✗ + one-line evidence per stage. Initial scores are mostly ✗ — that's expected.
-5. Cross-reference: status §1.3 외부 컨텍스트 ↔ pipeline §0 references must point to the same sources.
-6. Verify with the user that both docs accurately capture *what we're achieving and how we'll judge it*.
+5. **Draft pipeline §종착지 시스템 모양 (Cycle 0)** — initial vision: 도해 + 가능해진 행동 + 의도적 제외. Cycle 0 entry in §N.5 변경 이력. Vague is acceptable initially — it will be sharpened phase-by-phase. *Empty* is not.
+6. Cross-reference: status §1.3 외부 컨텍스트 ↔ pipeline §0 references must point to the same sources.
+7. Verify with the user that both docs accurately capture *what we're achieving and how we'll judge it* — and that §종착지 captures *what the system will look like when done*.
 
 A skipped bootstrap = no anchor for critical evaluation. Do not skip.
 
 ## Iteration protocol (one work session)
 
-1. **Open** — read status §0, then status §North-Star, then the pipeline stage(s) the work touches.
-2. **Plan** — confirm the work moves a specific §North-Star row. If you cannot identify which row, escalate.
-3. **Critic — generate (mandatory)** — invoke `progress-critic` in `generate` mode. Save the returned questions to `docs/<domain>-status/<NN>-<slug>.critic.md`. These are the questions this phase MUST answer to credibly claim it moved the target §북극성 row(s). See §Critic pass below.
+1. **Open — re-inject end-state** — read status §0, then status §North-Star, then **`pipeline.md §종착지 시스템 모양` in full** (도해 + 가능해진 행동 + 의도적 제외 + §N.4 비전 vs 현재 + §N.5 변경 이력). Then read the pipeline stage(s) the work touches. The §종착지 view is the lens through which Plan and the critic prompt are written — not optional context.
+2. **Plan** — confirm the work moves a specific §North-Star row *and* identify which §종착지 §N.4 영역 the row belongs under. State explicitly: "이 phase는 §종착지의 <영역> 항목을 <구체화 / 검증 / 축소 / 신규 추가>한다." If you cannot map it, escalate — phase that does not connect to the projected end-state is scope creep until proven otherwise.
+3. **Critic — generate (mandatory)** — invoke `progress-critic` in `generate` mode. The prompt must include the current §종착지 snapshot and the phase's claimed §종착지 영역 from step 2. The critic returns ≤8 questions, *with at least one in the `end-state-positioning` category* asking how this phase will reshape the projected end-state. Save the returned questions to `docs/<domain>-status/<NN>-<slug>.critic.md`. See §Critic pass below.
 4. **Work** — execute. Save artifacts where pipeline §code-perspective points. Keep the critic questions visible — they shape what to measure, not just what to build.
-5. **Append a new phase file** — `docs/<domain>-status/<NN>-<YYYY-MM-DD>-<slug>.md` from `templates/status-section.md`. Required sections: scope, what was built (with evidence), validation, system impact, residual issues.
+5. **Append a new phase file** — `docs/<domain>-status/<NN>-<YYYY-MM-DD>-<slug>.md` from `templates/status-section.md`. Required sections: scope, what was built (with evidence), validation, system impact, **end-state delta (§<NN>.6.5)**, residual issues.
 6. **Critic — verify (mandatory)** — fill in each `**Response:**` block in the `<NN>-<slug>.critic.md` file (DIRECT / LIMITATION / OUT-OF-SCOPE per the rules). Then re-invoke `progress-critic` in `verify` mode. The cycle does not advance to step 7 until critic returns `VERDICT: PASS`. On `VERDICT: FAIL`, fix the unaddressed questions and re-invoke.
 7. **Update status core inline** — §LOC summary, §0 next-session entry, §North-Star table (refreshed `현재` + `근거` + `시스템 영향`), §pessimistic re-score, §phase index row.
 8. **Sync pipeline core** — re-rate affected stage(s) in §mapping. If a new mistake/signal was learned, append to that stage's §X.3 / §X.2.
-9. **Self-check** — both docs touched; §0 next-session entry alone would orient a fresh reader who has never seen this project.
-10. **Audit pass (mandatory)** — invoke `progress-auditor` via the Agent tool. The cycle is **not closed** until the auditor returns `VERDICT: PASS`. On `VERDICT: FAIL`, address every Severity-1 finding listed and re-invoke. See §Audit pass below.
+9. **Re-project end-state (mandatory)** — open `pipeline.md §종착지 시스템 모양`. Update §N.1 도해 / §N.2 가능해진 행동 / §N.3 의도적 제외 if this phase changed any of them. Refresh §N.4 비전 vs 현재 표 (현재 칼럼). Append a row to §N.5 변경 이력 — *every cycle gets a row*, classified as 추가 / 구체화 / 축소 / no-change with the trigger. **축소 방향 변경은 status §Decision chain 의 trigger 항목과 짝이 맞아야 한다.** Confirm the phase file's §<NN>.6.5 end-state delta narrates the same change.
+10. **Self-check** — both docs touched; §종착지 §N.5 has a new row for this cycle; §0 next-session entry alone would orient a fresh reader who has never seen this project.
+11. **Audit pass (mandatory)** — invoke `progress-auditor` via the Agent tool. The cycle is **not closed** until the auditor returns `VERDICT: PASS`. On `VERDICT: FAIL`, address every Severity-1 finding listed and re-invoke. See §Audit pass below.
 
 ## Critic pass (substantive — at step 3 and step 6)
 
@@ -195,11 +215,11 @@ The critic checks the previous 2 cycles' `*.critic.md` files. If a question's ca
 
 The rule prevents the easy escape route where every hard question becomes a permanent residual.
 
-## Audit pass (mandatory cycle closer — at step 10)
+## Audit pass (mandatory cycle closer — at step 11)
 
 The skill is *self-reporting* by design — author, evidence collector, and pessimistic re-scorer are the same context. To keep the trust gap narrow, every cycle ends with an *independent* auditor pass that the author cannot self-approve.
 
-**How to invoke** (after step 9, before any "done" message to the user):
+**How to invoke** (after step 10, before any "done" message to the user):
 
 ```
 Agent(
@@ -235,10 +255,14 @@ Critic without auditor: well-questioned but possibly self-cheering reports. Audi
 - [ ] §North-Star table — every row has non-empty `근거` and `시스템 영향` columns. Empty cells flagged `evidence pending: <reason>`.
 - [ ] §Pessimistic re-score — at least one row was re-justified or downgraded. Downgrades cite a *specific* stricter reviewer assumption.
 - [ ] No goal marked ✅ on the basis of "code shipped" alone — every ✅ has an outcome metric AND a system-impact note.
-- [ ] Every new feature this cycle maps to a §North-Star row. Orphans flagged "scope creep?" in §residual issues.
+- [ ] Every new feature this cycle maps to a §North-Star row *and* a §종착지 §N.4 영역. Orphans flagged "scope creep?" in §residual issues.
 - [ ] §0.3 next-action decision tree is *single-leveraged-action first*, not a flat to-do list.
 - [ ] Pipeline §mapping table reviewed for affected stage(s). Re-rating happened or was explicitly judged unnecessary.
 - [ ] No phase report claims progress without answering *"what changed observably at the system level?"*.
+- [ ] **Pipeline §종착지 §N.5 변경 이력에 이번 cycle 행이 추가됨** (추가/구체화/축소/no-change 중 하나).
+- [ ] 비전 *축소* 변경이 있었다면 status §Decision chain 에 trigger 항목 존재.
+- [ ] Phase 파일 §<NN>.6.5 end-state delta 절이 §종착지 §N.5 변경과 일관된 서사를 제공.
+- [ ] §종착지 §N.5 가 ≥3 cycle 연속 no-change 라면 — 정말 비전이 안 흔들렸나, 아니면 phase 가 비전과 무관하게 굴러갔나? 명시적으로 답함.
 
 ## Anti-patterns (refuse / flag)
 
@@ -251,6 +275,10 @@ Critic without auditor: well-questioned but possibly self-cheering reports. Audi
 - **Universal optimism** — every cycle every stage stays ≥ previous score. Real progress includes setbacks.
 - **Evidence-free progress** — "X improved" without a number. Reject.
 - **Invisible progress** — code shipped but no observable system change. Either label `infrastructure-only` or reconsider.
+- **Vision drift without ledger** — §종착지 §N.5 변경 이력이 빈 cycle. 비전이 자동으로 안 갱신된 것이 아니라 *기록을 빠뜨린 것* — 무엇이 바뀌었거나 정말 no-change 인지 행을 추가하라.
+- **Vision-loosening (post-hoc relaxation)** — phase 결과를 ✅로 만들기 위해 §종착지 §N.2 가능해진 행동에서 항목을 슬그머니 빼거나 §N.3 의도적 제외로 옮기는 패턴. trigger 가 §Decision chain 에 없다면 거부.
+- **Frozen vision while shipping** — §종착지 §N.5 ≥3 cycle 연속 no-change 인데 phase 는 계속 ship 됨. phase 가 비전과 무관하게 굴러가고 있거나 (scope creep), 비전 갱신을 매번 빠뜨리고 있거나 둘 중 하나. 어느 쪽인지 답하라.
+- **Phase orphaned from vision** — phase scope 가 §종착지 §N.4 영역 어느 줄에도 매핑되지 않음. 매핑하거나, 비전을 확장하거나, scope creep 으로 표기.
 
 ## Templates (in `templates/`)
 

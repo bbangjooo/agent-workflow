@@ -57,6 +57,23 @@ phase 진행 중 관찰됐지만 이번 사이클에 *고치지 않은* 것. 잊
 
 > 만약 위 모든 항목이 비어 있다면 이 phase는 *invisible progress*. infrastructure-only 라고 명시 표기하고, *어떤 future phase를 가능하게 하는지* 정확히 적을 것. 그조차 못 적으면 phase 자체를 재고.
 
+## <NN>.6.5 종착지 비전 갱신 (end-state delta) ★
+
+§<NN>.6 시스템 영향이 *이번 phase의 즉시 효과*라면, 이 절은 *이 phase가 종착지 그림을 어떻게 다시 그리게 했는가*.
+
+- 이 phase 이전 비전 (pipeline §종착지 §N.4 표 직전 상태):
+  - 
+- 이 phase 이후 비전 (pipeline §종착지 §N.4 표 갱신 후):
+  - 
+- Delta:
+  - **추가/구체화된 항목**: <pipeline §N.5 변경 이력에 추가한 행 인용>
+  - **제거/포기된 항목**: <있다면 — *왜 포기했나*는 status §Decision chain에 trigger 항목이 있어야 한다. 없으면 post-hoc relaxation>
+  - **그대로 유지된 항목**: <왜 안 흔들렸는가 — 정말 phase 결과가 그 항목에 영향이 0이었나?>
+- pipeline §N.5 변경 이력에 이번 cycle 행 추가됨? [ ]
+- Delta = no-change 라면 사유 (정말 비전이 한 줄도 안 움직였나? 그렇다면 이 phase는 무엇을 향해 갔나?):
+
+> Delta = no-change 가 ≥3 cycle 연속이면 critic이 자동으로 vision-stagnation 플래그를 띄운다. 이 phase가 정말 비전과 *무관하게* 굴러간 것인지 — 아니면 비전 갱신을 빠뜨린 것인지 — 판단해서 적을 것.
+
 ## <NN>.7 §북극성 갱신 (이 cycle 이후)
 
 - 어떤 row가 어떻게 움직였나?

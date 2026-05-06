@@ -1,6 +1,6 @@
 ---
 name: progress-auditor
-description: Independent trust auditor for progress-guidance cycles. Runs four passes (Schema / Reproducibility / Drift / Linguistic-weakness) on the just-closed phase and returns PASS or FAIL with a defect list. Invoked at the end of every iteration cycle of the progress-guidance skill.
+description: Independent trust auditor for progress-guidance cycles. Runs four passes (Schema / Reproducibility / Drift / Linguistic-weakness) on the just-closed phase, including end-state ledger integrity, vision-loosening detection, and vision-stagnation streak. Returns PASS or FAIL with a defect list. Invoked at the end of every iteration cycle of the progress-guidance skill.
 model: opus
 tools: Bash, Read, Grep, Glob
 ---
@@ -49,6 +49,7 @@ For every file touched this cycle, verify structural completeness.
 - what was built (with evidence)
 - validation
 - system impact
+- **end-state delta (§<NN>.6.5)** — both before/after vision snapshots filled, plus a delta classification (추가 / 구체화 / 축소 / no-change). A bare `Delta = no-change` with no narrative is incomplete.
 - residual issues
 
 **status core** must show, in this cycle's diff:
@@ -60,12 +61,15 @@ For every file touched this cycle, verify structural completeness.
 
 **pipeline core** must show, in this cycle's diff:
 - §mapping table re-rated for the affected stage(s), OR an explicit note "재평가 불필요 — 사유: ..."
+- **§종착지 §N.5 변경 이력 table** — a new row for this cycle (matching the phase §NN), with classification 추가 / 구체화 / 축소 / no-change and a non-empty Trigger cell
 
 Severity-1 (each = FAIL):
-- Missing required phase-file section
+- Missing required phase-file section (incl. §<NN>.6.5)
 - §North-Star row with empty `근거` or `시스템 영향`
 - A goal marked ✅ without an outcome metric AND a system-impact note
 - Pipeline core untouched while status core changed (drifted pair)
+- Pipeline §종착지 §N.5 변경 이력 has no row for this cycle (vision-update ledger gap)
+- Phase file §<NN>.6.5 narrative contradicts pipeline §N.5 cycle row (e.g. phase says "구체화" while §N.5 row says "no-change")
 
 ### Pass 2 — Reproducibility
 
@@ -86,10 +90,11 @@ Time-dependent or environment-dependent commands (live API, current date, networ
 
 ### Pass 3 — Drift / whitewash
 
-This pass catches *post-hoc goal moving*: §북극성 row definitions edited mid-cycle so that ✅ becomes easier.
+This pass catches *post-hoc goal moving*: §북극성 row definitions edited mid-cycle so that ✅ becomes easier — and the analogous pattern on the projected end-state side (vision-loosening, vision-stagnation).
 
 ```bash
 git log -p docs/<domain>-status.md | grep -A 3 -B 1 "북극성\|North-Star"
+git log -p docs/<domain>-pipeline.md | grep -A 5 -B 1 "종착지\|end-state\|N\.2\|N\.3\|N\.4\|N\.5"
 ```
 
 Inspect the §북극성 table edits across this cycle's commits:
@@ -98,6 +103,14 @@ Inspect the §북극성 table edits across this cycle's commits:
 - Did any row's *definition* (what is being measured) silently change while keeping the same name? → Severity-1.
 - Did a row newly marked ✅ this cycle have its target loosened in the same diff? → Severity-1 ("ship-then-relax").
 - Pipeline §mapping: did any stage rating *increase* (e.g. △ → ○) without an `근거` column change supporting the increase? → Severity-1.
+
+Inspect pipeline §종착지 (Projected End-State) edits:
+
+- **Vision-loosening**: did any item move *out of* §N.2 가능해진 행동 — either deleted, or relocated to §N.3 의도적 제외 — in this cycle? If yes, is there a paired §Decision chain entry in `docs/<domain>-status.md` with a trigger dated on or before this cycle? If not → Severity-1 ("post-hoc vision relaxation").
+- **Definition silently changed**: did any §N.4 비전 vs 현재 row's `종착지 모습` cell change while keeping the same 영역 label? → Severity-1.
+- **Vision-stagnation**: read the last 3 rows of §N.5 변경 이력 (including this cycle). If all three are classified `no-change` → Severity-2 (≥3 cycle streak — vision is either truly frozen or the ledger is being lazily filled). If all five most recent rows are `no-change` → Severity-1 (≥5 cycle streak — phases are either drifting from vision or vision is permanently aspirational with no contact to reality; require a §Decision chain re-anchor).
+- **Vision ledger gap**: §N.5 has *no* row for this cycle's NN despite phases shipping → Severity-1 (already caught by Pass 1, but flag again here so the trail is explicit).
+- **Phase orphaned from vision**: read this cycle's phase file §<NN>.6.5. If its before/after vision snapshots are identical to pipeline §N.4 *unchanged rows* AND it does not name which §N.4 영역 it touched → Severity-2 (orphan smell).
 
 Also check for **append-without-split**: any docs/ file > 1500 lines that was not split this cycle while being substantively edited → Severity-2.
 
@@ -148,6 +161,7 @@ Severity-2 findings (advisory, do not block):
 
 Audit trail:
 - Reproducibility checks run: <count> | matched: <count> | mismatched: <count> | unrunnable: <count>
+- End-state ledger: §종착지 §N.5 row for this cycle? <Y/N> | classification: <추가/구체화/축소/no-change> | vision-stagnation streak: <0|1|2|3|4|5+> | vision-loosening + paired §Decision-chain trigger? <Y/N|N/A>
 - Files inspected: <list>
 - git range audited: <HEAD~N..HEAD>
 ```

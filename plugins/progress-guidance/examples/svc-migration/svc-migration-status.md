@@ -45,8 +45,9 @@ cat /var/log/migration/shadow-diff-summary.txt    # 7일 누적 0 mismatch
 1. 본 §0
 2. §1 사용자 목표
 3. §11 TL;DR
-4. 가장 최근 phase 파일 (`svc-migration-status/04-2026-01-22-dual-write.md`)
-5. §12 북극성 표
+4. **`svc-migration-pipeline.md` §8 종착지 시스템 모양** — *어디로 가고 있나*
+5. §12 북극성 표 — *얼마나 갔나*
+6. 가장 최근 phase 파일 (`svc-migration-status/04-2026-01-22-dual-write.md`) — *직전에 뭘 했나*
 
 ### 0.7 동반 문서
 
@@ -172,12 +173,16 @@ M4 → 구 DB decommission
 
 ---
 
-## 14. pipeline §매핑 동기화 체크
+## 14. pipeline §매핑 / §종착지 동기화 체크
 
 마지막 동기화: 2026-01-22
 
-- [x] pipeline §매핑 표 최신 (§4 dual-write ◎, §5-7 ✗)
-- [x] status §북극성과 pipeline §매핑 일관 (백필 0% ↔ §5 ✗)
+- [x] pipeline §9 매핑 표 최신 (§4 dual-write ◎, §5-7 ✗)
+- [x] status §북극성과 pipeline §9 매핑 일관 (백필 0% ↔ §5 ✗)
 - [x] 외부 출처 양 doc 동일 ("DB Migration Patterns 2024")
 - [ ] 새 stage 추가 검토 — 현재 7-stage로 충분 판단
 - [x] 모든 §북극성 행 `근거` + `시스템 영향` 채워짐
+- [x] **pipeline §8.5 변경 이력에 cycle 4 행 추가됨** — 분류: 구체화 (Dual-write 정합성 현재 칼럼 진입)
+- [x] 종착지 §8.4 비전 vs 현재 표 갱신됨 (이번 cycle: "Dual-write 정합성" 행)
+- [x] 비전 *축소* 변경 없음 → §2 Decision chain trigger 항목 불필요
+- [x] phase 파일 §4.6.5 end-state delta 절이 §8.5 cycle 4 행과 일관
