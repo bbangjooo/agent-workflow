@@ -248,6 +248,15 @@
       "skills": [
         "./plugins/reference"
       ]
+    },
+    {
+      "name": "progress-guidance",
+      "description": "장기 다중 세션 프로젝트를 위해 status 로그 + methodology pipeline 두 doc을 짝으로 운영하고, 매 cycle 진행을 *근거*와 *시스템 영향*으로 비판적으로 재평가하는 플러그인. 새 절은 별도 파일로 분리되고 코어는 인덱스만 유지.",
+      "source": "./plugins/progress-guidance",
+      "strict": false,
+      "skills": [
+        "./plugins/progress-guidance"
+      ]
     }
   ]
 }
