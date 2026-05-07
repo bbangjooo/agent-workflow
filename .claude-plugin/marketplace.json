@@ -261,6 +261,21 @@
         "./plugins/progress-guidance/agents/progress-critic.md",
         "./plugins/progress-guidance/agents/progress-auditor.md"
       ]
+    },
+    {
+      "name": "progress-autopilot",
+      "description": "progress-guidance iteration protocol을 N cycle 자동 실행하는 autopilot. §0.3 next-action에서 scope를 자동 선정하고 critic+auditor 게이트를 K회까지 auto-fix로 통과시키되, bootstrap·correction phase·vision-loosening 결정은 사용자에게 surface한다. 매 cycle은 별도 cycle-runner subagent에서 step 1-11을 새 컨텍스트로 실행.",
+      "source": "./plugins/progress-autopilot",
+      "strict": false,
+      "commands": [
+        "./plugins/progress-autopilot/commands/progress-autopilot.md"
+      ],
+      "skills": [
+        "./plugins/progress-autopilot"
+      ],
+      "agents": [
+        "./plugins/progress-autopilot/agents/progress-cycle-runner.md"
+      ]
     }
   ]
 }

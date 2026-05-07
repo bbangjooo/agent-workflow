@@ -1,0 +1,14 @@
+{
+  "name": "progress-autopilot",
+  "description": "progress-guidance iteration protocol을 N cycle 자동 실행하는 autopilot. §0.3 next-action에서 scope를 자동 선정하고 critic+auditor 게이트를 자동 통과시키되, bootstrap·correction phase·vision drift 의사결정은 사용자에게 surface한다.",
+  "version": "0.1.0",
+  "commands": [
+    "./commands/progress-autopilot.md"
+  ],
+  "skills": [
+    "./"
+  ],
+  "agents": [
+    "./agents/progress-cycle-runner.md"
+  ]
+}
