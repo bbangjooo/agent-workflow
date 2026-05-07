@@ -14,7 +14,7 @@ A discipline for projects that span many sessions. Two paired docs, evidence-req
 - Project has `docs/<domain>-status.md` + `docs/<domain>-pipeline.md` (or is about to start one)
 - User asks to apply a "status + pipeline" doc-pair format to a new domain
 
-## Core doctrine (seven rules)
+## Core doctrine (eight rules)
 
 ### 1. Two paired documents (mandatory)
 
@@ -127,6 +127,27 @@ A phase that produces *no* observable system change is suspect:
 
 비전 자체가 새 cheerleading 출구가 되지 않도록: §종착지도 §북극성처럼 *근거 기반·다운그레이드 가능*. 비관 재채점 대상에 포함된다.
 
+### 8. Claim mode + Requirement-Result Divergence ★
+
+모든 측정 청구는 *몇 등급의 증거*를 청구하는지 명시한다. 그리고 요구사항(가설/기준/의도된 결과)과 실제 측정값이 다르게 나오면 — **침묵 흡수 금지**. 명시 분류가 없으면 §북극성/§종착지가 자기충족적으로 회전한다.
+
+**두 모드 (모든 phase 의 §<NN>.6.7 에 명시 — `MIXED` 시 청구 행 단위로 분리)**:
+
+- **CONFIRMATORY** — "이 측정이 가설/기준을 *검증*했다." 가설/기준이 *데이터를 보기 전*에 commit 된 상태에서, 사전에 못 본 데이터로 측정한 결과만 이 등급 가능. 증거: pre-spec 의 commit hash + timestamp 가 첫 데이터 노출 commit 보다 이른지 git 으로 검증 가능. 검증 못 하면 EXPLORATORY 로 자동 강등.
+- **EXPLORATORY** — "이 측정이 가설/기준을 *제안*했다." 데이터를 보고 가설/기준을 정했거나 사후 조정한 모든 청구. 결론은 "X 가 시사됨, 추후 confirmatory 검증 필요" 까지만. **금지 단어**: "증명", "확인됨", "검증됨", "정량 증명", "proven", "confirmed". 다음 cycle 에 holdout / 새 데이터 / 사전 commit 된 기준 위에서 재측정 plan 을 §<NN>.10 에 명시.
+
+**막아야 할 핵심 패턴**: 데이터를 보고 가설/기준을 (의식적으로든 무의식적으로든) 조정한 결과를 confirmatory 등급으로 청구하는 것 (HARKing / p-hacking / cherry-pick). 이게 progress-guidance 에서 가장 자주 새는 누설 경로 — 지표는 움직였다고 보이지만 실제로는 자기 데이터에 자기 기준을 맞춘 것.
+
+**Requirement-Result Divergence (조건부 §<NN>.6.8)**: §<NN>.1 의 의도/요구사항/예상치와 §<NN>.3 측정값이 의미 있게 다르면 (수치적 큰 차이 / 가설 기각 / 기준 대량 미달 / 등) 세 갈래 중 하나로 명시 분류:
+
+- **REQUIREMENT-WRONG** — 요구사항/기준/의도가 실제 의도를 못 잡았음 (측정 편의로 정한 임계, §1.4 와 어긋난 가설, 사후에 보니 §북극성 행 정의 자체가 부적합 등). **다음 cycle 시작 전 correction phase 필수** — §<NN>.10 에 트리거 명시.
+- **RESULT-INVALID** — 측정/데이터 품질 문제 (look-ahead bias, sample 누락, pipeline 버그, 비교군 실수 등). **청구 철회**. §<NN>.7 §북극성 갱신에 이 phase 의 측정값을 반영하지 말 것. 다시 측정.
+- **GENUINE-FINDING** — 측정은 정상, 결과가 예상과 다른 진짜 발견. **청구는 EXPLORATORY 등급으로만 가능** (위 모드 규칙 적용). 다음 cycle 에 새 데이터/holdout 으로 confirmatory 검증 plan 을 §<NN>.10 에 명시.
+
+세 갈래 중 *어느 것에도* 분류하지 않은 채 §북극성/§종착지를 갱신하면 = 셋 다인 척 / 하나도 아닌 척 으로 흘러가는 것. auditor Pass 6 가 Severity-1.
+
+**자기진단 한 줄**: "이번 phase 의 청구가 confirmatory 등급으로 통과되려면, 데이터를 보기 전 어느 commit 이 가설/기준을 박아두었나?" — 답을 못 대면 EXPLORATORY 가 정직.
+
 ## Bootstrap rule (run before any progress work)
 
 If either doc is missing or has fewer than 4 substantive sections, **stop and bootstrap before doing anything else**.
@@ -200,7 +221,7 @@ Agent(
 2. **Plan** — confirm the work moves a specific §North-Star row *and* identify which §종착지 §N.4 영역 the row belongs under. State explicitly: "이 phase는 §종착지의 <영역> 항목을 <구체화 / 검증 / 축소 / 신규 추가>한다." If you cannot map it, escalate — phase that does not connect to the projected end-state is scope creep until proven otherwise.
 3. **Critic — generate (mandatory)** — invoke `progress-critic` in `generate` mode. The prompt must include the current §종착지 snapshot and the phase's claimed §종착지 영역 from step 2. The critic returns ≤8 questions, *with at least one in the `end-state-positioning` category* asking how this phase will reshape the projected end-state. Save the returned questions to `docs/<domain>-status/<NN>-<slug>.critic.md`. See §Cycle critic pass below.
 4. **Work** — execute. Save artifacts where pipeline §code-perspective points. Keep the critic questions visible — they shape what to measure, not just what to build.
-5. **Append a new phase file** — `docs/<domain>-status/<NN>-<YYYY-MM-DD>-<slug>.md` from `templates/status-section.md`. Required sections: scope, what was built (with evidence), validation, system impact, **end-state delta (§<NN>.6.5)**, **intent-execution reconciliation (§<NN>.6.6 — `MATCH` / `PIVOT` / `DRIFT` 라벨)**, residual issues.
+5. **Append a new phase file** — `docs/<domain>-status/<NN>-<YYYY-MM-DD>-<slug>.md` from `templates/status-section.md`. Required sections: scope, what was built (with evidence), validation, system impact, **end-state delta (§<NN>.6.5)**, **intent-execution reconciliation (§<NN>.6.6 — `MATCH` / `PIVOT` / `DRIFT` 라벨)**, **claim mode (§<NN>.6.7 — `CONFIRMATORY` / `EXPLORATORY` / `MIXED` 라벨 + 증거)**, **requirement-result divergence (§<NN>.6.8 — 조건부: §<NN>.1 예상과 §<NN>.3 측정값이 의미 있게 다르면 `REQUIREMENT-WRONG` / `RESULT-INVALID` / `GENUINE-FINDING` 중 하나로 분류)**, residual issues.
 6. **Critic — verify (mandatory)** — fill in each `**Response:**` block in the `<NN>-<slug>.critic.md` file (DIRECT / LIMITATION / OUT-OF-SCOPE per the rules). Then re-invoke `progress-critic` in `verify` mode. The cycle does not advance to step 7 until critic returns `VERDICT: PASS`. On `VERDICT: FAIL`, fix the unaddressed questions and re-invoke.
 7. **Update status core inline** — §LOC summary, §0 next-session entry, §North-Star table (refreshed `현재` + `근거` + `시스템 영향`), §pessimistic re-score, §phase index row.
 8. **Sync pipeline core** — re-rate affected stage(s) in §mapping. If a new mistake/signal was learned, append to that stage's §X.3 / §X.2.
@@ -281,7 +302,7 @@ Agent(
   prompt: "Audit the just-closed progress-guidance cycle.
     Domain: <domain>
     New phase file: docs/<domain>-status/<NN>-<date>-<slug>.md
-    Run all five passes (Schema / Reproducibility / Drift / Linguistic-weakness / Intent-Execution drift).
+    Run all six passes (Schema / Reproducibility / Drift / Linguistic-weakness / Intent-Execution drift / Claim-mode integrity).
     Return VERDICT: PASS or VERDICT: FAIL with the defect list."
 )
 ```
@@ -327,6 +348,7 @@ When this happens, the fix is **not** to silently edit §1.4 / §북극성 (audi
 - Re-reading results from §<from>~§<current> reveals §1.4 doesn't match real intent.
 - A 3-cycle limitation rule auto-fail recommends re-anchoring §북극성, and amending the row(s) accordingly.
 - External input (paper / advisor / user discovery) reveals §종착지 §N.2 가능해진 행동 list misses the real target capability.
+- A just-closed phase's §<NN>.6.8 = `REQUIREMENT-WRONG` — §<NN>.10 next-action explicitly trips the correction trigger. The amendment scope follows what the §<NN>.6.8 narrative identified as the misaligned requirement (a §북극성 row's threshold, §1.4 wording, §종착지 §N.4 영역 definition, etc.).
 
 **When *not* to use**:
 
@@ -349,6 +371,13 @@ When this happens, the fix is **not** to silently edit §1.4 / §북극성 (audi
 - [ ] Phase 파일 §<NN>.6.5 end-state delta 절이 §종착지 §N.5 변경과 일관된 서사를 제공.
 - [ ] §종착지 §N.5 가 ≥3 cycle 연속 no-change 라면 — 정말 비전이 안 흔들렸나, 아니면 phase 가 비전과 무관하게 굴러갔나? 명시적으로 답함.
 - [ ] Phase 파일 §<NN>.6.6 의도-실행 정합 라벨이 `MATCH` / `PIVOT` / `DRIFT` 중 하나로 명시. PIVOT 이면 §Decision chain 에 trigger + amendment entry 존재. DRIFT 라벨로 cycle 닫지 말 것.
+- [ ] Phase 파일 §<NN>.6.7 claim mode 라벨이 `CONFIRMATORY` / `EXPLORATORY` / `MIXED` 중 하나로 명시.
+- [ ] CONFIRMATORY (또는 MIXED 의 confirmatory 행) 청구 시: pre-spec commit hash 가 명시되고, 그 commit timestamp 가 첫 데이터 노출 commit 보다 이른지 git 으로 검증 가능 (`git log --format='%H %ci'` 비교).
+- [ ] EXPLORATORY 청구 시: §<NN>.2 / §<NN>.3 / §<NN>.7 / §<NN>.0 TL;DR 어디에도 "증명" / "확인됨" / "검증됨" / "정량 증명" / "proven" / "confirmed" 등 confirmatory 단어 없음. 다음 cycle 의 confirmatory 검증 plan 이 §<NN>.10 에 명시.
+- [ ] §<NN>.1 예상과 §<NN>.3 측정값 사이 의미 있는 차이가 있다면 §<NN>.6.8 에 `REQUIREMENT-WRONG` / `RESULT-INVALID` / `GENUINE-FINDING` 중 하나로 분류 명시. 셋 중 하나도 분류하지 않은 채 §북극성 갱신 금지.
+- [ ] §<NN>.6.8 = `REQUIREMENT-WRONG` → 다음 cycle correction phase 트리거가 §<NN>.10 에 명시.
+- [ ] §<NN>.6.8 = `RESULT-INVALID` → §<NN>.7 §북극성 갱신에 이 phase 측정값 반영하지 않음 (행 없음 또는 명시적 "측정 무효, 재측정 예정").
+- [ ] §<NN>.6.8 = `GENUINE-FINDING` → §<NN>.6.7 라벨이 EXPLORATORY (또는 MIXED 의 해당 행). CONFIRMATORY 면 모순.
 
 ## Anti-patterns (refuse / flag)
 
@@ -368,6 +397,11 @@ When this happens, the fix is **not** to silently edit §1.4 / §북극성 (audi
 - **DRIFT label cycle close attempt** — §<NN>.6.6 = `DRIFT` 인 채로 cycle 닫으려 함. PASS 차단. 작업 재개해 `MATCH` 로 끌어올리거나, §Decision chain entry 추가해 `PIVOT` 으로 재라벨.
 - **Hidden PIVOT** — §<NN>.6.6 = `MATCH` 인데 데이터 소스 / sample size / §북극성 행이 §<NN>.1 과 다름. 자기합리화. auditor Pass 5 가 Severity-1 로 잡는다.
 - **Silent correction** — §1.4 / §북극성 / §종착지 영역이 변경됐는데 correction phase file 없음. 변경의 *발견 경위* 가 어디에도 안 남으면 다음 세션이 amended 정의의 근거를 잃는다. Auditor Pass 3 가 Severity-1 로 잡고, correction phase 작성을 강제한다.
+- **Hidden HARKing** — phase 가 새 측정 기준/임계/필터를 도입했고 §<NN>.6.7 = `CONFIRMATORY` 라고 청구했지만 pre-spec commit timestamp 가 첫 데이터 노출 commit 보다 *늦거나* 존재하지 않음. 데이터를 보고 기준을 정한 결과를 검증으로 청구하는 패턴. auditor Pass 6 Severity-1.
+- **Mode-language mismatch** — §<NN>.6.7 = `EXPLORATORY` 인데 §<NN>.2 / §<NN>.3 / §<NN>.7 / §<NN>.0 TL;DR 에 "증명" / "확인됨" / "검증됨" / "정량 증명" 등 confirmatory 단어가 등장. 라벨은 정직한데 본문이 청구 등급을 부풀림. auditor Pass 6 Severity-1.
+- **Silent divergence absorption** — §<NN>.1 예상과 §<NN>.3 측정값이 명백히 다른데 §<NN>.6.8 절이 비어 있거나 "차이 있음" 류 한 줄로 회피. REQUIREMENT-WRONG / RESULT-INVALID / GENUINE-FINDING 중 분류 안 함 → 다음 cycle 이 어느 갈래로 후속할지 결정 불가. auditor Pass 6 Severity-1.
+- **Confirmatory-claim-on-genuine-finding** — §<NN>.6.8 = `GENUINE-FINDING` (예상 못 한 결과) 인데 §<NN>.6.7 = `CONFIRMATORY`. 사후 발견을 사전 검증으로 둔갑. auditor Pass 6 Severity-1.
+- **Result-invalid leak** — §<NN>.6.8 = `RESULT-INVALID` (측정 자체 무효) 라고 분류해놓고 §<NN>.7 §북극성 갱신에 그 phase 의 측정값을 반영. 무효 청구를 §북극성 evidence 로 사용하는 자기모순. auditor Pass 6 Severity-1.
 
 ## Templates (in `templates/`)
 

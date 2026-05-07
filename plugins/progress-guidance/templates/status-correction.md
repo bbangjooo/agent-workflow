@@ -2,17 +2,23 @@
 
 > Type: **Correction phase** (no code work — documentation amendment only)
 > Trigger phase: §<NN> (이 correction 직전에 닫힌 phase)
-> Amendment scope: _<§1.4 / §북극성 행 / §종착지 영역 / 기타>_
+> Trigger source: _<late-rereading / 3-cycle-limitation auto-fail / external input / §<NN>.6.8 = REQUIREMENT-WRONG / 기타>_
+> Amendment scope: _<§1.4 / §북극성 행 / §종착지 영역 / 기준 임계 / 기타>_
 > Bootstrap critic 재실행 필요? _<Y / N>_
 
 > 이 파일은 *between cycles* 에 끼어드는 문서-전용 cycle. phase 번호는 가지지 않고 `<NN>.5` 슬롯을 차지한다 — 다음 정상 phase 는 §<NN+1> 로 이어진다. 코드 변경 없음을 강제하기 위해 `git diff` 가 docs/ 외부를 건드리면 anti-pattern.
 
 ## <NN>.5.1 발견
 
-> 무엇을, 언제, 어떤 근거로 — 이전 cycle 들의 결과를 재독해 하다 발견한 misalignment.
+> 무엇을, 언제, 어떤 근거로 — 이전 cycle 들의 결과를 재독해 하다 발견한 misalignment, 또는 직전 phase 의 §<NN>.6.8 = `REQUIREMENT-WRONG` 분류로 인한 즉시 트리거.
 
 - 발견된 misalignment 한 줄:
-- 발견 trigger (어떤 결과 / 어떤 검토 / 어떤 외부 입력으로):
+- 발견 trigger (해당하는 것 모두):
+  - [ ] 이전 cycle 결과 재독해 (어떤 phase 의 어떤 측정값을 다시 보고)
+  - [ ] 3-cycle limitation rule auto-fail (어느 §북극성 행 / 어느 critic category)
+  - [ ] 외부 입력 (paper / advisor / user discovery — 출처 인용)
+  - [ ] **직전 phase §<NN>.6.8 = `REQUIREMENT-WRONG`** (해당 phase 파일 §<NN>.6.8 의 "무엇이 잘못 정의돼 있었나" 한 줄 인용)
+  - [ ] 기타: 
 - 영향받은 cycle 범위 (어디서부터 잘못 박혀 있었나): §<from>~§<NN>
 - 왜 진작 못 잡았나 (cycle critic / auditor 가 통과시킨 이유): 
 

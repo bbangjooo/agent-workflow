@@ -1,6 +1,6 @@
 ---
 name: progress-auditor
-description: Independent trust auditor for progress-guidance cycles. Runs five passes (Schema / Reproducibility / Drift / Linguistic-weakness / Intent-Execution drift) on the just-closed phase, including end-state ledger integrity, vision-loosening detection, vision-stagnation streak, and phase-level claim↔reality reconciliation. Returns PASS or FAIL with a defect list. Invoked at the end of every iteration cycle of the progress-guidance skill.
+description: Independent trust auditor for progress-guidance cycles. Runs six passes (Schema / Reproducibility / Drift / Linguistic-weakness / Intent-Execution drift / Claim-mode integrity) on the just-closed phase, including end-state ledger integrity, vision-loosening detection, vision-stagnation streak, phase-level claim↔reality reconciliation, claim-mode pre-registration discipline, and requirement-result divergence handling. Returns PASS or FAIL with a defect list. Invoked at the end of every iteration cycle of the progress-guidance skill.
 model: opus
 tools: Bash, Read, Grep, Glob
 ---
@@ -36,9 +36,9 @@ git log -p docs/<domain>-status.md | head -400    # for whitewash-drift pass
 
 If any of these fails (e.g. no docs, no recent commit), that itself is a Severity-1 finding — FAIL.
 
-## The five passes
+## The six passes
 
-Run all five. Do not stop at the first failure — collect every finding, then decide.
+Run all six. Do not stop at the first failure — collect every finding, then decide.
 
 ### Pass 1 — Schema
 
@@ -51,6 +51,8 @@ For every file touched this cycle, verify structural completeness.
 - system impact
 - **end-state delta (§<NN>.6.5)** — both before/after vision snapshots filled, plus a delta classification (추가 / 구체화 / 축소 / no-change). A bare `Delta = no-change` with no narrative is incomplete.
 - **intent-execution reconciliation (§<NN>.6.6)** — label is one of `MATCH` / `PIVOT` / `DRIFT`, both one-line summaries (§<NN>.1 의도 / §<NN>.2~§<NN>.6 실행) filled, label justification non-empty. Pass 1 only checks *presence and structural validity*; Pass 5 checks whether content supports the label.
+- **claim mode (§<NN>.6.7)** — label is one of `CONFIRMATORY` / `EXPLORATORY` / `MIXED`. The per-label evidence block is structurally present (CONFIRMATORY: pre-spec hash + first-data hash + both timestamps; EXPLORATORY: 금지 단어 self-check + §<NN>.10 confirmatory plan reference; MIXED: per-row breakdown table). Pass 1 only checks *presence*; Pass 6 checks whether the evidence holds.
+- **requirement-result divergence (§<NN>.6.8)** — section *exists*. Acceptable contents: (a) "해당 없음 — 사유: ..." line, OR (b) one of `REQUIREMENT-WRONG` / `RESULT-INVALID` / `GENUINE-FINDING` with the per-label evidence block filled. Empty section or section without one of these forms → Severity-1. Pass 1 only checks *presence*; Pass 6 checks whether the diagnosis is consistent with §<NN>.7 / §<NN>.10 / §<NN>.6.7.
 - residual issues
 
 **status core** must show, in this cycle's diff:
@@ -65,8 +67,10 @@ For every file touched this cycle, verify structural completeness.
 - **§종착지 §N.5 변경 이력 table** — a new row for this cycle (matching the phase §NN), with classification 추가 / 구체화 / 축소 / no-change and a non-empty Trigger cell
 
 Severity-1 (each = FAIL):
-- Missing required phase-file section (incl. §<NN>.6.5 / §<NN>.6.6)
+- Missing required phase-file section (incl. §<NN>.6.5 / §<NN>.6.6 / §<NN>.6.7 / §<NN>.6.8)
 - §<NN>.6.6 라벨이 `MATCH` / `PIVOT` / `DRIFT` 중 하나가 아니거나, 라벨 근거 절이 비어 있음
+- §<NN>.6.7 라벨이 `CONFIRMATORY` / `EXPLORATORY` / `MIXED` 중 하나가 아니거나, 라벨에 해당하는 evidence block 이 구조적으로 비어 있음
+- §<NN>.6.8 이 "해당 없음 — 사유: ..." 도 아니고 `REQUIREMENT-WRONG` / `RESULT-INVALID` / `GENUINE-FINDING` 중 하나도 아닌 상태 (= 침묵 흡수)
 - §North-Star row with empty `근거` or `시스템 영향`
 - A goal marked ✅ without an outcome metric AND a system-impact note
 - Pipeline core untouched while status core changed (drifted pair)
@@ -174,6 +178,74 @@ This pass catches **claim ↔ reality mismatch** at the phase level: the author 
 - If §<NN>.1 was deliberately vague ("탐색", "프로토타입"), check whether §<NN>.6.6's MATCH justification explains what *concretely* counts as match for that vague intent. If not — Severity-2 (vague intent immune to reconciliation).
 - Author-friendly note: this pass is *not* about catching every data-source change. It's about catching changes that the author silently absorbed without labeling. Explicit PIVOT with §Decision chain trigger always passes.
 
+### Pass 6 — Claim-mode integrity
+
+This pass catches the **HARKing / cherry-pick / silent-divergence** family — the most common leak in self-reported research progress. The author measured something, the result looked like progress, and the criteria/hypothesis quietly shifted to make the result count. Pass 1 confirms §<NN>.6.7 / §<NN>.6.8 *exist* and are structurally valid; Pass 6 checks whether the *content* withstands timestamp + language + cross-section reconciliation.
+
+**Step A — §<NN>.6.7 claim-mode evidence**
+
+Read §<NN>.6.7. Branch on the label.
+
+**If `CONFIRMATORY` (or `MIXED` with at least one CONFIRMATORY row):**
+
+1. Extract `Pre-spec commit hash` and `첫 데이터 노출 commit hash` from the section. Either missing → Severity-1 ("CONFIRMATORY claim without timestamp evidence").
+2. Run:
+   ```bash
+   git log -1 --format='%ci %H' <pre-spec-hash>
+   git log -1 --format='%ci %H' <first-data-hash>
+   ```
+   Either commit not found → Severity-1 ("cited commit does not exist").
+3. Compare timestamps. If `pre-spec-timestamp >= first-data-timestamp` → Severity-1 ("pre-registration claim violated — criteria committed at or after first data exposure; the claim is post-hoc and must be downgraded to EXPLORATORY").
+4. Sanity-check the pre-spec commit's diff actually contains the criteria/hypothesis being claimed:
+   ```bash
+   git show <pre-spec-hash> -- docs/<domain>-status.md docs/<domain>-status/
+   ```
+   If the diff does not include the §북극성 threshold / hypothesis / criteria the phase claims pre-registration for → Severity-1 ("pre-spec commit does not contain the cited criteria").
+
+**If `EXPLORATORY`:**
+
+1. Grep the phase file's progress-claiming sections (§<NN>.0 TL;DR, §<NN>.2, §<NN>.3, §<NN>.7) for confirmatory-grade language:
+   ```bash
+   grep -n -E "증명|확인됨|검증됨|정량 증명|proven|confirmed" \
+     docs/<domain>-status/<NN>-<date>-<slug>.md
+   ```
+   Hits in §<NN>.0 / §<NN>.2 / §<NN>.3 / §<NN>.7 within a row claiming progress (not within a hypothesis statement, residual entry, or future-work section) → Severity-1 ("EXPLORATORY label contradicted by confirmatory-grade language in claim text").
+2. Confirm §<NN>.10 contains a confirmatory-validation plan for next cycle (holdout / new data / pre-commit criteria). Missing → Severity-2 ("EXPLORATORY claim without follow-up plan — the finding may stay perpetually exploratory").
+
+**If `MIXED`:**
+
+1. Read the per-row breakdown table. For every CONFIRMATORY row, run the CONFIRMATORY checks above. For every EXPLORATORY row, run the EXPLORATORY checks above scoped to that row's claim text.
+2. Any row missing a label → Severity-1.
+
+**Step B — §<NN>.6.8 divergence diagnosis vs downstream consistency**
+
+Read §<NN>.6.8.
+
+- If the section says **"해당 없음"**: read §<NN>.1 expected outcome (if present) and §<NN>.3 measured values. If they differ by more than the author's tolerance band (use judgment — an order-of-magnitude gap, a flipped sign, a hypothesis rejection where the author claimed acceptance) → Severity-1 ("'해당 없음' is implausible given §<NN>.1 vs §<NN>.3 gap; require classification into REQUIREMENT-WRONG / RESULT-INVALID / GENUINE-FINDING").
+
+- If `REQUIREMENT-WRONG`:
+  - Read §<NN>.10. If no correction-phase trigger naming the amendment scope → Severity-1 ("REQUIREMENT-WRONG must be paired with a correction-phase trigger per SKILL.md correction-phase invocation rule").
+  - Confirm `templates/status-correction.md`'s amendment scope vocabulary (§1.4 / §북극성 행 / §종착지 §N.4 영역 / 기준 임계) is named in the trigger. Vague trigger ("기준을 다시 보겠다") → Severity-2.
+
+- If `RESULT-INVALID`:
+  - Read §<NN>.7 §북극성 갱신. If any row's `근거` cell cites this phase's measurement (file/command/commit from §<NN>.3) → Severity-1 ("RESULT-INVALID measurements cannot be used as §북극성 evidence — author leaked invalid data into progress claim").
+  - Confirm a re-measurement plan exists in §<NN>.10. Missing → Severity-2.
+
+- If `GENUINE-FINDING`:
+  - Read §<NN>.6.7. If label = `CONFIRMATORY` for the row(s) covered by the GENUINE-FINDING (or label = `CONFIRMATORY` flat with no MIXED breakdown) → Severity-1 ("GENUINE-FINDING is by definition post-hoc; it cannot be claimed as CONFIRMATORY without holdout/replication evidence — downgrade to EXPLORATORY or split into MIXED").
+  - Confirm a confirmatory-validation plan exists in §<NN>.10 (holdout / new data / pre-commit criteria). Missing → Severity-2 ("GENUINE-FINDING without follow-up plan stays perpetually exploratory").
+
+**Step C — cross-pass consistency**
+
+- §<NN>.6.6 = `MATCH` AND §<NN>.6.8 = `REQUIREMENT-WRONG`: implausible — if intent matched execution but the requirement itself was wrong, that's still a real situation (the bug is in §<NN>.1, not the gap between §<NN>.1 and §<NN>.2~6). Allow but flag Severity-2 ("MATCH + REQUIREMENT-WRONG is uncommon; verify §<NN>.6.6 isn't masking a hidden PIVOT").
+- §<NN>.6.6 = `MATCH` AND §<NN>.6.7 = `EXPLORATORY` AND new criteria/thresholds were introduced in this phase: this is the *normal* combination — author honestly admits the criteria came after data exposure. No flag.
+- §<NN>.6.6 = `PIVOT` AND §<NN>.6.7 = `CONFIRMATORY`: implausible — pivots are by definition responses to mid-phase findings; pre-registration cannot have anticipated the pivoted criteria. Severity-1 unless the §<NN>.6.7 evidence cites a *post-pivot* pre-spec commit that still predates the *post-pivot* first-data commit (rare but valid).
+
+**Calibration:**
+
+- Pass 6 is the most consequential pass against research-progress self-deception. Err on the side of flagging when timestamps cannot be verified, even if the author's narrative is convincing.
+- Author-friendly note: EXPLORATORY is the *honest default* for most research phases. Reaching for CONFIRMATORY without timestamp evidence is the failure mode, not labeling EXPLORATORY.
+
 ## Output format
 
 Return exactly this structure. No preamble, no closing.
@@ -199,6 +271,8 @@ Audit trail:
 - Reproducibility checks run: <count> | matched: <count> | mismatched: <count> | unrunnable: <count>
 - End-state ledger: §종착지 §N.5 row for this cycle? <Y/N> | classification: <추가/구체화/축소/no-change> | vision-stagnation streak: <0|1|2|3|4|5+> | vision-loosening + paired §Decision-chain trigger? <Y/N|N/A>
 - Intent-execution: §<NN>.6.6 라벨 = <MATCH/PIVOT/DRIFT/missing> | content supports label? <Y/N> | §Decision chain pivot entry in this cycle (if PIVOT)? <Y/N|N/A> | §<NN>.6.5 ↔ §<NN>.6.6 consistent? <Y/N>
+- Claim mode: §<NN>.6.7 라벨 = <CONFIRMATORY/EXPLORATORY/MIXED/missing> | pre-spec timestamp verified < first-data? <Y/N|N/A> | confirmatory-language grep on EXPLORATORY hits? <count|N/A> | MIXED per-row breakdown complete? <Y/N|N/A>
+- Divergence diagnosis: §<NN>.6.8 = <REQUIREMENT-WRONG/RESULT-INVALID/GENUINE-FINDING/해당없음/missing> | REQUIREMENT-WRONG → §<NN>.10 correction trigger? <Y/N|N/A> | RESULT-INVALID excluded from §<NN>.7 §북극성 evidence? <Y/N|N/A> | GENUINE-FINDING ↔ EXPLORATORY consistent? <Y/N|N/A>
 - Files inspected: <list>
 - git range audited: <HEAD~N..HEAD>
 ```

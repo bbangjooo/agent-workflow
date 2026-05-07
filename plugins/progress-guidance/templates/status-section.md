@@ -96,6 +96,68 @@ phase 진행 중 관찰됐지만 이번 사이클에 *고치지 않은* 것. 잊
 
 > auditor Pass 5 가 §<NN>.1 ↔ §<NN>.2~§<NN>.6 의 *의미적 정합*을 별도로 확인한다. MATCH 라벨인데 데이터 소스 / sample size / §북극성 행이 의도와 다르면 Severity-1.
 
+## <NN>.6.7 Claim Mode (청구 등급) ★
+
+§<NN>.6.6 가 *의도와 실행이 일치했나* 라면, 이 절은 *그 결과 청구가 confirmatory 등급인가 exploratory 등급인가*. 두 질문은 직교 — MATCH 인 채로도 EXPLORATORY 일 수 있고, MATCH 인 채로 CONFIRMATORY 도 가능. 어느 쪽인지 본인 입장에서 자명해 보여도 *세 라벨 중 하나를 명시*.
+
+**라벨**: _<CONFIRMATORY | EXPLORATORY | MIXED>_
+
+**라벨 근거 (라벨별 필수 내용)**:
+
+- `CONFIRMATORY` — 가설/기준이 *데이터를 보기 전*에 commit 된 상태에서, 사전에 못 본 데이터로 측정한 결과.
+  - **Pre-spec commit hash**: `<commit-hash>` (가설/기준이 박힌 commit)
+  - **Pre-spec commit timestamp**: `<YYYY-MM-DD HH:MM:SS>` (`git log -1 --format='%ci' <hash>` 결과)
+  - **첫 데이터 노출 commit hash**: `<commit-hash>` (이 phase 에서 처음으로 측정 데이터 / 결과를 본 commit)
+  - **첫 데이터 노출 timestamp**: `<YYYY-MM-DD HH:MM:SS>`
+  - Pre-spec timestamp < 첫 데이터 노출 timestamp 임을 본인이 확인. (auditor 가 `git log` 로 재검증.)
+
+- `EXPLORATORY` — 데이터를 보고 가설/기준을 정했거나 사후 조정한 청구. (위 timestamp 증거를 제공할 수 없는 경우는 자동으로 이 등급.)
+  - **금지 단어 체크**: §<NN>.0 TL;DR / §<NN>.2 / §<NN>.3 / §<NN>.7 어디에도 "증명" / "확인됨" / "검증됨" / "정량 증명" / "proven" / "confirmed" 단어가 사용되지 않았음을 본인이 확인. (auditor 가 grep 으로 재검증.)
+  - **다음 cycle confirmatory 검증 plan**: §<NN>.10 에 holdout / 새 데이터 / pre-commit 된 기준 위에서 재측정 plan 명시.
+
+- `MIXED` — 같은 phase 안에 두 등급의 청구가 공존. *어느 청구가 어느 등급인지* 행 단위 분리표 필수:
+  - | 청구 행 (§북극성 / §<NN>.3 항목) | 등급 | 등급 근거 (위 CONFIRMATORY/EXPLORATORY 형식 따라 행별로) |
+  - |---|---|---|
+  - |  |  |  |
+
+> 자기진단 한 줄: "이번 phase 의 청구가 confirmatory 등급으로 통과되려면 데이터를 보기 전 어느 commit 이 가설/기준을 박아두었나?" 답을 못 대면 EXPLORATORY 가 정직.
+>
+> auditor Pass 6 이 timestamp 순서와 단어 사용을 별도로 검증한다.
+
+## <NN>.6.8 Requirement-Result Divergence (조건부) ★
+
+> **언제 작성**: §<NN>.1 의 의도/요구사항/예상치와 §<NN>.3 의 실제 측정값이 *의미 있게* 다르면 (수치 큰 차이 / 가설 기각 / 기준 대량 미달 / 예상 못 한 분포 / 등). 차이가 미미하거나 정상 범위면 "해당 없음 — 사유: <한 줄>" 로 닫고 다음 절로.
+>
+> **차이가 의미 있는데 침묵 흡수하면 (이 절 비워두고 §북극성 갱신으로 넘어가면) auditor Pass 6 가 Severity-1**.
+
+**§<NN>.1 예상**:
+
+- 
+
+**§<NN>.3 실측**:
+
+- 
+
+**갈래 분류 (셋 중 하나 명시)**: _<REQUIREMENT-WRONG | RESULT-INVALID | GENUINE-FINDING>_
+
+**분류 근거 (라벨별 필수 내용)**:
+
+- `REQUIREMENT-WRONG` — 요구사항/기준/의도가 실제 의도를 못 잡았음 (측정 편의로 정한 임계, §1.4 와 어긋난 가설, 사후에 보니 §북극성 행 정의 자체가 부적합).
+  - **무엇이 잘못 정의돼 있었나**: <한 줄>
+  - **왜 진작 안 보였나** (bootstrap critic / cycle critic 통과한 이유): <한 줄>
+  - **다음 cycle correction phase 트리거**: §<NN>.10 에 명시. amendment scope = <§1.4 / §북극성 행 / §종착지 §N.4 영역 / 기준 임계 중 하나 이상>.
+
+- `RESULT-INVALID` — 측정/데이터 품질 문제 (look-ahead, sample 누락, pipeline 버그, 비교군 실수).
+  - **무효 사유**: <한 줄 — 무엇이 측정을 오염시켰나>
+  - **§<NN>.7 §북극성 갱신에서 이 측정값 제외**: 확인 [ ]
+  - **재측정 plan**: §<NN>.10 에 명시.
+
+- `GENUINE-FINDING` — 측정은 정상, 결과가 예상과 다른 진짜 발견.
+  - **§<NN>.6.7 라벨이 EXPLORATORY 또는 MIXED 의 EXPLORATORY 행임**: 확인 [ ] (CONFIRMATORY 면 자기모순 — 사후 발견을 사전 검증으로 청구하는 것)
+  - **다음 cycle confirmatory 검증 plan**: holdout / 새 데이터 / pre-commit 기준 위에서 재측정. §<NN>.10 에 명시.
+
+> 셋 중 어느 하나도 자신 있게 분류 못 하겠다면 가장 보수적인 RESULT-INVALID 를 가정하고 재측정. "셋 다 일부씩" 도 가능 — 그 경우 갈래별로 어느 행이 어디 속하는지 분리해서 적을 것.
+
 ## <NN>.7 §북극성 갱신 (이 cycle 이후)
 
 - 어떤 row가 어떻게 움직였나?
