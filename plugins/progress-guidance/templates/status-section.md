@@ -74,6 +74,28 @@ phase 진행 중 관찰됐지만 이번 사이클에 *고치지 않은* 것. 잊
 
 > Delta = no-change 가 ≥3 cycle 연속이면 critic이 자동으로 vision-stagnation 플래그를 띄운다. 이 phase가 정말 비전과 *무관하게* 굴러간 것인지 — 아니면 비전 갱신을 빠뜨린 것인지 — 판단해서 적을 것.
 
+## <NN>.6.6 의도-실행 정합 (Intent-Execution Reconciliation) ★
+
+§<NN>.1 에서 *세운 의도*와 §<NN>.2~§<NN>.6 에서 *실제 실행한 결과*가 일치하는가? 본인 입장에서 자명해 보여도 *세 라벨 중 하나를 명시*. 자기합리화는 여기서 차단된다.
+
+**라벨**: _<MATCH | PIVOT | DRIFT>_
+
+**§<NN>.1 의도 한 줄 요약**:
+
+<어떤 §북극성 행을 / 어떻게 / 어떤 §종착지 영역 reshape 의도였나>
+
+**§<NN>.2~§<NN>.6 실행 한 줄 요약**:
+
+<무엇을 만들었고 어떤 §북극성 행에 무슨 측정이 들어갔나 — 데이터 소스 / sample size / §북극성 행 명시>
+
+**라벨 근거**:
+
+- `MATCH` — 두 줄이 의미적으로 동일한가? 동일한 §북극성 행 + 동일한 데이터 소스 + 의도한 측정 모두 실행됨. 미묘한 데이터 소스 변경 / sample size 축소 / 측정 범위 축소 등이 있다면 MATCH 가 아니라 PIVOT.
+- `PIVOT` — phase 진행 중 새 발견으로 의도가 의도적으로 변경됨. **status §2 §Decision chain entry 필수** (이번 cycle 에 추가): trigger ("X 발견") + amendment ("의도를 Y에서 Z로 전환"). 정상 흐름이지만 형식상 명시.
+- `DRIFT` — 의도와 실행이 어긋났는데 §Decision chain trigger 도 없음. **이 라벨은 phase PASS 차단** — 작업 재개해서 의도 충족시키거나, 의도를 명시적으로 축소/변경한 뒤 PIVOT 으로 전환할 것.
+
+> auditor Pass 5 가 §<NN>.1 ↔ §<NN>.2~§<NN>.6 의 *의미적 정합*을 별도로 확인한다. MATCH 라벨인데 데이터 소스 / sample size / §북극성 행이 의도와 다르면 Severity-1.
+
 ## <NN>.7 §북극성 갱신 (이 cycle 이후)
 
 - 어떤 row가 어떻게 움직였나?

@@ -137,17 +137,70 @@ If either doc is missing or has fewer than 4 substantive sections, **stop and bo
 4. Fill the final pipeline §"이 프로젝트가 위 틀에 얼마나 부합하는가" mapping table with ◎/○/△/✗ + one-line evidence per stage. Initial scores are mostly ✗ — that's expected.
 5. **Draft pipeline §종착지 시스템 모양 (Cycle 0)** — initial vision: 도해 + 가능해진 행동 + 의도적 제외. Cycle 0 entry in §N.5 변경 이력. Vague is acceptable initially — it will be sharpened phase-by-phase. *Empty* is not.
 6. Cross-reference: status §1.3 외부 컨텍스트 ↔ pipeline §0 references must point to the same sources.
-7. Verify with the user that both docs accurately capture *what we're achieving and how we'll judge it* — and that §종착지 captures *what the system will look like when done*.
+7. **Critic bootstrap pass (mandatory)** — invoke `progress-critic` in `bootstrap` mode against the freshly-drafted §북극성 표 + §1.4 진짜 목표 + §종착지 cycle-0. The agent returns ≤6 sharp questions challenging the *definition* of the rows (measurable / falsifiable / proxy-vs-real / vision-aligned / reachable-but-non-trivial / independently-verifiable). Save them to `docs/<domain>-status/00-bootstrap.critic.md`. Fill each `**Response:**` block (DIRECT / REVISED / LIMITATION), revising §북극성 / §1.4 / §종착지 as needed. Re-invoke `progress-critic` in `bootstrap-verify` mode. Bootstrap does **not** advance to step 8 until the verifier returns `VERDICT: PASS`. See §Bootstrap critic pass below.
+8. Verify with the user that both docs accurately capture *what we're achieving and how we'll judge it* — and that §종착지 captures *what the system will look like when done*.
 
 A skipped bootstrap = no anchor for critical evaluation. Do not skip.
+
+## Bootstrap critic pass (one-time — at Bootstrap step 7)
+
+The cycle-time critic vets *phase claims*. The bootstrap critic vets the *initial north-star definition itself*. A north-star that is unmeasurable, a proxy, or unmapped to §종착지 means every future cycle measures the wrong thing — by the time a cycle-time critic catches it, the project has spent N sessions chasing the wrong target. Bootstrap-time vetting is cheap; deferred vetting is not.
+
+**Two invocations at Bootstrap step 7, same agent:**
+
+### Step 7a — bootstrap (generate)
+
+```
+Agent(
+  subagent_type: "progress-critic",
+  description: "Critic — bootstrap questions",
+  prompt: "MODE: bootstrap
+    domain: <domain>
+    status path: docs/<domain>-status.md
+    pipeline path: docs/<domain>-pipeline.md"
+)
+```
+
+The agent returns markdown text (≤6 closed questions, each tagged by category, each with an empty `**Response:**` block). Save this to `docs/<domain>-status/00-bootstrap.critic.md` exactly as returned.
+
+### Step 7b — bootstrap-verify
+
+Fill in each `**Response:**` block in the bootstrap critic file. Each response must be one of:
+
+- **DIRECT** — the question is *already* addressed by the docs as drafted; cite the specific section/row that answers it.
+- **REVISED** — §북극성 / §1.4 / §종착지 was revised in response to the question; describe the change and cite the current state.
+- **LIMITATION** — acknowledged gap, with a link to a §residual issues entry (in status) or §Decision chain entry naming the gap and a deferral trigger.
+
+Then invoke:
+
+```
+Agent(
+  subagent_type: "progress-critic",
+  description: "Critic — bootstrap verify",
+  prompt: "MODE: bootstrap-verify
+    domain: <domain>
+    status path: docs/<domain>-status.md
+    pipeline path: docs/<domain>-pipeline.md
+    critic file: docs/<domain>-status/00-bootstrap.critic.md"
+)
+```
+
+**Outcomes:**
+
+- `VERDICT: PASS` — proceed to Bootstrap step 8 (user verify).
+- `VERDICT: FAIL` — fix unaddressed questions and re-invoke. The critic will not invent new questions on re-runs (closed set), so fixes converge.
+
+### Foundation categories (no LIMITATION at bootstrap)
+
+`vision-aligned` and `proxy-vs-real` cannot be answered with `LIMITATION` at bootstrap. Deferring foundation means the project runs on an unanchored north-star. The only acceptable responses for these two categories are DIRECT (already addressed) or REVISED (fixed now). Other categories may LIMITATION with a §residual entry.
 
 ## Iteration protocol (one work session)
 
 1. **Open — re-inject end-state** — read status §0, then status §North-Star, then **`pipeline.md §종착지 시스템 모양` in full** (도해 + 가능해진 행동 + 의도적 제외 + §N.4 비전 vs 현재 + §N.5 변경 이력). Then read the pipeline stage(s) the work touches. The §종착지 view is the lens through which Plan and the critic prompt are written — not optional context.
 2. **Plan** — confirm the work moves a specific §North-Star row *and* identify which §종착지 §N.4 영역 the row belongs under. State explicitly: "이 phase는 §종착지의 <영역> 항목을 <구체화 / 검증 / 축소 / 신규 추가>한다." If you cannot map it, escalate — phase that does not connect to the projected end-state is scope creep until proven otherwise.
-3. **Critic — generate (mandatory)** — invoke `progress-critic` in `generate` mode. The prompt must include the current §종착지 snapshot and the phase's claimed §종착지 영역 from step 2. The critic returns ≤8 questions, *with at least one in the `end-state-positioning` category* asking how this phase will reshape the projected end-state. Save the returned questions to `docs/<domain>-status/<NN>-<slug>.critic.md`. See §Critic pass below.
+3. **Critic — generate (mandatory)** — invoke `progress-critic` in `generate` mode. The prompt must include the current §종착지 snapshot and the phase's claimed §종착지 영역 from step 2. The critic returns ≤8 questions, *with at least one in the `end-state-positioning` category* asking how this phase will reshape the projected end-state. Save the returned questions to `docs/<domain>-status/<NN>-<slug>.critic.md`. See §Cycle critic pass below.
 4. **Work** — execute. Save artifacts where pipeline §code-perspective points. Keep the critic questions visible — they shape what to measure, not just what to build.
-5. **Append a new phase file** — `docs/<domain>-status/<NN>-<YYYY-MM-DD>-<slug>.md` from `templates/status-section.md`. Required sections: scope, what was built (with evidence), validation, system impact, **end-state delta (§<NN>.6.5)**, residual issues.
+5. **Append a new phase file** — `docs/<domain>-status/<NN>-<YYYY-MM-DD>-<slug>.md` from `templates/status-section.md`. Required sections: scope, what was built (with evidence), validation, system impact, **end-state delta (§<NN>.6.5)**, **intent-execution reconciliation (§<NN>.6.6 — `MATCH` / `PIVOT` / `DRIFT` 라벨)**, residual issues.
 6. **Critic — verify (mandatory)** — fill in each `**Response:**` block in the `<NN>-<slug>.critic.md` file (DIRECT / LIMITATION / OUT-OF-SCOPE per the rules). Then re-invoke `progress-critic` in `verify` mode. The cycle does not advance to step 7 until critic returns `VERDICT: PASS`. On `VERDICT: FAIL`, fix the unaddressed questions and re-invoke.
 7. **Update status core inline** — §LOC summary, §0 next-session entry, §North-Star table (refreshed `현재` + `근거` + `시스템 영향`), §pessimistic re-score, §phase index row.
 8. **Sync pipeline core** — re-rate affected stage(s) in §mapping. If a new mistake/signal was learned, append to that stage's §X.3 / §X.2.
@@ -155,7 +208,7 @@ A skipped bootstrap = no anchor for critical evaluation. Do not skip.
 10. **Self-check** — both docs touched; §종착지 §N.5 has a new row for this cycle; §0 next-session entry alone would orient a fresh reader who has never seen this project.
 11. **Audit pass (mandatory)** — invoke `progress-auditor` via the Agent tool. The cycle is **not closed** until the auditor returns `VERDICT: PASS`. On `VERDICT: FAIL`, address every Severity-1 finding listed and re-invoke. See §Audit pass below.
 
-## Critic pass (substantive — at step 3 and step 6)
+## Cycle critic pass (substantive — at iteration steps 3 and 6)
 
 The discipline auditor (§Audit pass) checks whether what was written is honest and well-formed. The critic checks something different: **whether the right questions were asked at all**. A phase can be impeccably documented and still measure the wrong thing or mistake a proxy for the §북극성. The critic is the outsider who has not yet been convinced.
 
@@ -228,7 +281,7 @@ Agent(
   prompt: "Audit the just-closed progress-guidance cycle.
     Domain: <domain>
     New phase file: docs/<domain>-status/<NN>-<date>-<slug>.md
-    Run all four passes (Schema / Reproducibility / Drift / Linguistic-weakness).
+    Run all five passes (Schema / Reproducibility / Drift / Linguistic-weakness / Intent-Execution drift).
     Return VERDICT: PASS or VERDICT: FAIL with the defect list."
 )
 ```
@@ -249,6 +302,38 @@ A cycle closes only when **both** gates pass:
 
 Critic without auditor: well-questioned but possibly self-cheering reports. Auditor without critic: rigorously documented but possibly measuring the wrong thing. Both required, in this order.
 
+## Correction phase (one-shot — between cycles, when intent drifted across cycles)
+
+The two gates catch *within-cycle* dishonesty and *near-term* drift. They cannot catch the case where every cycle was honestly executed against §1.4 / §북극성 *as written*, but §1.4 / §북극성 *as written* turn out not to capture the real intent — usually realized only after several cycles when the user re-reads results and notices "this measures the wrong thing entirely". §<NN>.6.6 intent-execution reconciliation guards against *single-phase* drift; the correction phase guards against *foundation* drift discovered late.
+
+When this happens, the fix is **not** to silently edit §1.4 / §북극성 (auditor Pass 3 catches that as drift). Nor is it to start a fresh project. The fix is a *correction phase* — a documentation-only cycle that:
+
+1. Records what was discovered, when, and from what evidence (§<NN>.5.1).
+2. Lays out old vs new intent side-by-side (§<NN>.5.2) — including *why* the old definition missed the real intent.
+3. Amends §1.4 / §북극성 / §종착지 explicitly, with §Decision chain trigger (§<NN>.5.3 / §<NN>.5.4).
+4. Re-runs `progress-critic` `MODE: bootstrap` against the amended foundation if §1.4 / §북극성 rows / §종착지 §N.4 영역 changed semantically (§<NN>.5.5).
+5. Re-interprets prior cycles' verdicts under the amended definitions (§<NN>.5.6) — recorded in the correction file, *not* edited into prior phase files (sanitizing history breaks auditor Pass 3).
+
+**Naming**: `docs/<domain>-status/<NN>.5-correction-<slug>.md` where `<NN>` is the most recently closed phase. The `.5` slot makes the file sort between §<NN> and §<NN+1> without colliding with phase numbers. The next normal phase continues as §<NN+1>.
+
+**Template**: `templates/status-correction.md`. Copy and fill.
+
+**Bootstrap critic re-run gate**: if §1.4 / §북극성 rows / §종착지 §N.4 영역 changed *semantically* (not just rewording), re-running `progress-critic` `MODE: bootstrap` is mandatory before §<NN+1> opens. Save the result to `docs/<domain>-status/<NN>.5-correction.critic.md`, fill responses, then `MODE: bootstrap-verify` until `VERDICT: PASS`. Pure rewording with no semantic shift skips the re-run but still requires §Decision chain entry.
+
+**Code-change rule**: a correction phase produces *zero* code changes. Auditor will flag any non-`docs/` edits in the correction commit as a discipline violation — code work belongs in §<NN+1>, not in the correction.
+
+**When to invoke**:
+
+- Re-reading results from §<from>~§<current> reveals §1.4 doesn't match real intent.
+- A 3-cycle limitation rule auto-fail recommends re-anchoring §북극성, and amending the row(s) accordingly.
+- External input (paper / advisor / user discovery) reveals §종착지 §N.2 가능해진 행동 list misses the real target capability.
+
+**When *not* to use**:
+
+- Within-cycle plan change → that's a `PIVOT` label in §<NN>.6.6, not a correction phase.
+- Adding a new §북극성 row mid-project for a *new* concern (not amending an existing one) → ordinary §Decision chain entry suffices.
+- Pure typo / wording cleanup with no semantic shift → just edit; no correction phase needed.
+
 ## Critical-evaluation checklist (mandatory each cycle)
 
 - [ ] §North-Star table — at least one row's `현재` value changed *with measured evidence* (not assertion).
@@ -263,6 +348,7 @@ Critic without auditor: well-questioned but possibly self-cheering reports. Audi
 - [ ] 비전 *축소* 변경이 있었다면 status §Decision chain 에 trigger 항목 존재.
 - [ ] Phase 파일 §<NN>.6.5 end-state delta 절이 §종착지 §N.5 변경과 일관된 서사를 제공.
 - [ ] §종착지 §N.5 가 ≥3 cycle 연속 no-change 라면 — 정말 비전이 안 흔들렸나, 아니면 phase 가 비전과 무관하게 굴러갔나? 명시적으로 답함.
+- [ ] Phase 파일 §<NN>.6.6 의도-실행 정합 라벨이 `MATCH` / `PIVOT` / `DRIFT` 중 하나로 명시. PIVOT 이면 §Decision chain 에 trigger + amendment entry 존재. DRIFT 라벨로 cycle 닫지 말 것.
 
 ## Anti-patterns (refuse / flag)
 
@@ -279,11 +365,15 @@ Critic without auditor: well-questioned but possibly self-cheering reports. Audi
 - **Vision-loosening (post-hoc relaxation)** — phase 결과를 ✅로 만들기 위해 §종착지 §N.2 가능해진 행동에서 항목을 슬그머니 빼거나 §N.3 의도적 제외로 옮기는 패턴. trigger 가 §Decision chain 에 없다면 거부.
 - **Frozen vision while shipping** — §종착지 §N.5 ≥3 cycle 연속 no-change 인데 phase 는 계속 ship 됨. phase 가 비전과 무관하게 굴러가고 있거나 (scope creep), 비전 갱신을 매번 빠뜨리고 있거나 둘 중 하나. 어느 쪽인지 답하라.
 - **Phase orphaned from vision** — phase scope 가 §종착지 §N.4 영역 어느 줄에도 매핑되지 않음. 매핑하거나, 비전을 확장하거나, scope creep 으로 표기.
+- **DRIFT label cycle close attempt** — §<NN>.6.6 = `DRIFT` 인 채로 cycle 닫으려 함. PASS 차단. 작업 재개해 `MATCH` 로 끌어올리거나, §Decision chain entry 추가해 `PIVOT` 으로 재라벨.
+- **Hidden PIVOT** — §<NN>.6.6 = `MATCH` 인데 데이터 소스 / sample size / §북극성 행이 §<NN>.1 과 다름. 자기합리화. auditor Pass 5 가 Severity-1 로 잡는다.
+- **Silent correction** — §1.4 / §북극성 / §종착지 영역이 변경됐는데 correction phase file 없음. 변경의 *발견 경위* 가 어디에도 안 남으면 다음 세션이 amended 정의의 근거를 잃는다. Auditor Pass 3 가 Severity-1 로 잡고, correction phase 작성을 강제한다.
 
 ## Templates (in `templates/`)
 
 - `status-core.md` — start here for the status doc
 - `status-section.md` — copy per phase
+- `status-correction.md` — copy when intent drifts across cycles (between-cycle correction phase, §<NN>.5 slot)
 - `pipeline-core.md` — start here for the pipeline doc
 - `pipeline-stage.md` — copy per pipeline stage when depth exceeds ~200 lines
 
