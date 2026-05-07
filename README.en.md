@@ -77,6 +77,14 @@ After building your strategy with `/grow`, use `/promote` to generate ready-to-p
 | `/align` | Verify goal alignment |
 | `/next` | Combined view of goals + progress + next actions |
 
+### Long-Running Project Guidance
+
+A *pessimistic* discipline for projects that span many sessions. Maintains a paired status log + methodology pipeline doc, and every cycle must pass two gates before it closes.
+
+| Command | Role |
+|---------|------|
+| `/progress-guidance` | Run a paired status + pipeline doc. **Critic gate** (generate questions → respond → verify) asks "did we measure the right thing?"; **auditor gate** (Schema / Reproducibility / Drift / Linguistic-weakness, 4 passes) asks "is what we wrote honest?". Every progress claim must carry *evidence · system-impact · end-state delta*. The projected end-state is re-projected each cycle and re-injected into the next |
+
 ### Utilities
 
 | Command | Role |
@@ -146,6 +154,7 @@ plugins/
 ├── feedback/              # Feedback & retrospectives
 ├── iteration/             # Iteration management
 ├── roadmap/               # Goals & roadmap
+├── progress-guidance/     # Long-running status + pipeline doc pair with critic/auditor gates
 ├── debugging/             # Debugging
 └── workflow-state-manager/ # State management
 ```

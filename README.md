@@ -77,6 +77,14 @@ claude plugin marketplace add https://github.com/bbangjooo/agent-workflow.git
 | `/align` | 목표 정렬 검증 |
 | `/next` | 목표 + 진행도 + 다음 액션 통합 확인 |
 
+### 장기 프로젝트 가이던스
+
+여러 세션에 걸친 프로젝트를 *비관적으로* 운영합니다. status 로그와 methodology pipeline 두 문서를 짝으로 유지하며, 매 사이클 두 개의 게이트를 통과해야 닫힙니다.
+
+| 명령어 | 역할 |
+|--------|------|
+| `/progress-guidance` | status + pipeline 페어 문서 운영. **critic 게이트** (질문 생성 → 답변 → 검증)로 "옳은 걸 측정했나"를 묻고, **auditor 게이트** (Schema/Reproducibility/Drift/Linguistic 4 패스)로 "쓴 게 정직한가"를 검증. 모든 진행 주장에 *증거·시스템 영향·종착지 델타* 강제, 매 사이클 종착지 시스템 모양을 재투영해 다음 사이클에 재주입 |
+
 ### 보조 도구
 
 | 명령어 | 역할 |
@@ -145,6 +153,7 @@ plugins/
 ├── feedback/              # 피드백 & 회고
 ├── iteration/             # 이터레이션 관리
 ├── roadmap/               # 목표 & 로드맵
+├── progress-guidance/     # 장기 프로젝트 status + pipeline 페어 문서 + critic/auditor 게이트
 ├── debugging/             # 디버깅
 └── workflow-state-manager/ # 상태 관리
 ```
