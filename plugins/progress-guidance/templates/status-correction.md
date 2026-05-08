@@ -57,6 +57,9 @@
 - [ ] `docs/<domain>-pipeline.md` §종착지 §N.3 의도적 제외 — 변경
 - [ ] `docs/<domain>-pipeline.md` §종착지 §N.4 비전 vs 현재 — 영역 추가 / 제거 / 재정의
 - [ ] `docs/<domain>-pipeline.md` §종착지 §N.5 — correction cycle 행 추가 (classification: 축소 / 구체화 / 신규 추가 중 하나, trigger = correction §<NN>.5)
+- [ ] `docs/<domain>-pipeline.md` §N+1 M chain — M 추가 / 제거 / exit conjunct 변경 / 순서 변경 / sub-partitioning 재정의 (해당시)
+- [ ] `docs/<domain>-pipeline.md` §N+1.5 — correction cycle 행 추가 (변경 분류 + trigger)
+- [ ] `docs/<domain>-status.md` §2.3 마일스톤 진척 — M 정의 변경에 따른 진척 표 재정렬 (해당시)
 - [ ] `docs/<domain>-status.md` §2 §Decision chain — §<NN>.5.3 entry 추가
 - [ ] 기타: 
 
@@ -67,6 +70,7 @@
 - §1.4 진짜 목표가 의미적으로 변경됨
 - §북극성 행이 추가 / 제거 / 재정의됨 (단순 문구 정리는 제외)
 - §종착지 §N.4 영역이 추가 / 제거 / 재정의됨
+- §N+1 M chain 의 M / sub-checkpoint / exit conjunct / prerequisite 가 의미적으로 변경됨
 
 순수 문구 정리(의미 동일) 만이라면 재실행 불필요 — 그 사실을 명시하고 "재실행 불필요 사유" 한 줄 적을 것.
 
@@ -91,7 +95,35 @@
 | ... |  |  |  |
 | §<NN> |  |  |  |
 
-## <NN>.5.7 다음 1행동
+## <NN>.5.7 1급 객체 retrospective (Rule 9, user-interactive) ★
+
+§<NN>.5.4 에서 1급 객체 (§북극성 / §종착지 §N.4 / §N+1 M chain) 가 *의미적으로* 변경됐다면 (단순 문구 정리 제외) — 이 절 작성 *필수*. amended 정의가 사용자 §1.4 진짜 목표를 *진짜로* 만족시키는지 commit 전에 묻는다. 사용자 dialogue 없이 자동 결정 금지 — ambiguity 는 모두 사용자 verbatim 응답으로 닫힌다.
+
+> 변경된 1급 객체 없음 (단순 문구 정리만): "해당 없음 — 사유: <한 줄>" 로 이 절 닫고 §<NN>.5.8 로 이동.
+
+### Coverage 매핑 (amended 1급 객체 ↔ §1.4 / §종착지 §N.2)
+
+| amended 항목 | §1.4 substring | §종착지 §N.2 줄 | 사용자 verdict |
+|---|---|---|---|
+
+### Sufficiency 점검
+
+- amended 1급 객체 합집합이 §1.4 / §종착지 §N.2 list 를 exhaust 하나? 빠진 부분이 있다면 어떻게 채울까?
+  - 사용자 verbatim 응답: > "<인용>"
+
+### Faithfulness 점검 (proxy 의심 항목)
+
+- <항목>: 측정 방식 = <...>, 사용자 verdict = > "<verbatim>"
+
+### 사용자 결정 (ambiguity 처리)
+
+- <질문>: 옵션 A / B / C → 사용자 선택 = > "<verbatim>"
+
+### Commit
+
+- 위 결정에 따라 §<NN>.5.4 amendment 가 정당화됨. amended 정의의 source = 본 retro 절 + §<NN>.5.3 §Decision chain entry.
+
+## <NN>.5.8 다음 1행동
 
 correction 후 첫 정상 phase 의 의도. amended 정의 위에서 무엇을 가장 먼저 측정/실행할 것인가:
 

@@ -41,8 +41,10 @@
 2. §1 사용자 목표
 3. §11 한 페이지 요약 (TL;DR)
 4. **`<domain>-pipeline.md` §종착지 시스템 모양** — *어디로 가고 있나*
-5. §12 북극성 표 — *얼마나 갔나*
-6. 가장 최근 phase 파일 (`docs/<domain>-status/` 마지막 항목) — *직전에 뭘 했나*
+5. **`<domain>-pipeline.md` §N+1 마일스톤 체크포인트 체인** — *어느 체크포인트가 active 인가*
+6. §2.3 마일스톤 진척 — *현재 어느 M.j 에서 무엇을 닫아야 하나*
+7. §12 북극성 표 — *얼마나 갔나*
+8. 가장 최근 phase 파일 (`docs/<domain>-status/` 마지막 항목) — *직전에 뭘 했나*
 
 ### 0.7 동반 문서 (외부 참조)
 
@@ -81,13 +83,41 @@
 
 ### 2.1 <분기 1> → **<선택>**
 ### 2.2 <분기 2> → **<선택>**
-### 2.3 마일스톤 합의
+### 2.3 마일스톤 진척 (checkpoint chain — Rule 8) ★
 
-```
-M1 → 
-M2 → 
-M3 → 
-```
+> **정적 정의 (이름 / exit criterion conjunction / prerequisite / §종착지 영역 coverage) 는 `<domain>-pipeline.md §N+1 마일스톤 체크포인트 체인` 참조.** 이 절은 *동적 진척 상태* 만 들고 있다.
+>
+> M-level = sequential checkpoint (M_i 가 M_{i+1} 의 prerequisite). M_i 안의 sub-checkpoint M_i.j = partition (parallel 가능). Phase 는 M_i.j 단위로 advance / close 한다.
+
+#### 2.3.1 사용자 verbatim 합의 (Bootstrap step 6.5 인용)
+
+> "<사용자가 마일스톤 sequence 를 말한 원본 문장 — 변형 없이 인용. 이게 모든 후속 결정의 source.>"
+
+#### 2.3.2 현재 active checkpoint
+
+- **Active M_i.j**: `M<i>-<j>` (가장 최근 미닫힌 sub-checkpoint)
+- **이 M.j 가 닫혀야 다음에 가능해지는 작업**: <한 줄>
+- **M_i (parent) 의 close 까지 남은 sub**: <리스트>
+
+#### 2.3.3 M 진척 표
+
+| M_i.j | 정의 (요약) | exit conjunct progress (✅ 닫힘 / ⏳ 진행 / ❌ 미시작) | 상태 (open / active / closed / blocked) | closed-by phase | 근거 |
+|---|---|---|---|---|---|
+
+> 모든 conjunct 가 ✅ 일 때만 M_i.j 상태 = `closed`. 단 한 conjunct 라도 ⏳/❌ 면 close 청구 금지.
+> M_i 의 모든 sub 가 closed 면 M_i 도 closed. M chain 다음 M_{i+1} 의 sub 가 active 로 전환.
+
+#### 2.3.4 Phase ↔ M_i.j 매핑 (history)
+
+| Phase § | 일자 | 영향 받은 M_i.j | conjunct | advance / close | 비고 |
+|---|---|---|---|---|---|
+
+#### 2.3.5 Gate-bypass 기록 (있다면)
+
+M_i 가 아직 open 인데 M_{i+1} 작업을 시작한 사례. 각 행은 §Decision chain trigger 와 짝.
+
+| Phase § | bypass 한 M | 이유 (§Decision chain entry 인용) |
+|---|---|---|
 
 ---
 

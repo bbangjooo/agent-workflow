@@ -57,6 +57,41 @@ phase 진행 중 관찰됐지만 이번 사이클에 *고치지 않은* 것. 잊
 
 > 만약 위 모든 항목이 비어 있다면 이 phase는 *invisible progress*. infrastructure-only 라고 명시 표기하고, *어떤 future phase를 가능하게 하는지* 정확히 적을 것. 그조차 못 적으면 phase 자체를 재고.
 
+## <NN>.6.4 마일스톤 진척 청구 (Milestone Position) ★
+
+§<NN>.6 시스템 영향이 *이번 phase 의 즉시 효과* 라면, 이 절은 *이 phase 가 어느 M_i.j 의 어느 exit conjunct 를 advance 또는 close 했는가*. checkpoint chain 의 진척이 phase 단위로 누적되는 곳 — 자축 차단의 핵심.
+
+**영향 받은 M_i.j**: `M<i>-<j>` (status §2.3 active 와 일치하는가? 다르면 gate-bypass)
+
+**라벨**: _<ADVANCE | CLOSE>_
+
+**대상 exit criterion conjunct**:
+
+| conjunct | 이전 상태 | 이번 phase 후 상태 | 근거 (file/command/commit/§북극성 행 + 갭=0) |
+|---|---|---|---|
+|  | ⏳ / ❌ | ⏳ / ✅ |  |
+
+**라벨 근거 (라벨별 필수 내용)**:
+
+- `ADVANCE` — 일부 conjunct 만 ✅ 로 진척. 다른 conjunct 는 여전히 ⏳/❌. 이 phase 가 *어느 conjunct 를 닫고 어느 conjunct 를 못 닫았나* 를 위 표로 명시.
+  - 다음 phase 가 닫아야 할 conjunct: <리스트>
+
+- `CLOSE` — M_i.j 의 *모든* exit conjunct 가 ✅ 로 만족. 단일 trigger 로 close 청구 금지 — 모든 conjunct 행이 위 표에 evidence 와 함께 채워져야 한다.
+  - **모든 conjunct ✅ 확인** [ ] (auditor Pass 7 이 재검증)
+  - status §2.3 M 진척 표에서 이 M_i.j 행을 `closed` 로 갱신 [ ]
+  - 이 M_i.j 가 M_i 의 마지막 sub 였다면 M_i 도 closed 로, M_{i+1} 의 첫 sub 가 active 로 전환 [ ]
+
+**Prerequisite gate 상태**:
+
+- 이 M_i.j 의 parent M_i 의 prerequisite (M_{i-1}) 상태: <closed / open / N/A (i=1)>
+- 만약 M_{i-1} 이 *open* 인데 M_i 작업을 했다면 — status §Decision chain 의 gate-bypass trigger entry 인용:
+  - `<§Decision chain entry NN — 인용 한 줄>`
+  - 인용 못 하면 = hidden gate-bypass = auditor Pass 7 Severity-1.
+
+> Phase 가 *어느 M.j 에도* 매핑되지 않으면 (이 절 비워둠) → M-orphaned phase. scope creep 으로 §residual issues 에 표기하거나, M chain amendment (correction phase) 후 매핑.
+>
+> auditor Pass 7 이 위 표의 conjunct evidence 를 재현 검증한다 (file Read / Bash 실행 / commit 존재 확인).
+
 ## <NN>.6.5 종착지 비전 갱신 (end-state delta) ★
 
 §<NN>.6 시스템 영향이 *이번 phase의 즉시 효과*라면, 이 절은 *이 phase가 종착지 그림을 어떻게 다시 그리게 했는가*.

@@ -128,11 +128,75 @@ N. <stage N>           │  ★
 
 ---
 
-## N+1. 이 프로젝트가 위 틀에 얼마나 부합하는가
+## N+1. 마일스톤 체크포인트 체인 (Milestone Checkpoint Chain) ★
+
+> §종착지가 *최종 시스템 모양* 이라면, 이 절은 *그 모양에 도달하는 경로 위 시간순 mile post*. **M_1 → M_2 → ... → M_N → §종착지**. M_i 는 M_{i+1} 의 *prerequisite* (logical/technical dependency, 단순 시간 순서 아님). Rule 8 참조.
+>
+> 이 절은 *정적 정의* — 사용자 합의로 박힌 M chain. *동적 진척* 은 `<domain>-status.md §2.3 마일스톤 진척` 에서 추적. 정의 변경 (M 추가/제거/exit conjunct 변경) 은 §N+1.5 변경 이력 + Rule 9 retrospective 재실행 必.
+
+### N+1.0 사용자 verbatim 합의 (Bootstrap step 6.5 인용)
+
+> "<사용자가 마일스톤 sequence 를 말한 원본 문장 — 변형 없이 인용>"
+
+### N+1.1 M chain 도해
+
+```
+[현재] ─→ M1 ─→ M2 ─→ M3 ─→ ... ─→ MN ─→ [§종착지]
+        │       │       │              │
+       <한줄> <한줄> <한줄>           <한줄>
+```
+
+### N+1.2 M_i 정의 표
+
+| M_i | 이름 / 한 줄 정의 | exit criterion conjunction (AND) | prerequisite (왜 M_{i-1} 이 prerequisite 인가) | §종착지 §N.4 영역 coverage |
+|---|---|---|---|---|
+| M1 | <이름> | (§북극성 행 X ≥ <임계>) ∧ (재현 가능 측정 Y) ∧ (...) | N/A (첫 마일스톤) | <§N.4 어느 영역들> |
+| M2 | <이름> | (...) ∧ (...) ∧ (...) | <왜 M1 close 가 M2 시작의 logical 전제인가 — 단순 순서 X> | <§N.4 어느 영역들> |
+| ... |  |  |  |  |
+
+> 모든 conjunct 가 *측정 가능* (§북극성 행 evidence 또는 reproducible measurement). 모호한 conjunct ("충분히", "안정적으로", "잘") 금지 — bootstrap critic milestone-exit-measurability 가 즉시 fail.
+>
+> prerequisite 칸이 "M1 이 시간상 먼저" 같은 ordering rationale 이면 partition 모델로 의심 — 진짜 logical/technical dependency 인지 사용자에게 확인.
+
+### N+1.3 M_i ↔ §종착지 §N.4 영역 cross-tab
+
+| §종착지 §N.4 영역 | M1 | M2 | M3 | ... | cover 종합 |
+|---|---|---|---|---|---|
+| <영역 1> | partial | full |  |  | M1+M2 |
+| <영역 2> |  | partial | full |  | M2+M3 |
+
+> 모든 §N.4 영역이 *최소 한 M_i* 에 의해 cover 되어야 한다 (Rule 8 M-set exhaust). 빈 행 = M chain 정의 incomplete = correction phase 트리거.
+
+### N+1.4 Sub-checkpoint partitioning (선택)
+
+M_i 가 큰 경우 sub-checkpoint M_i.j (alphabetical: M1-A, M1-B, ...) 로 분해. M_i 안의 sub 는 *partition 스타일* — disjoint sub-capability, parallel 가능. M_i close = 모든 sub 가 closed.
+
+```
+M1 = M1-A ∪ M1-B ∪ M1-C ∪ ... (disjoint sub-capabilities)
+```
+
+| M_i.j | 이름 | exit conjunct (작은 conjunction) | parallel 가능? | 비고 |
+|---|---|---|---|---|
+| M1-A | <한 줄> | (...) ∧ (...) | ✓/✗ |  |
+
+### N+1.5 M chain 정의 변경 이력
+
+매 *정의 amend* 마다 행 추가. 정의 변경 없는 cycle 은 행 추가 안 함 (진척 변화는 status §2.3 에서). Exit conjunct 의 *약화* 변경은 §Decision chain trigger 必 — 없으면 auditor Pass 7 Severity-1 (exit weakening).
+
+| Cycle | 일자 | 변경 분류 | 변경 내용 | Trigger (왜 amend 했나) | Rule 9 retrospective 파일 |
+|---|---|---|---|---|---|
+| 00 | <YYYY-MM-DD> | 추가 | M chain 첫 정의 | Bootstrap step 6.5 사용자 합의 | `docs/<domain>-status/00-bootstrap-retro.md` |
+
+> 변경 분류: `추가 / 구체화 / 약화 / 순서 변경 / sub-partitioning 재정의 / no-change`.
+> *약화* (임계 ↓ / conjunct 제거 / 측정 방식 교체) 는 §Decision chain trigger 와 retrospection 둘 다 必.
+
+---
+
+## N+2. 이 프로젝트가 위 틀에 얼마나 부합하는가
 
 총평: <1-2 lines — 어느 단계가 강하고, 어느 단계가 약한가>
 
-### N+1.1 단계별 평가
+### N+2.1 단계별 평가
 
 | 단계 | 부합도 | 구현 위치 / 한계 | 근거 |
 |---|---|---|---|
@@ -142,17 +206,17 @@ N. <stage N>           │  ★
 
 범례: ◎ 우수 / ○ 양호 / △ 부분 / ✗ 미구현
 
-### N+1.2 가장 잘된 부분 (학습 시 참고할 가치)
+### N+2.2 가장 잘된 부분 (학습 시 참고할 가치)
 
 1. **§<X>** — <근거>
 2. **§<Y>** — <근거>
 
-### N+1.3 메꿔야 할 갭 (이 문서 기준)
+### N+2.3 메꿔야 할 갭 (이 문서 기준)
 
 1. 
 2. 
 
-### N+1.4 한 문장 요약
+### N+2.4 한 문장 요약
 
 > 
 
